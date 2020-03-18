@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project2</title>
+    <title><%= full_title(yield(:title)) %> | Reversi game management App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- HTML shimがこの1行で収まる -->
+    <%= render 'layouts/shim' %>
   </head>
-
   <body>
-    <%= yield %>
+    <!-- headerの内容がこの1行で収まる -->
+    <%= render 'layouts/header' %>
+    <div class="container">      
+      <% flash.each do |message_type, msg| %>
+         <div class="alert alert-<%= message_type %>"><%= msg %></div>
+      <% end %>
+      <%= yield %>
+    <%= debug(params) if Rails.env.development? %>
+    </div>
   </body>
 </html>
