@@ -7,7 +7,8 @@ ruby '2.7.0'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-# Use 暗号化
+gem 'rails-i18n'
+#Use 暗号化
 gem 'bcrypt'
 gem 'faker'
 # Use bootstrap
