@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<meta http-equiv="content-type" charset="utf-8">
+<% provide(:title, "Play") %>
 <html>
   <head>
-   <title>JavaScriptでオセロゲームを作る</title>
+    <title>Othello</title>
   </head>
+
   <body>
-    <!-- 盤面 -->
-    <table id="field"></table>
-    <!-- ターンの表示 -->
-    <p id="view_tarn"></p>
-    <!-- 初期化ボタン -->
-    <button type="button" id="ban_init" onclick="ban_init()">やり直し</button>
+    <p class="example1">テスト</p>
+    <!--script type="text/javascript" src="app/assets/javascripts/othello.js"></script-->
+    <!-- 盤面の要素定義 -->
+      <div style="display:none">
+	<div id="cell" class="square"><div class="cell"></div>
+	<div id="black" class="square"><img class="block" src="black.png"></img></div>
+        <div id="white" class="square"><img class="block" src="white.png"></img></div>
+      </div>
+
+      <div id="board"></div>
+
   </body>
   <%= javascript_include_tag 'othello.js' %>
 </html>
