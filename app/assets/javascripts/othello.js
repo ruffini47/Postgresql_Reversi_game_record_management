@@ -17,7 +17,7 @@
 
     var turn = PIECE_TYPE.BLACK;
     var checkTurnOver = function(x, y, flip) {
-    
+   
         var ret = 0;
         
         for (var dx = -1; dx <= 1; dx++) {
@@ -94,7 +94,7 @@
     };
 
     onload = function() {
-        alert("hello world!");
+        //alert("hello world!");
         // 0:石無し, 1:黒, 2:白
         stone = [
             document.getElementById("cell"),
@@ -122,6 +122,6 @@
         // 盤面表示
         showBoard();
 
-	alert("good bye world!");
+	//alert("good bye world!");
     };
 })();
