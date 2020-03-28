@@ -1,125 +1,232 @@
-(function() {
-    // �ϐ���`
-    var BOARD_TYPE = {
-        'WIDTH' :8,
-        'HEIGHT':8,
-    };
-
-    var PIECE_TYPE = {
-        'NONE'   : 0,
-        'BLACK'  : 1,
-        'WHITE'  : 2,
-        'MAX'    : 3,
-    };
-
-    var stone;
-    var board = [];
-
-    var turn = PIECE_TYPE.BLACK;
-    var checkTurnOver = function(x, y, flip) {
-    
-        var ret = 0;
-        
-        for (var dx = -1; dx <= 1; dx++) {
-            for(var dy = -1; dy <= 1; dy++) {
-                if (dx == 0 && dy == 0) {
-                    continue;
-                }
-            
-                var nx = x + dx;
-                var ny = y + dy;
-                var n = 0;
-                while(board[nx][ny] == PIECE_TYPE.MAX - turn) {
-                    n++;
-                    nx += dx;
-                    ny += dy;
-                }
-                
-                if (n > 0 && board[nx][ny] == turn) {
-                    ret += n;
-                    
-                    if (flip) {
-                        nx = x + dx;
-                        ny = y + dy;
-                        
-                        while(board[nx][ny] == PIECE_TYPE.MAX - turn) {
-                            board[nx][ny] = turn;
-                            nx += dx;
-                            ny += dy;
-                        }
-                        
-                        
-                    }
-                }
+  // 初期画面起動時
+  // 初期変数定義
+  var turn = 0 // ターン 1:黒、-1:白
+  // 盤面の状況を二次元配列で定義
+  var ban_ar = new Array(8)
+  for (var x = 0; x < ban_ar.length; x++) {
+    ban_ar[x] = new Array(8)
+  }
+  // HTMLで定義したテーブルを取得
+  var ban = document.getElementById('field')
+  // 取得したテーブルに盤面生成
+  ban_new()
+  // 盤面を初期化する
+  ban_init()
+  // クリックした時に実行されるイベント
+  for (var x = 0; x < 8; x++) {
+    for (var y = 0; y < 8; y++) {
+      var select_cell = ban.rows[x].cells[y];
+      select_cell.onclick = function () {
+        // クリックされた場所に石がない場合は、その場所にターン側の石が置けるかチェックし
+        // 置ける場合は、盤面を更新。相手のターンへ移る
+        if (ban_ar[this.parentNode.rowIndex][this.cellIndex] == 0) {
+          if (check_reverse(this.parentNode.rowIndex, this.cellIndex) > 0) {
+            ban_set()
+            cheng_turn()
+          }
+        }
+      }
+    }
+  }
+  // テーブルで盤面を作成する処理
+  function ban_new() {
+    for (var x = 0; x < 8; x++) {
+      var tr = document.createElement("tr")
+      ban.appendChild(tr)
+      for (var y = 0; y < 8; y++) {
+        var td = document.createElement("td")
+        tr.appendChild(td)
+      }
+    }
+  };
+  // 盤面を初期化する処理
+  function ban_init() {
+    // 全てをクリア
+    for (var x = 0; x < 8; x++) {
+      for (var y = 0; y < 8; y++) {
+        ban_ar[x][y] = 0
+      }
+    }
+    // 初期状態では、真ん中に白黒を配列
+    ban_ar[3][3] = -1
+    ban_ar[4][3] = 1
+    ban_ar[3][4] = 1
+    ban_ar[4][4] = -1
+    ban_set()
+    // ターンも初期化
+    turn = 0
+    cheng_turn()
+  };
+  // 盤面状況(配列)を実際の盤面へ反映させる処理
+  function ban_set() {
+    var stone = ""
+    for (var x = 0; x < 8; x++) {
+      for (var y = 0; y < 8; y++) {
+        switch (ban_ar[x][y]) {
+        case 0:
+          stone = ""
+          break;
+        case -1:
+          stone = "○"
+          break;
+        case 1:
+          stone = "●"
+          break;
+        }
+        ban.rows[x].cells[y].innerText = stone;
+      }
+    }
+    return true
+  };
+  // ターンを変更する処理
+  function cheng_turn() {
+    var tarn_msg = document.getElementById('view_tarn')
+    if (turn == 0) {
+      // 0は最初として、メッセージのみで処理終了
+      turn = 1
+      tarn_msg.textContent = "黒の番です。"
+      return
+    }
+    // ターンを変更
+    turn = turn * -1
+    // ターンを交代して、置けるところがあるか確認する
+    // 現状の配置をバックアップ
+    var ban_bak = new Array(8)
+    var check_reverse_cnt = 0
+    for (var i = 0; i < ban_ar.length; i++) {
+      ban_bak[i] = new Array(8)
+    }
+    for (var x = 0; x < 8; x++) {
+      for (var y = 0; y < 8; y++) {
+        ban_bak[x][y] = ban_ar[x][y]
+      }
+    }
+    // 左端からすべてのマスの確認を行う
+    var white_cnt = 0
+    var black_cnt = 0
+    for (var x = 0; x < 8; x++) {
+      for (var y = 0; y < 8; y++) {
+        // 空白マスのみおけるのでチェック
+        // それ以外は石の数を加算
+        switch (ban_ar[x][y]) {
+        case 0:
+          check_reverse_cnt = check_reverse_cnt + check_reverse(x, y)
+          // バックアップから元に戻す
+          for (var i = 0; i < 8; i++) {
+            for (var ii = 0; ii < 8; ii++) {
+              ban_ar[i][ii] = ban_bak[i][ii]
             }
+          }
+          break;
+        case -1:
+          white_cnt++
+          break
+        case 1:
+          black_cnt++
+          break
         }
-        
-        return ret;
-    };
-    
-    var showBoard = function() {
-    
-        var b = document.getElementById("board");
-        
-        while(b.firstChild) {
-            b.removeChild(b.firstChild);
+      }
+    }
+    // 白と黒の合計が8*8=64の場合は処理終了
+    if (white_cnt + black_cnt == 64 || white_cnt == 0 || black_cnt == 0) {
+      if (white_cnt == black_cnt) {
+        alert("勝負は引分です。")
+      } else if (white_cnt > black_cnt) {
+        alert("勝負は、黒：" + black_cnt + "対、白：" + white_cnt + "で、白の勝ちです。")
+      } else {
+        alert("勝負は、黒：" + black_cnt + "対、白：" + white_cnt + "で、黒の勝ちです。")
+      }
+    } else {
+      // 置ける場所がない場合は、ターンを相手に戻す
+      if (check_reverse_cnt == 0) {
+        switch (turn) {
+        case -1:
+          alert("白の置ける場所がありません。続けて黒の番となります。")
+          turn = turn * -1
+          break;
+        case 1:
+          alert("黒の置ける場所がありません。続けて白の番となります。")
+          turn = turn * -1
+          break;
         }
-        
-        for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
-            for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
-                var cell = stone[board[x][y]].cloneNode(true);
-                
-                cell.style.left = ((x - 1) * 31) + "px"; 
-                cell.style.top = ((y - 1) * 31) + "px"; 
-                b.appendChild(cell);
-                
-                if (board[x][y] == PIECE_TYPE.NONE) {
-                    (function() {
-                        var _x = x;
-                        var _y = y;
-                        //alert("break point")
-                        cell.onclick = function() {
-                            if (checkTurnOver(_x, _y, true) > 0) {
-                                board[_x][_y] = turn;
-                                showBoard();
-                                turn = PIECE_TYPE.MAX - turn;
-                            }
-                            
-                        };
-                    })();
-                }
-            }
+      }
+    }
+    // ターンを表示する
+    switch (turn) {
+    case -1:
+      tarn_msg.textContent = "白の番です。";
+      break;
+    case 1:
+      tarn_msg.textContent = "黒の番です。";
+      break;
+    }
+  };
+  // 指定したセルにターン側の石が置けるか確認
+  function check_reverse(row_index, cell_indx) {
+    var reverse_cnt = 0
+    // 各方向へリーバース出来るか確認
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, -1, 0) //上
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, -1, 1) //右上
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, 0, 1) //右
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, 1, 1) //右下
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, 1, 0) //下
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, 1, -1) //左下
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, 0, -1) //左
+    reverse_cnt = reverse_cnt + line_reverse(row_index, cell_indx, -1, -1) //左上
+    return reverse_cnt
+  }
+  // 指定したセルから指定した方向へreverseを行う
+  function line_reverse(row_index, cell_indx, add_x, add_y) {
+    // 最初に今の盤状況を退避する
+    var ban_bak = new Array(8)
+    for (var i = 0; i < ban_ar.length; i++) {
+      ban_bak[i] = new Array(8)
+    }
+    for (var x = 0; x < 8; x++) {
+      for (var y = 0; y < 8; y++) {
+        ban_bak[x][y] = ban_ar[x][y]
+      }
+    }
+    var line_reverse_cnt = 0 // 裏返した数
+    var turn_flg = 0 // 自分の色の石があるのか
+    var xx = row_index // 指定したセルの位置(行)
+    var yy = cell_indx // 指定したセルの位置(列)
+    // 指定したセルから指定された方向へ移動し
+    // 完了条件になるまで石を裏返す
+    while (true) {
+      xx = xx + add_x
+      yy = yy + add_y
+      // 盤の端に到達したら抜ける
+      if (xx < 0 || xx > 7 || yy < 0 || yy > 7) {
+        break;
+      }
+      // 移動先のセルに石がなかったら抜ける
+      if (ban_ar[xx][yy] == 0) {
+        break;
+      }
+      // 移動先のセルが自分自身であれば、石があった事を判定し抜ける
+      if (ban_ar[xx][yy] == turn) {
+        turn_flg = 1
+        break;
+      }
+      // 上記以外は相手の石で有るので、裏返して裏返した件数を加算
+      ban_ar[xx][yy] = ban_ar[xx][yy] * -1
+      line_reverse_cnt++
+    }
+    // 裏返しを行ったが、移動先に自分の石がなかった場合は元に戻す
+    if (line_reverse_cnt > 0) {
+      if (turn_flg == 0) {
+        for (var i = 0; i < 8; i++) {
+          for (var ii = 0; ii < 8; ii++) {
+            ban_ar[i][ii] = ban_bak[i][ii]
+            line_reverse_cnt = 0
+          }
         }
-        
-    };
-
-    onload = function() {
-        
-        // 0:�Ζ���, 1:��, 2:��
-        stone = [
-            document.getElementById("cell"),
-            document.getElementById("black"),
-            document.getElementById("white")
-        ];
-        
-        // PIECE��ʂ̓���(�O�̂���)
-        Object.freeze(PIECE_TYPE);
-        
-        // �Ֆʂ�������
-        for (var i = 0; i < 10; i++) {
-            board[i] = [];
-            for (var j = 0; j < 10; j++) {
-                board[i][j] = PIECE_TYPE.NONE;
-            }
-        }
-        
-        // �����̏����z�u
-        board[4][5] = PIECE_TYPE.BLACK;
-        board[5][4] = PIECE_TYPE.BLACK;
-        board[4][4] = PIECE_TYPE.WHITE;
-        board[5][5] = PIECE_TYPE.WHITE;
-        
-        // �Ֆʕ\��
-        showBoard();
-    };
-})();
+      } else {
+        // ちゃんと裏返しが出来たら、置いた所に自分の石を置く
+        ban_ar[row_index][cell_indx] = turn
+      }
+    }
+    // 最後に裏返しを行った件数を戻す
+    return line_reverse_cnt
+  }
