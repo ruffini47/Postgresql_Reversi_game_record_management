@@ -1,29 +1,31 @@
 // Place all the styles related to the Boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-#board{
+#board{//for id
     position            : relative;
 }
 
-.cell
+.cell//for class
 {
     position            : relative;
     top                 : 1px;
     left                : 1px;
     width               : 31px;
     height              : 31px;
-    background-color    : #00ff00;
+    //background-color    : #00ff00;
+    background-color    : #3CB371;
 }
 
-.square
+.square//for class
 {
     position            : absolute;
     width               : 33px;
     height              : 33px;
+    //background-color    : #3CB371;
     background-color    : #000000;
 }
 
-.block
+.block//for class
 {
     display             : block;
     position            : relative;
@@ -33,5 +35,5 @@
     height              : 31px;
 }
 
-p.example1 { color: #ff0000; }
+p.example1 { color: /*#ff0000*/blue; }//for class
 
