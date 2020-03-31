@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      record: 棋譜
     attributes:
         user:
           id: ID
@@ -11,3 +12,10 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+        record:
+          title: タイトル
+          black_player: 黒プレイヤー
+          white_player: 白プレイヤー
+          date_played: 対局日
+          place_played: 対局場所
+          user: ユーザーID

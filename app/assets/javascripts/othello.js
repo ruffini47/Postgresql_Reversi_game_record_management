@@ -69,8 +69,8 @@
       for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
         var cell = stone[board[x][y]].cloneNode(true);
                 
-        cell.style.left = ((x - 1) * 31) + "px"; 
-        cell.style.top = ((y - 1) * 31) + "px"; 
+        cell.style.left = ((x - 1) * 41) + "px"; 
+        cell.style.top = ((y - 1) * 41) + "px"; 
         b.appendChild(cell);
                 
         if (board[x][y] == PIECE_TYPE.NONE) {
