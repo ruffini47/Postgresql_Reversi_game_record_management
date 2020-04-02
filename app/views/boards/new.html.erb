@@ -5,16 +5,16 @@
   </head>
 
   <body>	  
-	  
+    <%= @record.title %>	  
     <!-- 盤面の要素定義 -->
-      <div style="display:none">
-	<div id="cell" class="square"><div class="cell"></div></div>
-	<div id="black" class="square"><img class="block" src="black.png"></img></div>
-        <div id="white" class="square"><img class="block" src="white.png"></img></div>
-      </div>
+    <div style="display:none">
+      <div id="cell" class="square"><div class="cell"></div></div>
+      <div id="black" class="square"><img class="block" src="/black.png"></img></div>
+      <div id="white" class="square"><img class="block" src="/white.png"></img></div>
+    </div>
 
-      <div id="board"></div>
+    <div id="board"></div>
 
   </body>
-  <%= javascript_include_tag 'othello.js' %>
+  <%= javascript_include_tag 'othello.js'%>
 </html>

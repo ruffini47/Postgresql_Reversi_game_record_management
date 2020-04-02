@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'records/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -8,10 +9,14 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resources :records, only: [:new, :create]
+  end
+
+
 
   # 新規ボード
-  get '/new_board', to: 'boards#new', as: 'new_board'
+  get '/record/:id/new_board', to: 'boards#new', as: 'new_board'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

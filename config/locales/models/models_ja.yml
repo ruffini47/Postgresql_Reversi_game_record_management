@@ -14,8 +14,8 @@ ja:
           updated_at: 更新日
         record:
           title: タイトル
-          black_player: 黒プレイヤー
-          white_player: 白プレイヤー
+          black_player: 黒プレイヤー名
+          white_player: 白プレイヤー名
           date_played: 対局日
           place_played: 対局場所
           user: ユーザーID
