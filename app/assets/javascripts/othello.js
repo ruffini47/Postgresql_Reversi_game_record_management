@@ -64,10 +64,18 @@
     while(b.firstChild) {
       b.removeChild(b.firstChild);
     }
+
+    for(var x = 1; x <=BOARD_TYPE.WIDTH; x++) {
+      var side_frame = side_frame1.cloneNode(true);
+        side_frame.style.left = ((x - 1)  * 41) + "px";
+        side_frame.style.top = -12 + "px";
+        b.appendChild(side_frame);
+    }
         
     for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
       for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
-        var cell = stone[board[x][y]].cloneNode(true);
+
+	var cell = stone[board[x][y]].cloneNode(true);
                 
         cell.style.left = ((x - 1) * 41) + "px"; 
         cell.style.top = ((y - 1) * 41) + "px"; 
@@ -95,6 +103,8 @@
   onload = function() {
     //alert("hello world!");
     // 0:石無し, 1:黒, 2:白
+    side_frame1 = 
+      document.getElementById("side_frame");
     stone = [
       document.getElementById("cell"),
       document.getElementById("black"),

@@ -5,6 +5,16 @@
     position            : relative;
 }
 
+.side_frame//for class
+{
+  position: relative;
+  top: 1px;
+  left: 1px;
+  width: 41px;
+  height: 12px;
+  background-color: #000000;
+}
+
 .cell//for class
 {
     position            : relative;
@@ -15,6 +25,14 @@
     //background-color    : #00ff00;
     //background-color    : #3CB371;
     background-color : darkgreen;
+}
+
+.side_rectangle//for class
+{
+   position: absolute;
+   width: 43px;
+   height: 12px;
+   background-color: #000000;
 }
 
 .square//for class
