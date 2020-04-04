@@ -5,7 +5,12 @@
   </head>
 
   <body>	  
-    <%= @record.title %>	  
+    <div class = "title">	    
+      <%= @record.title %>
+    </div>
+    <div class = "black_player">
+      <p>●  6  <%= @record.black_player %></p>
+    </div>
     <!-- 盤面の要素定義 -->
     <div style="display:none">
       <div id="cell" class="square"><div class="cell"></div></div>
@@ -14,7 +19,12 @@
     </div>
 
     <div id="board"></div>
-
+    <div class = "white_player">
+      <p>◯  4  <%= @record.white_player %></p>
+    </div>
+    <div class = "next_button">
+      <p><%= link_to "△", "#", class: "btn btn-default" %></p>
+    </div>
   </body>
   <%= javascript_include_tag 'othello.js'%>
 </html>
