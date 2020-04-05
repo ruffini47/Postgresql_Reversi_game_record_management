@@ -1,20 +1,16 @@
 <% provide(:title, "Play") %>
 <html>
-<div class="center jumbotron board-main">
   <head>
     <title>Othello</title>
   </head>
 
-  <body>
-    <!--div class="full-page"-->
+  <body>	  
     <div class = "title">	    
       <%= @record.title %>
     </div>
     <div class = "black_player">
-      <img src="/black.png" />	    
-      <p>6</p>
+      <p>●  6  <%= @record.black_player %></p>
     </div>
-    <%= @record.black_player %>
     <!-- 盤面の要素定義 -->
     <div style="display:none">
       <div id="corner" class="corner_square"><div class="corner"></div></div>	    
@@ -32,8 +28,6 @@
     <div class = "next_button">
       <p><%= link_to "|<<", "#", class: "btn btn-default" %></p>
     </div>
-  </div>
   </body>
   <%= javascript_include_tag 'othello.js'%>
-<!--/div-->
 </html>

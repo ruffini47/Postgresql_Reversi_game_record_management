@@ -7,20 +7,6 @@
   --main-square-width: 43px;
 }
 
-body {
-  //margin: 0;
-  //padding: 0;
-}
-
-//.full-page {
-//  position:fixed;
-//  top: 0;
-//  left: 0;
-//  width:        100%;
-//  height:        100%;
-//  background: #6A4623;
-//}
-
 #board{//for id
   position: relative;
 }
@@ -81,7 +67,7 @@ position: relative;
   height: var(--main-frame-width);
   background-color: #000000;
   text-align: center;
-  line-height: var(--main-frame-width);
+  line-height: 12px;
   color: white;
 }
 
@@ -92,7 +78,7 @@ position: relative;
   height: var(--main-square-width);
   background-color: #000000;
   text-align: center;
-  line-height: var(--main-cell-width);
+  line-height: 41px;
   color: white;
 }
 
@@ -143,23 +129,9 @@ position: relative;
 
 .black_player
 {
-  position: relative;
   font-size: medium;
-  width: 32px;
+  width: 43*8px;
   margin-bottom: -10px;
-}
-
-.black_player p
-{
-  position: absolute;
-  color: white;
-  top: 0;
-  left: 0;
-}
-
-.black_player img
-{
-  width: 100%;
 }
 
 .white_player
