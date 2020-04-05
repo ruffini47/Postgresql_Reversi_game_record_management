@@ -13,7 +13,9 @@
     </div>
     <!-- 盤面の要素定義 -->
     <div style="display:none">
+      <div id="corner" class="corner_square"><div class="corner"></div></div>	    
       <div id="side_frame" class="side_rectangle"><div class="side_frame"></div></div>
+      <div id="vertical_frame" class="vertical_rectangle"><div class="vertical_frame"></div></div>
       <div id="cell" class="square"><div class="cell"></div></div>
       <div id="black" class="square"><img class="block" src="/black.png"></img></div>
       <div id="white" class="square"><img class="block" src="/white.png"></img></div>
@@ -24,7 +26,7 @@
       <p>◯  4  <%= @record.white_player %></p>
     </div>
     <div class = "next_button">
-      <p><%= link_to "△", "#", class: "btn btn-default" %></p>
+      <p><%= link_to "|<<", "#", class: "btn btn-default" %></p>
     </div>
   </body>
   <%= javascript_include_tag 'othello.js'%>

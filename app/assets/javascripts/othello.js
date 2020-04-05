@@ -12,6 +12,9 @@
     'MAX'    : 3,
   };
 
+  var FRAME_WIDTH = 12;
+  var CELL_WIDTH = 41;
+
   var stone;
   var board = [];
 
@@ -65,20 +68,77 @@
       b.removeChild(b.firstChild);
     }
 
+    var top_left_corner = corner.cloneNode(true);
+    
+    top_left_corner.style.left = 0 + "px";
+    top_left_corner.style.top = 0 + "px";
+    b.appendChild(top_left_corner);
+
+    var top_right_corner = corner.cloneNode(true);
+
+    top_right_corner.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px";
+    top_right_corner.style.top = 0 + "px";
+    b.appendChild(top_right_corner);
+
+    var bottom_left_corner = corner.cloneNode(true);
+
+    bottom_left_corner.style.left = 0 + "px";
+    bottom_left_corner.style.top = FRAME_WIDTH + (BOARD_TYPE.HEIGHT * CELL_WIDTH) + "px";
+    b.appendChild(bottom_left_corner);
+
+    var bottom_right_corner = corner.cloneNode(true);
+
+    bottom_right_corner.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px";
+    bottom_right_corner.style.top = FRAME_WIDTH + (BOARD_TYPE.HEIGHT * CELL_WIDTH) + "px";
+    b.appendChild(bottom_right_corner);
+
     for(var x = 1; x <=BOARD_TYPE.WIDTH; x++) {
-      var side_frame = side_frame1.cloneNode(true);
-        side_frame.style.left = ((x - 1)  * 41) + "px";
-        side_frame.style.top = -12 + "px";
-        b.appendChild(side_frame);
+      
+      var top_side_frame = side_frame.cloneNode(true);
+      
+      top_side_frame.style.left = FRAME_WIDTH + ((x - 1)  * CELL_WIDTH) + "px";
+      top_side_frame.style.top = 0 + "px";
+      b.appendChild(top_side_frame);
     }
-        
+
+    for(var x = 1; x <=BOARD_TYPE.WIDTH; x++) {
+
+      var bottom_side_frame = side_frame.cloneNode(true);
+
+      bottom_side_frame.style.left = FRAME_WIDTH + ((x - 1)  * CELL_WIDTH) + "px";
+      bottom_side_frame.style.top  = FRAME_WIDTH + (BOARD_TYPE.HEIGHT * CELL_WIDTH) + "px";
+      b.appendChild(bottom_side_frame);
+    }
+
     for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
       for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
 
+        var left_vertical_frame = vertical_frame.cloneNode(true);
+
+        left_vertical_frame.style.left = 0 + "px"
+        left_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
+        b.appendChild(left_vertical_frame);
+      }
+    }
+
+    for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
+      for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
+
+        var right_vertical_frame = vertical_frame.cloneNode(true);
+
+        right_vertical_frame.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px"
+        right_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
+        b.appendChild(right_vertical_frame);
+      }
+    }
+
+    for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
+      for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
+        
 	var cell = stone[board[x][y]].cloneNode(true);
                 
-        cell.style.left = ((x - 1) * 41) + "px"; 
-        cell.style.top = ((y - 1) * 41) + "px"; 
+        cell.style.left = FRAME_WIDTH + ((x - 1) * CELL_WIDTH) + "px"; 
+        cell.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px"; 
         b.appendChild(cell);
                 
         if (board[x][y] == PIECE_TYPE.NONE) {
@@ -103,8 +163,12 @@
   onload = function() {
     //alert("hello world!");
     // 0:石無し, 1:黒, 2:白
-    side_frame1 = 
+    corner =
+      document.getElementById("corner");
+    side_frame = 
       document.getElementById("side_frame");
+    vertical_frame =
+      document.getElementById("vertical_frame");
     stone = [
       document.getElementById("cell"),
       document.getElementById("black"),
