@@ -92,12 +92,14 @@
     bottom_right_corner.style.top = FRAME_WIDTH + (BOARD_TYPE.HEIGHT * CELL_WIDTH) + "px";
     b.appendChild(bottom_right_corner);
 
+    var alphabet ="abcdefgh";
     for(var x = 1; x <=BOARD_TYPE.WIDTH; x++) {
       
       var top_side_frame = side_frame.cloneNode(true);
       
       top_side_frame.style.left = FRAME_WIDTH + ((x - 1)  * CELL_WIDTH) + "px";
       top_side_frame.style.top = 0 + "px";
+      top_side_frame.innerText = alphabet[x - 1];
       b.appendChild(top_side_frame);
     }
 
@@ -117,6 +119,9 @@
 
         left_vertical_frame.style.left = 0 + "px"
         left_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
+	if(x == 1) {
+	  left_vertical_frame.innerText = y.toString();
+        }
         b.appendChild(left_vertical_frame);
       }
     }

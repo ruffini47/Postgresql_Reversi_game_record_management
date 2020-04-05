@@ -7,8 +7,6 @@
   --main-square-width: 43px;
 }
 
-
-
 #board{//for id
   position: relative;
 }
@@ -68,6 +66,9 @@ position: relative;
   width: var(--main-square-width);
   height: var(--main-frame-width);
   background-color: #000000;
+  text-align: center;
+  line-height: 12px;
+  color: white;
 }
 
 .vertical_rectangle//for class
@@ -122,6 +123,7 @@ position: relative;
 //  }
 
 }
+
 .black_player
 {
   font-size: medium;
