@@ -119,9 +119,8 @@
 
         left_vertical_frame.style.left = 0 + "px"
         left_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
-	if(x == 1) {
-	  left_vertical_frame.innerText = y.toString();
-        }
+	left_vertical_frame.innerText = y.toString();
+        
         b.appendChild(left_vertical_frame);
       }
     }
