@@ -9,10 +9,12 @@
       <%= @record.title %>
     </div>
     <div class = "black_player">
-      <p>●  6  <%= @record.black_player %></p>
+      <p><%= @record.black_player %></p>
     </div>
+    <div id="black_count"></div>
     <!-- 盤面の要素定義 -->
     <div style="display:none">
+      <div id="dot" class="black_dot"><div class="black_dot"></div></div>	    
       <div id="corner" class="corner_square"><div class="corner"></div></div>	    
       <div id="side_frame" class="side_rectangle"><div class="side_frame"></div></div>
       <div id="vertical_frame" class="vertical_rectangle"><div class="vertical_frame"></div></div>

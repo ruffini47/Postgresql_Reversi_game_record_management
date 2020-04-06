@@ -117,7 +117,7 @@
 
         var left_vertical_frame = vertical_frame.cloneNode(true);
 
-        left_vertical_frame.style.left = 0 + "px"
+        left_vertical_frame.style.left = 0 + "px";
         left_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
 	left_vertical_frame.innerText = y.toString();
         
@@ -130,7 +130,7 @@
 
         var right_vertical_frame = vertical_frame.cloneNode(true);
 
-        right_vertical_frame.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px"
+        right_vertical_frame.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px";
         right_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
         b.appendChild(right_vertical_frame);
       }
@@ -144,7 +144,31 @@
         cell.style.left = FRAME_WIDTH + ((x - 1) * CELL_WIDTH) + "px"; 
         cell.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px"; 
         b.appendChild(cell);
-                
+
+	var top_left_dot = dot.cloneNode(true);
+
+        top_left_dot.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        top_left_dot.style.top = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        b.appendChild(top_left_dot);
+
+	var top_right_dot = dot.cloneNode(true);
+
+        top_right_dot.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        top_right_dot.style.top = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        b.appendChild(top_right_dot);
+ 
+        var bottom_left_dot = dot.cloneNode(true);
+
+        bottom_left_dot.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        bottom_left_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        b.appendChild(bottom_left_dot);
+
+	var bottom_right_dot = dot.cloneNode(true);
+
+        bottom_right_dot.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        b.appendChild(bottom_right_dot);
+
         if (board[x][y] == PIECE_TYPE.NONE) {
           (function() {
             var _x = x;
@@ -167,6 +191,8 @@
   onload = function() {
     //alert("hello world!");
     // 0:石無し, 1:黒, 2:白
+    dot =
+      document.getElementById("dot");
     corner =
       document.getElementById("corner");
     side_frame = 

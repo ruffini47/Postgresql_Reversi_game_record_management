@@ -13,7 +13,7 @@
 
 .corner//for class
 {
-position: relative;
+  position: relative;
   top: 1px;
   left: 1px;
   width: var(--main-frame-width);
@@ -50,6 +50,14 @@ position: relative;
   //background-color: #00ff00;
   //background-color: #3CB371;
   background-color: darkgreen;
+}
+
+.black_dot//for class
+{
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #000000;
 }
 
 .corner_square//for class
