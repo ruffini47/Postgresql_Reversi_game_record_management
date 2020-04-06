@@ -24,6 +24,24 @@
     </div>
 
     <div id="board"></div>
+    <div id="msg"></div>
+
+    <form action="#" name="form1" id="form1">
+      <br>	    
+        <label>
+          <input type="checkbox" name="Computer" value="コンピュータ">
+        </label>
+      <br>
+      <label>
+        <input type="checkbox" name="First" value="先攻">
+      </label>
+      <p>
+        <br>
+	<input type="button" id="form-button" value="Play" onclick="OnClickButton();">
+	<br>
+      </p>
+    </form>
+
     <div class = "white_player">
       <p>◯  4  <%= @record.white_player %></p>
     </div>

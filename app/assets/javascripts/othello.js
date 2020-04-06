@@ -1,65 +1,106 @@
 (function() {
   // 変数定義
-  var BOARD_TYPE = {
+  var BOARD_SIZE = {
     'WIDTH' :8,
-    'HEIGHT':8,
+    'HEIGHT' :8,
   };
 
-  var PIECE_TYPE = {
-    'NONE'   : 0,
-    'BLACK'  : 1,
-    'WHITE'  : 2,
-    'MAX'    : 3,
+  var BLOCK_KIND = {
+    'NONE' : 0,
+    'BLACK' : 1,
+    'WHITE' : 2,
+    'MAX' : 3,
   };
 
   var FRAME_WIDTH = 12;
   var CELL_WIDTH = 41;
 
+  var SLEEP_KIND = {
+    'TURNOVER' : 1000,
+  };
+
+  var isComputer = true;
+  var isFirst = false;
+
   var stone;
   var board = [];
+  var player_color;
 
-  var turn = PIECE_TYPE.BLACK;
-  
-  var checkTurnOver = function(x, y, flip) {
-   
-    var ret = 0;
-        
+  var getCountIsPossibleToTurnOver = function(x, y, dx, dy) {
+
+    var count = 0;
+    var cx = x + dx;
+    var cy = y + dy;
+
+    if (( cx < 0 || BOARD_SIZE.WIDTH < cx) ||
+      ( cy < 0 || BOARD_SIZE.HEIGHT < cy)) {
+
+      return 0;
+    }
+
+    while(board[cx][cy] == BLOCK_KIND.MAX - player_color) {
+      count++;
+      cx += dx;
+      cy += dy;
+
+      if (( cx < 0 || BOARD_SIZE.WIDTH < cx) ||
+        ( cy < 0 || BOARD_SIZE.HEIGHT < cy)) {
+
+        return 0;
+      }
+    }
+
+    if (count > 0 && board[cx][cy] == player_color) {
+      return count;
+    }
+
+    return 0;
+  };
+
+  var turnOverStraight = function(x, y, dx, dy) {
+
+    var cx = x + dx;
+    var cy = y + dy;
+
+    while(board[cx][cy] == BLOCK_KIND.MAX - player_color) {
+      board[cx][cy] = player_color;
+      cx += dx;
+      cy += dy;
+    }
+  };
+
+  var turnOverBlock = function(x, y, flip) {
+
+    var total = 0;
+
+    // can not put block
+    if (board[x][y] != BLOCK_KIND.NONE) {
+      return total;
+    }
+    
+    // check for 8 direction whether it is possible to turn over block
     for (var dx = -1; dx <= 1; dx++) {
       for(var dy = -1; dy <= 1; dy++) {
+
         if (dx == 0 && dy == 0) {
           continue;
         }
             
-        var nx = x + dx;
-        var ny = y + dy;
-        var n = 0;
-        while(board[nx][ny] == PIECE_TYPE.MAX - turn) {
-          n++;
-          nx += dx;
-          ny += dy;
-        }
-                
-        if (n > 0 && board[nx][ny] == turn) {
-          ret += n;
-                    
-          if (flip) {
-            nx = x + dx;
-            ny = y + dy;
-                        
-            while(board[nx][ny] == PIECE_TYPE.MAX - turn) {
-              board[nx][ny] = turn;
-              nx += dx;
-              ny += dy;
+        var cnt = getCountIsPossibleToTurnOver(x, y, dx, dy);
+          if (cnt > 0) {
+            total += cnt;
+            if (flip) {
+              turnOverStraight(x, y, dx, dy);
             }
-                        
-                        
           }
-        }
       }
     }
-    return ret;
+
+    return total;
   };
-    
+
+
+
   var showBoard = function() {
     
     var b = document.getElementById("board");
@@ -76,73 +117,73 @@
 
     var top_right_corner = corner.cloneNode(true);
 
-    top_right_corner.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px";
+    top_right_corner.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
     top_right_corner.style.top = 0 + "px";
     b.appendChild(top_right_corner);
 
     var bottom_left_corner = corner.cloneNode(true);
 
     bottom_left_corner.style.left = 0 + "px";
-    bottom_left_corner.style.top = FRAME_WIDTH + (BOARD_TYPE.HEIGHT * CELL_WIDTH) + "px";
+    bottom_left_corner.style.top = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
     b.appendChild(bottom_left_corner);
 
     var bottom_right_corner = corner.cloneNode(true);
 
-    bottom_right_corner.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px";
-    bottom_right_corner.style.top = FRAME_WIDTH + (BOARD_TYPE.HEIGHT * CELL_WIDTH) + "px";
+    bottom_right_corner.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+    bottom_right_corner.style.top = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
     b.appendChild(bottom_right_corner);
 
     var alphabet ="abcdefgh";
-    for(var x = 1; x <=BOARD_TYPE.WIDTH; x++) {
+    for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
       
       var top_side_frame = side_frame.cloneNode(true);
       
-      top_side_frame.style.left = FRAME_WIDTH + ((x - 1)  * CELL_WIDTH) + "px";
+      top_side_frame.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px";
       top_side_frame.style.top = 0 + "px";
-      top_side_frame.innerText = alphabet[x - 1];
+      top_side_frame.innerText = alphabet[x];
       b.appendChild(top_side_frame);
     }
 
-    for(var x = 1; x <=BOARD_TYPE.WIDTH; x++) {
+    for(var x = 0; x <BOARD_SIZE.WIDTH; x++) {
 
       var bottom_side_frame = side_frame.cloneNode(true);
 
-      bottom_side_frame.style.left = FRAME_WIDTH + ((x - 1)  * CELL_WIDTH) + "px";
-      bottom_side_frame.style.top  = FRAME_WIDTH + (BOARD_TYPE.HEIGHT * CELL_WIDTH) + "px";
+      bottom_side_frame.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px";
+      bottom_side_frame.style.top  = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
       b.appendChild(bottom_side_frame);
     }
 
-    for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
-      for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
 
         var left_vertical_frame = vertical_frame.cloneNode(true);
 
         left_vertical_frame.style.left = 0 + "px";
-        left_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
+        left_vertical_frame.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px";
 	left_vertical_frame.innerText = y.toString();
         
         b.appendChild(left_vertical_frame);
       }
     }
 
-    for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
-      for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
 
         var right_vertical_frame = vertical_frame.cloneNode(true);
 
-        right_vertical_frame.style.left = FRAME_WIDTH + (BOARD_TYPE.WIDTH * CELL_WIDTH) + "px";
-        right_vertical_frame.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px";
+        right_vertical_frame.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+        right_vertical_frame.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px";
         b.appendChild(right_vertical_frame);
       }
     }
 
-    for(var y = 1; y <= BOARD_TYPE.HEIGHT; y++) {
-      for(var x = 1; x <= BOARD_TYPE.WIDTH; x++) {
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
         
 	var cell = stone[board[x][y]].cloneNode(true);
                 
-        cell.style.left = FRAME_WIDTH + ((x - 1) * CELL_WIDTH) + "px"; 
-        cell.style.top = FRAME_WIDTH + ((y - 1) * CELL_WIDTH) + "px"; 
+        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
+        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
         b.appendChild(cell);
 
 	var top_left_dot = dot.cloneNode(true);
@@ -169,27 +210,129 @@
         bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         b.appendChild(bottom_right_dot);
 
-        if (board[x][y] == PIECE_TYPE.NONE) {
-          (function() {
-            var _x = x;
-            var _y = y;
-            //alert("break point")
-            cell.onclick = function() {
-              if (checkTurnOver(_x, _y, true) > 0) {
-              board[_x][_y] = turn;
+        (function() {
+          var _x = x;
+          var _y = y;
+          cell.onclick = function() {
+	    //alert("クリックしました。");
+            if (turnOverBlock(_x, _y, true) > 0) {
+              board[_x][_y] = player_color;
               showBoard();
-              turn = PIECE_TYPE.MAX - turn;
+              if (!changePlayer()) {
+                doAiPlayer();
               }
-            };
-          })();
+	    }
+          };
+        })();
+      }
+    }
+    showProgress();    
+  };
+
+  var showProgress = function() {
+
+    var black = 0;
+    var white = 0;
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+        if (board[x][y] == BLOCK_KIND.BLACK) {
+          black++;
+        } else if (board[x][y] == BLOCK_KIND.WHITE) {
+          white++;
+        } else {
+          // no opereation
         }
       }
     }
-        
+
+    var msg = document.getElementById("msg");
+    
+    msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
   };
 
-  onload = function() {
-    //alert("hello world!");
+  var changePlayer = function() {
+    
+    var pass = false;
+
+    player_color = BLOCK_KIND.MAX - player_color;
+
+    if (isPass()) {
+      if(player_color == BLOCK_KIND.BLACK) {
+        alert("黒の置ける場所がありません。続けて白の番となります。");
+      } else if (player_color == BLOCK_KIND.WHITE) {
+        alert("白の置ける場所がありません。続けて黒の番となります。");
+      } else {
+        alert("invalid status");
+      }
+        
+      player_color = BLOCK_KIND.MAX - player_color;
+
+      if(isPass()) {
+        alert("試合終了です。");
+      }
+
+      pass = true;
+    }
+
+    return pass;
+  };
+
+  var doAiPlayer = function() {
+
+    if(!isComputer) {
+      return false;
+    }
+
+    if( (isFirst && (player_color == BLOCK_KIND.BLACK)) ||
+      (!isFirst && (player_color == BLOCK_KIND.WHITE)) ) {
+      return false;
+    }
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+            
+        if (turnOverBlock(x, y, true) > 0) {
+          board[x][y] = player_color;
+          showBoard();
+          if(changePlayer()) {
+            doAiPlayer();
+          }
+          return true;
+        }
+      }
+    }
+    
+    return false;
+  };
+
+　var isPass = function() {
+    
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+            
+        if (turnOverBlock(x, y, false) > 0) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+　};
+
+  var msleep = function(ms) {
+
+    var d1 = new Date().getTime();
+    var d2 = new Date().getTime();
+    while ( d2 < (d1 + ms) ) {
+      d2 = new Date().getTime();
+    }
+  };
+
+　var initBoard = function() {
+
+    player_color = BLOCK_KIND.BLACK;
+
     // 0:石無し, 1:黒, 2:白
     dot =
       document.getElementById("dot");
@@ -204,29 +347,60 @@
       document.getElementById("black"),
       document.getElementById("white")
     ];
-        
-    // PIECE種別の凍結(念のため)
-    Object.freeze(PIECE_TYPE);
-        
-    // 盤面を初期化
-    for (var i = 0; i < 10; i++) {
+ 
+    // init zero value
+    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
       board[i] = [];
-      for (var j = 0; j < 10; j++) {
-        board[i][j] = PIECE_TYPE.NONE;
+      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+        board[i][j] = BLOCK_KIND.NONE;
       }
     }
-        
-    // 黒白の初期配置
-    board[4][5] = PIECE_TYPE.BLACK;
-    board[5][4] = PIECE_TYPE.BLACK;
-    board[4][4] = PIECE_TYPE.WHITE;
-    board[5][5] = PIECE_TYPE.WHITE;
-        
-    // 盤面表示
-    showBoard();
 
-    //alert("good bye world!");
+    // initial position
+    board[3][4] = BLOCK_KIND.BLACK;
+    board[4][3] = BLOCK_KIND.BLACK;
+    board[3][3] = BLOCK_KIND.WHITE;
+    board[4][4] = BLOCK_KIND.WHITE;
+
+    };
+
+  onload = function() {
+    // just in case
+    Object.freeze(BLOCK_KIND);
+    Object.freeze(BOARD_SIZE);
+    Object.freeze(FRAME_WIDTH);
+    Object.freeze(CELL_WIDTH);
+    
+    // initialize board
+    initBoard();
+    // start game
+    showBoard();
   };
+
+  var OnClickButton = function() {
+    if(document.form1.Computer.checked) {
+      isComputer = true;
+    } else {
+      isComputer = false;
+    }
+    
+    if(document.form1.First.checked) {
+      isFirst = true;
+    } else {
+      isFirst = false;
+    }
+
+    // initialize board
+    initBoard();
+
+    // start game
+    showBoard();
+    alert("ここ");          
+    if(!isFirst) {
+      doAiPlayer();
+    }
+  };
+
 })();
 
 

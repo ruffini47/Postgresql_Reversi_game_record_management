@@ -142,16 +142,28 @@ position: relative;
   margin-bottom: -10px;
 }
 
+#msg//for id
+{
+  position: absolute;
+  top:43*13+20px;
+}
+
 .white_player
 {
   position: absolute; 
-  top:43*13+20px; 
+  top:43*14+20px; 
   font-size: medium;
   width: 43*8px;
+}
+
+#form1
+{
+  position: absolute; 
+  top:43*15+20px; 
 }
 
 .next_button
 {
   position: absolute;
-  top:43*14+10px;
+  top:43*16+10px;
 }
