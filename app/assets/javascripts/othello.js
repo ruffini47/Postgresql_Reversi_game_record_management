@@ -377,7 +377,7 @@
     showBoard();
   };
 
-  var OnClickButton = function() {
+  document.getElementById("form-button").onclick = function() {
     if(document.form1.Computer.checked) {
       isComputer = true;
     } else {
@@ -395,7 +395,6 @@
 
     // start game
     showBoard();
-    alert("ここ");          
     if(!isFirst) {
       doAiPlayer();
     }

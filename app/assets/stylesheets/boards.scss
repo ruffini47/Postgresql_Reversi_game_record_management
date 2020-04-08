@@ -112,13 +112,13 @@ position: relative;
 .title
 {
   overflow: hidden;
-  height: 3.6em; /* 2em（行）x line-heightの1.8 */
+  height: 1.8em; /* 2em（行）x line-heightの1.8 2行にするなら3.6em*/
   font-size: 16px;
   line-height: 1.8;
   width: 43*8px;
   display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
 
 //  overflow: hidden;
 //  font-size: medium;
@@ -145,25 +145,52 @@ position: relative;
 #msg//for id
 {
   position: absolute;
-  top:43*13+20px;
+  top: 43*13+20px;
 }
 
 .white_player
 {
   position: absolute; 
-  top:43*14+20px; 
+  top: 43*14+20px; 
   font-size: medium;
   width: 43*8px;
 }
 
-#form1
+#Computer
 {
   position: absolute; 
-  top:43*15+20px; 
+  top: 43*15+20px; 
+}
+
+#Computer2
+{
+  position: absolute;
+  top: 43*15+18px;
+  margin-left: 20px;
+}
+
+#First
+{
+  position: absolute;
+  top: 43*16+20px;
+}
+
+#First2
+{
+  position: absolute;
+  top: 43*16+18px;
+  margin-left: 20px;
+}
+ 
+
+#form-button
+{
+  position: absolute;
+  top: 43*17+20px;
 }
 
 .next_button
 {
   position: absolute;
-  top:43*16+10px;
+  top:43*18+10px;
 }
