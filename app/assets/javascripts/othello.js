@@ -111,6 +111,8 @@
       b.removeChild(b.firstChild);
     }
 
+    //  show corner frame
+
     var top_left_corner = corner.cloneNode(true);
     
     top_left_corner.style.left = 0 + "px";
@@ -135,6 +137,8 @@
     bottom_right_corner.style.top = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
     b.appendChild(bottom_right_corner);
 
+    // show frame and index
+	  
     var alphabet ="abcdefgh";
     for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
       
@@ -162,7 +166,7 @@
 
         left_vertical_frame.style.left = 0 + "px";
         left_vertical_frame.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px";
-	left_vertical_frame.innerText = y.toString();
+	left_vertical_frame.innerText = (y + 1).toString();
         
         b.appendChild(left_vertical_frame);
       }
@@ -179,6 +183,8 @@
       }
     }
 
+    // show cell
+
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
         
@@ -187,6 +193,8 @@
         cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
         cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
         b.appendChild(cell);
+
+    // show dot        
 
 	var top_left_dot = dot.cloneNode(true);
 
@@ -265,39 +273,49 @@
 	
   };
 
+  var isFinish = function() {
+
+    var finish = true;
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+        if (board[x][y] == BLOCK_KIND.NONE) {
+	  finish = false;
+	}
+      }
+    }
+
+    return finish;
+  };
+                    
+ 
   var changePlayer = function() {
     
     var pass = false;
 
-    var finish = true;
-
     player_color = BLOCK_KIND.MAX - player_color;
 
-    if (isPass()) {
-     
-       for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
-         for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-           if (board[x][y] == BLOCK_KIND.NONE) {
-	     finish = false;
-	   }
-         }
-       }
-
-       if(finish == false) {
-         if(player_color == BLOCK_KIND.BLACK) {
-           alert("黒の置ける場所がありません。続けて白の番となります。");
-         } else if (player_color == BLOCK_KIND.WHITE) {
-           alert("白の置ける場所がありません。続けて黒の番となります。");
-         } else {
-           alert("invalid status");
-         }
-   　　}
+    if (isPass() && !isFinish()) {
+      if(player_color == BLOCK_KIND.BLACK) {
+        alert("黒の置ける場所がありません。続けて白の番となります。");
+      } else if (player_color == BLOCK_KIND.WHITE) {
+        alert("白の置ける場所がありません。続けて黒の番となります。");
+      } else {
+        alert("invalid status");
+      }
         
       player_color = BLOCK_KIND.MAX - player_color;
 
-      if(isPass() && finish == false) {
-        alert("試合終了です。");
-	isFinished = true;
+      if(isPass() && !isFinish()) {
+        if(player_color == BLOCK_KIND.BLACK) {
+          alert("黒も置ける場所がありません。試合終了です。");
+        } else if (player_color == BLOCK_KIND.WHITE) {
+          alert("白も置ける場所がありません。試合終了です。");
+        } else {
+          alert("invalid status");
+        }
+	
+        isFinished = true;
       }
 
       pass = true;
