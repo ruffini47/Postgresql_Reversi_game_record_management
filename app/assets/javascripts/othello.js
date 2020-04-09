@@ -21,6 +21,8 @@
 
   var isComputer = true;
   var isFirst = false;
+  var isFinished = false;
+
 
   var stone;
   var board = [];
@@ -249,27 +251,53 @@
     var msg = document.getElementById("msg");
     
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
+      
+    if (black + white == 64 || isFinished == true ) {
+      if (black > white) {
+        alert("黒の勝ちです。");
+      } else if(white > black) {
+	alert("白の勝ちです。");
+　　　} else {
+	alert("引き分けです。");
+      }
+    }
+    isFinished = false;
+	
   };
 
   var changePlayer = function() {
     
     var pass = false;
 
+    var finish = true;
+
     player_color = BLOCK_KIND.MAX - player_color;
 
     if (isPass()) {
-      if(player_color == BLOCK_KIND.BLACK) {
-        alert("黒の置ける場所がありません。続けて白の番となります。");
-      } else if (player_color == BLOCK_KIND.WHITE) {
-        alert("白の置ける場所がありません。続けて黒の番となります。");
-      } else {
-        alert("invalid status");
-      }
+     
+       for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+         for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+           if (board[x][y] == BLOCK_KIND.NONE) {
+	     finish = false;
+	   }
+         }
+       }
+
+       if(finish == false) {
+         if(player_color == BLOCK_KIND.BLACK) {
+           alert("黒の置ける場所がありません。続けて白の番となります。");
+         } else if (player_color == BLOCK_KIND.WHITE) {
+           alert("白の置ける場所がありません。続けて黒の番となります。");
+         } else {
+           alert("invalid status");
+         }
+   　　}
         
       player_color = BLOCK_KIND.MAX - player_color;
 
-      if(isPass()) {
+      if(isPass() && finish == false) {
         alert("試合終了です。");
+	isFinished = true;
       }
 
       pass = true;
@@ -307,16 +335,15 @@
   };
 
 　var isPass = function() {
-    
+   
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
-      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-            
-        if (turnOverBlock(x, y, false) > 0) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {    
+        if (turnOverBlock(x, y, false)   > 0) {
           return false;
         }
       }
     }
-
+    
     return true;
 　};
 

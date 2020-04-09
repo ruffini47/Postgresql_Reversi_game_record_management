@@ -112,13 +112,13 @@ position: relative;
 .title
 {
   overflow: hidden;
-  height: 1.8em; /* 2em（行）x line-heightの1.8 2行にするなら3.6em*/
+//  height: 3.6em; /* 2em（行）x line-heightの1.8 2行にするなら3.6em*/
   font-size: 16px;
   line-height: 1.8;
   width: 43*8px;
   display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
 
 //  overflow: hidden;
 //  font-size: medium;
@@ -127,11 +127,11 @@ position: relative;
 //    -webkit-box-orient: vertical;
 //    -webkit-line-clamp: 2;
 
-//  p {
-//    overflow: hidden;
-//    text-overflow: ellipsis;
-//    white-space: nowrap;
-//  }
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
 }
 
