@@ -28,6 +28,9 @@
   var board = [];
   var player_color;
 
+  var record = [];
+  var alphabet ="abcdefgh";
+
   var getCountIsPossibleToTurnOver = function(x, y, dx, dy) {
 
     var count = 0;
@@ -139,7 +142,6 @@
 
     // show frame and index
 	  
-    var alphabet ="abcdefgh";
     for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
       
       var top_side_frame = side_frame.cloneNode(true);
@@ -227,7 +229,9 @@
 	    //alert("クリックしました。");
             if (turnOverBlock(_x, _y, true) > 0) {
               board[_x][_y] = player_color;
-              showBoard();
+	      record.push(alphabet[_x] + (_y + 1).toString());
+	      alert(record);
+	      showBoard();
               if (!changePlayer()) {
                 doAiPlayer();
               }
@@ -400,6 +404,8 @@
             
         if (turnOverBlock(x, y, true) > 0) {
           board[x][y] = player_color;
+          record.push(alphabet[x] + (y + 1).toString());
+          alert(record);
           showBoard();
           if(changePlayer()) {
             doAiPlayer();
@@ -466,6 +472,9 @@
     board[4][3] = BLOCK_KIND.BLACK;
     board[3][3] = BLOCK_KIND.WHITE;
     board[4][4] = BLOCK_KIND.WHITE;
+
+    // initial record
+    record =  [];
 
     };
 
