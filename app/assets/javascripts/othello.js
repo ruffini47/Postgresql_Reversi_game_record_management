@@ -515,5 +515,23 @@
   };
 
 })();
+/*
+$(function(){
+  $('.title').css('color', 'red');
+});
+*/
 
+$(function(){
+    $('#SaveRecord').click(function() {
+      $.ajax({
+        url: '/save_record/update',  
+        type: 'GET',
+        dataType: 'html',
+        async: true,
+        data: {
+          record:  record
+        },
+      });
+    });
+ });
 
