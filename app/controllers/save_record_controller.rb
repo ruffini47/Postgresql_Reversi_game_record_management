@@ -1,4 +1,6 @@
 class SaveRecordController < ApplicationController
-  def update 
+  def update
+    @record = params[:record]
+    debugger
   end
 end

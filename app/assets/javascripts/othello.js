@@ -522,15 +522,25 @@ $(function(){
 */
 
 $(function(){
-    $('#SaveRecord').click(function() {
-      $.ajax({
-        url: '/save_record/update',  
-        type: 'GET',
-        dataType: 'html',
+  var record1 = $('.title').text();
+  $("#SaveRecord").click(function() {
+    /*$('.title').css('color', 'red');*/
+    /*$('#result').load('/save_record/update');*/
+    alert(record1);
+    $.ajax({
+        url: '/save_record/update',
+        type: "GET",
+        dataType: "html",
         async: true,
         data: {
-          record:  record
+          record: record1
         },
+	/*success: function(data) {
+          alert("success");
+        },*/
+        /*error: function(data) {
+          alert("errror");
+        }*/
       });
     });
  });
