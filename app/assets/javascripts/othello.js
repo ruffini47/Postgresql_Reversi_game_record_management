@@ -513,35 +513,35 @@
       doAiPlayer();
     }
   };
-
-})();
-/*
-$(function(){
-  $('.title').css('color', 'red');
-});
-*/
-
-$(function(){
-  var record1 = $('.title').text();
+  /*var record1 = $('.title').text();*/
   $("#SaveRecord").click(function() {
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_record/update');*/
-    alert(record1);
+    //alert(record);
     $.ajax({
         url: '/save_record/update',
         type: "GET",
         dataType: "html",
         async: true,
         data: {
-          record: record1
+          record: record
         },
-	/*success: function(data) {
+	success: function(data) {
           alert("success");
-        },*/
-        /*error: function(data) {
+        },
+        error: function(data) {
           alert("errror");
-        }*/
+        }
       });
     });
- });
-
+ 
+})();
+/*
+$(function(){
+  $('.title').css('color', 'red');
+});
+*/
+/*
+$(function(){
+});
+*/
