@@ -15,6 +15,8 @@ gem 'faker'
 gem 'bootstrap-sass'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+# railsのデータをjavascriptで読むためのgem
+gem 'gon'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

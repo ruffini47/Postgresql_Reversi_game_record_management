@@ -518,13 +518,16 @@
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_record/update');*/
     //alert(record);
+    var record_id = gon.record_id;
+    alert(record_id);
     $.ajax({
         url: '/save_record/update',
         type: "GET",
         dataType: "html",
         async: true,
         data: {
-          record: record
+          record: record,
+	  record_id: record_id
         },
 	success: function(data) {
           alert("success");
