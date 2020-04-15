@@ -5,8 +5,7 @@ class SaveRecordController < ApplicationController
     @record = Record.find(record_id)
     @record.kihu_record = kihu_record
     if @record.save
-      flash[:success]  = "#{@record.title}の更新をしました。"
-      debugger      
+      flash[:success]  = "#{@record.title}の更新をしました。"      
     else
       flash[:danger] = "#{@record.title}の更新に失敗しました。" + @record.errors.full_message.join("、")
     end
