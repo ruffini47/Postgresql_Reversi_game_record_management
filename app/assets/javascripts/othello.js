@@ -519,6 +519,7 @@
     /*$('#result').load('/save_record/update');*/
     //alert(record);
     var record_id = gon.record_id;
+    var kihu_record = record.join('');
     alert(record_id);
     $.ajax({
         url: '/save_record/update',
@@ -526,7 +527,7 @@
         dataType: "html",
         async: true,
         data: {
-          record: record,
+          kihu_record: kihu_record,
 	  record_id: record_id
         },
 	success: function(data) {
