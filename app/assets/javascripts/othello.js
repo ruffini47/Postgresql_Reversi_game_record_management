@@ -517,27 +517,39 @@
   $("#SaveRecord").click(function() {
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_record/update');*/
-    //alert(record);
     var record_id = gon.record_id;
     var kihu_record = record.join('');
     alert(record_id);
     $.ajax({
-        url: '/save_record/update',
-        type: "GET",
-        dataType: "html",
-        async: true,
-        data: {
-          kihu_record: kihu_record,
-	  record_id: record_id
-        },
-	success: function(data) {
-          alert("success");
-        },
-        error: function(data) {
-          alert("errror");
-        }
-      });
+      url: '/save_record/update',
+      type: "GET",
+      dataType: "html",
+      async: true,
+      data: {
+        kihu_record: kihu_record,
+	record_id: record_id
+      },
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
     });
+  });
+
+  $("#next_button").click(function() {
+    //initBoard();
+    var saved_kihu_record = gon.kihu_record;
+    alert(saved_kihu_record);
+    //board[3][4] = BLOCK_KIND.BLACK;
+    //showBoard();
+  });
+
+  $(document).on('ready', function() {
+    $("body").append(gon.kihu_record);
+    return console.log(gon.kihu_record);
+  });
  
 })();
 /*
