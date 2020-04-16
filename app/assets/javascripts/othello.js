@@ -545,12 +545,21 @@
     //board[3][4] = BLOCK_KIND.BLACK;
     //showBoard();
   });
+/*
+  var gonfix;
+
+  gonfix = function() {
+    return eval($('#gonvariables > script').html());
+  };
+
+  $(document).on('page:restore', gonfix);
 
   $(document).on('ready', function() {
-    $("body").append(gon.kihu_record);
+	  alert(gon.kihu_record);
     return console.log(gon.kihu_record);
   });
- 
+*/
+
 })();
 /*
 $(function(){

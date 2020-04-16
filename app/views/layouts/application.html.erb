@@ -2,6 +2,11 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %> | Reversi game management App</title>
+
+    <div id="gonvariables">
+      <%= Gon::Base.render_data %>
+    </div>
+ 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -20,7 +25,6 @@
  </head>
   <body>
     <%= include_gon %>
-    <%= Gon::Base.render_data %>
     <!-- headerの内容がこの1行で収まる -->
     <%= render 'layouts/header' %>
     <div class="container">      
