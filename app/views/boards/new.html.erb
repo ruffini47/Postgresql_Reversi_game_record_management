@@ -3,15 +3,9 @@
   <head>
     <title>Othello</title>
     <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
-    <%= include_gon %>
-    <%= include_gon(:init => true) %>
-    <%= Gon::Base.render_data %>
   </head>
 
-  <body>
-    <%= include_gon %>
-    <%= Gon::Base.render_data %>
-  </head>
+  <body>	  
     <div class = "title">	    
       <%= @record.title %>
     </div>
@@ -48,13 +42,15 @@
       <p>
         <input type="button" id="SaveRecord" value="SaveRecord">
       </p>     
-      <p> 
-        <input type="button" id="next_button" value=">>">
-      </p>
     </form>
+
     <div class = "white_player">
       <p>◯  4  <%= @record.white_player %></p>
     </div>
+    <div class = "next_button">
+      <p><%= link_to "|<<", "#", class: "btn btn-default" %></p>
+    </div>
+    <div id="result"></div>
   </body>
   <%= javascript_include_tag 'othello.js'%>
 </html>

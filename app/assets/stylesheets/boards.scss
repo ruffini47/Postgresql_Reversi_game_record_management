@@ -109,7 +109,7 @@ position: relative;
   height: var(--main-cell-width);
 }
 
-.title//for class
+.title
 {
   overflow: hidden;
 //  height: 3.6em; /* 2em（行）x line-heightの1.8 2行にするなら3.6em*/
@@ -135,7 +135,7 @@ position: relative;
 
 }
 
-.black_player//for class
+.black_player
 {
   font-size: medium;
   width: 43*8px;
@@ -148,7 +148,7 @@ position: relative;
   top: 43*13+20px;
 }
 
-.white_player//for class
+.white_player
 {
   position: absolute; 
   top: 43*14+20px; 
@@ -156,26 +156,26 @@ position: relative;
   width: 43*8px;
 }
 
-#Computer//for id
+#Computer
 {
   position: absolute; 
   top: 43*15+20px; 
 }
 
-#Computer2//for id
+#Computer2
 {
   position: absolute;
   top: 43*15+18px;
   margin-left: 20px;
 }
 
-#First//for id
+#First
 {
   position: absolute;
   top: 43*16+20px;
 }
 
-#First2//for id
+#First2
 {
   position: absolute;
   top: 43*16+18px;
@@ -183,22 +183,28 @@ position: relative;
 }
  
 
-#form-button//for id
+#form-button
 {
   position: absolute;
   top: 43*17+20px;
 }
 
-#SaveRecord//for id
+#SaveRecord
 {
   position: absolute;
   top: 43*18+20px;
 }
 
-#next_button//for id
+#result
 {
   position: absolute;
-  top:43*19+20px;
+  top: 43*19+20px;
+}
+
+.next_button
+{
+  position: absolute;
+  top:43*20+10px;
 }
 
 

@@ -4,11 +4,10 @@ class SaveRecordController < ApplicationController
     record_id = params[:record_id]
     @record = Record.find(record_id)
     @record.kihu_record = kihu_record
-    gon.kihu_record = "a"
     if @record.save
+      flash[:success]  = "#{@record.title}の更新をしました。"      
     else
       flash[:danger] = "#{@record.title}の更新に失敗しました。" + @record.errors.full_message.join("、")
     end
-
   end
 end
