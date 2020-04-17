@@ -10,6 +10,7 @@
         <td>対局日</td>
 	<td>対局場所</td>
 	<td>棋譜</td>
+	<td></td>
       </tr>
     </thead>
       <tbody>
@@ -21,6 +22,7 @@
 	<td><%= record.date_played %></td>
 	<td><%= record.place_played %></td>
 	<td><%= record.kihu_record %></td>
+	<td><%= link_to "開く", '#', class: "btn btn-primary btn-sm" %></td>
       </tr>  
       <% end %>
     </tbody>
