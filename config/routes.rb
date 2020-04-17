@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :records, only: [:new, :create]
+    resources :records, only: [:new, :create, :index]
   end
 
   # 新規ボード
   get '/record/:id/boards/new', to: 'boards#new', as: 'new_board'
 
   # ボードインデックス
-  get '/user/:user_id/boards/index', to: 'boards#index', as: 'index_board'
+  #get '/user/:user_id/boards/index', to: 'boards#index', as: 'index_board'
 
   # 棋譜保存
   get '/save_record/update', to: 'save_record#update', as: 'save_record'
