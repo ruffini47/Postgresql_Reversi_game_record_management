@@ -8,7 +8,7 @@ class RecordsController < ApplicationController
     @record.user_id = params[:user_id]
     if @record.save
       flash[:success] = "プレイヤー情報を更新しました。"
-      redirect_to new_board_url(@record.id)
+      redirect_to show_board_url(@record.id)
     else
       flash[:danger] = "プレイヤー情報の更新に失敗しました。"
       render :new     

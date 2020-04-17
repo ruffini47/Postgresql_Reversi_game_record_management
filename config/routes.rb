@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     resources :records, only: [:new, :create, :index]
   end
 
-  # 新規ボード
-  get '/record/:id/boards/new', to: 'boards#new', as: 'new_board'
+  # ボード表示
+  get '/record/:id/boards/show', to: 'boards#show', as: 'show_board'
 
   # 棋譜保存
   get '/save_record/update', to: 'save_record#update', as: 'save_record'

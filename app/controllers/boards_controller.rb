@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  def new
+  def show
     @record = Record.find(params[:id])
     gon.record_id =  @record.id
   end
