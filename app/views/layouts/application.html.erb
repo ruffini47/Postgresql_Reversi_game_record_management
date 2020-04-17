@@ -3,16 +3,12 @@
   <head>
     <title><%= full_title(yield(:title)) %> | Reversi game management App</title>
 
-    <div id="gonvariables">
-      <%= Gon::Base.render_data %>
-    </div>
- 
+    <%= include_gon %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= include_gon %>
-    <%= include_gon(:init => true) %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'boards' %>
     <!-- HTML shimがこの1行で収まる -->
@@ -24,7 +20,6 @@
     </script>
  </head>
   <body>
-    <%= include_gon %>
     <!-- headerの内容がこの1行で収まる -->
     <%= render 'layouts/header' %>
     <div class="container">      
