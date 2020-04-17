@@ -15,9 +15,6 @@ Rails.application.routes.draw do
   # 新規ボード
   get '/record/:id/boards/new', to: 'boards#new', as: 'new_board'
 
-  # ボードインデックス
-  #get '/user/:user_id/boards/index', to: 'boards#index', as: 'index_board'
-
   # 棋譜保存
   get '/save_record/update', to: 'save_record#update', as: 'save_record'
 

@@ -1,1 +1,28 @@
-<p>index record</p>
+<% provide(:title, 'All Records') %>
+<h1>棋譜一覧</h1>
+<div>
+  <table class="table table-bordered table-condensed table-striped table-hover bases-table">
+    <thead>
+      <tr>
+        <td>タイトル</td>
+        <td>黒プレイヤー</td>
+        <td>白プレイヤー</td>
+        <td>対局日</td>
+	<td>対局場所</td>
+	<td>棋譜</td>
+      </tr>
+    </thead>
+      <tbody>
+      <% @records.each do |record| %>
+      <tr>
+        <td><%= record.title %></td>
+        <td><%= record.black_player %></td>
+	<td><%= record.white_player %></td>
+	<td><%= record.date_played %></td>
+	<td><%= record.place_played %></td>
+	<td><%= record.kihu_record %></td>
+      </tr>  
+      <% end %>
+    </tbody>
+  </table>
+</div>

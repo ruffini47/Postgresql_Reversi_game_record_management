@@ -15,6 +15,11 @@ class RecordsController < ApplicationController
     end
   end 
 
+  def index
+    @records = Record.all
+    @records = @records.where(user_id: current_user.id)
+  end
+
   private
 
     def records_params
