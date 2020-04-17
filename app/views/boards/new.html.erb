@@ -52,9 +52,12 @@
         <input type="button" id="next_button" value=">>">
       </p>
     </form>
-    <div class = "white_player">
-      <p>◯  4  <%= @record.white_player %></p>
-    </div>
+  <div class = "white_player">
+    <p>◯  4  <%= @record.white_player %></p>
+  </div>
+  <div class="OpenRecord">
+    <%= link_to "パーソナル棋譜を開く", index_board_path(current_user.id), class: "btn btn-default"%>
+  </div>
   </body>
   <%= javascript_include_tag 'othello.js'%>
 </html>

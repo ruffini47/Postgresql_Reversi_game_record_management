@@ -5,6 +5,7 @@ class SaveRecordController < ApplicationController
     @record = Record.find(record_id)
     @record.kihu_record = kihu_record
     gon.kihu_record = "a"
+    redirect_to root_path
     if @record.save
     else
     end
