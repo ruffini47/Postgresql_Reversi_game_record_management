@@ -11,6 +11,8 @@
 	<td>対局場所</td>
 	<td>棋譜</td>
 	<td></td>
+	<td></td>
+	<td></td>
       </tr>
     </thead>
       <tbody>
@@ -22,6 +24,9 @@
 	<td><%= record.date_played %></td>
 	<td><%= record.place_played %></td>
 	<td><%= record.kihu_record %></td>
+	<td><%= link_to "編集", edit_user_record_path(current_user.id, record.id), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to "削除", user_record_path(current_user.id, record.id), method: :delete,
+              data: { confirm: "「#{record.title}」を削除してよろしいですか？" }, class: "btn btn-primary btn-sm" %></td>
 	<td><%= link_to "開く", '#', class: "btn btn-primary btn-sm" %></td>
       </tr>  
       <% end %>
