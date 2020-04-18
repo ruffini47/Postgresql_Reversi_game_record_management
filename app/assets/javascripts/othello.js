@@ -263,7 +263,10 @@
     var msg = document.getElementById("msg");
     
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
- 
+
+    var msg_kihu_record = document.getElementById("msg_kihu_record");
+    msg_kihu_record.innerHTML = record;
+
     if (allSameColor()) {
       if(player_color == BLOCK_KIND.BLACK) {
         alert("黒のパーフェクト勝ちです。1");
