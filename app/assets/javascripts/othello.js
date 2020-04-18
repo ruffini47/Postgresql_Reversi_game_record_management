@@ -30,6 +30,8 @@
 
   var record = [];
   var alphabet ="abcdefgh";
+  var kihu_record;  
+  var play_back_flag = false;
 
   var getCountIsPossibleToTurnOver = function(x, y, dx, dy) {
 
@@ -476,10 +478,13 @@
     board[3][3] = BLOCK_KIND.WHITE;
     board[4][4] = BLOCK_KIND.WHITE;
 
+  };
+
+  var initRecord = function() {
+
     // initial record
     record =  [];
-
-    };
+  };
 
   onload = function() {
     // just in case
@@ -490,11 +495,12 @@
     
     // initialize board
     initBoard();
+    initRecord();
     // start game
     showBoard();
   };
 
-  document.getElementById("form-button").onclick = function() {
+  document.getElementById("set_and_clear").onclick = function() {
     if(document.form1.Computer.checked) {
       isComputer = true;
     } else {
@@ -509,19 +515,20 @@
 
     // initialize board
     initBoard();
-
+    initRecord();         
     // start game
     showBoard();
     if(!isFirst) {
       doAiPlayer();
     }
   };
+
   /*var record1 = $('.title').text();*/
   $("#SaveRecord").click(function() {
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_record/update');*/
+    kihu_record = record.join('');  
     var record_id = gon.record_id;
-    var kihu_record = record.join('');
     alert(record_id);
     $.ajax({
       url: '/save_record/update',
@@ -541,35 +548,63 @@
     });
   });
 
+  var i;
+  $("#play_back").click(function() {
+    initBoard();
+    showBoard();
+    i = 0;
+    player_color = BLOCK_KIND.BLACK; 
+    play_back_flag = true;
+  });
+        
+
   $("#next_button").click(function() {
-    //initBoard();
-    var saved_kihu_record = gon.kihu_record;
-    alert(saved_kihu_record);
-    //board[3][4] = BLOCK_KIND.BLACK;
-    //showBoard();
+    if (play_back_flag) {
+      kihu_record = record.join('');
+ 
+      var n;
+      switch(kihu_record.charAt(i)){
+        case 'a':
+	  n = 0;
+	  break;
+        case 'b':
+	  n = 1;
+	  break;
+        case 'c':
+	  n = 2;
+	  break;
+        case 'd':
+	  n = 3;
+	  break;
+        case 'e':
+          n = 4;
+	  break;
+        case 'f':
+	  n = 5;
+	  break;
+        case 'g':
+	  n = 6;
+	  break;
+        case 'h':
+          n = 7;
+	  break;
+       }              
+       var _x = n;
+       var _y = kihu_record.charAt(i + 1) - 1;
+       if (turnOverBlock(_x, _y, true) > 0) { 
+         board[_x][_y] = player_color;
+         showBoard();
+         changePlayer();
+         i += 2;
+       }
+    }
+  
   });
-/*
-  var gonfix;
-
-  gonfix = function() {
-    return eval($('#gonvariables > script').html());
-  };
-
-  $(document).on('page:restore', gonfix);
-
-  $(document).on('ready', function() {
-	  alert(gon.kihu_record);
-    return console.log(gon.kihu_record);
-  });
-*/
 
 })();
+
 /*
 $(function(){
   $('.title').css('color', 'red');
-});
-*/
-/*
-$(function(){
 });
 */

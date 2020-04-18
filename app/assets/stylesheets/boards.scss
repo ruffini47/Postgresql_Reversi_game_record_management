@@ -185,11 +185,11 @@ position: relative;
 {
   position: absolute;
   top: 43*16+18px;
-  margin-left: 20px;
+  margin-left: 50px;
 }
- 
 
-#form-button//for id
+
+#set_and_clear//for id
 {
   position: absolute;
   top: 43*17+20px;
@@ -201,10 +201,15 @@ position: relative;
   top: 43*18+20px;
 }
 
+#play_back//for id
+{
+  position: absolute;
+  top: 43*19+20px;
+}
 #next_button//for id
 {
   position: absolute;
   top:43*19+20px;
+  margin-left: 100px;
 }
-
 
