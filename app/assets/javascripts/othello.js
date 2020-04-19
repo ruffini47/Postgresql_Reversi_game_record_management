@@ -445,9 +445,14 @@
     }
   };
 
-//  var kihu_to_record = function(kihu_record) {
-
-//  };
+  var kihu_to_record = function(kihu_record, k) {
+    var length = kihu_record.length
+    var temp_record = [];
+    for(j = 0; j <= k; j += 2) {
+      temp_record.push(kihu_record.substr(j,2));
+    }
+    return temp_record;
+  };
 
 
 　var initBoard = function() {
@@ -560,19 +565,21 @@
     i = 0;
     player_color = BLOCK_KIND.BLACK; 
     play_back_flag = true;
-  });
-        
-
-  $("#next_button").click(function() {
-    if (play_back_flag) {
     var from_saved
     from_saved = gon.from_saved;
     if (from_saved == "true") {
+      record = [];
+      showProgress();     
       kihu_record = gon.kihu_record;
     } else if(from_save == "false") {
       kihu_record = record.join('');
     }
-      var n;
+  });
+        
+
+  $("#next_button").click(function() {
+     if (play_back_flag) {
+     var n;
       switch(kihu_record.charAt(i)){
         case 'a':
 	  n = 0;
@@ -604,8 +611,8 @@
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
          showBoard();
-         //record = kihu_to_record(kihu_record);	 
-         //showProgress();
+         record = kihu_to_record(kihu_record, i);
+         showProgress(i);
 	 changePlayer();
          i += 2;
        }
