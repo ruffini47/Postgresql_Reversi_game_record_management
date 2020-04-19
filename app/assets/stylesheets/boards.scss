@@ -154,12 +154,20 @@ position: relative;
   top: 43*13+20px;
 }
 
+#open//for id
+{
+  position: absolute;
+  top: 43*14+20px;
+  margin-left: 200px;
+}
+
+
 .white_player//for class
 {
   position: absolute; 
   top: 43*14+20px; 
   font-size: medium;
-  width: 43*8px;
+ // width: 43*8px;
 }
 
 #Computer//for id
@@ -185,7 +193,7 @@ position: relative;
 {
   position: absolute;
   top: 43*16+18px;
-  margin-left: 50px;
+  margin-left: 20px;
 }
 
 

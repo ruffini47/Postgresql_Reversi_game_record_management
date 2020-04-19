@@ -6,7 +6,6 @@
   </head>
 
   <body>
-  </head>
     <div class = "title">	    
       <%= @record.title %>
     </div>
@@ -28,8 +27,6 @@
     <div id="board"></div>
     <div id="msg"></div>
     <div id="msg_kihu_record"></div>
-    
-
     <form action="#" name="form1" id="form1">
       <p>        
       <input type="checkbox" name="Computer" id="Computer" />
@@ -53,9 +50,13 @@
       </p>
  
     </form>
-  <div class = "white_player">
-    <p>◯  4  <%= @record.white_player %></p>
-  </div>
+    <div class = "white_player">
+      <p>◯  4  <%= @record.white_player %></p>
+    </div>
+    <div id="open">
+      <%= link_to "パーソナル棋譜を開く", user_records_path(current_user.id), class: "btn btn-primary"%>    
+    </div>    
+ 
   </body>
   <%= javascript_include_tag 'othello.js'%>
 </html>

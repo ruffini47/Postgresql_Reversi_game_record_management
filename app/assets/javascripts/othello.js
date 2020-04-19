@@ -109,7 +109,7 @@
 
 
 
-  var showBoard = function() {
+  var showBoard = function(only_show) {
     
     var b = document.getElementById("board");
         
@@ -225,22 +225,24 @@
         bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         b.appendChild(bottom_right_dot);
 
-        (function() {
-          var _x = x;
-          var _y = y;
-          cell.onclick = function() {
-	    //alert("クリックしました。");
-            if (turnOverBlock(_x, _y, true) > 0) {
-              board[_x][_y] = player_color;
-	      record.push(alphabet[_x] + (_y + 1).toString());
-	      alert(record);
-	      showBoard();
-              if (!changePlayer()) {
-                doAiPlayer();
-              }
-	    }
-          };
-        })();
+	if(only_show == false) {
+          (function() {
+            var _x = x;
+            var _y = y;
+            cell.onclick = function() {
+	      //alert("クリックしました。");
+              if (turnOverBlock(_x, _y, true) > 0) {
+                board[_x][_y] = player_color;
+	        record.push(alphabet[_x] + (_y + 1).toString());
+	        alert(record);
+	        showBoard(only_show);
+                if (!changePlayer()) {
+                  doAiPlayer();
+                }
+	      }
+            };
+          })();
+	}
       }
     }
     showProgress();    
@@ -412,7 +414,7 @@
           board[x][y] = player_color;
           record.push(alphabet[x] + (y + 1).toString());
           alert(record);
-          showBoard();
+          showBoard(false);
           if(changePlayer()) {
             doAiPlayer();
           }
@@ -510,7 +512,7 @@
     initBoard();
     // start game
     initRecord();
-    //showBoard();
+    showBoard(true);
   };
 
   document.getElementById("set_and_clear").onclick = function() {
@@ -531,7 +533,7 @@
     initRecord();         
     from_saved = "false";
     // start game
-    showBoard();
+    showBoard(false);
     if(!isFirst) {
       doAiPlayer();
     }
@@ -565,7 +567,7 @@
   var i;
   $("#play_back").click(function() {
     initBoard();
-    showBoard();
+    showBoard(false);
     i = 0;
     player_color = BLOCK_KIND.BLACK; 
     play_back_flag = true;
@@ -612,7 +614,7 @@
        var _y = kihu_record.charAt(i + 1) - 1;
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
-         showBoard();
+         showBoard(false);
          record = kihu_to_record(kihu_record, i);
          showProgress(i);
 	 changePlayer();
