@@ -540,7 +540,7 @@
   };
 
   /*var record1 = $('.title').text();*/
-  $("#SaveRecord").click(function() {
+  $("#Save").click(function() {
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_record/update');*/
     kihu_record = record.join('');  

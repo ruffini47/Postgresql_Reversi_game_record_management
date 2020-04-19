@@ -8,6 +8,12 @@
     <% end %>
   </div class="link">
   <div class="link">
+    <% if logged_in? %>	  
+    	<%= link_to "Aiと対戦する", new_user_record_path(current_user.id), class: "btn btn-primary" %>
+    <% end %>
+  </div class="link">
+ 
+  <div class="link">
     <%= link_to "盤面編集", '#', class: "btn btn-primary" %>
   </div>
   <div class="link">
