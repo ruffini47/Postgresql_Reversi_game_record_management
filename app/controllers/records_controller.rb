@@ -9,7 +9,7 @@ class RecordsController < ApplicationController
     @record.user_id = params[:user_id]
     if @record.save
       flash[:success] = "プレイヤー情報を作成しました。"
-      redirect_to show_board_url(@record.id)
+      redirect_to show_board_url(@record.id, "false")
     else
       flash[:danger] = "プレイヤー情報の作成に失敗しました。"
       render :new     

@@ -27,7 +27,7 @@
 	<td><%= link_to "編集", edit_user_record_path(current_user.id, record.id), class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to "削除", user_record_path(current_user.id, record.id), method: :delete,
               data: { confirm: "「#{record.title}」を削除してよろしいですか？" }, class: "btn btn-primary btn-sm" %></td>
-	<td><%= link_to "開く", '#', class: "btn btn-primary btn-sm" %></td>
+	<td><%= link_to "開く", show_board_path(record.id, "true"), data: {"turbolinks" => false}, class: "btn btn-primary btn-sm" %></td>
       </tr>  
       <% end %>
     </tbody>

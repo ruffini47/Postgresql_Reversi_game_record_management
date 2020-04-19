@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   # ボード表示
-  get '/record/:id/boards/show', to: 'boards#show', as: 'show_board'
+  get '/record/:id/from_saved/:from_saved/boards/show', to: 'boards#show', as: 'show_board'
 
   # 棋譜保存
   get '/save_record/update', to: 'save_record#update', as: 'save_record'

@@ -445,6 +445,11 @@
     }
   };
 
+//  var kihu_to_record = function(kihu_record) {
+
+//  };
+
+
 　var initBoard = function() {
 
     player_color = BLOCK_KIND.BLACK;
@@ -495,8 +500,8 @@
     
     // initialize board
     initBoard();
-    initRecord();
     // start game
+    initRecord();
     showBoard();
   };
 
@@ -560,8 +565,13 @@
 
   $("#next_button").click(function() {
     if (play_back_flag) {
+    var from_saved
+    from_saved = gon.from_saved;
+    if (from_saved == "true") {
+      kihu_record = gon.kihu_record;
+    } else if(from_save == "false") {
       kihu_record = record.join('');
- 
+    }
       var n;
       switch(kihu_record.charAt(i)){
         case 'a':
@@ -594,7 +604,9 @@
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
          showBoard();
-         changePlayer();
+         //record = kihu_to_record(kihu_record);	 
+         //showProgress();
+	 changePlayer();
          i += 2;
        }
     }
