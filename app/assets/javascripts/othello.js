@@ -32,6 +32,7 @@
   var alphabet ="abcdefgh";
   var kihu_record;  
   var play_back_flag = false;
+  var from_saved;
 
   var getCountIsPossibleToTurnOver = function(x, y, dx, dy) {
 
@@ -503,11 +504,13 @@
     Object.freeze(FRAME_WIDTH);
     Object.freeze(CELL_WIDTH);
     
+    from_saved = gon.from_saved;
+ 
     // initialize board
     initBoard();
     // start game
     initRecord();
-    showBoard();
+    //showBoard();
   };
 
   document.getElementById("set_and_clear").onclick = function() {
@@ -526,6 +529,7 @@
     // initialize board
     initBoard();
     initRecord();         
+    from_saved = "false";
     // start game
     showBoard();
     if(!isFirst) {
@@ -565,13 +569,11 @@
     i = 0;
     player_color = BLOCK_KIND.BLACK; 
     play_back_flag = true;
-    var from_saved
-    from_saved = gon.from_saved;
-    if (from_saved == "true") {
+   if (from_saved == "true") {
       record = [];
       showProgress();     
       kihu_record = gon.kihu_record;
-    } else if(from_save == "false") {
+    } else if(from_saved == "false") {
       kihu_record = record.join('');
     }
   });
