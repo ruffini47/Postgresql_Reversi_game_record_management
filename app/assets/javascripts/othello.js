@@ -515,7 +515,7 @@
     showBoard(true);
   };
 
-  document.getElementById("set_and_clear").onclick = function() {
+  document.getElementById("Play").onclick = function() {
     if(document.form1.Computer.checked) {
       isComputer = true;
     } else {
