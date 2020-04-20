@@ -237,7 +237,7 @@
                 board[_x][_y] = player_color;
 		pos += 2;
 	        record.push(alphabet[_x] + (_y + 1).toString());
-	        //alert(record);
+	        alert(record);
 	        showBoard(only_show);
                 if (!changePlayer()) {
                   doAiPlayer();
@@ -452,22 +452,12 @@
   };
 
   var kihu_to_record = function(kihu_record, k) {
-    var length = kihu_record.length;
+    var length = kihu_record.length
     var temp_record = [];
     for(j = 0; j <= k; j += 2) {
       temp_record.push(kihu_record.substr(j,2));
     }
     return temp_record;
-  };
-
-  var record_to_kihu = function(record, k1) {
-    var record_length = record.length;
-    var temp_kihu_record = '';
-    for(j1 = 0; j1 <= k1; j1 += 2) {
-      temp_kihu_record.join(record[j1]);
-      temp_kihu_record.join(record[j1 + 1]);
-    }
-    return temp_kihu_record;
   };
 
 
@@ -628,10 +618,8 @@
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
          showBoard(false);
-	 //alert("1" + record);
-	 record = kihu_to_record(kihu_record, pos);
-	 showProgress();
-         //alert(record_to_kihu(record, pos));
+         record = kihu_to_record(kihu_record, pos);
+         showProgress(pos);
 	 changePlayer();
          pos += 2;
        }
@@ -678,7 +666,7 @@
            board[_x][_y] = player_color;
            showBoard(false);
            record = kihu_to_record(kihu_record, i1);
-           showProgress();
+           showProgress(i1);
 	   changePlayer();
          }
       }
