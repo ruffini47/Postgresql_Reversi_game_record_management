@@ -34,6 +34,8 @@
   var play_back_flag = false;
   var from_saved;
 
+  var pos;
+
   var getCountIsPossibleToTurnOver = function(x, y, dx, dy) {
 
     var count = 0;
@@ -233,6 +235,7 @@
 	      //alert("クリックしました。");
               if (turnOverBlock(_x, _y, true) > 0) {
                 board[_x][_y] = player_color;
+		pos += 2;
 	        record.push(alphabet[_x] + (_y + 1).toString());
 	        alert(record);
 	        showBoard(only_show);
@@ -512,6 +515,7 @@
     initBoard();
     // start game
     initRecord();
+    pos = 0;
     showBoard(true);
   };
 
@@ -564,11 +568,10 @@
     });
   });
 
-  var i;
   $("#play_back").click(function() {
     initBoard();
     showBoard(false);
-    i = 0;
+    pos = 0;
     player_color = BLOCK_KIND.BLACK; 
     play_back_flag = true;
    if (from_saved == "true") {
@@ -583,46 +586,105 @@
 
   $("#next_button").click(function() {
      if (play_back_flag) {
-     var n;
-      switch(kihu_record.charAt(i)){
-        case 'a':
-	  n = 0;
-	  break;
-        case 'b':
-	  n = 1;
-	  break;
-        case 'c':
-	  n = 2;
-	  break;
-        case 'd':
-	  n = 3;
-	  break;
-        case 'e':
-          n = 4;
-	  break;
-        case 'f':
-	  n = 5;
-	  break;
-        case 'g':
-	  n = 6;
-	  break;
-        case 'h':
-          n = 7;
-	  break;
+       var n;
+       switch(kihu_record.charAt(pos)){
+         case 'a':
+	   n = 0;
+	   break;
+         case 'b':
+	   n = 1;
+	   break;
+         case 'c':
+	   n = 2;
+	   break;
+         case 'd':
+	   n = 3;
+	   break;
+         case 'e':
+           n = 4;
+	   break;
+         case 'f':
+	   n = 5;
+	   break;
+         case 'g':
+	   n = 6;
+	   break;
+         case 'h':
+           n = 7;
+	   break;
        }              
        var _x = n;
-       var _y = kihu_record.charAt(i + 1) - 1;
+       var _y = kihu_record.charAt(pos + 1) - 1;
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
          showBoard(false);
-         record = kihu_to_record(kihu_record, i);
-         showProgress(i);
+         record = kihu_to_record(kihu_record, pos);
+         showProgress(pos);
 	 changePlayer();
-         i += 2;
+         pos += 2;
        }
     }
   
   });
+
+  
+  $("#previous_button").click(function() {
+     if (play_back_flag) {
+       initBoard();
+       player_color = BLOCK_KIND.BLACK;
+       for(i1 = 0; i1 < pos - 2; i1 += 2) {
+         var n;
+         switch(kihu_record.charAt(i1)){
+           case 'a':
+	     n = 0;
+	     break;
+           case 'b':
+	     n = 1;
+	     break;
+           case 'c':
+	     n = 2;
+	     break;
+           case 'd':
+	     n = 3;
+	     break;
+           case 'e':
+             n = 4;
+	     break;
+           case 'f':
+	     n = 5;
+	     break;
+           case 'g':
+	     n = 6;
+	     break;
+           case 'h':
+             n = 7;
+	     break;
+         }              
+         var _x = n;
+         var _y = kihu_record.charAt(i1 + 1) - 1;
+         if (turnOverBlock(_x, _y, true) > 0) { 
+           board[_x][_y] = player_color;
+           showBoard(false);
+           record = kihu_to_record(kihu_record, i1);
+           showProgress(i1);
+	   changePlayer();
+         }
+      }
+      if(pos != 0) {
+	pos -= 2;
+      }
+      if (pos == 0) {
+        initBoard();
+        showBoard(false);
+        player_color = BLOCK_KIND.BLACK; 
+        play_back_flag = true;
+      }
+    }
+  
+  });
+
+
+
 
 })();
 
