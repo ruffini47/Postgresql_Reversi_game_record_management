@@ -29,6 +29,7 @@
   var player_color;
 
   var record = [];
+  var record1 = [];
   var alphabet ="abcdefgh";
   var kihu_record;  
   var play_back_flag = false;
@@ -238,6 +239,7 @@
 		pos += 2;
 	        record.push(alphabet[_x] + (_y + 1).toString());
 	        //alert(record);
+                kihu_record = record.join('');
 	        showBoard(only_show);
                 if (!changePlayer()) {
                   doAiPlayer();
@@ -251,7 +253,7 @@
     showProgress();    
   };
 
-  var showProgress = function() {
+  var showProgress = function(record1) {
 
     var black = 0;
     var white = 0;
@@ -273,7 +275,7 @@
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
 
     var msg_kihu_record = document.getElementById("msg_kihu_record");
-    msg_kihu_record.innerHTML = record;
+    msg_kihu_record.innerHTML = record1;
 
     if (allSameColor()) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -463,9 +465,8 @@
   var record_to_kihu = function(record, k1) {
     var record_length = record.length;
     var temp_kihu_record = '';
-    for(j1 = 0; j1 <= k1; j1 += 2) {
-      temp_kihu_record.join(record[j1]);
-      temp_kihu_record.join(record[j1 + 1]);
+    for(j1 = 0; j1 < k1; j1++) {
+      temp_kihu_record = temp_kihu_record + record[j1];
     }
     return temp_kihu_record;
   };
@@ -593,9 +594,10 @@
     }
   });
         
-
+ 
   $("#next_button").click(function() {
      if (play_back_flag) {
+       kihu_record = record.join('');
        var n;
        switch(kihu_record.charAt(pos)){
          case 'a':
@@ -628,10 +630,8 @@
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
          showBoard(false);
-	 //alert("1" + record);
-	 record = kihu_to_record(kihu_record, pos);
-	 showProgress();
-         //alert(record_to_kihu(record, pos));
+	 record1 = kihu_to_record(kihu_record, pos);
+	 showProgress(record1);
 	 changePlayer();
          pos += 2;
        }
@@ -644,6 +644,7 @@
      if (play_back_flag) {
        initBoard();
        player_color = BLOCK_KIND.BLACK;
+       kihu_record = record.join('');
        for(i1 = 0; i1 < pos - 2; i1 += 2) {
          var n;
          switch(kihu_record.charAt(i1)){
@@ -677,8 +678,8 @@
          if (turnOverBlock(_x, _y, true) > 0) { 
            board[_x][_y] = player_color;
            showBoard(false);
-           record = kihu_to_record(kihu_record, i1);
-           showProgress();
+           record1 = kihu_to_record(kihu_record, i1);
+           showProgress(record1);
 	   changePlayer();
          }
       }
