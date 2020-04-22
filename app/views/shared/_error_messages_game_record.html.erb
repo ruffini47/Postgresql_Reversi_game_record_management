@@ -1,0 +1,12 @@
+<% if @game_record.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      入力エラーが<%= @game_record.errors.count %>件ありました。
+    </div>
+    <ul>
+    <% @game_record.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

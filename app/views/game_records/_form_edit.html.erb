@@ -1,5 +1,5 @@
-<%= form_with(model: @record, url: user_record_path(current_user.id, @record.id), local: true) do |f| %>
-  <%= render 'shared/error_messages_record', object: @record %>
+<%= form_with(model: @game_record, url: user_game_record_path(current_user.id, @game_record.id), local: true) do |f| %>
+  <%= render 'shared/error_messages_game_record', object: @game_record %>
 
   <%= f.label :title, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :title, class: "form-control" %>

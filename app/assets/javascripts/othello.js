@@ -111,7 +111,7 @@
 
 
 
-  var showBoard = function(only_show) {
+  var showBoard = function() {
     
     var b = document.getElementById("board");
         
@@ -227,25 +227,23 @@
         bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         b.appendChild(bottom_right_dot);
 
-	if(only_show == false) {
-          (function() {
-            var _x = x;
-            var _y = y;
-            cell.onclick = function() {
-	      //alert("クリックしました。");
-              if (turnOverBlock(_x, _y, true) > 0) {
-                board[_x][_y] = player_color;
-		pos += 2;
-	        record = record + alphabet[_x];
-		record = record + (_y + 1).toString();
-	        showBoard(only_show);
-                if (!changePlayer()) {
-                  doAiPlayer();
-                }
-	      }
-            };
-          })();
-	}
+        (function() {
+          var _x = x;
+          var _y = y;
+          cell.onclick = function() {
+	    //alert("クリックしました。");
+            if (turnOverBlock(_x, _y, true) > 0) {
+              board[_x][_y] = player_color;
+              pos += 2;
+	      record = record + alphabet[_x];
+              record = record + (_y + 1).toString();
+	      showBoard();
+              if (!changePlayer()) {
+                doAiPlayer();
+              }
+	    }
+          };
+        })();
       }
     }
     showProgress();    
@@ -272,8 +270,8 @@
     
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
 
-    var msg_kihu_record = document.getElementById("msg_kihu_record");
-    msg_kihu_record.innerHTML = record;
+    var msg_record = document.getElementById("msg_record");
+    msg_record.innerHTML = record;
 
     if (allSameColor()) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -417,7 +415,7 @@
           board[x][y] = player_color;
           record = record + alphabet[x] 
           record = record + (y + 1).toString();
-          showBoard(false);
+          show();
           if(changePlayer()) {
             doAiPlayer();
           }
@@ -507,7 +505,7 @@
     // start game
     initRecord();
     pos = 0;
-    showBoard(true);
+    showBoard();
   };
 
   document.getElementById("Play").onclick = function() {
@@ -528,7 +526,7 @@
     initRecord();         
     from_saved = "false";
     // start game
-    showBoard(false);
+    showBoard();
     if(!isFirst) {
       doAiPlayer();
     }
@@ -537,11 +535,11 @@
   /*var record1 = $('.title').text();*/
   $("#Save").click(function() {
     /*$('.title').css('color', 'red');*/
-    /*$('#result').load('/save_record/update');*/
+    /*$('#result').load('/save_game_record/update');*/
     var record_id = gon.record_id;
     alert(record_id);
     $.ajax({
-      url: '/save_record/update',
+      url: '/save_game_record/update',
       type: "GET",
       dataType: "html",
       async: true,
@@ -560,7 +558,7 @@
 
   $("#play_back").click(function() {
     initBoard();
-    showBoard(false);
+    showBoard();
     pos = 0;
     player_color = BLOCK_KIND.BLACK; 
     play_back_flag = true;
@@ -607,7 +605,7 @@
        var _y = record.charAt(pos + 1) - 1;
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
-         showBoard(false);
+         showBoard();
 	 //record1 = kihu_to_record(kihu_record, pos);
 	 showProgress();
 	 changePlayer();
@@ -654,7 +652,7 @@
          var _y = record.charAt(i1 + 1) - 1;
          if (turnOverBlock(_x, _y, true) > 0) { 
            board[_x][_y] = player_color;
-           showBoard(false);
+           showBoard();
            //record1 = kihu_to_record(kihu_record, i1);
            showProgress();
 	   changePlayer();
@@ -665,7 +663,7 @@
       }
       if (pos == 0) {
         initBoard();
-        showBoard(false);
+        showBoard();
         player_color = BLOCK_KIND.BLACK; 
         play_back_flag = true;
       }

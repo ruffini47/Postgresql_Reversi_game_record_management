@@ -1,4 +1,4 @@
-class Record < ApplicationRecord
+class GameRecord < ApplicationRecord
   belongs_to :user
   validates :title, presence: true, length: { maximum: 100 }
   validates :black_player, presence: true, length: { maximum: 30 }

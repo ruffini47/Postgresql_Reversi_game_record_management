@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_053156) do
+ActiveRecord::Schema.define(version: 2020_04_22_124252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "records", force: :cascade do |t|
+  create_table "game_records", force: :cascade do |t|
     t.string "title", default: "タイトル未設定"
     t.string "black_player", default: "プレイヤー1"
     t.string "white_player", default: "プレイヤー2"
-    t.datetime "date_played", default: "2020-04-17 13:12:41"
+    t.datetime "date_played", default: "2020-04-22 13:50:54"
     t.string "place_played", default: "場所未入力"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
-    t.string "kihu_record"
-    t.index ["user_id"], name: "index_records_on_user_id"
+    t.string "record"
+    t.index ["user_id"], name: "index_game_records_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,5 +39,5 @@ ActiveRecord::Schema.define(version: 2020_04_15_053156) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "records", "users"
+  add_foreign_key "game_records", "users"
 end

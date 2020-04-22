@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :records
+    resources :game_records
   end
 
   # ボード表示
-  get '/record/:id/from_saved/:from_saved/boards/show', to: 'boards#show', as: 'show_board'
+  get '/game_record/:id/from_saved/:from_saved/boards/show', to: 'boards#show', as: 'show_board'
 
   # 棋譜保存
-  get '/save_record/update', to: 'save_record#update', as: 'save_record'
+  get '/save_game_record/update', to: 'save_game_record#update', as: 'save_game_record'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
