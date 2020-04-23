@@ -1,8 +1,8 @@
 class BoardsController < ApplicationController
   def show
-    @record = Record.find(params[:id])
-    gon.record_id =  @record.id
-    gon.record = @record.record
+    @game_record = GameRecord.find(params[:id])
+    gon.game_record_id =  @game_record.id
+    gon.kifu = @game_record.kifu
     gon.from_saved = params[:from_saved]
   end
 

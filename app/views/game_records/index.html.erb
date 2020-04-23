@@ -23,7 +23,7 @@
 	<td><%= game_record.white_player %></td>
 	<td><%= game_record.date_played %></td>
 	<td><%= game_record.place_played %></td>
-	<td><%= game_record.record %></td>
+	<td><%= game_record.kifu %></td>
 	<td><%= link_to "編集", edit_user_game_record_path(current_user.id, game_record.id), class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to "削除", user_game_record_path(current_user.id, game_record.id), method: :delete,
               data: { confirm: "「#{game_record.title}」を削除してよろしいですか？" }, class: "btn btn-primary btn-sm" %></td>

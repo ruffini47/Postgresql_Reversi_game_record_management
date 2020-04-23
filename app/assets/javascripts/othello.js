@@ -28,8 +28,8 @@
   var board = [];
   var player_color;
 
-  var record = "";
-  var record1 = "";
+  var kifu = "";
+  var kifu1 = "";
   var alphabet ="abcdefgh"; 
   var play_back_flag = false;
   var from_saved;
@@ -235,8 +235,8 @@
             if (turnOverBlock(_x, _y, true) > 0) {
               board[_x][_y] = player_color;
               pos += 2;
-	      record = record + alphabet[_x];
-              record = record + (_y + 1).toString();
+	      kifu = kifu + alphabet[_x];
+              kifu = kifu + (_y + 1).toString();
 	      showBoard();
               if (!changePlayer()) {
                 doAiPlayer();
@@ -270,8 +270,8 @@
     
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
 
-    var msg_record = document.getElementById("msg_record");
-    msg_record.innerHTML = record;
+    var msg_kifu = document.getElementById("msg_kifu");
+    msg_kifu.innerHTML = kifu;
 
     if (allSameColor()) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -413,8 +413,8 @@
             
         if (turnOverBlock(x, y, true) > 0) {
           board[x][y] = player_color;
-          record = record + alphabet[x] 
-          record = record + (y + 1).toString();
+          kifu = kifu + alphabet[x] 
+          kifu = kifu + (y + 1).toString();
           show();
           if(changePlayer()) {
             doAiPlayer();
@@ -487,8 +487,8 @@
 
   var initRecord = function() {
 
-    // initial record
-    record =  [];
+    // initial kifu
+    kifu = "";
   };
 
   onload = function() {
@@ -532,20 +532,20 @@
     }
   };
 
-  /*var record1 = $('.title').text();*/
+  /*var kifu1 = $('.title').text();*/
   $("#Save").click(function() {
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_game_record/update');*/
-    var record_id = gon.record_id;
-    alert(record_id);
+    var game_record_id = gon.game_record_id;
+    alert(game_record_id);
     $.ajax({
       url: '/save_game_record/update',
       type: "GET",
       dataType: "html",
       async: true,
       data: {
-        record: record,
-	record_id: record_id
+        kifu: kifu,
+	game_record_id: game_record_id
       },
       success: function(data) {
         alert("success");
@@ -563,9 +563,9 @@
     player_color = BLOCK_KIND.BLACK; 
     play_back_flag = true;
    if (from_saved == "true") {
-      record = [];
+      kifu = "";
       showProgress();     
-      record = gon.record;
+      kifu = gon.kifu;
     } else if(from_saved == "false") {
     
     }
@@ -575,7 +575,7 @@
   $("#next_button").click(function() {
      if (play_back_flag) {
        var n;
-       switch(record.charAt(pos)){
+       switch(kifu.charAt(pos)){
          case 'a':
 	   n = 0;
 	   break;
@@ -602,11 +602,11 @@
 	   break;
        }              
        var _x = n;
-       var _y = record.charAt(pos + 1) - 1;
+       var _y = kifu.charAt(pos + 1) - 1;
        if (turnOverBlock(_x, _y, true) > 0) { 
          board[_x][_y] = player_color;
          showBoard();
-	 //record1 = kihu_to_record(kihu_record, pos);
+	 //kifu1 = kifu_to_record(kifu_record, pos);
 	 showProgress();
 	 changePlayer();
          pos += 2;
@@ -622,7 +622,7 @@
        player_color = BLOCK_KIND.BLACK;
        for(i1 = 0; i1 < pos - 2; i1 += 2) {
          var n;
-         switch(record.charAt(i1)){
+         switch(kifu.charAt(i1)){
            case 'a':
 	     n = 0;
 	     break;
@@ -649,11 +649,11 @@
 	     break;
          }              
          var _x = n;
-         var _y = record.charAt(i1 + 1) - 1;
+         var _y = kifu.charAt(i1 + 1) - 1;
          if (turnOverBlock(_x, _y, true) > 0) { 
            board[_x][_y] = player_color;
            showBoard();
-           //record1 = kihu_to_record(kihu_record, i1);
+           //record1 = kifu_to_record(kifu_record, i1);
            showProgress();
 	   changePlayer();
          }
