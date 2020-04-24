@@ -11,7 +11,8 @@ class VsAiGameRecordController < ApplicationController
 
    def create
     @game_record = GameRecord.new(game_records_params)
-    @game_record.user_id = params[:user_id]
+    user_id = params[:user_id]
+    @game_record.user_id = user_id
     if @game_record.save
       flash[:success] = "プレイヤー情報を作成しました。"
       redirect_to show_board_url(@game_record.id, "true")

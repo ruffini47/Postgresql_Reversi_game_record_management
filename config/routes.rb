@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   #VS AI Play game_redord
   get '/users/:user_id/your_move/:your_move/vs_ai_game_records/new', to: 'vs_ai_game_record#new', as: 'new_user_vs_ai_game_record'
+  patch '/users/:user_id/your_move/:your_move/vs_ai_game_records/create', to: 'vs_ai_game_record#create', as: 'create_user_vs_ai_game_record'
 
   # ボード表示
   get '/game_record/:id/isComputer/:isComputer/boards/show', to: 'boards#show', as: 'show_board'

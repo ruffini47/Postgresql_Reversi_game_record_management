@@ -1,4 +1,4 @@
-<%= form_with(model: @game_record, url: user_game_records_path(current_user.id), local: true) do |f| %>
+<%= form_with(model: @game_record, url: create_user_vs_ai_game_record_path(current_user.id, "first"), local: true) do |f| %>
   <%= render 'shared/error_messages_game_record', object: @game_record %>
 
   <%= f.label :title, class: "label-#{yield(:class_text)}" %>
