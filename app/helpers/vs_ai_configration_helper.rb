@@ -1,0 +1,2 @@
+module VsAiConfigrationHelper
+end

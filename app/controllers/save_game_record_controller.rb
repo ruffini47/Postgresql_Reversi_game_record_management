@@ -4,6 +4,7 @@ class SaveGameRecordController < ApplicationController
     game_record_id = params[:game_record_id]
     @game_record = GameRecord.find(game_record_id)
     @game_record.kifu = kifu
+    @game_record.from_saved = true
     @game_record.save
   end
 end

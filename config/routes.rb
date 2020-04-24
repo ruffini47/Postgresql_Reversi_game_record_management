@@ -12,8 +12,14 @@ Rails.application.routes.draw do
     resources :game_records
   end
 
+  #VS AI Play 設定
+  get '/users/:user_id/vs_ai_configration/new', to: 'vs_ai_configration#new', as: 'new_user_vs_ai_configration'
+
+  #VS AI Play game_redord
+  get '/users/:user_id/your_move/:your_move/vs_ai_game_records/new', to: 'vs_ai_game_record#new', as: 'new_user_vs_ai_game_record'
+
   # ボード表示
-  get '/game_record/:id/from_saved/:from_saved/boards/show', to: 'boards#show', as: 'show_board'
+  get '/game_record/:id/isComputer/:isComputer/boards/show', to: 'boards#show', as: 'show_board'
 
   # 棋譜保存
   get '/save_game_record/update', to: 'save_game_record#update', as: 'save_game_record'

@@ -1,0 +1,2 @@
+module VsAiGameRecordHelper
+end

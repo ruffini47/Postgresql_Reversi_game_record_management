@@ -1,0 +1,6 @@
+<p>あなたの手番</p>
+<div class="link">
+	<%= link_to "先手", '#', class: "btn btn-primary" %>
+	<%= link_to "後手", '#', class: "btn btn-primary" %>
+</div>
+

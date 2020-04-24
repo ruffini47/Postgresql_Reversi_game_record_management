@@ -1,0 +1,13 @@
+<% provide(:title, 'VsAiGameRecord Create') %>
+<% provide(:class_text, 'vs_ai_game_record--create') %>
+<% provide(:button_text, '作成') %>
+<h1>プレイ情報登録</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <% if @game_record.your_move == "first" %>            	  
+      <%= render 'vs_ai_first_form' %>
+    <% elsif @game_record.your_move == "second" %>
+      <%= render 'vs_ai_second_form' %>
+    <% end %>
+  </div>
+<div>

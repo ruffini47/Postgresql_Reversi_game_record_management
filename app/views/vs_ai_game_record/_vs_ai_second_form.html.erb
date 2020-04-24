@@ -1,0 +1,20 @@
+<%= form_with(model: @game_record, url: user_game_records_path(current_user.id), local: true) do |f| %>
+  <%= render 'shared/error_messages_game_record', object: @game_record %>
+
+  <%= f.label :title, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :title, class: "form-control" %>
+
+  <%= f.label :black_player, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :black_player, value: "AI プレイヤー", class: "form-control" %>
+
+  <%= f.label :white_player, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :white_player, class: "form-control" %>
+
+  <%= f.label :date_played, class: "label-#{yield(:class_text)}" %>
+  <%= f.datetime_field :date_played, class: "form-control" %>
+
+  <%= f.label :place_played, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :place_played, value: "REVERSI GAME RECORD MANAGEMENT APP", class: "form-control" %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+<% end %>

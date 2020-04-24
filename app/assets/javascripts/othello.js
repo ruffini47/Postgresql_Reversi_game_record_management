@@ -19,7 +19,7 @@
     'TURNOVER' : 1000,
   };
 
-  var isComputer = false;
+  var isComputer = "false";
   var isFirst = false;
   var isFinished = false;
 
@@ -399,7 +399,7 @@
 
   var doAiPlayer = function() {
 
-    if(!isComputer) {
+    if(isComputer == "false") {
       return false;
     }
 
@@ -499,7 +499,12 @@
     Object.freeze(CELL_WIDTH);
     
     from_saved = gon.from_saved;
- 
+    isComputer = gon.isComputer;
+    if(isComputer == "true") {
+      //isFirst = gon.isFirst;
+    }
+    
+
     // initialize board
     initBoard();
     // start game
@@ -510,9 +515,9 @@
 
   document.getElementById("Play").onclick = function() {
     if(document.form1.Computer.checked) {
-      isComputer = true;
+      isComputer = "true";
     } else {
-      isComputer = false;
+      isComputer = "false";
     }
     
     if(document.form1.First.checked) {
