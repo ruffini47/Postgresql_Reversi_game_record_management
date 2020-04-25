@@ -19,10 +19,12 @@
     'TURNOVER' : 1000,
   };
 
-  var isComputer = "false";
   var isFirst = false;
   var isFinished = false;
 
+  var from_saved = false;
+  var your_move = "second";
+  var isComputer = "false";
 
   var stone;
   var board = [];
@@ -32,7 +34,6 @@
   var kifu1 = "";
   var alphabet ="abcdefgh"; 
   var play_back_flag = false;
-  var from_saved;
 
   var pos;
 
@@ -499,11 +500,21 @@
     Object.freeze(CELL_WIDTH);
     
     from_saved = gon.from_saved;
+    your_move = gon.your_move;
     isComputer = gon.isComputer;
-    if(isComputer == "true") {
-      //isFirst = gon.isFirst;
+   
+    //alert(from_saved);
+    //alert(your_move);
+    //alert(isComputer);
+
+    if(your_move == "first") {
+      isFirst = true;
+    } else if(your_move == "second") {
+      isFirst = false;
     }
-    
+
+    //alert(isFirst);
+
 
     // initialize board
     initBoard();
@@ -511,6 +522,9 @@
     initRecord();
     pos = 0;
     showBoard();
+    if(!isFirst) {
+      doAiPlayer();
+    }
   };
 
   document.getElementById("Play").onclick = function() {
