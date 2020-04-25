@@ -416,7 +416,7 @@
           board[x][y] = player_color;
           kifu = kifu + alphabet[x] 
           kifu = kifu + (y + 1).toString();
-          show();
+          showBoard();
           if(changePlayer()) {
             doAiPlayer();
           }
