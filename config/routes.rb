@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   end
 
   #VS AI Play 設定
-  get '/users/:user_id/vs_ai_configration/new', to: 'vs_ai_configration#new', as: 'new_user_vs_ai_configration'
+  get '/vs_ai_configration/new', to: 'vs_ai_configration#new', as: 'vs_ai_configration'
 
   #VS AI Play game_redord
-  get '/users/:user_id/your_move/:your_move/vs_ai_game_records/new', to: 'vs_ai_game_record#new', as: 'new_user_vs_ai_game_record'
-  patch '/users/:user_id/your_move/:your_move/vs_ai_game_records/create', to: 'vs_ai_game_record#create', as: 'create_user_vs_ai_game_record'
+  get '/your_move/:your_move/vs_ai_game_records/new', to: 'vs_ai_game_record#new', as: 'new_user_vs_ai_game_record'
+  post '/users/:user_id/your_move/:your_move/vs_ai_game_records/create', to: 'vs_ai_game_record#create', as: 'create_user_vs_ai_game_record'
 
   # ボード表示
   get '/game_record/:id/isComputer/:isComputer/boards/show', to: 'boards#show', as: 'show_board'

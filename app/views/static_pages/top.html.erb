@@ -4,12 +4,12 @@
   <p>このアプリケーションはリバーシの棋譜情報を検索・閲覧・登録・編集することができます。</p>
   <div class="link">
     <% if logged_in? %>	  
-    	<%= link_to "ふたりで対戦する", new_user_game_record_path(current_user.id), class: "btn btn-primary" %>
+    	<%= link_to "ふたりで遊ぶ", new_user_game_record_path(current_user.id), class: "btn btn-primary" %>
     <% end %>
   </div class="link">
   <div class="link">
     <% if logged_in? %>	  
-    	<%= link_to "AIと対戦する", new_user_vs_ai_configration_path(current_user.id), class: "btn btn-primary" %>
+    	<%= link_to "AIと対戦する", vs_ai_configration_path, class: "btn btn-primary" %>
     <% end %>
   </div class="link">
  

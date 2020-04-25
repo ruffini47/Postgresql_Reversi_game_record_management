@@ -2,17 +2,15 @@ class VsAiGameRecordController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   def new
     @game_record = GameRecord.new
-    user_id = params[:user_id]
-    @game_record.user_id = user_id
-    your_move= params[:your_move]
-    @game_record.your_move = your_move
-    @game_record.save
+    @your_move = params[:your_move]
   end
 
    def create
     @game_record = GameRecord.new(game_records_params)
     user_id = params[:user_id]
     @game_record.user_id = user_id
+    your_move = params[:your_move]
+    @game_record.your_move = your_move
     if @game_record.save
       flash[:success] = "プレイヤー情報を作成しました。"
       redirect_to show_board_url(@game_record.id, "true")
