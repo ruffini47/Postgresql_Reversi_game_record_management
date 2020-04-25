@@ -41,9 +41,11 @@
         <input type="button" id="Save" value="Save">
       </p>     
       <p>
+        <input type="button" id="back_to_beginning" value="|<">
+      </p>
+      <p>
         <input type="button" id="previous_button" value="<<">
       </p>
- 
       <p> 
         <input type="button" id="play_back" value="Play Back">
       </p>
@@ -51,7 +53,9 @@
       <p> 
         <input type="button" id="next_button" value=">>">
       </p>
- 
+      <p>
+      <input type="button" id="go_to_end" value=">|">
+      </p> 
     </form>
     <div class = "white_player">
       <p>◯  4  <%= @game_record.white_player %></p>

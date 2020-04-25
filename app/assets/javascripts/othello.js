@@ -28,6 +28,7 @@
 
   var stone;
   var board = [];
+  var snapshot = [];
   var player_color;
 
   var kifu = "";
@@ -235,6 +236,11 @@
 	    //alert("クリックしました。");
             if (turnOverBlock(_x, _y, true) > 0) {
               board[_x][_y] = player_color;
+	      hand++;
+	      snapshot[hand] = [];
+	      for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
+                snapshot[hand][n1] = board[n1];
+              }
               pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
@@ -414,7 +420,12 @@
             
         if (turnOverBlock(x, y, true) > 0) {
           board[x][y] = player_color;
-          kifu = kifu + alphabet[x] 
+          hand++;
+	  snapshot[hand] = [];
+	  for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
+            snapshot[hand][n1] = board[n1];
+          }
+	  kifu = kifu + alphabet[x] 
           kifu = kifu + (y + 1).toString();
           showBoard();
           if(changePlayer()) {
@@ -484,6 +495,13 @@
     board[3][3] = BLOCK_KIND.WHITE;
     board[4][4] = BLOCK_KIND.WHITE;
 
+    // initial snapshot
+    snapshot[0] = [];
+    for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
+      snapshot[0][n1] = board[n1];
+    }
+
+
   };
 
   var initRecord = function() {
@@ -517,13 +535,14 @@
 
     //alert(from_saved);
 
-
+    pos = 0;
+    hand = 0;
 
     // initialize board
     initBoard();
     // start game
     initRecord();
-    pos = 0;
+    
     showBoard();
     if(!from_saved && !isFirst) {
       doAiPlayer();
@@ -691,6 +710,32 @@
       }
     }
   
+  });
+
+
+    //snapshot[0] = [];
+    //for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
+    //  snapshot[0][n1] = board[n1];
+    //}
+
+
+
+
+
+  $("#back_to_beginning").click(function() {
+    initBoard();
+    for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
+      board[n1] = snapshot[0][n1];
+    }
+    showBoard();
+  });
+
+  $("#go_to_end").click(function() {
+    initBoard();
+    for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
+      board[n1] = snapshot[hand][n1];
+    }
+    showBoard();     
   });
 
 

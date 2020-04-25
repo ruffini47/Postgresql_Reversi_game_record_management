@@ -210,23 +210,38 @@ position: relative;
   margin-left: 60px;
 }
 
+#back_to_beginning//for id
+{
+  position: absolute;
+  top:43*18+20px;
+}
+
 #previous_button//for id
 {
   position: absolute;
   top:43*18+20px;
+  margin-left: 30px;
 }
 
 #play_back//for id
 {
   position: absolute;
   top: 43*18+20px;
-  margin-left: 50px;
+  margin-left: 60px;
 }
 
 #next_button//for id
 {
   position: absolute;
   top:43*18+20px;
-  margin-left: 150px;
+  margin-left: 140px;
 }
+
+#go_to_end//for id
+{
+  position: absolute;
+  top:43*18+20px;
+  margin-left: 170px;
+}
+
 
