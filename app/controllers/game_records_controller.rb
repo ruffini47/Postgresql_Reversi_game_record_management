@@ -1,5 +1,5 @@
 class GameRecordsController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_game_record, only: [:edit, :update, :destroy]
   def new
     @game_record = GameRecord.new
   end
@@ -39,8 +39,6 @@ class GameRecordsController < ApplicationController
     flash[:success] = "「#{@game_record.title}」のデータを削除しました。"
     redirect_to user_game_records_path(current_user.id)
   end
-
-
 
   private
 

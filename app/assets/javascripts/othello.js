@@ -515,6 +515,9 @@
 
     //alert(isFirst);
 
+    //alert(from_saved);
+
+
 
     // initialize board
     initBoard();
@@ -522,7 +525,7 @@
     initRecord();
     pos = 0;
     showBoard();
-    if(!isFirst) {
+    if(!from_saved && !isFirst) {
       doAiPlayer();
     }
   };

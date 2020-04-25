@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
 
   # paramsハッシュからユーザーを取得します。
   def set_user
-    @record = Record.find(params[:id])
+    @user = User.find(params[:id])
   end
+
+  # paramsハッシュからユーザーを取得します。
+  def set_game_record
+    @game_record = GameRecord.find(params[:id])
+  end
+
 end
