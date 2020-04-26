@@ -28,7 +28,6 @@
 
   var stone;
   var board = [];
-  var snapshot = [];
   var player_color;
 
   var kifu = "";
@@ -37,8 +36,10 @@
   var play_back_flag = false;
 
   var pos;
+  var hand;
+  var temp_hand;
 
-  var getCountIsPossibleToTurnOver = function(x, y, dx, dy) {
+  var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
     var count = 0;
     var cx = x + dx;
@@ -50,7 +51,7 @@
       return 0;
     }
 
-    while(board[cx][cy] == BLOCK_KIND.MAX - player_color) {
+    while(board[i][cx][cy] == BLOCK_KIND.MAX - player_color) {
       count++;
       cx += dx;
       cy += dy;
@@ -62,31 +63,31 @@
       }
     }
 
-    if (count > 0 && board[cx][cy] == player_color) {
+    if (count > 0 && board[i][cx][cy] == player_color) {
       return count;
     }
 
     return 0;
   };
 
-  var turnOverStraight = function(x, y, dx, dy) {
+  var turnOverStraight = function(i, x, y, dx, dy) {
 
     var cx = x + dx;
     var cy = y + dy;
 
-    while(board[cx][cy] == BLOCK_KIND.MAX - player_color) {
-      board[cx][cy] = player_color;
+    while(board[i][cx][cy] == BLOCK_KIND.MAX - player_color) {
+      board[i][cx][cy] = player_color;
       cx += dx;
       cy += dy;
     }
   };
 
-  var turnOverBlock = function(x, y, flip) {
+  var turnOverBlock = function(i, x, y, flip) {
 
     var total = 0;
 
     // can not put block
-    if (board[x][y] != BLOCK_KIND.NONE) {
+    if (board[i][x][y] != BLOCK_KIND.NONE) {
       return total;
     }
     
@@ -98,11 +99,11 @@
           continue;
         }
             
-        var cnt = getCountIsPossibleToTurnOver(x, y, dx, dy);
+        var cnt = getCountIsPossibleToTurnOver(i, x, y, dx, dy);
           if (cnt > 0) {
             total += cnt;
             if (flip) {
-              turnOverStraight(x, y, dx, dy);
+              turnOverStraight(i, x, y, dx, dy);
             }
           }
       }
@@ -113,7 +114,7 @@
 
 
 
-  var showBoard = function() {
+  var showBoard = function(i) {
     
     var b = document.getElementById("board");
         
@@ -197,7 +198,7 @@
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
         
-	var cell = stone[board[x][y]].cloneNode(true);
+	var cell = stone[board[i][x][y]].cloneNode(true);
                 
         cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
         cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
@@ -233,39 +234,40 @@
           var _x = x;
           var _y = y;
           cell.onclick = function() {
-	    //alert("クリックしました。");
-            if (turnOverBlock(_x, _y, true) > 0) {
-              board[_x][_y] = player_color;
-	      hand++;
-	      snapshot[hand] = [];
-	      for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
-                snapshot[hand][n1] = board[n1];
-              }
-              pos += 2;
+	    if (turnOverBlock(i, _x, _y, true) > 0) {
+	      board[i][_x][_y] = player_color;
+	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+	        for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+		  board[i+1][xx][yy] = board[i][xx][yy];
+		}
+	      }
+	      i++;
+	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
-	      showBoard();
-              if (!changePlayer()) {
-                doAiPlayer();
+	      showBoard(i);
+              if (!changePlayer(i)) {
+                i++;
+		doAiPlayer(i);
               }
 	    }
           };
         })();
       }
     }
-    showProgress();    
+    showProgress(i);    
   };
 
-  var showProgress = function() {
+  var showProgress = function(i) {
 
     var black = 0;
     var white = 0;
 
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        if (board[x][y] == BLOCK_KIND.BLACK) {
+        if (board[i][x][y] == BLOCK_KIND.BLACK) {
           black++;
-        } else if (board[x][y] == BLOCK_KIND.WHITE) {
+        } else if (board[i][x][y] == BLOCK_KIND.WHITE) {
           white++;
         } else {
           // no opereation
@@ -280,7 +282,7 @@
     var msg_kifu = document.getElementById("msg_kifu");
     msg_kifu.innerHTML = kifu;
 
-    if (allSameColor()) {
+    if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
         alert("黒のパーフェクト勝ちです。1");
       } else if (player_color == BLOCK_KIND.WHITE) {
@@ -304,13 +306,13 @@
 	
   };
 
-  var isFinish = function() {
+  var isFinish = function(i) {
 
     var finish = true;
 
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        if (board[x][y] == BLOCK_KIND.NONE) {
+        if (board[i][x][y] == BLOCK_KIND.NONE) {
 	  finish = false;
 	}
       }
@@ -319,13 +321,13 @@
     return finish;
   };
                  
-  var allBlackColor = function() {
+  var allBlackColor = function(i) {
 
     var same = true;     
 
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        if (board[x][y] == BLOCK_KIND.WHITE) {
+        if (board[i][x][y] == BLOCK_KIND.WHITE) {
 	   same =  false;
         }
       }
@@ -335,13 +337,13 @@
   };
 
 
-  var allWhiteColor = function() {
+  var allWhiteColor = function(i) {
 
     var same = true;     
 
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        if (board[x][y] == BLOCK_KIND.BLACK) {
+        if (board[i][x][y] == BLOCK_KIND.BLACK) {
 	   same =  false;
         }
       }
@@ -352,20 +354,20 @@
 
 
 
-  var allSameColor = function() { 
+  var allSameColor = function(i) { 
 
-    return  allBlackColor() || allWhiteColor();
+    return  allBlackColor(i) || allWhiteColor(i);
 
   };
 
 	
-  var changePlayer = function() {
+  var changePlayer = function(i) {
     
     var pass = false;
 
     player_color = BLOCK_KIND.MAX - player_color;
 
-    if (isPass() && !isFinish()) {
+    if (isPass(i) && !isFinish(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
         alert("黒の置ける場所がありません。続けて白の番となります。");
       } else if (player_color == BLOCK_KIND.WHITE) {
@@ -376,7 +378,7 @@
         
       player_color = BLOCK_KIND.MAX - player_color;
 
-      if(isPass() && !isFinish()) {
+      if(isPass(i) && !isFinish(i)) {
         if (allSameColor()) {
           if(player_color == BLOCK_KIND.BLACK) {
             alert("黒のパーフェクト勝ちです。2");
@@ -404,7 +406,7 @@
     return pass;
   };
 
-  var doAiPlayer = function() {
+  var doAiPlayer = function(i) {
 
     if(isComputer == "false") {
       return false;
@@ -417,19 +419,15 @@
 
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-            
-        if (turnOverBlock(x, y, true) > 0) {
-          board[x][y] = player_color;
-          hand++;
-	  snapshot[hand] = [];
-	  for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
-            snapshot[hand][n1] = board[n1];
-          }
+        if (turnOverBlock(i, x, y, true) > 0) {
+	  i++;
+	  board[i][x][y] = player_color;
 	  kifu = kifu + alphabet[x] 
           kifu = kifu + (y + 1).toString();
-          showBoard();
-          if(changePlayer()) {
-            doAiPlayer();
+          showBoard(i);
+          if(changePlayer(i)) {
+            i++;
+	    doAiPlayer(i);
           }
           return true;
         }
@@ -439,11 +437,11 @@
     return false;
   };
 
-　var isPass = function() {
+　var isPass = function(i) {
    
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {    
-        if (turnOverBlock(x, y, false)   > 0) {
+        if (turnOverBlock(i, x, y, false)   > 0) {
           return false;
         }
       }
@@ -482,25 +480,23 @@
     ];
  
     // init zero value
-    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-      board[i] = [];
-      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-        board[i][j] = BLOCK_KIND.NONE;
+    for(var k = 0; k < 64; k++) {
+      board[k] = [];
+      for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+        board[k][i] = [];
+        for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+          board[k][i][j] = BLOCK_KIND.NONE;
+        }
       }
     }
 
     // initial position
-    board[3][4] = BLOCK_KIND.BLACK;
-    board[4][3] = BLOCK_KIND.BLACK;
-    board[3][3] = BLOCK_KIND.WHITE;
-    board[4][4] = BLOCK_KIND.WHITE;
-
-    // initial snapshot
-    snapshot[0] = [];
-    for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
-      snapshot[0][n1] = board[n1];
+    for(var k = 0; k < 64; k++) {
+      board[k][3][4] = BLOCK_KIND.BLACK;
+      board[k][4][3] = BLOCK_KIND.BLACK;
+      board[k][3][3] = BLOCK_KIND.WHITE;
+      board[k][4][4] = BLOCK_KIND.WHITE;
     }
-
 
   };
 
@@ -537,15 +533,17 @@
 
     pos = 0;
     hand = 0;
+    temp_hand = 0;
 
     // initialize board
     initBoard();
     // start game
     initRecord();
     
-    showBoard();
+    
+    showBoard(hand);
     if(!from_saved && !isFirst) {
-      doAiPlayer();
+      doAiPlayer(hand);
     }
   };
 
@@ -614,128 +612,25 @@
         
  
   $("#next_button").click(function() {
-     if (play_back_flag) {
-       var n;
-       switch(kifu.charAt(pos)){
-         case 'a':
-	   n = 0;
-	   break;
-         case 'b':
-	   n = 1;
-	   break;
-         case 'c':
-	   n = 2;
-	   break;
-         case 'd':
-	   n = 3;
-	   break;
-         case 'e':
-           n = 4;
-	   break;
-         case 'f':
-	   n = 5;
-	   break;
-         case 'g':
-	   n = 6;
-	   break;
-         case 'h':
-           n = 7;
-	   break;
-       }              
-       var _x = n;
-       var _y = kifu.charAt(pos + 1) - 1;
-       if (turnOverBlock(_x, _y, true) > 0) { 
-         board[_x][_y] = player_color;
-         showBoard();
-	 //kifu1 = kifu_to_record(kifu_record, pos);
-	 showProgress();
-	 changePlayer();
-         pos += 2;
-       }
-    }
-  
+	     
   });
 
   
   $("#previous_button").click(function() {
-     if (play_back_flag) {
-       initBoard();
-       player_color = BLOCK_KIND.BLACK;
-       for(i1 = 0; i1 < pos - 2; i1 += 2) {
-         var n;
-         switch(kifu.charAt(i1)){
-           case 'a':
-	     n = 0;
-	     break;
-           case 'b':
-	     n = 1;
-	     break;
-           case 'c':
-	     n = 2;
-	     break;
-           case 'd':
-	     n = 3;
-	     break;
-           case 'e':
-             n = 4;
-	     break;
-           case 'f':
-	     n = 5;
-	     break;
-           case 'g':
-	     n = 6;
-	     break;
-           case 'h':
-             n = 7;
-	     break;
-         }              
-         var _x = n;
-         var _y = kifu.charAt(i1 + 1) - 1;
-         if (turnOverBlock(_x, _y, true) > 0) { 
-           board[_x][_y] = player_color;
-           showBoard();
-           //record1 = kifu_to_record(kifu_record, i1);
-           showProgress();
-	   changePlayer();
-         }
-      }
-      if(pos != 0) {
-	pos -= 2;
-      }
-      if (pos == 0) {
-        initBoard();
-        showBoard();
-        player_color = BLOCK_KIND.BLACK; 
-        play_back_flag = true;
-      }
-    }
-  
+    initBoard();
+    //temp_hand--;
+    showBoard();
   });
-
-
-    //snapshot[0] = [];
-    //for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
-    //  snapshot[0][n1] = board[n1];
-    //}
-
-
-
 
 
   $("#back_to_beginning").click(function() {
     initBoard();
-    for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
-      board[n1] = snapshot[0][n1];
-    }
-    showBoard();
+    showBoard(0);
   });
 
   $("#go_to_end").click(function() {
     initBoard();
-    for (var n1 = 0; n1 < BOARD_SIZE.HEIGHT; n1++) {
-      board[n1] = snapshot[hand][n1];
-    }
-    showBoard();     
+    showBoard(hand);     
   });
 
 
