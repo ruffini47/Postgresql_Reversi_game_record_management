@@ -247,7 +247,6 @@
               kifu = kifu + (_y + 1).toString();
 	      showBoard(i);
               if (!changePlayer(i)) {
-                i++;
 		doAiPlayer(i);
               }
 	    }
@@ -420,13 +419,17 @@
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
         if (turnOverBlock(i, x, y, true) > 0) {
-	  i++;
 	  board[i][x][y] = player_color;
+	  for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+            for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+	      board[i + 1][xx][yy] = board[i][xx][yy];
+            }
+          }
+	  i++;
 	  kifu = kifu + alphabet[x] 
           kifu = kifu + (y + 1).toString();
           showBoard(i);
           if(changePlayer(i)) {
-            i++;
 	    doAiPlayer(i);
           }
           return true;
