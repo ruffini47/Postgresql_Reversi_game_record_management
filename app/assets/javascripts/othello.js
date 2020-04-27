@@ -237,6 +237,9 @@
 	    //alert("クリックしました。");
 	    if (turnOverBlock(i, _x, _y, true) > 0) {
 	      board[i][_x][_y] = player_color;
+	      if (i == 0) {
+		snap_shot[i] = board[i];
+	      }
 	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
                 for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
                   board[i+1][xx][yy] = board[i][xx][yy];
@@ -245,6 +248,7 @@
 	      i++;
 	      snap_shot[i] = board[i];
 	      last_hand++;
+	      temp_hand++;
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
@@ -431,6 +435,7 @@
 	  i++;
           snap_shot[i] = board[i];
           last_hand++;
+	  temp_hand++;
 	  kifu = kifu + alphabet[x] 
           kifu = kifu + (y + 1).toString();
           showBoard(i);
@@ -506,7 +511,7 @@
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
 
-    snap_shot[0] = board[0];     
+    //snap_shot[0] = board[0];     
 
   };
 
@@ -543,6 +548,7 @@
 
     pos = 0;
     last_hand = 0;
+    temp_hand = 0;
 
     // initialize board
     initBoard();
@@ -620,18 +626,20 @@
         
  
   $("#next_button").click(function() {
+    alert(temp_hand);
     temp_hand++;
-    board[temp_hand] = snap_shot[temp_hand];
-    showBoard(temp_hand);
+    alert(temp_hand);
+    board[temp_hand-1] = snap_shot[temp_hand-1];
+    showBoard(temp_hand-1);
   });
-
   
   $("#previous_button").click(function() {
+    alert(temp_hand)
     temp_hand--;
-    board[temp_hand] = snap_shot[temp_hand];
-    showBoard(temp_hand);
+    alert(temp_hand);
+    board[temp_hand-1] = snap_shot[temp_hand-1];
+    showBoard(temp_hand-1);
   });
-
 
   $("#back_to_beginning").click(function() {
     initBoard();
