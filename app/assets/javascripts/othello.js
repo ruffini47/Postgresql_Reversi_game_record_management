@@ -31,13 +31,13 @@
   var player_color;
 
   var kifu = "";
-  var kifu1 = "";
   var alphabet ="abcdefgh"; 
-  var play_back_flag = false;
 
   var pos;
-  var hand;
+  var last_hand;
   var temp_hand;
+  var snap_shot = [];
+
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
@@ -234,14 +234,17 @@
           var _x = x;
           var _y = y;
           cell.onclick = function() {
+	    //alert("クリックしました。");
 	    if (turnOverBlock(i, _x, _y, true) > 0) {
 	      board[i][_x][_y] = player_color;
 	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-	        for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
-		  board[i+1][xx][yy] = board[i][xx][yy];
-		}
-	      }
+                for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+                  board[i+1][xx][yy] = board[i][xx][yy];
+                }
+              }
 	      i++;
+	      snap_shot[i] = board[i];
+	      last_hand++;
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
@@ -426,6 +429,8 @@
             }
           }
 	  i++;
+          snap_shot[i] = board[i];
+          last_hand++;
 	  kifu = kifu + alphabet[x] 
           kifu = kifu + (y + 1).toString();
           showBoard(i);
@@ -501,6 +506,8 @@
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
 
+    snap_shot[0] = board[0];     
+
   };
 
   var initRecord = function() {
@@ -535,8 +542,7 @@
     //alert(from_saved);
 
     pos = 0;
-    hand = 0;
-    temp_hand = 0;
+    last_hand = 0;
 
     // initialize board
     initBoard();
@@ -544,9 +550,9 @@
     initRecord();
     
     
-    showBoard(hand);
+    showBoard(last_hand);
     if(!from_saved && !isFirst) {
-      doAiPlayer(hand);
+      doAiPlayer(last_hand);
     }
   };
 
@@ -603,7 +609,6 @@
     showBoard();
     pos = 0;
     player_color = BLOCK_KIND.BLACK; 
-    play_back_flag = true;
    if (from_saved == "true") {
       kifu = "";
       showProgress();     
@@ -615,25 +620,29 @@
         
  
   $("#next_button").click(function() {
-	     
+    temp_hand++;
+    board[temp_hand] = snap_shot[temp_hand];
+    showBoard(temp_hand);
   });
 
   
   $("#previous_button").click(function() {
-    initBoard();
-    //temp_hand--;
-    showBoard();
+    temp_hand--;
+    board[temp_hand] = snap_shot[temp_hand];
+    showBoard(temp_hand);
   });
 
 
   $("#back_to_beginning").click(function() {
     initBoard();
     showBoard(0);
+    temp_hand = 0;
   });
 
   $("#go_to_end").click(function() {
-    initBoard();
-    showBoard(hand);     
+    temp_hand = last_hand;
+    board[temp_hand] = snap_shot[temp_hand];
+    showBoard(temp_hand);
   });
 
 
