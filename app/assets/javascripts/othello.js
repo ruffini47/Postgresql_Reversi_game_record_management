@@ -633,7 +633,7 @@
     temp_hand++;
     alert(temp_hand);
     if(temp_hand > last_hand) {
-      temp_hand--;
+      temp_hand = last_hand;
       alert(temp_hand);
     } else {
     board[temp_hand-1] = snap_shot[temp_hand-1];
@@ -657,13 +657,15 @@
   });
 
   $("#back_to_beginning").click(function() {
+    temp_hand = 0;
+    alert(temp_hand);
     initBoard();
     showBoard(0);
-    temp_hand = 0;
   });
 
   $("#go_to_end").click(function() {
     temp_hand = last_hand;
+    alert(temp_hand);
     board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
   });
