@@ -246,63 +246,50 @@
 	    //alert("クリックしました。");
 	    //alert("i2 = " + i);
 	    if (hand_flag == false) {
-	      //alert("hand_flag = " + hand_flag);
-              board[i+2] = snap_shot[i+2];
-	      alert("2:" + board[i+2]);
-	      showBoard(i+2);
-	      if (turnOverBlock(i+1, _x, _y, true) > 0) {
-                alert("hit!");
-		board[i+1][_x][_y] = player_color;
-                if (i == 0) {
-                  snap_shot[i] = board[i];
+	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+                for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+                  board[i+1][xx][yy] = board[i][xx][yy];
                 }
-                alert("i2 = " + i);
-                i += 2;
-                alert("i2 = " + i);
-                snap_shot[i] = board[i];
-                alert("temp_hand2 = " + temp_hand);
-                last_hand+=2;
-                temp_hand+=2;
-                alert("temp_hand2 = " + temp_hand);
-                pos += 2;
-                kifu = kifu + alphabet[_x];
-                kifu = kifu + (_y + 1).toString();
-                //alert(i);
-                hand_flag = true;
-                showBoard(i);
-                if (!changePlayer(i)) {
-                  doAiPlayer(i);
-                }
-	      }
-	    } else {
-	      if (turnOverBlock(i, _x, _y, true) > 0) {
-	        board[i][_x][_y] = player_color;
-	        if (i == 0) {
-		  snap_shot[i] = board[i];
-	        }
-	        for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-                  for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
-                    board[i+1][xx][yy] = board[i][xx][yy];
-                  }
-                }
-	        //alert("i3 = " + i);
-	        i++;
-	        //alert("i3 = " + i);
+              }
+	      //for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+              //  alert("board[" + i + "][" + xx + "]=" + board[i][xx]);
+              //}
+	      i++;
+	      temp_hand++;
+	      //for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+	      //	alert("board[" + i + "][" + xx + "]=" + board[i][xx]);
+	      //}
+	      //if (!changePlayer(i)) {
+              //  doAiPlayer(i);
+	      //}
+	    }
+	    if (turnOverBlock(i, _x, _y, true) > 0) {
+	      board[i][_x][_y] = player_color;
+	      if (i == 0) {
 	        snap_shot[i] = board[i];
-	        //alert("temp_hand3 = " + temp_hand);
-	        last_hand++;
-	        temp_hand++;
-	        //alert("temp_hand3 = " + temp_hand);
-	        pos += 2;
-	        kifu = kifu + alphabet[_x];
-                kifu = kifu + (_y + 1).toString();
-	        //alert(i);
-	        hand_flag = true;
-	        showBoard(i);
-                if (!changePlayer(i)) {
-		  doAiPlayer(i);
-                } 
 	      }
+	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+                for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+                  board[i+1][xx][yy] = board[i][xx][yy];
+                }
+              }
+	      //alert("i3 = " + i);
+	      i++;
+	      //alert("i3 = " + i);
+	      snap_shot[i] = board[i];
+	      //alert("temp_hand3 = " + temp_hand);
+	      last_hand++;
+	      temp_hand++;
+	      //alert("temp_hand3 = " + temp_hand);
+	      pos += 2;
+	      kifu = kifu + alphabet[_x];
+              kifu = kifu + (_y + 1).toString();
+	      //alert(i);
+	      hand_flag = true;
+	      showBoard(i);
+              if (!changePlayer(i)) {
+		doAiPlayer(i);
+              } 
 	    }
           };
         })();
@@ -709,6 +696,7 @@
       board[temp_hand] = snap_shot[temp_hand];
       hand_flag = false;
       //alert("hand_flag4 = " + hand_flag);
+      changePlayer(temp_hand)
       showBoard(temp_hand);
     }
   });
