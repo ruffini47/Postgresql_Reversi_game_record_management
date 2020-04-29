@@ -666,36 +666,38 @@
         
  
   $("#next_button").click(function() {
-    //alert(temp_hand);
+    alert("temp_hand4 = " + temp_hand);
     temp_hand++;
-    //alert(temp_hand);
+    alert("temp_hand4 = " + temp_hand);
     if(temp_hand > last_hand) {
       temp_hand = last_hand;
       alert(temp_hand);
     } else {
     board[temp_hand-1] = snap_shot[temp_hand-1];
+    hand_flag = false;
+    changePlayer(temp_hand-1);
     showBoard(temp_hand-1);
     }
   });
   
   $("#previous_button").click(function() {
-    //alert("temp_hand4 = " + temp_hand)
+    //alert("temp_hand5 = " + temp_hand)
     temp_hand--;
-    //alert("temp_hand4 = " + temp_hand);
-    //alert("hand_flag4 = " + hand_flag);
+    //alert("temp_hand5 = " + temp_hand);
+    //alert("hand_flag5 = " + hand_flag);
     if(temp_hand <= 0) {
       temp_hand = 0;
-      //alert("temp_hand4 " + temp_hand);
+      //alert("temp_hand5 " + temp_hand);
       initBoard();
       showBoard(0);
     } else {
       if(hand_flag == true) {
 	 temp_hand--;
       }
-      //alert("temp_hand4 = " + temp_hand);
+      //alert("temp_hand5 = " + temp_hand);
       board[temp_hand] = snap_shot[temp_hand];
       hand_flag = false;
-      //alert("hand_flag4 = " + hand_flag);
+      //alert("hand_flag5 = " + hand_flag);
       changePlayer(temp_hand)
       showBoard(temp_hand);
     }
