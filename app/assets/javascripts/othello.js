@@ -29,6 +29,7 @@
   var stone;
   var board = [];
   var player_color;
+  var last_player_color;
 
   var kifu = "";
   var alphabet ="abcdefgh"; 
@@ -37,7 +38,9 @@
   var last_hand;
   var temp_hand;
   var snap_shot = [];
-  var flag;     
+  var initial_flag;
+  var last_flag;
+  var previous_flag;
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
@@ -251,18 +254,18 @@
                   board[i+1][xx][yy] = board[i][xx][yy];
                 }
               }
-	      //for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
-              //  alert("board[" + i + "][" + xx + "]=" + board[i][xx]);
-              //}
 	      i++;
+	      //last_hand = temp_hand;
 	      temp_hand++;
-	      //for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
-	      //	alert("board[" + i + "][" + xx + "]=" + board[i][xx]);
-	      //}
-	      //if (!changePlayer(i)) {
-              //  doAiPlayer(i);
-	      //}
+	      //last_hand = temp_hand;
+	      
+	      if (initial_flag == true) {
+		player_color = BLOCK_KIND.BLACK;
+		alert("initial flag");
+	      }
+	      
 	    }
+            //alert("player_color3 = " + player_color);
 	    if (turnOverBlock(i, _x, _y, true) > 0) {
 	      board[i][_x][_y] = player_color;
 	      if (i == 0) {
@@ -273,19 +276,37 @@
                   board[i+1][xx][yy] = board[i][xx][yy];
                 }
               }
+	      if (last_flag == true || hand_flag == true) {
+		if (isPass(i) == false) {
+		  last_player_color = BLOCK_KIND.MAX - player_color;
+	        } else {
+		  last_player_color = player_color;
+	        }
+		alert("hand flag == true");
+		alert("last_player_color30 = " + last_player_color);
+	      }
+
 	      //alert("i3 = " + i);
 	      i++;
 	      //alert("i3 = " + i);
 	      snap_shot[i] = board[i];
-	      //alert("temp_hand3 = " + temp_hand);
-	      last_hand++;
+	      //alert("last_hand3 = " + last_hand);
 	      temp_hand++;
-	      //alert("temp_hand3 = " + temp_hand);
+	      last_hand++;
+	      alert("last_player_color3 = " + last_player_color); 
+	      //alert("last_hand3 = " + last_hand);
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
 	      //alert(i);
+              if (previous_flag == true) {
+		last_hand = temp_hand;
+		//alert("last_hand3 = " + last_hand);
+	      }
 	      hand_flag = true;
+	      initila_flag = false;
+	      last_flag = false;
+	      previous_flag = false;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -589,6 +610,8 @@
     last_hand = 0;
     temp_hand = 0;
     hand_flag = true;
+    initial_flag = false;
+    last_flag = false;
 
     // initialize board
     initBoard();
@@ -666,16 +689,21 @@
         
  
   $("#next_button").click(function() {
-    alert("temp_hand4 = " + temp_hand);
+    //alert("temp_hand4 = " + temp_hand);
     temp_hand++;
-    alert("temp_hand4 = " + temp_hand);
+    //alert("temp_hand4 = " + temp_hand);
     if(temp_hand > last_hand) {
       temp_hand = last_hand;
-      alert(temp_hand);
+      //alert(temp_hand);
     } else {
     board[temp_hand-1] = snap_shot[temp_hand-1];
     hand_flag = false;
+    initial_flag = false;
+    last_flag = false;
+    previous_flag = false;
     changePlayer(temp_hand-1);
+    //alert("last_hand4 = " + last_hand);
+    alert("player_color4 = " + player_color);
     showBoard(temp_hand-1);
     }
   });
@@ -697,8 +725,13 @@
       //alert("temp_hand5 = " + temp_hand);
       board[temp_hand] = snap_shot[temp_hand];
       hand_flag = false;
+      initial_flag = false;
+      last_flag = false;
+      previous_flag = true;
       //alert("hand_flag5 = " + hand_flag);
       changePlayer(temp_hand)
+      //alert("last_hand5 = " + last_hand);
+      alert("player_color5 = " + player_color);
       showBoard(temp_hand);
     }
   });
@@ -707,6 +740,12 @@
     temp_hand = 0;
     //alert(temp_hand);
     initBoard();
+    hand_flag = false;
+    initial_flag = true;
+    last_flag = false;
+    previous_flag = false;
+    //alert("last_hand6 = " + last_hand);
+    alert("player_color6 = " + player_color);
     showBoard(0);
   });
 
@@ -714,6 +753,13 @@
     temp_hand = last_hand;
     //alert(temp_hand);
     board[temp_hand] = snap_shot[temp_hand];
+    hand_flag = false;
+    initial_flag = false;
+    last_flag = true;
+    previous_flag = false;
+    player_color = last_player_color;
+    alert("last_player_color7 = " + last_player_color);
+    //alert("last_hand7 = " + last_hand);
     showBoard(temp_hand);
   });
 
