@@ -692,7 +692,9 @@
  
   $("#next_button").click(function() {
     //alert("temp_hand4 = " + temp_hand);
-    temp_hand++;
+     if (temp_hand != 0) {
+     temp_hand++;
+     }
     //alert("temp_hand4 = " + temp_hand);
     if(temp_hand > last_hand) {
       temp_hand = last_hand;
