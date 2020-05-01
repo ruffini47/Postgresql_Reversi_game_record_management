@@ -41,6 +41,7 @@
   var initial_flag;
   var last_flag;
   var previous_flag;
+  var next_flag;
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
@@ -278,13 +279,13 @@
 	        } else {
 		  last_player_color = player_color;
 	        }
-		alert("hand flag == true");
-		alert("last_player_color30 = " + last_player_color);
+		//alert("hand flag == true");
+		//alert("last_player_color30 = " + last_player_color);
 	      }
 	      if (initial_flag == true) {
 		player_color = BLOCK_KIND.BLACK;
 		last_hand = temp_hand;
-		alert("initial flag");
+		//alert("initial flag");
 	      }
 
 
@@ -295,13 +296,13 @@
 	      //alert("last_hand3 = " + last_hand);
 	      temp_hand++;
 	      last_hand++;
-	      alert("last_player_color3 = " + last_player_color); 
+	      //alert("last_player_color3 = " + last_player_color); 
 	      //alert("last_hand3 = " + last_hand);
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
 	      //alert(i);
-              if (previous_flag == true) {
+              if (previous_flag == true || next_flag == true) {
 		last_hand = temp_hand;
 		//alert("last_hand3 = " + last_hand);
 	      }
@@ -309,6 +310,7 @@
 	      initila_flag = false;
 	      last_flag = false;
 	      previous_flag = false;
+	      next_flag = false;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -706,10 +708,11 @@
     initial_flag = false;
     last_flag = false;
     previous_flag = false;
+    next_flag = true;
     //changePlayer(temp_hand-1);
     changePlayer(temp_hand);
     //alert("last_hand4 = " + last_hand);
-    alert("player_color4 = " + player_color);
+    //alert("player_color4 = " + player_color);
     //showBoard(temp_hand-1);
     showBoard(temp_hand);
     }
@@ -735,10 +738,11 @@
       initial_flag = false;
       last_flag = false;
       previous_flag = true;
+      next_flag = false;
       //alert("hand_flag5 = " + hand_flag);
       changePlayer(temp_hand)
       //alert("last_hand5 = " + last_hand);
-      alert("player_color5 = " + player_color);
+      //alert("player_color5 = " + player_color);
       showBoard(temp_hand);
     }
   });
@@ -751,8 +755,9 @@
     initial_flag = true;
     last_flag = false;
     previous_flag = false;
+    next_flag = false;
     //alert("last_hand6 = " + last_hand);
-    alert("player_color6 = " + player_color);
+    //alert("player_color6 = " + player_color);
     showBoard(0);
   });
 
@@ -765,8 +770,9 @@
     initial_flag = false;
     last_flag = true;
     previous_flag = false;
+    next_flag = false;
     player_color = last_player_color;
-    alert("last_player_color7 = " + last_player_color);
+    //alert("last_player_color7 = " + last_player_color);
     //alert("last_hand7 = " + last_hand);
     showBoard(temp_hand);
   });
