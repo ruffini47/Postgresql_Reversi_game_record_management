@@ -259,11 +259,6 @@
 	      temp_hand++;
 	      //last_hand = temp_hand;
 	      
-	      if (initial_flag == true) {
-		player_color = BLOCK_KIND.BLACK;
-		last_hand = temp_hand;
-		alert("initial flag");
-	      }
 	      
 	    }
             //alert("player_color3 = " + player_color);
@@ -286,6 +281,12 @@
 		alert("hand flag == true");
 		alert("last_player_color30 = " + last_player_color);
 	      }
+	      if (initial_flag == true) {
+		player_color = BLOCK_KIND.BLACK;
+		last_hand = temp_hand;
+		alert("initial flag");
+	      }
+
 
 	      //alert("i3 = " + i);
 	      i++;
@@ -744,7 +745,7 @@
     temp_hand = 0;
     //alert(temp_hand);
     initBoard();
-    hand_flag = false;
+    hand_flag = true;
     initial_flag = true;
     last_flag = false;
     previous_flag = false;
