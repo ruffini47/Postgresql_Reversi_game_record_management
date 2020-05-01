@@ -696,15 +696,18 @@
       temp_hand = last_hand;
       //alert(temp_hand);
     } else {
-    board[temp_hand-1] = snap_shot[temp_hand-1];
+    //board[temp_hand-1] = snap_shot[temp_hand-1];
+    board[temp_hand] = snap_shot[temp_hand];
     hand_flag = false;
     initial_flag = false;
     last_flag = false;
     previous_flag = false;
-    changePlayer(temp_hand-1);
+    //changePlayer(temp_hand-1);
+    changePlayer(temp_hand);
     //alert("last_hand4 = " + last_hand);
     alert("player_color4 = " + player_color);
-    showBoard(temp_hand-1);
+    //showBoard(temp_hand-1);
+    showBoard(temp_hand);
     }
   });
   
@@ -753,7 +756,8 @@
     temp_hand = last_hand;
     //alert(temp_hand);
     board[temp_hand] = snap_shot[temp_hand];
-    hand_flag = false;
+    //hand_flag = false;
+    hand_flag = true;
     initial_flag = false;
     last_flag = true;
     previous_flag = false;
