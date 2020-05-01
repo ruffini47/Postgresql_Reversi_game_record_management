@@ -719,7 +719,7 @@
       initBoard();
       showBoard(0);
     } else {
-      if(hand_flag == true) {
+      if(last_flag == true || hand_flag == true) {
 	 temp_hand--;
       }
       //alert("temp_hand5 = " + temp_hand);
