@@ -261,6 +261,7 @@
 	      
 	      if (initial_flag == true) {
 		player_color = BLOCK_KIND.BLACK;
+		last_hand = temp_hand;
 		alert("initial flag");
 	      }
 	      
