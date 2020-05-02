@@ -616,6 +616,8 @@
     hand_flag = true;
     initial_flag = false;
     last_flag = false;
+    previous_flag = false;
+    next_flag = false;
 
     // initialize board
     initBoard();
@@ -694,7 +696,8 @@
  
   $("#next_button").click(function() {
     //alert("temp_hand4 = " + temp_hand);
-     if (temp_hand != 0) {
+     if (initial_flag != true) {
+     //if (temp_hand != 0) {
      temp_hand++;
      }
     //alert("temp_hand4 = " + temp_hand);
@@ -723,9 +726,9 @@
     temp_hand--;
     //alert("temp_hand5 = " + temp_hand);
     //alert("hand_flag5 = " + hand_flag);
-    if(temp_hand <= 0) {
+    if(temp_hand < 0) {
       temp_hand = 0;
-      //alert("temp_hand5 " + temp_hand);
+      //alert("temp_hand5 =  " + temp_hand);
       initBoard();
       showBoard(0);
     } else {
