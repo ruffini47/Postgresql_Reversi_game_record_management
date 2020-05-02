@@ -726,13 +726,13 @@
     temp_hand--;
     //alert("temp_hand5 = " + temp_hand);
     //alert("hand_flag5 = " + hand_flag);
-    if(temp_hand < 0) {
+    if((previous_flag == false && temp_hand == 0) || temp_hand < 0) {
       temp_hand = 0;
       //alert("temp_hand5 =  " + temp_hand);
       initBoard();
       showBoard(0);
     } else {
-      if(last_flag == true || hand_flag == true) {
+      if(temp_hand > 0 &&(last_flag == true || hand_flag == true)) {
 	 temp_hand--;
       }
       //alert("temp_hand5 = " + temp_hand);
