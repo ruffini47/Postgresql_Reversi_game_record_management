@@ -735,7 +735,11 @@
     if((previous_flag == false && temp_hand == 0) || temp_hand < 0) {
       temp_hand = 0;
       //alert("temp_hand5 =  " + temp_hand);
-      initBoard();
+      if( next_flag == false) {
+        initBoard();
+      } else {
+	board[0] = snap_shot[0];
+      }
       hand_flag = false;
       initial_flag = false;
       last_flag = false;
