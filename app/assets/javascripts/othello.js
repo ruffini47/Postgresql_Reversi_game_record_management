@@ -696,13 +696,20 @@
  
   $("#next_button").click(function() {
     //alert("temp_hand4 = " + temp_hand);
-     if (initial_flag != true) {
+     if ((initial_flag != true && temp_hand != 0) || (temp_hand == 0 && next_flag == true))  {
      //if (temp_hand != 0) {
      temp_hand++;
      }
     //alert("temp_hand4 = " + temp_hand);
     if(temp_hand > last_hand) {
       temp_hand = last_hand;
+      hand_flag = false;
+      initial_flag = false;
+      last_flag = false;
+      previous_flag = false;
+      next_flag = true;
+      changePlayer(temp_hand);
+      showBoard(temp_hand);
       //alert(temp_hand);
     } else {
     //board[temp_hand-1] = snap_shot[temp_hand-1];
@@ -715,7 +722,7 @@
     //changePlayer(temp_hand-1);
     changePlayer(temp_hand);
     //alert("last_hand4 = " + last_hand);
-    //alert("player_color4 = " + player_color);
+    //alert("temp_hand4 = " + temp_hand);
     //showBoard(temp_hand-1);
     showBoard(temp_hand);
     }
@@ -730,6 +737,11 @@
       temp_hand = 0;
       //alert("temp_hand5 =  " + temp_hand);
       initBoard();
+      hand_flag = false;
+      initial_flag = false;
+      last_flag = false;
+      previous_flag = true;
+      next_flag = false;
       showBoard(0);
     } else {
       if(temp_hand > 0 &&(last_flag == true || hand_flag == true)) {
