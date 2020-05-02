@@ -705,10 +705,9 @@
       temp_hand = last_hand;
       hand_flag = false;
       initial_flag = false;
-      last_flag = false;
+      last_flag = true;
       previous_flag = false;
       next_flag = true;
-      changePlayer(temp_hand);
       showBoard(temp_hand);
       //alert(temp_hand);
     } else {
