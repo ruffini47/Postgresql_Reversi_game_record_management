@@ -264,11 +264,8 @@
 	        }
 	      }
 	      i++;
-	      temp_hand++;
-	      last_hand++;
-	      if (hand_flag == false) {
-		last_hand = temp_hand;
-	      }
+	      temp_hand++
+	      last_hand = temp_hand;
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
@@ -687,7 +684,7 @@
         
  
   $("#next_button").click(function() {
-     hand_flag = false;
+    hand_flag = false;
     initial_flag = false;
     last_flag = false;
     previous_flag = false;
@@ -699,6 +696,7 @@
     }
     board[temp_hand] = snap_shot[temp_hand];
     changePlayer(temp_hand);
+    //alert("player color(next) = " + player_color);
     showBoard(temp_hand);
   });
   
@@ -714,6 +712,7 @@
     previous_flag = true;
     next_flag = false;
     changePlayer(temp_hand)
+    //alert("player color(previous) = " + player_color);
     showBoard(temp_hand);
   });
 
