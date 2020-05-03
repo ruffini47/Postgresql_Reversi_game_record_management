@@ -248,7 +248,6 @@
           var _y = y;
           cell.onclick = function() {
 	    //alert("クリックしました。");
-	    //alert("i2 = " + i);
 	    if (hand_flag == false) {
 	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
                 for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
@@ -256,13 +255,8 @@
                 }
               }
 	      i++;
-	      //last_hand = temp_hand;
 	      temp_hand++;
-	      //last_hand = temp_hand;
-	      
-	      
 	    }
-            //alert("player_color3 = " + player_color);
 	    if (turnOverBlock(i, _x, _y, true) > 0) {
 	      board[i][_x][_y] = player_color;
 	      if (i == 0) {
@@ -279,32 +273,20 @@
 	        } else {
 		  last_player_color = player_color;
 	        }
-		//alert("hand flag == true");
-		//alert("last_player_color30 = " + last_player_color);
 	      }
 	      if (initial_flag == true) {
 		player_color = BLOCK_KIND.BLACK;
 		last_hand = temp_hand;
-		//alert("initial flag");
 	      }
-
-
-	      //alert("i3 = " + i);
 	      i++;
-	      //alert("i3 = " + i);
 	      snap_shot[i] = board[i];
-	      //alert("last_hand3 = " + last_hand);
 	      temp_hand++;
 	      last_hand++;
-	      //alert("last_player_color3 = " + last_player_color); 
-	      //alert("last_hand3 = " + last_hand);
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
-	      //alert(i);
               if (previous_flag == true || next_flag == true) {
 		last_hand = temp_hand;
-		//alert("last_hand3 = " + last_hand);
 	      }
 	      hand_flag = true;
 	      initila_flag = false;
@@ -539,6 +521,11 @@
 
 　var initBoard = function() {
 
+    Object.freeze(BLOCK_KIND);
+    Object.freeze(BOARD_SIZE);
+    Object.freeze(FRAME_WIDTH);
+    Object.freeze(CELL_WIDTH);
+
     player_color = BLOCK_KIND.BLACK;
 
     // 0:石無し, 1:黒, 2:白
@@ -575,7 +562,14 @@
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
 
-    //snap_shot[0] = board[0];     
+    pos = 0;
+    last_hand = 0;
+    temp_hand = 0;
+    hand_flag = true;
+    initial_flag = false;
+    last_flag = false;
+    previous_flag = false;
+    next_flag = false;
 
   };
 
@@ -587,11 +581,17 @@
 
   onload = function() {
     // just in case
-    Object.freeze(BLOCK_KIND);
-    Object.freeze(BOARD_SIZE);
-    Object.freeze(FRAME_WIDTH);
-    Object.freeze(CELL_WIDTH);
-    
+    //Object.freeze(BLOCK_KIND);
+    //Object.freeze(BOARD_SIZE);
+    //Object.freeze(FRAME_WIDTH);
+    //Object.freeze(CELL_WIDTH);
+
+    // initialize board
+    initBoard();
+    // start game
+    initRecord();
+
+
     from_saved = gon.from_saved;
     your_move = gon.your_move;
     isComputer = gon.isComputer;
@@ -610,20 +610,14 @@
 
     //alert(from_saved);
 
-    pos = 0;
-    last_hand = 0;
-    temp_hand = 0;
-    hand_flag = true;
-    initial_flag = false;
-    last_flag = false;
-    previous_flag = false;
-    next_flag = false;
-
-    // initialize board
-    initBoard();
-    // start game
-    initRecord();
-    
+    //pos = 0;
+    //last_hand = 0;
+    //temp_hand = 0;
+    //hand_flag = true;
+    //initial_flag = false;
+    //last_flag = false;
+    //previous_flag = false;
+    //next_flag = false;
     
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
@@ -631,7 +625,7 @@
     }
   };
 
-  document.getElementById("Play").onclick = function() {
+  document.getElementById("Reset").onclick = function() {
     if(document.form1.Computer.checked) {
       isComputer = "true";
     } else {
@@ -649,7 +643,7 @@
     initRecord();         
     from_saved = "false";
     // start game
-    showBoard();
+    showBoard(0);
     if(!isFirst) {
       doAiPlayer();
     }
@@ -695,12 +689,9 @@
         
  
   $("#next_button").click(function() {
-    //alert("temp_hand4 = " + temp_hand);
      if ((initial_flag != true && temp_hand != 0) || (temp_hand == 0 && next_flag == true))  {
-     //if (temp_hand != 0) {
      temp_hand++;
      }
-    //alert("temp_hand4 = " + temp_hand);
     if(temp_hand > last_hand) {
       temp_hand = last_hand;
       hand_flag = false;
@@ -709,32 +700,22 @@
       previous_flag = false;
       next_flag = true;
       showBoard(temp_hand);
-      //alert(temp_hand);
     } else {
-    //board[temp_hand-1] = snap_shot[temp_hand-1];
     board[temp_hand] = snap_shot[temp_hand];
     hand_flag = false;
     initial_flag = false;
     last_flag = false;
     previous_flag = false;
     next_flag = true;
-    //changePlayer(temp_hand-1);
     changePlayer(temp_hand);
-    //alert("last_hand4 = " + last_hand);
-    //alert("temp_hand4 = " + temp_hand);
-    //showBoard(temp_hand-1);
     showBoard(temp_hand);
     }
   });
   
   $("#previous_button").click(function() {
-    //alert("temp_hand5 = " + temp_hand)
     temp_hand--;
-    //alert("temp_hand5 = " + temp_hand);
-    //alert("hand_flag5 = " + hand_flag);
     if((previous_flag == false && temp_hand == 0) || temp_hand < 0) {
       temp_hand = 0;
-      //alert("temp_hand5 =  " + temp_hand);
       if( next_flag == false) {
         initBoard();
       } else {
@@ -750,48 +731,37 @@
       if(temp_hand > 0 &&(last_flag == true || hand_flag == true)) {
 	 temp_hand--;
       }
-      //alert("temp_hand5 = " + temp_hand);
       board[temp_hand] = snap_shot[temp_hand];
       hand_flag = false;
       initial_flag = false;
       last_flag = false;
       previous_flag = true;
       next_flag = false;
-      //alert("hand_flag5 = " + hand_flag);
       changePlayer(temp_hand)
-      //alert("last_hand5 = " + last_hand);
-      //alert("player_color5 = " + player_color);
       showBoard(temp_hand);
     }
   });
 
   $("#back_to_beginning").click(function() {
     temp_hand = 0;
-    //alert(temp_hand);
     initBoard();
     hand_flag = true;
     initial_flag = true;
     last_flag = false;
     previous_flag = false;
     next_flag = false;
-    //alert("last_hand6 = " + last_hand);
-    //alert("player_color6 = " + player_color);
     showBoard(0);
   });
 
   $("#go_to_end").click(function() {
     temp_hand = last_hand;
-    //alert(temp_hand);
     board[temp_hand] = snap_shot[temp_hand];
-    //hand_flag = false;
     hand_flag = true;
     initial_flag = false;
     last_flag = true;
     previous_flag = false;
     next_flag = false;
     player_color = last_player_color;
-    //alert("last_player_color7 = " + last_player_color);
-    //alert("last_hand7 = " + last_hand);
     showBoard(temp_hand);
   });
 
