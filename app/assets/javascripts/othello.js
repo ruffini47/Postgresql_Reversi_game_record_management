@@ -38,10 +38,6 @@
   var last_hand;
   var temp_hand;
   var snap_shot = [];
-  //var initial_flag;
-  //var last_flag;
-  //var previous_flag;
-  //var next_flag;
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
@@ -120,14 +116,7 @@
 
   var showBoard = function(i) {
     
-    //alert("temp_hand1 = " + temp_hand); 	  
-    //alert("hand_flag1 = " + hand_flag);
-
-    //if(hand_flag == false) {
-    //  temp_hand++;
-    //}
-    //alert("temp_hand1 = " + temp_hand);
-    i = temp_hand;    
+    //i = temp_hand;    
 
     var b = document.getElementById("board");
         
@@ -256,20 +245,17 @@
 	    if (turnOverBlock(i+1, _x, _y, true) > 0) {
 	      board[i+1][_x][_y] = player_color;
 	      snap_shot[i+1] = board[i+1];
-	      //if (hand_flag == true) {
-		if (isPass(i+1) == false) {
-		  last_player_color = BLOCK_KIND.MAX - player_color;
-	        } else {
-		  last_player_color = player_color;
-	        }
-	      //}
+	      if (isPass(i+1) == false) {
+		last_player_color = BLOCK_KIND.MAX - player_color;
+	      } else {
+		last_player_color = player_color;
+	      }
 	      i++;
 	      temp_hand++
 	      last_hand = temp_hand;
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
-              //hand_flag = true;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -539,15 +525,6 @@
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
 
-    //pos = 0;
-    //last_hand = 0;
-    //temp_hand = 0;
-    //hand_flag = true;
-    //initial_flag = false;
-    //last_flag = false;
-    //previous_flag = false;
-    //next_flag = false;
-
     snap_shot[0] = board[0];
 
   };
@@ -592,11 +569,6 @@
     pos = 0;
     last_hand = 0;
     temp_hand = 0;
-    //hand_flag = true;
-    //initial_flag = false;
-    //last_flag = false;
-    //previous_flag = false;
-    //next_flag = false;
     
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
@@ -627,11 +599,6 @@
     pos = 0;
     last_hand = 0;
     temp_hand = 0;
-    //hand_flag = true;
-    //initial_flag = false;
-    //last_flag = false;
-    //previous_flag = false;
-    //next_flag = false;
     
     // start game
     showBoard(last_hand);
@@ -680,21 +647,18 @@
         
  
   $("#next_button").click(function() {
-    //hand_flag = false;
     temp_hand++;
     if (temp_hand <= last_hand) {
       changePlayer(temp_hand);
     }
     if (temp_hand > last_hand) {
       temp_hand = last_hand;
-      //hand_flag = true;
     }
     board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
   });
   
   $("#previous_button").click(function() {
-    //hand_flag = false;
     temp_hand--;
     if (temp_hand >= 0) {
       changePlayer(temp_hand);
@@ -707,7 +671,6 @@
   });
 
   $("#back_to_beginning").click(function() {
-    //hand_flag = true;
     temp_hand = 0;
     board[0] = snap_shot[0]
     player_color = BLOCK_KIND.BLACK;
@@ -715,7 +678,6 @@
   });
 
   $("#go_to_end").click(function() {
-    //hand_flag = true;
     temp_hand = last_hand;
     board[last_hand] = snap_shot[last_hand];
     player_color = last_player_color;
