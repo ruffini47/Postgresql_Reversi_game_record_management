@@ -248,31 +248,47 @@
           var _y = y;
           cell.onclick = function() {
 	    //alert("クリックしました。");
-            for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-	      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-	          board[i+1][xx][yy] = board[i][xx][yy];
-	      }
+	    if (hand_flag == false) {
+	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+                for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+                  board[i+1][xx][yy] = board[i][xx][yy];
+                }
+              }
+	      i++;
+	      temp_hand++;
 	    }
-	    if (turnOverBlock(i+1, _x, _y, true) > 0) {
-	      board[i+1][_x][_y] = player_color;
-	      snap_shot[i+1] = board[i+1];
+	    if (turnOverBlock(i, _x, _y, true) > 0) {
+	      board[i][_x][_y] = player_color;
+	      if (i == 0) {
+	        snap_shot[i] = board[i];
+	      }
+	      for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+                for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+                  board[i+1][xx][yy] = board[i][xx][yy];
+                }
+              }
 	      if (last_flag == true || hand_flag == true) {
-		if (isPass(i+1) == false) {
+		if (isPass(i) == false) {
 		  last_player_color = BLOCK_KIND.MAX - player_color;
 	        } else {
 		  last_player_color = player_color;
 	        }
 	      }
-	      i++;
-	      temp_hand++;
-	      last_hand++;
-	      if (hand_flag == false) {
+	      if (initial_flag == true) {
+		player_color = BLOCK_KIND.BLACK;
 		last_hand = temp_hand;
 	      }
+	      i++;
+	      snap_shot[i] = board[i];
+	      temp_hand++;
+	      last_hand++;
 	      pos += 2;
 	      kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
-              hand_flag = true;
+              if (previous_flag == true || next_flag == true) {
+		last_hand = temp_hand;
+	      }
+	      hand_flag = true;
 	      initila_flag = false;
 	      last_flag = false;
 	      previous_flag = false;
@@ -555,8 +571,6 @@
     //previous_flag = false;
     //next_flag = false;
 
-    snap_shot[0] = board[0];
-
   };
 
   var initRecord = function() {
@@ -687,45 +701,68 @@
         
  
   $("#next_button").click(function() {
-     hand_flag = false;
-    initial_flag = false;
-    last_flag = false;
-    previous_flag = false;
-    next_flag = true;
-    temp_hand++;
-    if (temp_hand >= last_hand) {
+     if ((initial_flag != true && temp_hand != 0) || (temp_hand == 0 && next_flag == true)) {
+       temp_hand++;
+     }
+      
+    if(temp_hand > last_hand) {
       temp_hand = last_hand;
-      hand_flag = true;
-    }
-    board[temp_hand] = snap_shot[temp_hand];
-    changePlayer(temp_hand);
-    showBoard(temp_hand);
-  });
-  
-  $("#previous_button").click(function() {
-    temp_hand--;
-    if (temp_hand < 0) {
-      temp_hand = 0;
-    }
+      hand_flag = false;
+      initial_flag = false;
+      last_flag = true;
+      previous_flag = false;
+      next_flag = true;
+      showBoard(temp_hand);
+    } else {
     board[temp_hand] = snap_shot[temp_hand];
     hand_flag = false;
     initial_flag = false;
     last_flag = false;
-    previous_flag = true;
-    next_flag = false;
-    changePlayer(temp_hand)
+    previous_flag = false;
+    next_flag = true;
+    changePlayer(temp_hand);
     showBoard(temp_hand);
+    }
+  });
+  
+  $("#previous_button").click(function() {
+    temp_hand--;
+    if((previous_flag == false && temp_hand == 0) || temp_hand < 0) {
+      temp_hand = 0;
+      if( next_flag == false) {
+        initBoard();
+      } else {
+	board[0] = snap_shot[0];
+      }
+      hand_flag = false;
+      initial_flag = false;
+      last_flag = false;
+      previous_flag = true;
+      next_flag = false;
+      showBoard(0);
+    } else {
+      if(temp_hand > 0 &&(last_flag == true || hand_flag == true)) {
+	 temp_hand--;
+      }
+      board[temp_hand] = snap_shot[temp_hand];
+      hand_flag = false;
+      initial_flag = false;
+      last_flag = false;
+      previous_flag = true;
+      next_flag = false;
+      changePlayer(temp_hand)
+      showBoard(temp_hand);
+    }
   });
 
   $("#back_to_beginning").click(function() {
     temp_hand = 0;
-    board[0] = snap_shot[0]
+    initBoard();
     hand_flag = true;
     initial_flag = true;
     last_flag = false;
     previous_flag = false;
     next_flag = false;
-    player_color = BLOCK_KIND.BLACK;
     showBoard(0);
   });
 
