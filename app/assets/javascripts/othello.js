@@ -562,14 +562,14 @@
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
 
-    pos = 0;
-    last_hand = 0;
-    temp_hand = 0;
-    hand_flag = true;
-    initial_flag = false;
-    last_flag = false;
-    previous_flag = false;
-    next_flag = false;
+    //pos = 0;
+    //last_hand = 0;
+    //temp_hand = 0;
+    //hand_flag = true;
+    //initial_flag = false;
+    //last_flag = false;
+    //previous_flag = false;
+    //next_flag = false;
 
   };
 
@@ -610,14 +610,14 @@
 
     //alert(from_saved);
 
-    //pos = 0;
-    //last_hand = 0;
-    //temp_hand = 0;
-    //hand_flag = true;
-    //initial_flag = false;
-    //last_flag = false;
-    //previous_flag = false;
-    //next_flag = false;
+    pos = 0;
+    last_hand = 0;
+    temp_hand = 0;
+    hand_flag = true;
+    initial_flag = false;
+    last_flag = false;
+    previous_flag = false;
+    next_flag = false;
     
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
@@ -626,6 +626,11 @@
   };
 
   document.getElementById("Reset").onclick = function() {
+    
+    // initialize board
+    initBoard();
+    initRecord();
+
     if(document.form1.Computer.checked) {
       isComputer = "true";
     } else {
@@ -637,13 +642,20 @@
     } else {
       isFirst = false;
     }
-
-    // initialize board
-    initBoard();
-    initRecord();         
+       
     from_saved = "false";
+
+    pos = 0;
+    last_hand = 0;
+    temp_hand = 0;
+    hand_flag = true;
+    initial_flag = false;
+    last_flag = false;
+    previous_flag = false;
+    next_flag = false;
+    
     // start game
-    showBoard(0);
+    showBoard(last_hand);
     if(!isFirst) {
       doAiPlayer();
     }
@@ -689,9 +701,10 @@
         
  
   $("#next_button").click(function() {
-     if ((initial_flag != true && temp_hand != 0) || (temp_hand == 0 && next_flag == true))  {
-     temp_hand++;
+     if ((initial_flag != true && temp_hand != 0) || (temp_hand == 0 && next_flag == true)) {
+       temp_hand++;
      }
+      
     if(temp_hand > last_hand) {
       temp_hand = last_hand;
       hand_flag = false;
