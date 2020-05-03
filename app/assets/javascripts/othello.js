@@ -650,8 +650,7 @@
     temp_hand++;
     if (temp_hand <= last_hand) {
       changePlayer(temp_hand);
-    }
-    if (temp_hand > last_hand) {
+    } else {
       temp_hand = last_hand;
     }
     board[temp_hand] = snap_shot[temp_hand];
@@ -662,8 +661,7 @@
     temp_hand--;
     if (temp_hand >= 0) {
       changePlayer(temp_hand);
-    }
-    if (temp_hand < 0) {
+    } else {
       temp_hand = 0;
     }
     board[temp_hand] = snap_shot[temp_hand];
