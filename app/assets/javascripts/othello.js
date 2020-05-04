@@ -465,9 +465,19 @@
           last_hand = temp_hand;
           pos += 2;
           
-          kifu = kifu + alphabet[x];
-          kifu = kifu + (y + 1).toString();
-          
+          var number_str;
+          if (temp_hand < 10) {
+            number_str = " " + temp_hand;
+          } else {
+            number_str = temp_hand;
+          }
+          if (player_color == BLOCK_KIND.BLACK) {
+            kifu = kifu + number_str + ": " + Alphabet[x];
+          } else if (player_color == BLOCK_KIND.WHITE) {
+            kifu = kifu + number_str + ": " + alphabet[x];
+          }
+          kifu = kifu + (y + 1).toString() + "\<br\>";
+
           showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
