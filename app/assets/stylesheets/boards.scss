@@ -146,12 +146,24 @@ position: relative;
 {
   position: absolute;
   top: 43*13px;
-}
+}	
 
 #msg_kifu//for id
 {
   position: absolute;
   margin-left: 400px;
+  height: 360px;     /* 高さを制限(※) */
+  width: 70px;
+  overflow: scroll;  /* スクロールバーを表示(※) */
+  border: 2px black;   /* 枠線を追加 */
+  background-color: #ffffff; //#b8d5f1;
+}
+
+.bottom//for class
+{
+  position: absolute;
+  top: 43*18+20px;
+  margin-left: 200px;
 }
 
 .highlight//for class

@@ -283,6 +283,7 @@
     showProgress(i);    
   };
 
+
   var showProgress = function(i) {
 
     var black = 0;
@@ -301,13 +302,23 @@
     }
 
     var msg = document.getElementById("msg");
-    
+     
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
 
     var msg_kifu = document.getElementById("msg_kifu");
     
     var kifu_highlight = kifu.substring(0, 10 * (temp_hand -1)) + "<span class='highlight'>" + kifu.substring(10 * (temp_hand - 1), 10 * temp_hand) + "</span>" + kifu.substring(10 * temp_hand, kifu.length);   
-    msg_kifu.innerHTML = kifu_highlight;
+ 
+    msg_kifu.innerHTML = kifu_highlight + "<span id='last-msg'></span>";
+
+    var $box = $($(".link").data("box"));
+    var $tareget = $($(".link").attr("href"));
+    var dist = $tareget.position().top - $box.position().top;
+    $box.stop().animate({
+      scrollTop: $box.scrollTop() + dist
+    });
+
+   
 
     if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -605,7 +616,9 @@
     if(!from_saved && !isFirst) {
       doAiPlayer(last_hand);
     }
+
   };
+
 
   document.getElementById("Reset").onclick = function() {
     
