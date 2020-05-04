@@ -254,12 +254,10 @@
 	      temp_hand++
 	      last_hand = temp_hand;
 	      pos += 2;
-	      
-	      kifu = kifu + "\<span style\=\"color: #0000ff;\"\>";
+	
               kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
-              kifu = kifu + "\<\/span\>";
-              kifu = kifu + "\<br\>";
+
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -294,7 +292,9 @@
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
 
     var msg_kifu = document.getElementById("msg_kifu");
-    msg_kifu.innerHTML = kifu;
+    
+    var kifu_highlight = kifu.substring(0,2*temp_hand-2) + "<span class='highlight'>" + kifu.substring(2*temp_hand-2,2*temp_hand) + "</span>" + kifu.substring(2*temp_hand,kifu.length);   
+    msg_kifu.innerHTML = kifu_highlight;
 
     if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -451,12 +451,10 @@
           temp_hand++
           last_hand = temp_hand;
           pos += 2;
-
-          //kifu = kifu + "\<span style\=\"color: #0000ff;\"\>";
-          //kifu = kifu + alphabet[_x];
-          //kifu = kifu + (_y + 1).toString();
-          //kifu = kifu + "\<\/span\>";
-          //kifu = kifu + "\<br\>";
+          
+          kifu = kifu + alphabet[x];
+          kifu = kifu + (y + 1).toString();
+          
           showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
