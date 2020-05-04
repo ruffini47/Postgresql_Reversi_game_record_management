@@ -255,6 +255,7 @@
 	      last_hand = temp_hand;
 	      pos += 2;
 	
+	      kifu = kifu.slice(0, (temp_hand-1) * 2);
               kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
 
