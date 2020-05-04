@@ -256,14 +256,20 @@
 	      last_hand = temp_hand;
 	      pos += 2;
 	
-	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
+	      kifu = kifu.slice(0, (temp_hand - 1) * 10);
               
-	      if (player_color == BLOCK_KIND.BLACK) {
-	        kifu = kifu + Alphabet[_x];
-	      } else if (player_color == BLOCK_KIND.WHITE) {
-                kifu = kifu + alphabet[_x];
+	      var number_str;
+              if (temp_hand < 10) {
+		number_str = " " + temp_hand;
+              } else {
+		number_str = temp_hand;
 	      }
-              kifu = kifu + (_y + 1).toString();
+	      if (player_color == BLOCK_KIND.BLACK) {
+	        kifu = kifu + number_str + ": " + Alphabet[_x];
+	      } else if (player_color == BLOCK_KIND.WHITE) {
+                kifu = kifu + number_str + ": " + alphabet[_x];
+	      }
+              kifu = kifu + (_y + 1).toString() + "\<br\>"; 
 
 	      showBoard(i);
               if (!changePlayer(i)) {
@@ -300,7 +306,7 @@
 
     var msg_kifu = document.getElementById("msg_kifu");
     
-    var kifu_highlight = kifu.substring(0,2*temp_hand-2) + "<span class='highlight'>" + kifu.substring(2*temp_hand-2,2*temp_hand) + "</span>" + kifu.substring(2*temp_hand,kifu.length);   
+    var kifu_highlight = kifu.substring(0, 10 * (temp_hand -1)) + "<span class='highlight'>" + kifu.substring(10 * (temp_hand - 1), 10 * temp_hand) + "</span>" + kifu.substring(10 * temp_hand, kifu.length);   
     msg_kifu.innerHTML = kifu_highlight;
 
     if (allSameColor(i)) {
