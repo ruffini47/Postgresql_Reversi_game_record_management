@@ -254,8 +254,12 @@
 	      temp_hand++
 	      last_hand = temp_hand;
 	      pos += 2;
-	      kifu = kifu + alphabet[_x];
+	      
+	      kifu = kifu + "\<span style\=\"color: #0000ff;\"\>";
+              kifu = kifu + alphabet[_x];
               kifu = kifu + (_y + 1).toString();
+              kifu = kifu + "\<\/span\>";
+              kifu = kifu + "\<br\>";
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -418,7 +422,6 @@
 
   var doAiPlayer = function(i) {
 
-    i = temp_hand;
 
     if(isComputer == "false") {
       return false;
@@ -429,36 +432,43 @@
       return false;
     }
 
+    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+        board[i+1][xx][yy] = board[i][xx][yy];
+      }
+    }
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        if (turnOverBlock(i, x, y, true) > 0) {
-	  board[i][x][y] = player_color;
-	  if (i == 0) {
-	    snap_shot[i] = board[i];
-	  }
-	  for(var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-            for(var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
-	      board[i + 1][xx][yy] = board[i][xx][yy];
-            }
+	if (turnOverBlock(i+1, x, y, true) > 0) {
+          board[i+1][x][y] = player_color;  
+	  snap_shot[i+1] = board[i+1];
+          if (isPass(i+1) == false) {
+            last_player_color = BLOCK_KIND.MAX - player_color;
+          } else {
+            last_player_color = player_color;
           }
-	  i++;
-          snap_shot[i] = board[i];
-          last_hand++;
-	  temp_hand++;
-	  kifu = kifu + alphabet[x] 
-          kifu = kifu + (y + 1).toString();
+          i++;
+          temp_hand++
+          last_hand = temp_hand;
+          pos += 2;
+
+          //kifu = kifu + "\<span style\=\"color: #0000ff;\"\>";
+          //kifu = kifu + alphabet[_x];
+          //kifu = kifu + (_y + 1).toString();
+          //kifu = kifu + "\<\/span\>";
+          //kifu = kifu + "\<br\>";
           showBoard(i);
-          if(changePlayer(i)) {
-	    doAiPlayer(i);
+	  if (changePlayer(i)) {
+            doAiPlayer(i);
           }
-          return true;
+	  return true;
         }
       }
     }
-    
+
     return false;
   };
-
+	  
 　var isPass = function(i) {
    
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
@@ -569,7 +579,7 @@
     pos = 0;
     last_hand = 0;
     temp_hand = 0;
-    
+
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
       doAiPlayer(last_hand);
@@ -603,7 +613,7 @@
     // start game
     showBoard(last_hand);
     if(!isFirst) {
-      doAiPlayer();
+      doAiPlayer(temp_hand);
     }
   };
 
