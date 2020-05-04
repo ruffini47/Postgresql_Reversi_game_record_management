@@ -32,7 +32,8 @@
   var last_player_color;
 
   var kifu = "";
-  var alphabet ="abcdefgh"; 
+  var alphabet ="abcdefgh";
+  var Alphabet ="ABCDEFGH";
 
   var pos;
   var last_hand;
@@ -255,8 +256,13 @@
 	      last_hand = temp_hand;
 	      pos += 2;
 	
-	      kifu = kifu.slice(0, (temp_hand-1) * 2);
-              kifu = kifu + alphabet[_x];
+	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
+              
+	      if (player_color == BLOCK_KIND.BLACK) {
+	        kifu = kifu + Alphabet[_x];
+	      } else if (player_color == BLOCK_KIND.WHITE) {
+                kifu = kifu + alphabet[_x];
+	      }
               kifu = kifu + (_y + 1).toString();
 
 	      showBoard(i);
