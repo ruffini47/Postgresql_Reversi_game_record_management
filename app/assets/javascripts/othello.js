@@ -307,9 +307,9 @@
 
     var msg_kifu = document.getElementById("msg_kifu");
     
-    var kifu_highlight = kifu.substring(0, 10 * (temp_hand -1)) + "<span class='highlight'>" + kifu.substring(10 * (temp_hand - 1), 10 * temp_hand) + "</span>" + kifu.substring(10 * temp_hand, kifu.length);   
+    var kifu_highlight = kifu.substring(0, 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + kifu.substring(10 * (temp_hand - 1), 10 * temp_hand) + "</span></span>" + kifu.substring(10 * temp_hand, kifu.length);   
  
-    msg_kifu.innerHTML = kifu_highlight + "<span id='last-msg'></span>";
+    msg_kifu.innerHTML = kifu_highlight;
 
     var $box = $($(".link").data("box"));
     var $tareget = $($(".link").attr("href"));
