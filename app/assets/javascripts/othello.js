@@ -257,7 +257,7 @@
 	      last_hand = temp_hand;
 	      pos += 2;
 	
-	      display_kifu = display_kifu.slice(0, (temp_hand - 1) * 10);
+	      display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
 	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
@@ -311,7 +311,7 @@
 
     var msg_kifu = document.getElementById("msg_kifu");
     
-    var kifu_highlight = display_kifu.substring(0, 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(10 * (temp_hand - 1), 10 * temp_hand) + "</span></span>" + display_kifu.substring(10 * temp_hand, display_kifu.length);   
+    var kifu_highlight = display_kifu.substring(0, 6 + 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(6 + 10 * (temp_hand - 1), 6 + 10 * temp_hand) + "</span></span>" + display_kifu.substring(6 + 10 * temp_hand, display_kifu.length);   
  
     msg_kifu.innerHTML = kifu_highlight;
 
@@ -582,7 +582,7 @@
   var initRecord = function() {
 
     // initial kifu
-    display_kifu = "";
+    display_kifu = "開始\<br\>";
     kifu = "";
   };
 
