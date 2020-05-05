@@ -32,6 +32,7 @@
   var last_player_color;
 
   var kifu = "";
+  var display_kifu = "";
   var alphabet ="abcdefgh";
   var Alphabet ="ABCDEFGH";
 
@@ -256,7 +257,8 @@
 	      last_hand = temp_hand;
 	      pos += 2;
 	
-	      kifu = kifu.slice(0, (temp_hand - 1) * 10);
+	      display_kifu = display_kifu.slice(0, (temp_hand - 1) * 10);
+	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
               if (temp_hand < 10) {
@@ -265,12 +267,14 @@
 		number_str = temp_hand;
 	      }
 	      if (player_color == BLOCK_KIND.BLACK) {
-	        kifu = kifu + number_str + ": " + Alphabet[_x];
+		kifu = kifu + Alphabet[_x];
+	        display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
 	      } else if (player_color == BLOCK_KIND.WHITE) {
-                kifu = kifu + number_str + ": " + alphabet[_x];
+                kifu = kifu + alphabet[_x];
+		display_kifu = display_kifu + number_str + ": " + alphabet[_x];
 	      }
-              kifu = kifu + (_y + 1).toString() + "\<br\>"; 
-
+              display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+              kifu = kifu + (_y + 1).toString();
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -307,7 +311,7 @@
 
     var msg_kifu = document.getElementById("msg_kifu");
     
-    var kifu_highlight = kifu.substring(0, 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + kifu.substring(10 * (temp_hand - 1), 10 * temp_hand) + "</span></span>" + kifu.substring(10 * temp_hand, kifu.length);   
+    var kifu_highlight = display_kifu.substring(0, 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(10 * (temp_hand - 1), 10 * temp_hand) + "</span></span>" + display_kifu.substring(10 * temp_hand, display_kifu.length);   
  
     msg_kifu.innerHTML = kifu_highlight;
 
@@ -318,7 +322,8 @@
       scrollTop: $box.scrollTop() + dist
     });
 
-   
+    var simple_kifu = document.getElementById("simple_kifu");
+    simple_kifu.innerHTML = kifu;
 
     if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -483,11 +488,14 @@
             number_str = temp_hand;
           }
           if (player_color == BLOCK_KIND.BLACK) {
-            kifu = kifu + number_str + ": " + Alphabet[x];
+	    kifu = kifu + Alphabet[x];       	  
+            display_kifu = display_kifu + number_str + ": " + Alphabet[x];
           } else if (player_color == BLOCK_KIND.WHITE) {
-            kifu = kifu + number_str + ": " + alphabet[x];
+            kifu = kifu + alphabet[x];
+	    display_kifu = display_kifu + number_str + ": " + alphabet[x];
           }
-          kifu = kifu + (y + 1).toString() + "\<br\>";
+          display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
+	  kifu = kifu + (y + 1).toString();
 
           showBoard(i);
 	  if (changePlayer(i)) {
@@ -574,6 +582,7 @@
   var initRecord = function() {
 
     // initial kifu
+    display_kifu = "";
     kifu = "";
   };
 
