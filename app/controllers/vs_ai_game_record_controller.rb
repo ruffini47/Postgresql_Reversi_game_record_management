@@ -11,9 +11,10 @@ class VsAiGameRecordController < ApplicationController
     @game_record.user_id = user_id
     your_move = params[:your_move]
     @game_record.your_move = your_move
+    @game_record.vsAI= true
     if @game_record.save
-      flash[:success] = "プレイヤー情報を作成しました。"
-      redirect_to show_board_url(@game_record.id, "true")
+      flash[:success] = "プレイヤー情報を作成しました。ai"
+      redirect_to show_board_url(@game_record.id)
     else
       flash[:danger] = "プレイヤー情報の作成に失敗しました。"
       render :new

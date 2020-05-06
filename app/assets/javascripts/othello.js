@@ -24,7 +24,7 @@
 
   var from_saved = false;
   var your_move = "second";
-  var isComputer = "false";
+  var vsAI = false;
 
   var stone;
   var board = [];
@@ -452,7 +452,8 @@
   var doAiPlayer = function(i) {
 
 
-    if(isComputer == "false") {
+    if(vsAI == false) {
+      //alert("vsAI = " + vsAI);
       return false;
     }
 
@@ -601,11 +602,11 @@
 
     from_saved = gon.from_saved;
     your_move = gon.your_move;
-    isComputer = gon.isComputer;
+    vsAI = gon.vsAI;
    
     //alert(from_saved);
     //alert(your_move);
-    //alert(isComputer);
+    //alert(vsAI);
 
     if(your_move == "first") {
       isFirst = true;
@@ -615,7 +616,7 @@
 
     //alert(isFirst);
 
-    //alert(from_saved);
+    alert("from_saved = " + from_saved);
 
     pos = 0;
     last_hand = 0;
@@ -636,9 +637,9 @@
     initRecord();
 
     if(document.form1.Computer.checked) {
-      isComputer = "true";
+      vsAI = true;
     } else {
-      isComputer = "false";
+      vsAI = false;
     }
     
     if(document.form1.First.checked) {

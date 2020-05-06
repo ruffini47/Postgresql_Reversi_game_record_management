@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'trial_game_record_controllers/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   post '/users/:user_id/your_move/:your_move/vs_ai_game_records/create', to: 'vs_ai_game_record#create', as: 'create_user_vs_ai_game_record'
 
   # ボード表示
-  get '/game_record/:id/isComputer/:isComputer/boards/show', to: 'boards#show', as: 'show_board'
+  get '/game_record/:id/boards/show', to: 'boards#show', as: 'show_board'
 
   # 棋譜保存
   get '/save_game_record/update', to: 'save_game_record#update', as: 'save_game_record'

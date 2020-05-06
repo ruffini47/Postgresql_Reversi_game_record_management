@@ -5,7 +5,7 @@ class BoardsController < ApplicationController
     gon.kifu = @game_record.kifu
     gon.from_saved = @game_record.from_saved
     gon.your_move = @game_record.your_move
-    gon.isComputer = params[:isComputer]
+    gon.vsAI = @game_record.vsAI
   end
 
   def index
