@@ -36,7 +36,7 @@
   var alphabet ="abcdefgh";
   var Alphabet ="ABCDEFGH";
 
-  var pos;
+  //var pos;
   var last_hand;
   var temp_hand;
   var snap_shot = [];
@@ -255,7 +255,7 @@
 	      i++;
 	      temp_hand++
 	      last_hand = temp_hand;
-	      pos += 2;
+	      //pos += 2;
 	
 	      display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
 	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
@@ -331,7 +331,7 @@
       } else if (player_color == BLOCK_KIND.WHITE) {
         alert("白のパーフェクト勝ちです。1");   
       } else {
-        alert("invalid status");
+        alert("invalid status 4");
       }
     } else {
       if (black + white == 64 || isFinished == true ) {
@@ -416,7 +416,7 @@
       } else if (player_color == BLOCK_KIND.WHITE) {
         alert("白の置ける場所がありません。続けて黒の番となります。");
       } else {
-        alert("invalid status");
+        alert("invalid status 1");
       }
         
       player_color = BLOCK_KIND.MAX - player_color;
@@ -428,7 +428,7 @@
           } else if (player_color == BLOCK_KIND.WHITE) {
             alert("白のパーフェクト勝ちです。2");   
           } else {
-            alert("invalid status");
+            alert("invalid status 2");
           }
         } else {
 	  if(player_color == BLOCK_KIND.BLACK) {
@@ -436,7 +436,7 @@
           } else if (player_color == BLOCK_KIND.WHITE) {
             alert("白も置ける場所がありません。試合終了です。");
           } else {
-            alert("invalid status");
+            alert("invalid status 3");
           }
         }
 	
@@ -480,7 +480,7 @@
           i++;
           temp_hand++
           last_hand = temp_hand;
-          pos += 2;
+          //pos += 2;
           
           var number_str;
           if (temp_hand < 10) {
@@ -618,9 +618,84 @@
 
     alert("from_saved = " + from_saved);
 
-    pos = 0;
-    last_hand = 0;
-    temp_hand = 0;
+    if (from_saved == true ) {
+      var kifu_from_saved = gon.kifu;
+      alert("kifu_from_saved = " + kifu_from_saved);
+      var n;
+      var _x;
+      var _y;
+      for (i = 0; i < kifu_from_saved.length; i+=2) { 
+        switch(kifu_from_saved.charAt(i)){
+          case 'a':
+	  case 'A':
+            n = 0;
+            break;
+          case 'b':
+	  case 'B':
+            n = 1;
+            break;
+          case 'c':
+	  case 'C':
+            n = 2;
+            break;
+          case 'd':
+	  case 'D':
+            n = 3;
+            break;
+          case 'e':
+	  case 'E':
+            n = 4;
+            break;
+          case 'f':
+	  case 'F':
+            n = 5;
+            break;
+          case 'g':
+	  case 'G':
+            n = 6;
+            break;
+          case 'h':
+	  case 'H':
+            n = 7;
+            break;
+         }
+         _x = n;
+         _y = kifu_from_saved.charAt(i + 1) - 1;
+	 //alert("x = " + _x);
+	 //alert("y = " + _y);
+	 for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+           for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+             board[i / 2 + 1][xx][yy] = board[i / 2][xx][yy];
+           }
+         }
+         if (turnOverBlock(i / 2 + 1, _x, _y, true) > 0) {
+           board[i / 2 + 1][_x][_y] = player_color;
+           snap_shot[i / 2 + 1] = board[i / 2 + 1];
+           if (isPass(i / 2 + 1) == false) {
+             last_player_color = BLOCK_KIND.MAX - player_color;
+           } else {
+             last_player_color = player_color;
+           }
+	   changePlayer(i / 2 + 1);
+         }
+      }
+      
+      last_hand = kifu_from_saved.length / 2;
+      
+      for (j = 0; j <= last_hand; j++) {
+	board[j] = snap_shot[j];
+	//alert(board[j]);
+      }
+      
+      temp_hand = last_hand;
+      //board[last_hand] = snap_shot[last_hand];         
+      
+    } else {
+
+      //pos = 0;
+      last_hand = 0;
+      temp_hand = 0;
+    }
 
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
@@ -650,7 +725,7 @@
        
     from_saved = "false";
 
-    pos = 0;
+    //pos = 0;
     last_hand = 0;
     temp_hand = 0;
     
@@ -688,7 +763,7 @@
   $("#play_back").click(function() {
     initBoard();
     showBoard();
-    pos = 0;
+    //pos = 0;
     player_color = BLOCK_KIND.BLACK; 
    if (from_saved == "true") {
       kifu = "";
