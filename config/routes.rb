@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'trial_game_record_controllers/new'
+  get 'save_as_game_record/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -25,6 +25,9 @@ Rails.application.routes.draw do
 
   # 棋譜保存
   get '/save_game_record/update', to: 'save_game_record#update', as: 'save_game_record'
+
+  # 棋譜別名で保存
+  get  'save_as_game_record/update', to:'save_as_game_record#update', as:'save_as_game_record'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,2 @@
+module SaveAsGameRecordHelper
+end

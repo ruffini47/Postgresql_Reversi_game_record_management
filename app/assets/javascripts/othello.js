@@ -782,6 +782,35 @@
     });
   });
 
+  $("#SaveAs").click(function() {
+     
+    $.ajax({
+      url: '/save_as_game_record/update',
+      type: "GET",
+      dataType: "html",
+      async: true,
+      data: {
+	title: gon.title,
+	black_player: gon.black_player,
+	white_player: gon.white_player,
+	date_played: gon.date_played,
+	place_played: gon.place_played,
+	user_id: gon.user_id,
+	kifu: kifu,
+	your_move: gon.your_move,
+	vsAI: gon.vsAI,
+      },
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
+    });
+  });
+
+
+
   $("#play_back").click(function() {
     initBoard();
     showBoard();
