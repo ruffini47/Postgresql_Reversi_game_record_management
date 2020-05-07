@@ -619,13 +619,16 @@
     alert("from_saved = " + from_saved);
 
     if (from_saved == true ) {
-      var kifu_from_saved = gon.kifu;
-      alert("kifu_from_saved = " + kifu_from_saved);
+      kifu = gon.kifu;
+      alert("kifu = " + kifu);
       var n;
       var _x;
       var _y;
-      for (i = 0; i < kifu_from_saved.length; i+=2) { 
-        switch(kifu_from_saved.charAt(i)){
+      var ii;
+      var temp_handd;
+      var number_str;
+      for (i = 0; i < kifu.length; i+=2) { 
+        switch(kifu.charAt(i)){
           case 'a':
 	  case 'A':
             n = 0;
@@ -660,38 +663,57 @@
             break;
          }
          _x = n;
-         _y = kifu_from_saved.charAt(i + 1) - 1;
+         _y = kifu.charAt(i + 1) - 1;
 	 //alert("x = " + _x);
 	 //alert("y = " + _y);
+	 ii = i / 2;
 	 for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
            for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-             board[i / 2 + 1][xx][yy] = board[i / 2][xx][yy];
+             board[ii + 1][xx][yy] = board[ii][xx][yy];
            }
          }
-         if (turnOverBlock(i / 2 + 1, _x, _y, true) > 0) {
-           board[i / 2 + 1][_x][_y] = player_color;
-           snap_shot[i / 2 + 1] = board[i / 2 + 1];
-           if (isPass(i / 2 + 1) == false) {
+         if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
+           board[ii + 1][_x][_y] = player_color;
+           snap_shot[ii + 1] = board[ii + 1];
+           if (isPass(ii + 1) == false) {
              last_player_color = BLOCK_KIND.MAX - player_color;
            } else {
              last_player_color = player_color;
            }
-	   changePlayer(i / 2 + 1);
-         }
+	   
+	   ii++;
+                
+           temp_handd = ii;
+	   last_hand = temp_handd;
+	
+	   display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
+              
+           if (temp_handd < 10) {
+	     number_str = " " + temp_handd;
+           } else {
+	     number_str = temp_handd;
+	   }
+	   if (player_color == BLOCK_KIND.BLACK) {
+	     display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+	   } else if (player_color == BLOCK_KIND.WHITE) {
+	     display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+	   }
+           display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+           //showBoard(ii);
+	   changePlayer(ii);          
+	 }       
       }
       
-      last_hand = kifu_from_saved.length / 2;
+      //last_hand = kifu.length / 2;
       
       for (j = 0; j <= last_hand; j++) {
 	board[j] = snap_shot[j];
-	//alert(board[j]);
       }
       
       temp_hand = last_hand;
-      //board[last_hand] = snap_shot[last_hand];         
       
     } else {
-
+               
       //pos = 0;
       last_hand = 0;
       temp_hand = 0;
