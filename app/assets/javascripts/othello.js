@@ -627,6 +627,8 @@
       var ii;
       var temp_handd;
       var number_str;
+      var invalid_flag = false;
+      i_loop:
       for (i = 0; i < kifu.length; i += 2) { 
         switch(kifu.charAt(i)){
           case 'a':
@@ -661,9 +663,20 @@
 	  case 'H':
             n = 7;
             break;
+	  default:
+	    n = 8;
+	    break;
+        }
+	if (n == 8) {
+	  invalid_flag = true;
+	  break;
         }
         _x = n;
         _y = kifu.charAt(i + 1) - 1;
+	if (!is07Number(_y)) {
+	  invalid_flag = true;
+	  break;
+        }
 	//alert("x = " + _x);
 	//alert("y = " + _y);
 	ii = i / 2;
@@ -716,12 +729,14 @@
 
 
 	} else {
-	  alert((temp_handd + 1) + "手目が不正です。 ");
-          break;
+	  //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
+          invalid_flag = true;
+	  break i_loop;
 	}	 
       }
-      
-      
+      if (invalid_flag == true ) {
+        alert((temp_handd + 1) +  "手目が不正です。switch");
+      }
      
     } else if (from_saved == false) {
                
@@ -736,6 +751,11 @@
     }
 
   };
+
+  function is07Number(val){
+  var regexp = new RegExp(/^[0-7]$/);
+  return regexp.test(val);
+}
 
 
   document.getElementById("Reset").onclick = function() {
