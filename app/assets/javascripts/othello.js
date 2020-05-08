@@ -723,7 +723,7 @@
       
       
      
-    } else if (from_save == false) {
+    } else if (from_saved == false) {
                
       //pos = 0;
       last_hand = 0;
