@@ -44,7 +44,7 @@ class GameRecordsController < ApplicationController
   private
 
     def game_records_params
-      params.require(:game_record).permit(:title, :black_player, :white_player, :date_played, :place_played)
+      params.require(:game_record).permit(:title, :black_player, :white_player, :date_played, :place_played, :kifu)
     end
 
 end

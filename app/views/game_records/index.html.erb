@@ -10,7 +10,8 @@
         <td>対局日</td>
 	<td>対局場所</td>
 	<td>棋譜</td>
-	<td></td>
+	<td>AIとの対局</td>
+	<td>あなたの手番</td>
 	<td></td>
 	<td></td>
       </tr>
@@ -24,6 +25,16 @@
 	<td><%= game_record.date_played %></td>
 	<td><%= game_record.place_played %></td>
 	<td><%= game_record.kifu %></td>
+	<% if game_record.vsAI == true %>
+	  <td>AIとの対戦</td>
+        <% else %>
+	  <td>人間同士の対戦</td>
+        <% end %>
+	<% if game_record.your_move == "first" %>
+	  <td>先手</td>
+	<% elsif game_record.your_move == "second" %>
+	  <td>後手</td>
+	<% end %>
 	<td><%= link_to "編集", edit_user_game_record_path(current_user.id, game_record.id), class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to "削除", user_game_record_path(current_user.id, game_record.id), method: :delete,
               data: { confirm: "「#{game_record.title}」を削除してよろしいですか？" }, class: "btn btn-primary btn-sm" %></td>
