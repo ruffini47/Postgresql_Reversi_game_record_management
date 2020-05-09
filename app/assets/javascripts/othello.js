@@ -257,23 +257,23 @@
 	      last_hand = temp_hand;
 	      //pos += 2;
 	
-	      display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
+	      display_kifu = display_kifu.slice(0, 44 + (temp_hand - 1) * 27);
 	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
               if (temp_hand < 10) {
-		number_str = " " + temp_hand;
+		number_str = temp_hand;
               } else {
 		number_str = temp_hand;
 	      }
 	      if (player_color == BLOCK_KIND.BLACK) {
 		kifu = kifu + Alphabet[_x];
-	        display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+	        display_kifu = display_kifu + "\<span id\=\'a" + number_str + "\'\>" + Alphabet[_x];
 	      } else if (player_color == BLOCK_KIND.WHITE) {
                 kifu = kifu + alphabet[_x];
-		display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+		display_kifu = display_kifu + "\<span id\=\'a" + number_str + "\'\>" + alphabet[_x];
 	      }
-              display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+              display_kifu = display_kifu + (_y + 1).toString() + "\<\/span\>\<br\>"; 
               kifu = kifu + (_y + 1).toString();
 	      showBoard(i);
               if (!changePlayer(i)) {
@@ -311,7 +311,7 @@
 
     var msg_kifu = document.getElementById("msg_kifu");
     
-    var kifu_highlight = display_kifu.substring(0, 6 + 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(6 + 10 * (temp_hand - 1), 6 + 10 * temp_hand) + "</span></span>" + display_kifu.substring(6 + 10 * temp_hand, display_kifu.length);   
+    var kifu_highlight = display_kifu.substring(0, 44 + 27 * (temp_hand -1)) + "\<span id\=\'last-msg'\>\<span class=\'highlight\'\>" + display_kifu.substring(44 + 27 * (temp_hand - 1), 44 + 27 * temp_hand) + "\<\/span\>\<\/span\>" + display_kifu.substring(44 + 27 * temp_hand, display_kifu.length);   
  
     msg_kifu.innerHTML = kifu_highlight;
 
@@ -484,18 +484,18 @@
           
           var number_str;
           if (temp_hand < 10) {
-            number_str = " " + temp_hand;
+            number_str = temp_hand;
           } else {
             number_str = temp_hand;
           }
           if (player_color == BLOCK_KIND.BLACK) {
 	    kifu = kifu + Alphabet[x];       	  
-            display_kifu = display_kifu + number_str + ": " + Alphabet[x];
+            display_kifu = display_kifu + "\<span id\=\'a" + number_str + "\'\>" + Alphabet[x];
           } else if (player_color == BLOCK_KIND.WHITE) {
             kifu = kifu + alphabet[x];
-	    display_kifu = display_kifu + number_str + ": " + alphabet[x];
+	    display_kifu = display_kifu + "\<span id\=\'a" + number_str + "\'\>" + alphabet[x];
           }
-          display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
+          display_kifu = display_kifu + (y + 1).toString() + "\<\/span\>\<br\>";
 	  kifu = kifu + (y + 1).toString();
 
           showBoard(i);
@@ -583,7 +583,7 @@
   var initRecord = function() {
 
     // initial kifu
-    display_kifu = "開始\<br\>";
+    display_kifu = "\<input type\=\"button\" id\=\"a0\" value\=\"開始\"\>\<br\>";
     kifu = "";
   };
 
@@ -699,19 +699,19 @@
           temp_handd = ii;
 	  last_hand = temp_handd;
 	
-	  display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
+	  display_kifu = display_kifu.slice(0, 44 + (temp_handd - 1) * 27);
               
           if (temp_handd < 10) {
-	    number_str = " " + temp_handd;
+	    number_str = temp_handd;
           } else {
 	    number_str = temp_handd;
 	  }
 	  if (player_color == BLOCK_KIND.BLACK) {
-	    display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+	    display_kifu = display_kifu + "\<span id\=\'a" + number_str + "\'\>" + Alphabet[_x];
 	  } else if (player_color == BLOCK_KIND.WHITE) {
-	    display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+	    display_kifu = display_kifu + "\<span id\=\'a" + number_str + "\'\>" + alphabet[_x];
 	  }
-          display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+          display_kifu = display_kifu + (_y + 1).toString() + "\<\/span\>\<br\>"; 
           //showBoard(ii);
 	  changePlayer(ii);
 
@@ -881,7 +881,7 @@
 
   $("#back_to_beginning").click(function() {
     temp_hand = 0;
-    board[0] = snap_shot[0]
+    board[0] = snap_shot[0];
     player_color = BLOCK_KIND.BLACK;
     showBoard(0);
   });
@@ -893,8 +893,20 @@
     showBoard(last_hand);
   });
 
+  $("#a0").click(function() {
+    alert("a0");
+    temp_hand = 0;
+    board[0] = snap_shot[0];
+    player_color = BLOCK_KIND.BLACK;
+    showBoard(0);
+  });
 
-
+  $("#a1").click(function() {
+    temp_hand = 1;
+    board[1] = snap_shot[1];
+    player_color = BLOCK_KIND.WHITE;
+    showBoard(1);
+  });
 
 })();
 

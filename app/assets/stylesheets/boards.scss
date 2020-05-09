@@ -158,7 +158,14 @@ position: relative;
   border: 1px solid;   /* 枠線を追加 */
   background-color: #ffffff; //#b8d5f1;
 }
-
+/*
+#a0//for id
+{
+  position: absolute;
+  top: 43*14px;
+  margin-left: 50px;
+}
+*/
 #simple_kifu//for id
 {
   position: absolute;
@@ -271,4 +278,9 @@ position: relative;
   margin-left: 150px;
 }
 
-
+#a0//for id
+{
+  position: absolute;
+  top:43*18+20px;
+  margin-left: 200px;
+}
