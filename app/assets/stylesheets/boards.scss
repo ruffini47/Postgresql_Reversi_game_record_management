@@ -153,7 +153,7 @@ position: relative;
   position: absolute;
   margin-left: 400px;
   height: 360px;     /* 高さを制限(※) */
-  width: 70px;
+  width: 700px;
   overflow: scroll;  /* スクロールバーを表示(※) */
   border: 1px solid;   /* 枠線を追加 */
   background-color: #ffffff; //#b8d5f1;
@@ -277,10 +277,18 @@ position: relative;
   top:43*18+20px;
   margin-left: 150px;
 }
-
+/*
 #a0//for id
 {
   position: absolute;
   top:43*18+20px;
   margin-left: 200px;
 }
+
+#a1//for id
+{
+  position: absolute;
+  top:43*18+20px;
+  margin-left: 250px;
+}
+*/

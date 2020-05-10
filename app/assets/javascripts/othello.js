@@ -313,7 +313,21 @@
     
     var kifu_highlight = display_kifu.substring(0, 44 + 27 * (temp_hand -1)) + "\<span id\=\'last-msg'\>\<span class=\'highlight\'\>" + display_kifu.substring(44 + 27 * (temp_hand - 1), 44 + 27 * temp_hand) + "\<\/span\>\<\/span\>" + display_kifu.substring(44 + 27 * temp_hand, display_kifu.length);   
  
-    msg_kifu.innerHTML = kifu_highlight;
+    //msg_kifu.innerHTML = kifu_highlight;
+
+
+    msg_kifu.innerHTML = '<input type="button" id="a0"><br><input type="button" id="a1">';
+	  
+    var aa0= "開始";	  
+    $('#a0').val(aa0);
+
+    var aa1="１手目";
+    $('#a1').val(aa1);
+
+
+  
+	  
+    //msg_kifu.append('<span><input type="button" id="a1"></span>');
 
     var $box = $($(".link").data("box"));
     var $tareget = $($(".link").attr("href"));
@@ -740,11 +754,14 @@
      
     } else if (from_saved == false) {
                
-      //pos = 0;
+      alert("from_saved koko = " + from_saved);
       last_hand = 0;
       temp_hand = 0;
 
       showBoard(last_hand);
+      //if (!changePlayer(last_hand)) {
+      //  doAiPlayer(last_hand);
+      alert("isFirst = " + isFirst);
       if(!from_saved && !isFirst) {
         doAiPlayer(last_hand);
       }
@@ -907,6 +924,7 @@
     player_color = BLOCK_KIND.WHITE;
     showBoard(1);
   });
+
 
 })();
 
