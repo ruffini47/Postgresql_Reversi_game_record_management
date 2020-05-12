@@ -257,7 +257,7 @@
 	      last_hand = temp_hand;
 	      //pos += 2;
 	
-	      display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
+	     display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
 	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
@@ -312,7 +312,40 @@
     var msg_kifu = document.getElementById("msg_kifu");
     
     var kifu_highlight = display_kifu.substring(0, 6 + 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(6 + 10 * (temp_hand - 1), 6 + 10 * temp_hand) + "</span></span>" + display_kifu.substring(6 + 10 * temp_hand, display_kifu.length);   
+
+
+    var a0_value= "開始";
+    $('#a0').val(a0_value);
+
+    var a1_value="１手目";
+    $('#a1').val(a1_value);
+
+    if (last_hand == 0) {
+      $('#a1').hide();
+    } else if (last_hand > 0) {
+      $('#a1').show();
+    }
+
+    
+
+    /*	  
+    var parent = document.getElementById("msg_kifu");
+    parent.insertAdjacentHTML('beforeend', '<input type="button" id="a1" value="１手目">');
+    */
+	  
+    /*
+    var parent = document.getElementById("msg_kifu");
+    
+    var child = document.createElement("input");
  
+    child.setAttribute("type","button");
+    child.setAttribute("id","a1");
+    child.setAttribute("value","１手目");
+           
+    parent.appendChild(child);
+    */
+    
+    /*
     msg_kifu.innerHTML = kifu_highlight;
 
     var $box = $($(".link").data("box"));
@@ -321,6 +354,7 @@
     $box.stop().animate({
       scrollTop: $box.scrollTop() + dist
     });
+    */
 
     var simple_kifu = document.getElementById("simple_kifu");
     simple_kifu.innerHTML = kifu;
@@ -587,6 +621,16 @@
     kifu = "";
   };
 
+ 
+  function js_alert() {
+    temp_hand = 0;
+    board[0] = snap_shot[0]
+    player_color = BLOCK_KIND.BLACK;
+    showBoard(0);
+  }
+
+ 
+
   onload = function() {
     // just in case
     //Object.freeze(BLOCK_KIND);
@@ -753,10 +797,9 @@
   };
 
   function is07Number(val){
-  var regexp = new RegExp(/^[0-7]$/);
-  return regexp.test(val);
-}
-
+    var regexp = new RegExp(/^[0-7]$/);
+    return regexp.test(val);
+  }
 
   document.getElementById("Reset").onclick = function() {
     
@@ -893,7 +936,19 @@
     showBoard(last_hand);
   });
 
+  $("#a0").click(function() {
+    temp_hand = 0;
+    board[0] = snap_shot[0]
+    player_color = BLOCK_KIND.BLACK;
+    showBoard(0);
+  });
 
+  $("#a1").click(function() {
+    temp_hand = 1;
+    board[1] = snap_shot[1]
+    player_color = BLOCK_KIND.WHITE;
+    showBoard(1);
+  });
 
 
 })();
