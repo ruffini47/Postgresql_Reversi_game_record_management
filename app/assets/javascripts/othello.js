@@ -40,6 +40,7 @@
   var temp_hand;
   var button_temp_hand;
   var previous_temp_hand;
+  var unwrap_flag;
   var snap_shot = [];
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
@@ -342,16 +343,13 @@
  
     $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
 
-    if (temp_hand == previous_temp_hand + 1 && temp_hand != button_temp_hand + 1) {
+    if (temp_hand == previous_temp_hand + 1 && temp_hand != button_temp_hand + 1 && unwrap_flag == true) {
       $("#a" + previous_temp_hand).unwrap();
     }
 
-    //alert("temp_hand = " + temp_hand);
-    //alert("button_temp_hand = " + button_temp_hand);
-
-    if (temp_hand == button_temp_hand + 1) {
+    if (temp_hand == button_temp_hand + 1 && unwrap_flag == true) {
       $("#a" + button_temp_hand).unwrap();
-    } else if (temp_hand == button_temp_hand - 1) {
+    } else if (temp_hand == button_temp_hand - 1 && unwrap_flag == true) {
       $("#a" + button_temp_hand).unwrap();
     }
 
@@ -647,6 +645,7 @@
     // initial kifu
     display_kifu = "開始\<br\>";
     kifu = "";
+    unwrap_flag = true;
   };
 
  
@@ -933,6 +932,7 @@
       changePlayer(temp_hand);
     } else {
       temp_hand = last_hand;
+      unwrap_flag = false;
     }
     board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
@@ -945,6 +945,7 @@
       changePlayer(temp_hand);
     } else {
       temp_hand = 0;
+      unwrap_flag = false;
     }
     board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
