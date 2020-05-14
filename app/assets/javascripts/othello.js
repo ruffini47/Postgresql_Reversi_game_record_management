@@ -31,8 +31,8 @@
   var player_color;
   var last_player_color;
 
-  var kifu = "";
-  var display_kifu = "";
+  //var kifu = "";
+  //var display_kifu = "";
   var alphabet ="abcdefgh";
   var Alphabet ="ABCDEFGH";
 
@@ -260,8 +260,8 @@
 	      last_hand = temp_hand;
 	      //pos += 2;
 	
-	     display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
-	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
+	      //display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
+	      //kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
               if (temp_hand < 10) {
@@ -270,14 +270,14 @@
 		number_str = temp_hand;
 	      }
 	      if (player_color == BLOCK_KIND.BLACK) {
-		kifu = kifu + Alphabet[_x];
-	        display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+		//kifu = kifu + Alphabet[_x];
+	        //display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
 	      } else if (player_color == BLOCK_KIND.WHITE) {
-                kifu = kifu + alphabet[_x];
-		display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+                //kifu = kifu + alphabet[_x];
+		//display_kifu = display_kifu + number_str + ": " + alphabet[_x];
 	      }
-              display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
-              kifu = kifu + (_y + 1).toString();
+              //display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+              //kifu = kifu + (_y + 1).toString();
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -314,8 +314,9 @@
 
     var msg_kifu = document.getElementById("msg_kifu");
     
+    /*
     var kifu_highlight = display_kifu.substring(0, 6 + 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(6 + 10 * (temp_hand - 1), 6 + 10 * temp_hand) + "</span></span>" + display_kifu.substring(6 + 10 * temp_hand, display_kifu.length);   
-
+*/
 
     $("#a0").val("開始");
 
@@ -331,34 +332,30 @@
       }
     }
        
+    $("#a" + temp_hand).css("color", "#ffffff");
+    $("#a" + temp_hand).css("background-color", "blue");
+    
     for (i = 0; i <= 60; i++) {
-      if (i == temp_hand) {
-        $("#a" + i).css("color", "#ffffff");
-	$("#a" + i).css("background-color", "blue");
-      } else {
+      if (i !=  temp_hand) {
 	$("#a" + i).css("color", "#000000");
 	$("#a" + i).css("background-color", "#ffffff");
       }
     }
  
-    for (i = 0; i <= 60; i++) {               	  
-      if (temp_hand == i) {
-	$("#a" + i).wrap('<span id="last-msg"></span>');
-      }
-    }
+    $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
 
-    if (temp_hand == previous_temp_hand + 1) {
+    if (temp_hand == previous_temp_hand + 1 && temp_hand != button_temp_hand + 1) {
       $("#a" + previous_temp_hand).unwrap();
     }
 
+    //alert("temp_hand = " + temp_hand);
+    //alert("button_temp_hand = " + button_temp_hand);
+
     if (temp_hand == button_temp_hand + 1) {
-      //$("#a" + temp_hand).wrap('<span id="last-msg"></span>');
       $("#a" + button_temp_hand).unwrap();
     } else if (temp_hand == button_temp_hand - 1) {
-      //$("#a" + temp_hand).wrap('<span id="last-msg"></span>');
       $("#a" + button_temp_hand).unwrap();
     }
-
 
 
     /*	  
@@ -380,7 +377,7 @@
     
     /*
     msg_kifu.innerHTML = kifu_highlight;
-    */        
+    */
     var $box = $($(".link").data("box"));
     var $tareget = $($(".link").attr("href"));
     var dist = $tareget.position().top - $box.position().top;
@@ -388,10 +385,11 @@
       scrollTop: $box.scrollTop() + dist
     });
     
+   
 
     var simple_kifu = document.getElementById("simple_kifu");
-    simple_kifu.innerHTML = kifu;
-
+    //simple_kifu.innerHTML = kifu;
+              
     if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
         alert("黒のパーフェクト勝ちです。1");
@@ -413,7 +411,6 @@
     }
 
     isFinished = false;
-	
   };
 
   var isFinish = function(i) {
@@ -557,14 +554,14 @@
             number_str = temp_hand;
           }
           if (player_color == BLOCK_KIND.BLACK) {
-	    kifu = kifu + Alphabet[x];       	  
-            display_kifu = display_kifu + number_str + ": " + Alphabet[x];
+	    //kifu = kifu + Alphabet[x];       	  
+            //display_kifu = display_kifu + number_str + ": " + Alphabet[x];
           } else if (player_color == BLOCK_KIND.WHITE) {
-            kifu = kifu + alphabet[x];
-	    display_kifu = display_kifu + number_str + ": " + alphabet[x];
+            //kifu = kifu + alphabet[x];
+	    //display_kifu = display_kifu + number_str + ": " + alphabet[x];
           }
-          display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
-	  kifu = kifu + (y + 1).toString();
+          //display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
+	  //kifu = kifu + (y + 1).toString();
 
           showBoard(i);
 	  if (changePlayer(i)) {
@@ -651,8 +648,8 @@
   var initRecord = function() {
 
     // initial kifu
-    display_kifu = "開始\<br\>";
-    kifu = "";
+    //display_kifu = "開始\<br\>";
+    //kifu = "";
   };
 
  
@@ -777,7 +774,7 @@
           temp_handd = ii;
 	  last_hand = temp_handd;
 	
-	  display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
+	  //display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
               
           if (temp_handd < 10) {
 	    number_str = " " + temp_handd;
@@ -785,11 +782,11 @@
 	    number_str = temp_handd;
 	  }
 	  if (player_color == BLOCK_KIND.BLACK) {
-	    display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+	    //display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
 	  } else if (player_color == BLOCK_KIND.WHITE) {
-	    display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+	    //display_kifu = display_kifu + number_str + ": " + alphabet[_x];
 	  }
-          display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+          //display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
           //showBoard(ii);
 	  changePlayer(ii);
 
