@@ -31,12 +31,11 @@
   var player_color;
   var last_player_color;
 
-  //var kifu = "";
-  //var display_kifu = "";
+  var kifu = "";
+  var display_kifu = "";
   var alphabet ="abcdefgh";
   var Alphabet ="ABCDEFGH";
 
-  //var pos;
   var last_hand;
   var temp_hand;
   var button_temp_hand;
@@ -258,10 +257,9 @@
 	      previous_temp_hand = temp_hand;
 	      temp_hand++;
 	      last_hand = temp_hand;
-	      //pos += 2;
 	
-	      //display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
-	      //kifu = kifu.slice(0, (temp_hand - 1) * 2);
+	      display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
+	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
               if (temp_hand < 10) {
@@ -270,14 +268,14 @@
 		number_str = temp_hand;
 	      }
 	      if (player_color == BLOCK_KIND.BLACK) {
-		//kifu = kifu + Alphabet[_x];
-	        //display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+		kifu = kifu + Alphabet[_x];
+	        display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
 	      } else if (player_color == BLOCK_KIND.WHITE) {
-                //kifu = kifu + alphabet[_x];
-		//display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+                kifu = kifu + alphabet[_x];
+		display_kifu = display_kifu + number_str + ": " + alphabet[_x];
 	      }
-              //display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
-              //kifu = kifu + (_y + 1).toString();
+              display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+              kifu = kifu + (_y + 1).toString();
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -545,7 +543,6 @@
           previous_temp_hand = temp_hand;
           temp_hand++;
           last_hand = temp_hand;
-          //pos += 2;
           
           var number_str;
           if (temp_hand < 10) {
@@ -554,14 +551,14 @@
             number_str = temp_hand;
           }
           if (player_color == BLOCK_KIND.BLACK) {
-	    //kifu = kifu + Alphabet[x];       	  
-            //display_kifu = display_kifu + number_str + ": " + Alphabet[x];
+	    kifu = kifu + Alphabet[x];       	  
+            display_kifu = display_kifu + number_str + ": " + Alphabet[x];
           } else if (player_color == BLOCK_KIND.WHITE) {
-            //kifu = kifu + alphabet[x];
-	    //display_kifu = display_kifu + number_str + ": " + alphabet[x];
+            kifu = kifu + alphabet[x];
+	    display_kifu = display_kifu + number_str + ": " + alphabet[x];
           }
-          //display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
-	  //kifu = kifu + (y + 1).toString();
+          display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
+	  kifu = kifu + (y + 1).toString();
 
           showBoard(i);
 	  if (changePlayer(i)) {
@@ -648,8 +645,8 @@
   var initRecord = function() {
 
     // initial kifu
-    //display_kifu = "開始\<br\>";
-    //kifu = "";
+    display_kifu = "開始\<br\>";
+    kifu = "";
   };
 
  
@@ -774,7 +771,7 @@
           temp_handd = ii;
 	  last_hand = temp_handd;
 	
-	  //display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
+	  display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
               
           if (temp_handd < 10) {
 	    number_str = " " + temp_handd;
@@ -782,11 +779,11 @@
 	    number_str = temp_handd;
 	  }
 	  if (player_color == BLOCK_KIND.BLACK) {
-	    //display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+	    display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
 	  } else if (player_color == BLOCK_KIND.WHITE) {
-	    //display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+	    display_kifu = display_kifu + number_str + ": " + alphabet[_x];
 	  }
-          //display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+          display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
           //showBoard(ii);
 	  changePlayer(ii);
 
@@ -815,7 +812,6 @@
      
     } else if (from_saved == false) {
                
-      //pos = 0;
       last_hand = 0;
       temp_hand = 0;
 
@@ -852,7 +848,6 @@
        
     from_saved = "false";
 
-    //pos = 0;
     last_hand = 0;
     temp_hand = 0;
     
@@ -919,7 +914,7 @@
   $("#play_back").click(function() {
     initBoard();
     showBoard();
-    //pos = 0;
+
     player_color = BLOCK_KIND.BLACK; 
    if (from_saved == "true") {
       kifu = "";
