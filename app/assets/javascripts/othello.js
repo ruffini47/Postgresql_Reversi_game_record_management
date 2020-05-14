@@ -39,6 +39,8 @@
   //var pos;
   var last_hand;
   var temp_hand;
+  var button_temp_hand;
+  var previous_temp_hand;
   var snap_shot = [];
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
@@ -253,7 +255,8 @@
 		last_player_color = player_color;
 	      }
 	      i++;
-	      temp_hand++
+	      previous_temp_hand = temp_hand;
+	      temp_hand++;
 	      last_hand = temp_hand;
 	      //pos += 2;
 	
@@ -314,19 +317,49 @@
     var kifu_highlight = display_kifu.substring(0, 6 + 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(6 + 10 * (temp_hand - 1), 6 + 10 * temp_hand) + "</span></span>" + display_kifu.substring(6 + 10 * temp_hand, display_kifu.length);   
 
 
-    var a0_value= "開始";
-    $('#a0').val(a0_value);
+    $("#a0").val("開始");
 
-    var a1_value="１手目";
-    $('#a1').val(a1_value);
-
-    if (last_hand == 0) {
-      $('#a1').hide();
-    } else if (last_hand > 0) {
-      $('#a1').show();
+    for (i = 1; i <= 60; i++) {
+      $("#a" +  i).val(i + "手目");
+    }
+	  
+    for (i = 1; i <= 60; i++) {
+      if (last_hand < i) {
+	$("#a" + i).hide();
+      } else {
+	$("#a" + i).show();
+      }
+    }
+       
+    for (i = 0; i <= 60; i++) {
+      if (i == temp_hand) {
+        $("#a" + i).css("color", "#ffffff");
+	$("#a" + i).css("background-color", "blue");
+      } else {
+	$("#a" + i).css("color", "#000000");
+	$("#a" + i).css("background-color", "#ffffff");
+      }
+    }
+ 
+    for (i = 0; i <= 60; i++) {               	  
+      if (temp_hand == i) {
+	$("#a" + i).wrap('<span id="last-msg"></span>');
+      }
     }
 
-    
+    if (temp_hand == previous_temp_hand + 1) {
+      $("#a" + previous_temp_hand).unwrap();
+    }
+
+    if (temp_hand == button_temp_hand + 1) {
+      //$("#a" + temp_hand).wrap('<span id="last-msg"></span>');
+      $("#a" + button_temp_hand).unwrap();
+    } else if (temp_hand == button_temp_hand - 1) {
+      //$("#a" + temp_hand).wrap('<span id="last-msg"></span>');
+      $("#a" + button_temp_hand).unwrap();
+    }
+
+
 
     /*	  
     var parent = document.getElementById("msg_kifu");
@@ -347,14 +380,14 @@
     
     /*
     msg_kifu.innerHTML = kifu_highlight;
-
+    */        
     var $box = $($(".link").data("box"));
     var $tareget = $($(".link").attr("href"));
     var dist = $tareget.position().top - $box.position().top;
     $box.stop().animate({
       scrollTop: $box.scrollTop() + dist
     });
-    */
+    
 
     var simple_kifu = document.getElementById("simple_kifu");
     simple_kifu.innerHTML = kifu;
@@ -512,7 +545,8 @@
             last_player_color = player_color;
           }
           i++;
-          temp_hand++
+          previous_temp_hand = temp_hand;
+          temp_hand++;
           last_hand = temp_hand;
           //pos += 2;
           
@@ -901,6 +935,7 @@
         
  
   $("#next_button").click(function() {
+    button_temp_hand = temp_hand;
     temp_hand++;
     if (temp_hand <= last_hand) {
       changePlayer(temp_hand);
@@ -912,6 +947,7 @@
   });
   
   $("#previous_button").click(function() {
+    button_temp_hand = temp_hand;
     temp_hand--;
     if (temp_hand >= 0) {
       changePlayer(temp_hand);

@@ -153,19 +153,17 @@ position: relative;
   position: absolute;
   margin-left: 400px;
   height: 360px;     /* 高さを制限(※) */
-  width: 700px;
+  width: 150px;
   overflow: scroll;  /* スクロールバーを表示(※) */
   border: 1px solid;   /* 枠線を追加 */
   background-color: #ffffff; //#b8d5f1;
 }
-/*
-#a0//for id
+
+.kifu_textbox//for class
 {
-  position: absolute;
-  top: 43*14px;
-  margin-left: 50px;
+  width: 150px;
 }
-*/
+
 #simple_kifu//for id
 {
   position: absolute;
