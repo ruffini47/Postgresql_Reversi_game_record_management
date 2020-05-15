@@ -39,6 +39,10 @@
   var last_hand;
   var temp_hand;
   var previous_temp_hand;
+  var for_jump_temp_hand;
+  var wrap_flag;
+  var beginning_flag;
+  var end_flag;
   var snap_shot = [];
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
@@ -276,6 +280,8 @@
               display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
               kifu = kifu + (_y + 1).toString();
 	      wrap_flag = true;
+	      beginning_flag = false;
+	      end_flag = false;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -308,8 +314,6 @@
 
     var msg = document.getElementById("msg");
      
-    msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
-
     var msg_kifu = document.getElementById("msg_kifu");
     
     /*
@@ -344,14 +348,30 @@
       $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
     }
 
+    //alert("temp_hand = " + temp_hand);
+    //alert("previous_temp_hand = " + previous_temp_hand);
+    //alert("temp_hand = " + temp_hand);
+    alert("for_jump_temp_hand = " + for_jump_temp_hand);
+    alert("last_hand = " + last_hand);
     alert("temp_hand = " + temp_hand);
     alert("previous_temp_hand = " + previous_temp_hand);
 
-    if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
-      $("#a" + previous_temp_hand).unwrap();
+    if (!(beginning_flag == true || end_flag == true)) { 
+      if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
+        $("#a" + previous_temp_hand).unwrap();
+      }
     }
 
-	  
+    if (beginning_flag == true) {
+      if (for_jump_temp_hand - 0 >= 1) {
+        $("#a" + for_jump_temp_hand).unwrap();
+      }
+    } else if (end_flag == true) {
+      if (last_hand - for_jump_temp_hand >= 1) {
+	$("#a" + for_jump_temp_hand).unwrap();
+      }
+    }
+
     /*	  
     var parent = document.getElementById("msg_kifu");
     parent.insertAdjacentHTML('beforeend', '<input type="button" id="a1" value="１手目">');
@@ -556,6 +576,8 @@
           display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
 	  kifu = kifu + (y + 1).toString();
           wrap_flag = true;
+          beginning_flag = false;
+          end_flag = false;
           showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
@@ -801,6 +823,9 @@
       temp_hand = 0;
       previous_temp_hand = 0;
       wrap_flag = true;
+      beginning_flag = false;
+      end_flag = false;
+      for_jump_temp_hand = 0;
 
       showBoard(last_hand);
       if(!from_saved && !isFirst) {
@@ -914,6 +939,8 @@
         
  
   $("#next_button").click(function() {
+    beginning_flag = false;
+    end_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand++;
     if (temp_hand <= last_hand) {
@@ -928,6 +955,8 @@
   });
   
   $("#previous_button").click(function() {
+    beginning_flag = false;
+    end_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand--;
     if (temp_hand >= 0) {
@@ -942,6 +971,10 @@
   });
 
   $("#back_to_beginning").click(function() {
+    wrap_flag = true;
+    beginning_flag = true;
+    end_flag = false;
+    for_jump_temp_hand = temp_hand;
     temp_hand = 0;
     board[0] = snap_shot[0]
     player_color = BLOCK_KIND.BLACK;
@@ -949,6 +982,10 @@
   });
 
   $("#go_to_end").click(function() {
+    wrap_flag = true;
+    end_flag = true;
+    beginning_flag = false;
+    for_jump_temp_hand = temp_hand;
     temp_hand = last_hand;
     board[last_hand] = snap_shot[last_hand];
     player_color = last_player_color;
