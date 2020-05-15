@@ -38,9 +38,7 @@
 
   var last_hand;
   var temp_hand;
-  var button_temp_hand;
   var previous_temp_hand;
-  var unwrap_flag;
   var snap_shot = [];
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
@@ -277,6 +275,7 @@
 	      }
               display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
               kifu = kifu + (_y + 1).toString();
+	      wrap_flag = true;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -341,19 +340,18 @@
       }
     }
  
-    $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
+    if (wrap_flag == true) {	  
+      $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
+    }
 
-    if (temp_hand == previous_temp_hand + 1 && temp_hand != button_temp_hand + 1 && unwrap_flag == true) {
+    alert("temp_hand = " + temp_hand);
+    alert("previous_temp_hand = " + previous_temp_hand);
+
+    if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
       $("#a" + previous_temp_hand).unwrap();
     }
 
-    if (temp_hand == button_temp_hand + 1 && unwrap_flag == true) {
-      $("#a" + button_temp_hand).unwrap();
-    } else if (temp_hand == button_temp_hand - 1 && unwrap_flag == true) {
-      $("#a" + button_temp_hand).unwrap();
-    }
-
-
+	  
     /*	  
     var parent = document.getElementById("msg_kifu");
     parent.insertAdjacentHTML('beforeend', '<input type="button" id="a1" value="１手目">');
@@ -557,7 +555,7 @@
           }
           display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
 	  kifu = kifu + (y + 1).toString();
-
+          wrap_flag = true;
           showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
@@ -635,7 +633,6 @@
       board[k][3][3] = BLOCK_KIND.WHITE;
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
-
     snap_shot[0] = board[0];
 
   };
@@ -645,18 +642,7 @@
     // initial kifu
     display_kifu = "開始\<br\>";
     kifu = "";
-    unwrap_flag = true;
   };
-
- 
-  function js_alert() {
-    temp_hand = 0;
-    board[0] = snap_shot[0]
-    player_color = BLOCK_KIND.BLACK;
-    showBoard(0);
-  }
-
- 
 
   onload = function() {
     // just in case
@@ -813,6 +799,8 @@
                
       last_hand = 0;
       temp_hand = 0;
+      previous_temp_hand = 0;
+      wrap_flag = true;
 
       showBoard(last_hand);
       if(!from_saved && !isFirst) {
@@ -926,26 +914,28 @@
         
  
   $("#next_button").click(function() {
-    button_temp_hand = temp_hand;
+    previous_temp_hand = temp_hand;
     temp_hand++;
     if (temp_hand <= last_hand) {
       changePlayer(temp_hand);
+      wrap_flag = true;
     } else {
       temp_hand = last_hand;
-      unwrap_flag = false;
+      wrap_flag = false;
     }
     board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
   });
   
   $("#previous_button").click(function() {
-    button_temp_hand = temp_hand;
+    previous_temp_hand = temp_hand;
     temp_hand--;
     if (temp_hand >= 0) {
       changePlayer(temp_hand);
+      wrap_flag = true;
     } else {
       temp_hand = 0;
-      unwrap_flag = false;
+      wrap_flag = false;
     }
     board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
