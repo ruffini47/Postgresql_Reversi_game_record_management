@@ -858,16 +858,23 @@
       isFirst = false;
     }
        
-    from_saved = "false";
-
+    from_saved = false;
+    alert("temp_hand = " + temp_hand);
+    $("#a" + temp_hand).unwrap();
     last_hand = 0;
     temp_hand = 0;
-    
+    previous_temp_hand = 0;
+    wrap_flag = true;
+    beginning_flag = false;
+    end_flag = false;
+    for_jump_temp_hand = 0;
+
     // start game
     showBoard(last_hand);
-    if(!isFirst) {
-      doAiPlayer(temp_hand);
+    if(!from_saved && !isFirst) {
+        doAiPlayer(last_hand);
     }
+
   };
 
   /*var kifu1 = $('.title').text();*/
