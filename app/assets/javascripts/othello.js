@@ -32,7 +32,7 @@
   var last_player_color;
 
   var kifu = "";
-  var display_kifu = "";
+  var display_kifu = [];
   var alphabet ="abcdefgh";
   var Alphabet ="ABCDEFGH";
 
@@ -261,7 +261,7 @@
 	      temp_hand++;
 	      last_hand = temp_hand;
 	
-	      display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
+	      //display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
 	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
@@ -272,12 +272,12 @@
 	      }
 	      if (player_color == BLOCK_KIND.BLACK) {
 		kifu = kifu + Alphabet[_x];
-	        display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+	        display_kifu[temp_hand] = number_str + ": " + Alphabet[_x];
 	      } else if (player_color == BLOCK_KIND.WHITE) {
                 kifu = kifu + alphabet[_x];
-		display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+		display_kifu[temp_hand] = number_str + ": " + alphabet[_x];
 	      }
-              display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+              display_kifu[temp_hand] = display_kifu[temp_hand] + (_y + 1).toString(); 
               kifu = kifu + (_y + 1).toString();
 	      wrap_flag = true;
 	      beginning_flag = false;
@@ -322,8 +322,8 @@
 
     $("#a0").val("開始");
 
-    for (i = 1; i <= 60; i++) {
-      $("#a" +  i).val(i + "手目");
+    for (i = 0; i <= 60; i++) {
+      $("#a" +  i).val(display_kifu[i]);
     }
 	  
     for (i = 1; i <= 60; i++) {
@@ -347,14 +347,6 @@
     if (wrap_flag == true) {	  
       $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
     }
-
-    //alert("temp_hand = " + temp_hand);
-    //alert("previous_temp_hand = " + previous_temp_hand);
-    //alert("temp_hand = " + temp_hand);
-    alert("for_jump_temp_hand = " + for_jump_temp_hand);
-    alert("last_hand = " + last_hand);
-    alert("temp_hand = " + temp_hand);
-    alert("previous_temp_hand = " + previous_temp_hand);
 
     if (!(beginning_flag == true || end_flag == true)) { 
       if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
@@ -568,12 +560,12 @@
           }
           if (player_color == BLOCK_KIND.BLACK) {
 	    kifu = kifu + Alphabet[x];       	  
-            display_kifu = display_kifu + number_str + ": " + Alphabet[x];
+            display_kifu[temp_hand] = number_str + ": " + Alphabet[x];
           } else if (player_color == BLOCK_KIND.WHITE) {
             kifu = kifu + alphabet[x];
-	    display_kifu = display_kifu + number_str + ": " + alphabet[x];
+	    display_kifu[temp_hand] = number_str + ": " + alphabet[x];
           }
-          display_kifu = display_kifu + (y + 1).toString() + "\<br\>";
+          display_kifu[temp_hand] = display_kifu[temp_hand] + (y + 1).toString();
 	  kifu = kifu + (y + 1).toString();
           wrap_flag = true;
           beginning_flag = false;
@@ -662,7 +654,7 @@
   var initRecord = function() {
 
     // initial kifu
-    display_kifu = "開始\<br\>";
+    display_kifu[0] = "開始";
     kifu = "";
   };
 
@@ -778,7 +770,7 @@
           temp_handd = ii;
 	  last_hand = temp_handd;
 	
-	  display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
+	  //display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
               
           if (temp_handd < 10) {
 	    number_str = " " + temp_handd;
@@ -786,11 +778,11 @@
 	    number_str = temp_handd;
 	  }
 	  if (player_color == BLOCK_KIND.BLACK) {
-	    display_kifu = display_kifu + number_str + ": " + Alphabet[_x];
+	    display_kifu[temp_handd] = number_str + ": " + Alphabet[_x];
 	  } else if (player_color == BLOCK_KIND.WHITE) {
-	    display_kifu = display_kifu + number_str + ": " + alphabet[_x];
+	    display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
 	  }
-          display_kifu = display_kifu + (_y + 1).toString() + "\<br\>"; 
+          display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
           //showBoard(ii);
 	  changePlayer(ii);
 
@@ -859,7 +851,7 @@
     }
        
     from_saved = false;
-    alert("temp_hand = " + temp_hand);
+    //alert("temp_hand = " + temp_hand);
     $("#a" + temp_hand).unwrap();
     last_hand = 0;
     temp_hand = 0;
