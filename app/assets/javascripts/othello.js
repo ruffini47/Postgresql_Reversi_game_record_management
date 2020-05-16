@@ -971,7 +971,11 @@
   });
 
   $("#back_to_beginning").click(function() {
-    wrap_flag = true;
+    if (temp_hand != 0) {
+      wrap_flag = true;
+    } else {
+      wrap_flag = false;
+    }
     beginning_flag = true;
     end_flag = false;
     for_jump_temp_hand = temp_hand;
@@ -982,7 +986,11 @@
   });
 
   $("#go_to_end").click(function() {
-    wrap_flag = true;
+    if (temp_hand != last_hand) {
+      wrap_flag = true;
+    } else {
+      wrap_flag = false;
+    }
     end_flag = true;
     beginning_flag = false;
     for_jump_temp_hand = temp_hand;
