@@ -261,7 +261,6 @@
 	      temp_hand++;
 	      last_hand = temp_hand;
 	
-	      //display_kifu = display_kifu.slice(0, 6 + (temp_hand - 1) * 10);
 	      kifu = kifu.slice(0, (temp_hand - 1) * 2);
               
 	      var number_str;
@@ -316,11 +315,6 @@
      
     var msg_kifu = document.getElementById("msg_kifu");
     
-    /*
-    var kifu_highlight = display_kifu.substring(0, 6 + 10 * (temp_hand -1)) + "<span id='last-msg'><span class='highlight'>" + display_kifu.substring(6 + 10 * (temp_hand - 1), 6 + 10 * temp_hand) + "</span></span>" + display_kifu.substring(6 + 10 * temp_hand, display_kifu.length);   
-*/
-
-    $("#a0").val("開始");
 
     for (i = 0; i <= 60; i++) {
       $("#a" +  i).val(display_kifu[i]);
@@ -394,7 +388,7 @@
    
 
     var simple_kifu = document.getElementById("simple_kifu");
-    //simple_kifu.innerHTML = kifu;
+    simple_kifu.innerHTML = kifu;
               
     if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -770,8 +764,6 @@
           temp_handd = ii;
 	  last_hand = temp_handd;
 	
-	  //display_kifu = display_kifu.slice(0, 6 + (temp_handd - 1) * 10);
-              
           if (temp_handd < 10) {
 	    number_str = " " + temp_handd;
           } else {
@@ -921,7 +913,7 @@
   });
 
 
-
+/*
   $("#play_back").click(function() {
     initBoard();
     showBoard();
@@ -935,7 +927,7 @@
     
     }
   });
-        
+*/        
  
   $("#next_button").click(function() {
     beginning_flag = false;
