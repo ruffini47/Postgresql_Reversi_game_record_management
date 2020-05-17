@@ -30,6 +30,7 @@
   var board = [];
   var player_color;
   var last_player_color;
+  var player_color_array = [];
 
   var kifu = "";
   var display_kifu = [];
@@ -43,6 +44,7 @@
   var wrap_flag;
   var beginning_flag;
   var end_flag;
+  var link_flag;
   var snap_shot = [];
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
@@ -256,6 +258,7 @@
 	      } else {
 		last_player_color = player_color;
 	      }
+	      player_color_array[i+1] = last_player_color;
 	      i++;
 	      previous_temp_hand = temp_hand;
 	      temp_hand++;
@@ -281,6 +284,7 @@
 	      wrap_flag = true;
 	      beginning_flag = false;
 	      end_flag = false;
+	      link_flag = false;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -316,11 +320,11 @@
     var msg_kifu = document.getElementById("msg_kifu");
     
 
-    for (i = 0; i <= 60; i++) {
+    for (var i = 0; i <= 60; i++) {
       $("#a" +  i).val(display_kifu[i]);
     }
 	  
-    for (i = 1; i <= 60; i++) {
+    for (var i = 1; i <= 60; i++) {
       if (last_hand < i) {
 	$("#a" + i).hide();
       } else {
@@ -331,18 +335,24 @@
     $("#a" + temp_hand).css("color", "#ffffff");
     $("#a" + temp_hand).css("background-color", "blue");
     
-    for (i = 0; i <= 60; i++) {
+    for (var i = 0; i <= 60; i++) {
       if (i !=  temp_hand) {
 	$("#a" + i).css("color", "#000000");
 	$("#a" + i).css("background-color", "#ffffff");
       }
     }
  
+    alert("temp_hand = " + temp_hand);
+    alert("previous_temp_hand = " + previous_temp_hand);
+    alert("for_jump_temp_hand = " + for_jump_temp_hand);
+    alert("last_hand = " + last_hand);
+
+
     if (wrap_flag == true) {	  
       $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
     }
 
-    if (!(beginning_flag == true || end_flag == true)) { 
+    if (!(beginning_flag == true || end_flag == true || link_flag == true)) { 
       if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
         $("#a" + previous_temp_hand).unwrap();
       }
@@ -354,6 +364,12 @@
       }
     } else if (end_flag == true) {
       if (last_hand - for_jump_temp_hand >= 1) {
+	$("#a" + for_jump_temp_hand).unwrap();
+      }
+    } else if (link_flag == true) {
+      if (temp_hand - for_jump_temp_hand >= 1) { 
+	$("#a" + for_jump_temp_hand).unwrap();
+      } else if (for_jump_temp_hand - temp_hand >= 1) {
 	$("#a" + for_jump_temp_hand).unwrap();
       }
     }
@@ -534,13 +550,14 @@
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
 	if (turnOverBlock(i+1, x, y, true) > 0) {
-          board[i+1][x][y] = player_color;  
+          board[i+1][x][y] = player_color;
 	  snap_shot[i+1] = board[i+1];
           if (isPass(i+1) == false) {
             last_player_color = BLOCK_KIND.MAX - player_color;
           } else {
             last_player_color = player_color;
           }
+	  player_color_array[i+1] = last_player_color;
           i++;
           previous_temp_hand = temp_hand;
           temp_hand++;
@@ -564,6 +581,7 @@
           wrap_flag = true;
           beginning_flag = false;
           end_flag = false;
+          link_flag = false;
           showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
@@ -607,7 +625,8 @@
     Object.freeze(CELL_WIDTH);
 
     player_color = BLOCK_KIND.BLACK;
-
+    player_color_array[0] = BLOCK_KIND.BLACK;
+    
     // 0:石無し, 1:黒, 2:白
     dot =
       document.getElementById("dot");
@@ -694,7 +713,7 @@
       var number_str;
       var invalid_flag = false;
       i_loop:
-      for (i = 0; i < kifu.length; i += 2) { 
+      for (var i = 0; i < kifu.length; i += 2) { 
         switch(kifu.charAt(i)){
           case 'a':
 	  case 'A':
@@ -758,7 +777,7 @@
           } else {
             last_player_color = player_color;
           }
-	   
+	  player_color_array[ii + 1] = last_player_color;
 	  ii++;
                 
           temp_handd = ii;
@@ -778,7 +797,7 @@
           //showBoard(ii);
 	  changePlayer(ii);
 
-          for (j = 0; j <= last_hand; j++) {
+          for (var j = 0; j <= last_hand; j++) {
 	    board[j] = snap_shot[j];
           } 
       
@@ -809,6 +828,7 @@
       wrap_flag = true;
       beginning_flag = false;
       end_flag = false;
+      link_flag = false;
       for_jump_temp_hand = 0;
 
       showBoard(last_hand);
@@ -851,6 +871,7 @@
     wrap_flag = true;
     beginning_flag = false;
     end_flag = false;
+    link_flag = false;
     for_jump_temp_hand = 0;
 
     // start game
@@ -912,26 +933,10 @@
     });
   });
 
-
-/*
-  $("#play_back").click(function() {
-    initBoard();
-    showBoard();
-
-    player_color = BLOCK_KIND.BLACK; 
-   if (from_saved == "true") {
-      kifu = "";
-      showProgress();     
-      kifu = gon.kifu;
-    } else if(from_saved == "false") {
-    
-    }
-  });
-*/        
- 
   $("#next_button").click(function() {
     beginning_flag = false;
     end_flag = false;
+    link_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand++;
     if (temp_hand <= last_hand) {
@@ -948,6 +953,7 @@
   $("#previous_button").click(function() {
     beginning_flag = false;
     end_flag = false;
+    link_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand--;
     if (temp_hand >= 0) {
@@ -969,6 +975,7 @@
     }
     beginning_flag = true;
     end_flag = false;
+    link_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = 0;
     board[0] = snap_shot[0]
@@ -984,6 +991,7 @@
     }
     end_flag = true;
     beginning_flag = false;
+    link_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = last_hand;
     board[last_hand] = snap_shot[last_hand];
@@ -991,19 +999,24 @@
     showBoard(last_hand);
   });
 
-  $("#a0").click(function() {
-    temp_hand = 0;
-    board[0] = snap_shot[0]
-    player_color = BLOCK_KIND.BLACK;
-    showBoard(0);
-  });
+  for (var i = 0; i <= 60; i++) {
+    $("#a" + i).on("click", {value: i}, function(event) {
+      wrap_flag = true;
+      beginning_flag = false;
+      end_flag = false;
+      link_flag = true;
+      for_jump_temp_hand = temp_hand;
+      temp_hand = event.data.value;
+      if(temp_hand != for_jump_temp_hand) {
+	wrap_flag = true;
+      } else {
+	wrap_flag = false;
+      }
+      player_color = player_color_array[temp_hand];
+      showBoard(temp_hand);
+    });
+  }
 
-  $("#a1").click(function() {
-    temp_hand = 1;
-    board[1] = snap_shot[1]
-    player_color = BLOCK_KIND.WHITE;
-    showBoard(1);
-  });
 
 
 })();
