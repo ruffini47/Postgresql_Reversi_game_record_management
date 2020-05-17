@@ -342,11 +342,12 @@
       }
     }
  
-    alert("temp_hand = " + temp_hand);
-    alert("previous_temp_hand = " + previous_temp_hand);
-    alert("for_jump_temp_hand = " + for_jump_temp_hand);
-    alert("last_hand = " + last_hand);
-
+    //alert("temp_hand = " + temp_hand);
+    //alert("previous_temp_hand = " + previous_temp_hand);
+    //alert("for_jump_temp_hand = " + for_jump_temp_hand);
+    //alert("last_hand = " + last_hand);
+    //alert("wrap_flag = " + wrap_flag);
+    //alert("end_flag = " + end_flag);
 
     if (wrap_flag == true) {	  
       $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
@@ -626,6 +627,7 @@
 
     player_color = BLOCK_KIND.BLACK;
     player_color_array[0] = BLOCK_KIND.BLACK;
+    last_player_color = BLOCK_KIND.BLACK;
     
     // 0:石無し, 1:黒, 2:白
     dot =
