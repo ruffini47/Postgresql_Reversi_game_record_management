@@ -45,6 +45,7 @@
   var beginning_flag;
   var end_flag;
   var link_flag;
+  var from_saved_first_flag;
   var snap_shot = [];
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
@@ -285,6 +286,7 @@
 	      beginning_flag = false;
 	      end_flag = false;
 	      link_flag = false;
+	      from_saved_first_flag = false;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -355,7 +357,9 @@
 
     if (!(beginning_flag == true || end_flag == true || link_flag == true)) { 
       if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
-        $("#a" + previous_temp_hand).unwrap();
+        if (from_saved_first_flag == false) {
+	  $("#a" + previous_temp_hand).unwrap();
+        }
       }
     }
 
@@ -583,6 +587,7 @@
           beginning_flag = false;
           end_flag = false;
           link_flag = false;
+	  from_saved_first_flag = false;
           showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
@@ -714,114 +719,152 @@
       var temp_handd;
       var number_str;
       var invalid_flag = false;
-      i_loop:
-      for (var i = 0; i < kifu.length; i += 2) { 
-        switch(kifu.charAt(i)){
-          case 'a':
-	  case 'A':
-            n = 0;
-            break;
-          case 'b':
-	  case 'B':
-            n = 1;
-            break;
-          case 'c':
-	  case 'C':
-            n = 2;
-            break;
-          case 'd':
-	  case 'D':
-            n = 3;
-            break;
-          case 'e':
-	  case 'E':
-            n = 4;
-            break;
-          case 'f':
-	  case 'F':
-            n = 5;
-            break;
-          case 'g':
-	  case 'G':
-            n = 6;
-            break;
-          case 'h':
-	  case 'H':
-            n = 7;
-            break;
-	  default:
-	    n = 8;
-	    break;
-        }
-	if (n == 8) {
-	  invalid_flag = true;
-	  break;
-        }
-        _x = n;
-        _y = kifu.charAt(i + 1) - 1;
-	if (!is07Number(_y)) {
-	  invalid_flag = true;
-	  break;
-        }
-	//alert("x = " + _x);
-	//alert("y = " + _y);
-	ii = i / 2;
-	for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-          for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-            board[ii + 1][xx][yy] = board[ii][xx][yy];
-          }
-        }
-        if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
-          board[ii + 1][_x][_y] = player_color;
-          snap_shot[ii + 1] = board[ii + 1];
-          if (isPass(ii + 1) == false) {
-            last_player_color = BLOCK_KIND.MAX - player_color;
-          } else {
-            last_player_color = player_color;
-          }
-	  player_color_array[ii + 1] = last_player_color;
-	  ii++;
-                
-          temp_handd = ii;
-	  last_hand = temp_handd;
-	
-          if (temp_handd < 10) {
-	    number_str = " " + temp_handd;
-          } else {
-	    number_str = temp_handd;
-	  }
-	  if (player_color == BLOCK_KIND.BLACK) {
-	    display_kifu[temp_handd] = number_str + ": " + Alphabet[_x];
-	  } else if (player_color == BLOCK_KIND.WHITE) {
-	    display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
-	  }
-          display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
-          //showBoard(ii);
-	  changePlayer(ii);
+      //alert("kifu = " + kifu);
+      if (kifu.length == 0) {
+        
+	//initBoard();
+        //initRecord();
 
-          for (var j = 0; j <= last_hand; j++) {
-	    board[j] = snap_shot[j];
-          } 
-      
-          temp_hand = last_hand;
+        //vsAI = false;
+    
+        //isFirst = true;
+       
+        //$("#a" + temp_hand).unwrap();
+        last_hand = 0;
+        temp_hand = 0;
+        previous_temp_hand = 0;
+        wrap_flag = true;
+        beginning_flag = false;
+        end_flag = false;
+        link_flag = false;
+        from_saved_first_flag = false;
+        for_jump_temp_hand = 0;
 
-          showBoard(last_hand);
-          if(!from_saved && !isFirst) {
+        // start game
+        showBoard(last_hand);
+        if(!from_saved && !isFirst) {
             doAiPlayer(last_hand);
+        }
+
+      } else {	      
+        i_loop:
+	for (var i = 0; i < kifu.length; i += 2) { 
+          switch(kifu.charAt(i)){
+            case 'a':
+	    case 'A':
+              n = 0;
+              break;
+            case 'b':
+	    case 'B':
+              n = 1;
+              break;
+            case 'c':
+	    case 'C':
+              n = 2;
+              break;
+            case 'd':
+	    case 'D':
+              n = 3;
+              break;
+            case 'e':
+	    case 'E':
+              n = 4;
+              break;
+            case 'f':
+	    case 'F':
+              n = 5;
+              break;
+            case 'g':
+	    case 'G':
+              n = 6;
+              break;
+            case 'h':
+	    case 'H':
+              n = 7;
+              break;
+	    default:
+	      n = 8;
+	      break;
           }
+	  if (n == 8) {
+	    invalid_flag = true;
+	    break;
+          }
+          _x = n;
+          _y = kifu.charAt(i + 1) - 1;
+	  if (!is07Number(_y)) {
+	    invalid_flag = true;
+	    break;
+          }
+	  //alert("x = " + _x);
+	  //alert("y = " + _y);
+	  ii = i / 2;
+	  for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+            for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+              board[ii + 1][xx][yy] = board[ii][xx][yy];
+            }
+          }
+          if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
+            board[ii + 1][_x][_y] = player_color;
+            snap_shot[ii + 1] = board[ii + 1];
+            if (isPass(ii + 1) == false) {
+              last_player_color = BLOCK_KIND.MAX - player_color;
+            } else {
+              last_player_color = player_color;
+            }
+	    player_color_array[ii + 1] = last_player_color;
+	    previous_temp_hand = ii;
+	    ii++;
+                
+            temp_handd = ii;
+	    last_hand = temp_handd;
+	
+            if (temp_handd < 10) {
+	      number_str = " " + temp_handd;
+            } else {
+	      number_str = temp_handd;
+	    }
+	    if (player_color == BLOCK_KIND.BLACK) {
+	      display_kifu[temp_handd] = number_str + ": " + Alphabet[_x];
+	    } else if (player_color == BLOCK_KIND.WHITE) {
+	      display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
+	    }
+            display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
+            //showBoard(ii);
+	    changePlayer(ii);
+
+            for (var j = 0; j <= last_hand; j++) {
+	      board[j] = snap_shot[j];
+            } 
+      
+            temp_hand = last_hand;
+	    for_jump_temp_hand = 0;
+            wrap_flag = true;
+	    beginning_flag = false;
+	    end_flag = false;
+	    link_flag = false;
+            if (temp_hand == 1) {
+	      from_saved_first_flag = true;
+            } else {
+	      from_saved_first_flag = false;
+	    }
+            showBoard(last_hand);
+            if(!from_saved && !isFirst) {
+              doAiPlayer(last_hand);
+            }
 
 
 
-	} else {
-	  //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
-          invalid_flag = true;
-	  break i_loop;
-	}	 
-      }
-      if (invalid_flag == true ) {
-        alert((temp_handd + 1) +  "手目が不正です。switch");
-      }
-     
+	  } else {
+	    //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
+            invalid_flag = true;
+	    break i_loop;
+	  }	 
+        }
+        if (invalid_flag == true ) {
+          alert((temp_handd + 1) +  "手目が不正です。switch");
+        }
+      } 
     } else if (from_saved == false) {
                
       last_hand = 0;
@@ -831,14 +874,15 @@
       beginning_flag = false;
       end_flag = false;
       link_flag = false;
+      from_saved_first_flag = false;
       for_jump_temp_hand = 0;
 
       showBoard(last_hand);
       if(!from_saved && !isFirst) {
         doAiPlayer(last_hand);
       }
+      
     }
-
   };
 
   function is07Number(val){
@@ -874,6 +918,7 @@
     beginning_flag = false;
     end_flag = false;
     link_flag = false;
+    from_saved_first_flag = false;
     for_jump_temp_hand = 0;
 
     // start game
@@ -939,6 +984,7 @@
     beginning_flag = false;
     end_flag = false;
     link_flag = false;
+    from_saved_first_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand++;
     if (temp_hand <= last_hand) {
@@ -956,6 +1002,7 @@
     beginning_flag = false;
     end_flag = false;
     link_flag = false;
+    from_saved_first_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand--;
     if (temp_hand >= 0) {
@@ -978,6 +1025,7 @@
     beginning_flag = true;
     end_flag = false;
     link_flag = false;
+    from_saved_first_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = 0;
     board[0] = snap_shot[0]
@@ -994,6 +1042,7 @@
     end_flag = true;
     beginning_flag = false;
     link_flag = false;
+    from_saved_first_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = last_hand;
     board[last_hand] = snap_shot[last_hand];
@@ -1007,6 +1056,7 @@
       beginning_flag = false;
       end_flag = false;
       link_flag = true;
+      from_saved_first_flag = false;
       for_jump_temp_hand = temp_hand;
       temp_hand = event.data.value;
       if(temp_hand != for_jump_temp_hand) {
