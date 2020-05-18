@@ -17,7 +17,12 @@
   </div>
   <div class="link">
     <% if logged_in? %>
-      <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary"%>
+      <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="link">
+    <% if logged_in? %>
+      <%= link_to "棋譜を指定して開く", new_user_specify_kifu_and_open_path(current_user.id), class: "btn btn-primary" %>
     <% end %>
   </div>
   <div class="link">
