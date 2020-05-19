@@ -29,7 +29,7 @@
   var stone;
   var board = [];
   var player_color;
-  var last_player_color;
+  //var last_player_color;
   var player_color_array = [];
 
   var kifu = "";
@@ -46,7 +46,6 @@
   var end_flag;
   var link_flag;
   var from_saved_first_flag;
-  var snap_shot = [];
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
@@ -253,13 +252,12 @@
 	    }
 	    if (turnOverBlock(i+1, _x, _y, true) > 0) {
 	      board[i+1][_x][_y] = player_color;
-	      snap_shot[i+1] = board[i+1];
 	      if (isPass(i+1) == false) {
-		last_player_color = BLOCK_KIND.MAX - player_color;
+		player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
 	      } else {
-		last_player_color = player_color;
+		player_color_array[i+1] = player_color;
 	      }
-	      player_color_array[i+1] = last_player_color;
+	      //player_color_array[i+1] = last_player_color;
 	      i++;
 	      previous_temp_hand = temp_hand;
 	      temp_hand++;
@@ -556,13 +554,12 @@
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
 	if (turnOverBlock(i+1, x, y, true) > 0) {
           board[i+1][x][y] = player_color;
-	  snap_shot[i+1] = board[i+1];
           if (isPass(i+1) == false) {
-            last_player_color = BLOCK_KIND.MAX - player_color;
+            player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
           } else {
-            last_player_color = player_color;
+            player_color_array[i+1] = player_color;
           }
-	  player_color_array[i+1] = last_player_color;
+	  //player_color_array[i+1] = last_player_color;
           i++;
           previous_temp_hand = temp_hand;
           temp_hand++;
@@ -632,7 +629,7 @@
 
     player_color = BLOCK_KIND.BLACK;
     player_color_array[0] = BLOCK_KIND.BLACK;
-    last_player_color = BLOCK_KIND.BLACK;
+    //last_player_color = BLOCK_KIND.BLACK;
     
     // 0:石無し, 1:黒, 2:白
     dot =
@@ -667,7 +664,6 @@
       board[k][3][3] = BLOCK_KIND.WHITE;
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
-    snap_shot[0] = board[0];
 
   };
 
@@ -806,13 +802,12 @@
           }
           if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
             board[ii + 1][_x][_y] = player_color;
-            snap_shot[ii + 1] = board[ii + 1];
             if (isPass(ii + 1) == false) {
-              last_player_color = BLOCK_KIND.MAX - player_color;
+              player_color_array[ii + 1] = BLOCK_KIND.MAX - player_color;
             } else {
-              last_player_color = player_color;
+              player_color_array[ii + 1] = player_color;
             }
-	    player_color_array[ii + 1] = last_player_color;
+	    //player_color_array[ii + 1] = last_player_color;
 	    previous_temp_hand = ii;
 	    ii++;
                 
@@ -833,9 +828,6 @@
             //showBoard(ii);
 	    changePlayer(ii);
 
-            for (var j = 0; j <= last_hand; j++) {
-	      board[j] = snap_shot[j];
-            } 
       
             temp_hand = last_hand;
 	    for_jump_temp_hand = 0;
@@ -994,7 +986,6 @@
       temp_hand = last_hand;
       wrap_flag = false;
     }
-    board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
   });
   
@@ -1012,7 +1003,6 @@
       temp_hand = 0;
       wrap_flag = false;
     }
-    board[temp_hand] = snap_shot[temp_hand];
     showBoard(temp_hand);
   });
 
@@ -1028,7 +1018,6 @@
     from_saved_first_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = 0;
-    board[0] = snap_shot[0]
     player_color = BLOCK_KIND.BLACK;
     showBoard(0);
   });
@@ -1045,8 +1034,7 @@
     from_saved_first_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = last_hand;
-    board[last_hand] = snap_shot[last_hand];
-    player_color = last_player_color;
+    player_color = player_color_array[last_hand];
     showBoard(last_hand);
   });
 
