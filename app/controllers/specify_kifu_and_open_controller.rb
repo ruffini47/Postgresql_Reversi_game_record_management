@@ -6,6 +6,8 @@ class SpecifyKifuAndOpenController < ApplicationController
   def create
     @game_record = GameRecord.new(game_records_params)
     @game_record.user_id = params[:user_id]
+    @game_record.from_saved = true
+    @game_record.your_move = "first"
     @game_record.vsAI = false
     if @game_record.save
       flash[:success] = "プレイヤー情報を作成しました。"

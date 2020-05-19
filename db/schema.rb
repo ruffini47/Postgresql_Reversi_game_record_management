@@ -19,14 +19,14 @@ ActiveRecord::Schema.define(version: 2020_05_06_085203) do
     t.string "title", default: "タイトル未設定"
     t.string "black_player", default: "プレイヤー1"
     t.string "white_player", default: "プレイヤー2"
-    t.datetime "date_played", default: "2020-05-17 12:30:51"
+    t.datetime "date_played", default: "2020-05-19 05:29:39"
     t.string "place_played", default: "場所未入力"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
     t.string "kifu"
     t.boolean "from_saved", default: false
-    t.string "your_move", default: "second"
+    t.string "your_move", default: "first"
     t.boolean "vsAI", default: false
     t.index ["user_id"], name: "index_game_records_on_user_id"
   end
