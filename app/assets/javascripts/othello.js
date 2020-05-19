@@ -23,13 +23,12 @@
   var isFinished = false;
 
   var from_saved = false;
-  var your_move = "second";
+  var your_move = "first";
   var vsAI = false;
 
   var stone;
   var board = [];
   var player_color;
-  //var last_player_color;
   var player_color_array = [];
 
   var kifu = "";
@@ -257,7 +256,6 @@
 	      } else {
 		player_color_array[i+1] = player_color;
 	      }
-	      //player_color_array[i+1] = last_player_color;
 	      i++;
 	      previous_temp_hand = temp_hand;
 	      temp_hand++;
@@ -559,7 +557,6 @@
           } else {
             player_color_array[i+1] = player_color;
           }
-	  //player_color_array[i+1] = last_player_color;
           i++;
           previous_temp_hand = temp_hand;
           temp_hand++;
@@ -629,7 +626,6 @@
 
     player_color = BLOCK_KIND.BLACK;
     player_color_array[0] = BLOCK_KIND.BLACK;
-    //last_player_color = BLOCK_KIND.BLACK;
     
     // 0:石無し, 1:黒, 2:白
     dot =
@@ -665,14 +661,17 @@
       board[k][4][4] = BLOCK_KIND.WHITE;
     }
 
-  };
-
-  var initRecord = function() {
-
-    // initial kifu
     display_kifu[0] = "開始";
     kifu = "";
+
   };
+
+//  var initRecord = function() {
+
+    // initial kifu
+//    display_kifu[0] = "開始";
+//    kifu = "";
+//  };
 
   onload = function() {
     // just in case
@@ -684,7 +683,7 @@
     // initialize board
     initBoard();
     // start game
-    initRecord();
+    //initRecord();
 
 
     from_saved = gon.from_saved;
@@ -807,7 +806,6 @@
             } else {
               player_color_array[ii + 1] = player_color;
             }
-	    //player_color_array[ii + 1] = last_player_color;
 	    previous_temp_hand = ii;
 	    ii++;
                 
@@ -886,7 +884,7 @@
     
     // initialize board
     initBoard();
-    initRecord();
+    //initRecord();
 
     if(document.form1.Computer.checked) {
       vsAI = true;
@@ -896,8 +894,10 @@
     
     if(document.form1.First.checked) {
       isFirst = true;
+      your_move = "first";
     } else {
       isFirst = false;
+      your_move = "second";
     }
        
     from_saved = false;
@@ -933,8 +933,10 @@
       dataType: "html",
       async: true,
       data: {
+	game_record_id: game_record_id,
         kifu: kifu,
-	game_record_id: game_record_id
+	your_move: your_move,
+	vsAI: vsAI,
       },
       success: function(data) {
         alert("success");
@@ -960,8 +962,8 @@
 	place_played: gon.place_played,
 	user_id: gon.user_id,
 	kifu: kifu,
-	your_move: gon.your_move,
-	vsAI: gon.vsAI,
+	your_move: your_move,
+	vsAI: vsAI,
       },
       success: function(data) {
         alert("success");
