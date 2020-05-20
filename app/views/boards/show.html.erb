@@ -10,7 +10,7 @@
       <%= @game_record.title %>
     </div>
     <div class = "black_player">
-      <p>●  6  <%= @game_record.black_player %></p>
+      <p>● <span id="black_count"></span> <%= @game_record.black_player %></p>
     </div>
     <div id="black_count"></div>
     <!-- 盤面の要素定義 -->
@@ -29,66 +29,66 @@
     <p class="bottom"><a href="#last-msg" data-box=".box" class="link" ></a></p>
     <div class="box" id="msg_kifu">
       <input type = "text" readonly="readonly" id = "a0" class="kifu_textbox"><br>
-      <input readonly id = "a1"><br>
-      <input readonly id = "a2"><br>
-      <input readonly id = "a3"><br>
-      <input readonly id = "a4"><br>
-      <input readonly id = "a5"><br>
-      <input readonly id = "a6"><br>
-      <input readonly id = "a7"><br>
-      <input readonly id = "a8"><br>
-      <input readonly id = "a9"><br>
-      <input readonly id = "a10"><br>
-      <input readonly id = "a11"><br>
-      <input readonly id = "a12"><br>
-      <input readonly id = "a13"><br>
-      <input readonly id = "a14"><br>
-      <input readonly id = "a15"><br>
-      <input readonly id = "a16"><br>
-      <input readonly id = "a17"><br>
-      <input readonly id = "a18"><br>
-      <input readonly id = "a19"><br>
-      <input readonly id = "a20"><br>
-      <input readonly id = "a21"><br>
-      <input readonly id = "a22"><br>
-      <input readonly id = "a23"><br>
-      <input readonly id = "a24"><br>
-      <input readonly id = "a25"><br>
-      <input readonly id = "a26"><br>
-      <input readonly id = "a27"><br>
-      <input readonly id = "a28"><br>
-      <input readonly id = "a29"><br>
-      <input readonly id = "a30"><br>
-      <input readonly id = "a31"><br>
-      <input readonly id = "a32"><br>
-      <input readonly id = "a33"><br>
-      <input readonly id = "a34"><br>
-      <input readonly id = "a35"><br>
-      <input readonly id = "a36"><br>
-      <input readonly id = "a37"><br>
-      <input readonly id = "a38"><br>
-      <input readonly id = "a39"><br>
-      <input readonly id = "a40"><br>
-      <input readonly id = "a41"><br>
-      <input readonly id = "a42"><br>
-      <input readonly id = "a43"><br>
-      <input readonly id = "a44"><br>
-      <input readonly id = "a45"><br>
-      <input readonly id = "a46"><br>
-      <input readonly id = "a47"><br>
-      <input readonly id = "a48"><br>
-      <input readonly id = "a49"><br>
-      <input readonly id = "a50"><br>
-      <input readonly id = "a51"><br>
-      <input readonly id = "a52"><br>
-      <input readonly id = "a53"><br>
-      <input readonly id = "a54"><br>
-      <input readonly id = "a55"><br>
-      <input readonly id = "a56"><br>
-      <input readonly id = "a57"><br>
-      <input readonly id = "a58"><br>
-      <input readonly id = "a59"><br>
-      <input readonly id = "a60"><br>
+      <input type = "text" readonly="readonly" id = "a1" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a2" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a3" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a4" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a5" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a6" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a7" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a8" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a9" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a10" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a11" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a12" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a13" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a14" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a15" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a16" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a17" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a18" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a19" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a20" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a21" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a22" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a23" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a24" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a25" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a26" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a27" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a28" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a29" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a30" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a31" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a32" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a33" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a34" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a35" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a36" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a37" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a38" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a39" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a40" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a41" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a42" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a43" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a44" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a45" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a46" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a47" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a48" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a49" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a50" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a51" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a52" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a53" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a54" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a55" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a56" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a57" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a58" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a59" class="kifu_textbox"><br>
+      <input type = "text" readonly="readonly" id = "a60" class="kifu_textbox"><br>
     </div>
     <div id = "simple_kifu"></div>
     <form action="#" name="form1" id="form1">
@@ -119,7 +119,7 @@
       </p>
     </form>
     <div class = "white_player">
-      <p>◯  4  <%= @game_record.white_player %></p>
+      <p>◯ <span id="white_count"></span> <%= @game_record.white_player %></p>
     </div>
     <div id="open">
       <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary"%>    

@@ -4,7 +4,8 @@
   <table class="table table-bordered table-condensed table-striped table-hover bases-table">
     <thead>
       <tr>
-        <td>タイトル</td>
+	<td>ID</td>      
+	<td>タイトル</td>
         <td>黒プレイヤー</td>
         <td>白プレイヤー</td>
         <td>対局日</td>
@@ -19,7 +20,8 @@
       <tbody>
       <% @game_records.each do |game_record| %>
       <tr>
-        <td><%= game_record.title %></td>
+	<td><%= game_record.id %></td>      
+	<td><%= game_record.title %></td>
         <td><%= game_record.black_player %></td>
 	<td><%= game_record.white_player %></td>
 	<td><%= game_record.date_played %></td>

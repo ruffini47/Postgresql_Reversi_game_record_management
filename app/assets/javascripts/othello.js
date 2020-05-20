@@ -314,9 +314,19 @@
     }
 
     var msg = document.getElementById("msg");
-     
-    var msg_kifu = document.getElementById("msg_kifu");
+    msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
+
+    //var msg_kifu = document.getElementById("msg_kifu");
     
+    var black_count = document.getElementById("black_count");
+    black_count.innerHTML = black;
+
+    var white_count = document.getElementById("white_count");
+    white_count.innerHTML = white;
+
+    var simple_kifu = document.getElementById("simple_kifu");
+    simple_kifu.innerHTML = kifu;
+
 
     for (var i = 0; i <= 60; i++) {
       $("#a" +  i).val(display_kifu[i]);
@@ -404,8 +414,6 @@
     
    
 
-    var simple_kifu = document.getElementById("simple_kifu");
-    simple_kifu.innerHTML = kifu;
               
     if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
