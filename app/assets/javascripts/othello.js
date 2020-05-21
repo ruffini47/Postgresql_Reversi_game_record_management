@@ -511,15 +511,7 @@
       player_color = BLOCK_KIND.MAX - player_color;
       player_color_array[i] = player_color;
       if(isPass(i) && !isFinish(i)) {
-        if (allSameColor()) {
-          if(player_color == BLOCK_KIND.BLACK) {
-            alert("黒のパーフェクト勝ちです。2");
-          } else if (player_color == BLOCK_KIND.WHITE) {
-            alert("白のパーフェクト勝ちです。2");   
-          } else {
-            alert("invalid status 2");
-          }
-        } else {
+        if (!(allSameColor())) {
 	  if(player_color == BLOCK_KIND.BLACK) {
             alert("黒も置ける場所がありません。試合終了です。");
           } else if (player_color == BLOCK_KIND.WHITE) {
