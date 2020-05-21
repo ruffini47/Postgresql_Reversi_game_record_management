@@ -20,6 +20,14 @@ class GameRecordsController < ApplicationController
   def index
     @game_records = GameRecord.all
     @game_records = @game_records.where(user_id: current_user.id)
+    @game_records.each do |game_record|
+      new_line_kifu = game_record.kifu
+      n = 20;
+      new_line_kifu = new_line_kifu.scan(/.{1,#{n}}/)
+      new_line_kifu =  new_line_kifu.join("\n");
+      game_record.new_line_kifu = new_line_kifu
+      game_record.save
+    end
   end
 
   def edit

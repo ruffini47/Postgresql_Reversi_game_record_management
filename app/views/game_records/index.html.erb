@@ -26,7 +26,7 @@
 	<td><%= game_record.white_player %></td>
 	<td><%= game_record.date_played %></td>
 	<td><%= game_record.place_played %></td>
-	<td><%= game_record.kifu %></td>
+	<td><%= simple_format game_record.new_line_kifu %></td>
 	<% if game_record.vsAI == true %>
 	  <td>AIとの対戦</td>
         <% else %>
