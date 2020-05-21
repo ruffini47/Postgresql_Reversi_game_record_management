@@ -3,6 +3,7 @@
   <head>
     <title>Othello</title>
     <script src="//code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js"></script>
   </head>
 
   <body>
@@ -123,8 +124,8 @@
     </div>
     <div id="open">
       <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary"%>    
-    </div>    
- 
+    </div>
+    <button class="copy_clipboard" data-clipboard-action="copy" data-clipboard-target="#simple_kifu">Copy</button>
   </body>
   <%= javascript_include_tag 'othello.js'%>
 </html>
