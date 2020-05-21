@@ -123,9 +123,9 @@
       <p>◯ <span id="white_count"></span> <%= @game_record.white_player %></p>
     </div>
     <div id="open">
-      <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary"%>    
+      <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary"%>
     </div>
-    <button class="copy_clipboard" data-clipboard-action="copy" data-clipboard-target="#simple_kifu">Copy</button>
+    <button class="btn btn-primary copy_clipboard" data-clipboard-action="copy" data-clipboard-target="#simple_kifu"%>棋譜をクリップボードにコピーする</button>
   </body>
   <%= javascript_include_tag 'othello.js'%>
 </html>
