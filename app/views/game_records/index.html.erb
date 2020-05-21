@@ -15,6 +15,7 @@
 	<td>あなたの手番</td>
 	<td></td>
 	<td></td>
+	<td></td>
       </tr>
     </thead>
       <tbody>
@@ -26,7 +27,11 @@
 	<td><%= game_record.white_player %></td>
 	<td><%= game_record.date_played %></td>
 	<td><%= game_record.place_played %></td>
-	<td><%= simple_format game_record.new_line_kifu %></td>
+	<td>
+	  <div style="height: 50px; width: 100px; overflow-x:scroll;">
+	    <%= game_record.kifu %>
+	  </div>
+	</td>
 	<% if game_record.vsAI == true %>
 	  <td>AIとの対戦</td>
         <% else %>
