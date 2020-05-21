@@ -251,11 +251,11 @@
 	    }
 	    if (turnOverBlock(i+1, _x, _y, true) > 0) {
 	      board[i+1][_x][_y] = player_color;
-	      if (isPass(i+1) == false) {
-		player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
-	      } else {
-		player_color_array[i+1] = player_color;
-	      }
+	      //if (isPass(i+1) == false) {
+	      //	player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
+	      //} else {
+	      // 	player_color_array[i+1] = player_color;
+	      //}
 	      i++;
 	      previous_temp_hand = temp_hand;
 	      temp_hand++;
@@ -498,7 +498,7 @@
     var pass = false;
 
     player_color = BLOCK_KIND.MAX - player_color;
-
+    player_color_array[i] = player_color;
     if (isPass(i) && !isFinish(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
         alert("黒の置ける場所がありません。続けて白の番となります。");
@@ -509,7 +509,7 @@
       }
         
       player_color = BLOCK_KIND.MAX - player_color;
-
+      player_color_array[i] = player_color;
       if(isPass(i) && !isFinish(i)) {
         if (allSameColor()) {
           if(player_color == BLOCK_KIND.BLACK) {
@@ -560,11 +560,11 @@
       for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
 	if (turnOverBlock(i+1, x, y, true) > 0) {
           board[i+1][x][y] = player_color;
-          if (isPass(i+1) == false) {
-            player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
-          } else {
-            player_color_array[i+1] = player_color;
-          }
+          //if (isPass(i+1) == false) {
+          //  player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
+          //} else {
+          //  player_color_array[i+1] = player_color;
+          //}
           i++;
           previous_temp_hand = temp_hand;
           temp_hand++;
@@ -809,11 +809,11 @@
           }
           if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
             board[ii + 1][_x][_y] = player_color;
-            if (isPass(ii + 1) == false) {
-              player_color_array[ii + 1] = BLOCK_KIND.MAX - player_color;
-            } else {
-              player_color_array[ii + 1] = player_color;
-            }
+            //if (isPass(ii + 1) == false) {
+            //  player_color_array[ii + 1] = BLOCK_KIND.MAX - player_color;
+            //} else {
+            //  player_color_array[ii + 1] = player_color;
+            //}
 	    previous_temp_hand = ii;
 	    ii++;
                 
@@ -983,6 +983,7 @@
   });
 
   $("#next_button").click(function() {
+    
     beginning_flag = false;
     end_flag = false;
     link_flag = false;
