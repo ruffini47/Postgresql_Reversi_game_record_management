@@ -15,11 +15,3 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-//= require clipboard
-
-$(document).ready(function(){  
-
-  var clipboard = new Clipboard('.copy_clipboard');
-  console.log(clipboard);
-
-});

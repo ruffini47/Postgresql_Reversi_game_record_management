@@ -685,6 +685,8 @@
     // start game
     //initRecord();
 
+    var clipboard = new Clipboard(".copy_clipboard");
+
     from_saved = gon.from_saved;
     your_move = gon.your_move;
     vsAI = gon.vsAI;
