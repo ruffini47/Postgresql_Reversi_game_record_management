@@ -142,18 +142,19 @@ position: relative;
   margin-bottom: -10px;
 }
 
+/*
 #msg//for id
 {
   position: absolute;
   top: 43*13px;
 }	
-
+*/
 #msg_kifu//for id
 {
   position: absolute;
   margin-left: 400px;
-  height: 360px;     /* 高さを制限(※) */
-  width: 150px;
+  height: 353px;     /* 高さを制限(※) */
+  width: 100px;
   overflow: scroll;  /* スクロールバーを表示(※) */
   border: 1px solid;   /* 枠線を追加 */
   background-color: #ffffff; //#b8d5f1;
@@ -162,12 +163,6 @@ position: relative;
 .kifu_textbox//for class
 {
   width: 150px;
-}
-
-#simple_kifu//for id
-{
-  position: absolute;
-  top: 43*14px;
 }
 
 .bottom//for class
@@ -183,51 +178,49 @@ position: relative;
   background-color: blue;
 }
 
-#open//for id
-{
-  position: absolute;
-  top: 43*14+20px;
-  margin-left: 800px;
-}
-
-.copy_clipboard//for class
-{
-  position: absolute;
-  top: 43*15+20px;
-  margin-left: 800px;
-}
-
 .white_player//for class
 {
   position: absolute; 
-  top: 43*14+20px; 
+  top: 43*11px; 
   font-size: medium;
  // width: 43*8px;
 }
 
-#Computer//for id
-{
-  position: absolute; 
-  top: 43*15+20px; 
-}
-
-#Computer2//for id
+#simple_kifu//for id
 {
   position: absolute;
-  top: 43*15+18px;
+  top: 43*11+30px;
+  height: 40px;
+  width: 352px;
+  overflow: scroll;
+  overflow-y: hidden;
+  border: 1px solid;
+  background-color: #ffffff;
+}
+
+#Computer_checkbox//for id
+{
+  position: absolute; 
+  top: 43*13+20px; 
+}
+
+#Computer_text//for id
+{
+  position: absolute;
+  top: 43*13+18px;
   margin-left: 20px;
 }
 
-#First//for id
+#First_checkbox//for id
 {
   position: absolute;
-  top: 43*16+20px;
+  top: 43*14+20px;
 }
 
-#First2//for id
+#First_text//for id
 {
   position: absolute;
-  top: 43*16+18px;
+  top: 43*14+18px;
   margin-left: 20px;
 }
 
@@ -235,64 +228,66 @@ position: relative;
 #Reset//for id
 {
   position: absolute;
-  top: 43*17+20px;
+  top: 43*15+20px;
 }
-
-#Save//for id
-{
-  position: absolute;
-  top: 43*17+20px;
-  margin-left: 60px;
-}
-
-#SaveAs//for id
-{
-  position: absolute;
-  top: 43*17+20px;
-  margin-left: 120px;
-}
-
-
-
 
 #back_to_beginning//for id
 {
   position: absolute;
-  top:43*18+20px;
+  top:43*16+20px;
 }
 
 #previous_button//for id
 {
   position: absolute;
-  top:43*18+20px;
+  top:43*16+20px;
   margin-left: 50px;
 }
 
 #next_button//for id
 {
   position: absolute;
-  top:43*18+20px;
+  top:43*16+20px;
   margin-left: 100px;
 }
 
 #go_to_end//for id
 {
   position: absolute;
-  top:43*18+20px;
+  top:43*16+20px;
   margin-left: 150px;
 }
-/*
-#a0//for id
+
+#Save//for id
 {
   position: absolute;
-  top:43*18+20px;
-  margin-left: 200px;
+  top: 43*12+20px;
+  width: 260px;
+  margin-left: 800px;
 }
 
-#a1//for id
+#SaveAs//for id
 {
   position: absolute;
-  top:43*18+20px;
-  margin-left: 250px;
+  top: 43*13+20px;
+  width: 260px;
+  margin-left: 800px;
 }
-*/
+
+.open//for id
+{
+  position: absolute;
+  top: 43*14+20px;
+  width: 260px;
+  margin-left: 800px;
+}
+
+.copy_clipboard//for class
+{
+  position: absolute;
+  top: 43*15+20px;
+  width: 260px;
+  margin-left: 800px;
+}
+
+

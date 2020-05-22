@@ -313,8 +313,8 @@
       }
     }
 
-    var msg = document.getElementById("msg");
-    msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
+    //var msg = document.getElementById("msg");
+    //msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
 
     //var msg_kifu = document.getElementById("msg_kifu");
     
@@ -326,7 +326,6 @@
 
     var simple_kifu = document.getElementById("simple_kifu");
     simple_kifu.innerHTML = kifu;
-
 
     for (var i = 0; i <= 60; i++) {
       $("#a" +  i).val(display_kifu[i]);
