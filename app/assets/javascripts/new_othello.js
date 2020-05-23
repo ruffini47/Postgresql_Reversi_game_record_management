@@ -313,8 +313,13 @@
       }
     }
 
+<<<<<<< HEAD
+//    var msg = document.getElementById("msg");
+//    msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
+=======
     var msg = document.getElementById("msg");
     msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
+>>>>>>> parent of 79ddb1e... app/views/boards/show.html.erbでsimple_kifuをスクロール表示にする。色々レイアウトを変更。
 
     //var msg_kifu = document.getElementById("msg_kifu");
     
