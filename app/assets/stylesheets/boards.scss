@@ -109,6 +109,13 @@ position: relative;
   height: var(--main-cell-width);
 }
 
+#edit_board//for id
+{ 
+  position: absolute;
+  top: 43*8+20px;
+  margin-left: 800px;
+}
+
 .title//for class
 {
   overflow: hidden;

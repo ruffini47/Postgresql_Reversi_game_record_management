@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'edit_board/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -31,6 +32,10 @@ Rails.application.routes.draw do
   # 棋譜を指定して開く
   get '/users/:user_id/specify_kifu_and_open/new', to:'specify_kifu_and_open#new', as: 'new_user_specify_kifu_and_open'
   post '/users/:user_id/specify_kifu_and_open/create', to:'specify_kifu_and_open#create', as: 'create_user_specify_kifu_and_open'
-  
+
+  # 盤面を編集する
+  get 'users/:user_id/edit_board/new', to:'edit_board#new', as: 'new_user_edit_board'
+  post 'users/:user_id/edit_board/create', to:'edit_board#create', as: 'create_user_edit_board'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
