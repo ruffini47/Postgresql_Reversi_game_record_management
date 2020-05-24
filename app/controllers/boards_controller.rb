@@ -12,7 +12,6 @@ class BoardsController < ApplicationController
     gon.from_saved = @game_record.from_saved
     gon.your_move = @game_record.your_move
     gon.vsAI = @game_record.vsAI
-    gon.edit_board = @game_record.edit_board
   end
 
   def index

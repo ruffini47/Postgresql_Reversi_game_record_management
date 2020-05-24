@@ -29,9 +29,5 @@ class SaveGameRecordController < ApplicationController
       end
     end
     @game_record.save
-    render :new
-    # なぜ呼び出されないのか？
-  end
-  def new
   end
 end
