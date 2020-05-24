@@ -313,8 +313,8 @@
       }
     }
 
-    var msg = document.getElementById("msg");
-    msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
+//  var msg = document.getElementById("msg");
+//  msg.innerHTML = "progress of territory  black:"+black+" white:"+white;
 
     //var msg_kifu = document.getElementById("msg_kifu");
     

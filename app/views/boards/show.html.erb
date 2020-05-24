@@ -26,7 +26,7 @@
     </div>
 
     <div id="board"></div>
-    <div id="msg"></div>
+    <!--div id="msg"></div-->
     <p class="bottom"><a href="#last-msg" data-box=".box" class="link" ></a></p>
     <div class="box" id="msg_kifu">
       <input type = "text" readonly="readonly" id = "a0" class="kifu_textbox"><br>
@@ -94,17 +94,17 @@
     <div id = "simple_kifu"></div>
     <form action="#" name="form1" id="form1">
       <p>        
-      <input type="checkbox" name="Computer" id="Computer" />
-      <label for="Computer" id="Computer2">AIと対戦する</label>
+      <input type="checkbox" name="Computer" id="Computer_checkbox" />
+      <label for="Computer" id="Computer_text">AIと対戦する</label>
       </p>
       <p>
-        <input type="checkbox" name="First" id="First">
-	<label for="First" id="First2">あなたが先攻</label>
+        <input type="checkbox" name="First" id="First_checkbox">
+	<label for="First" id="First_text">あなたが先攻</label>
       </p>
       <p>
         <input type="button" id="Reset" value="Reset">
-	<input type="button" id="Save" value="Save">
-	<input type="button" id="SaveAs" value ="SaveAs">
+	<input type="button" class="btn btn-primary" id="Save" value="保存">
+	<input type="button" class="btn btn-primary" id="SaveAs" value ="別名で保存">
       </p>     
       <p>
         <input type="button" id="back_to_beginning" value="|<">
@@ -122,8 +122,8 @@
     <div class = "white_player">
       <p>◯ <span id="white_count"></span> <%= @game_record.white_player %></p>
     </div>
-    <div id="open">
-      <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary"%>
+    <div id = "open">
+      <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary w-260px"%>
     </div>
     <button class="btn btn-primary copy_clipboard" data-clipboard-action="copy" data-clipboard-target="#simple_kifu"%>棋譜をクリップボードにコピーする</button>
     </body>
