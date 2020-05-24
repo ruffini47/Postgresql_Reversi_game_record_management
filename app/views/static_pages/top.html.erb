@@ -13,7 +13,9 @@
     <% end %>
   </div class="link">
   <div class="link">
-    <%= link_to "盤面を編集する", new_user_edit_board_path(current_user.id), class: "btn btn-primary" %>
+    <% if logged_in? %>
+      <%= link_to "盤面を編集する", new_user_edit_board_path(current_user.id), class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="link">
     <% if logged_in? %>
