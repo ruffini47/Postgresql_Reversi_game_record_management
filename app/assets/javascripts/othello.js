@@ -25,6 +25,8 @@
   var from_saved = false;
   var your_move = "first";
   var vsAI = false;
+  var edit_board = false;
+  var edit_finished = false;
 
   var stone;
   var board = [];
@@ -119,7 +121,157 @@
     return total;
   };
 
+  var doEditBoard = function() {
 
+    var b = document.getElementById("board");
+
+    while(b.firstChild) {
+      b.removeChild(b.firstChild);
+    }
+
+    //  show corner frame
+
+    var top_left_corner = corner.cloneNode(true);
+    
+    top_left_corner.style.left = 0 + "px";
+    top_left_corner.style.top = 0 + "px";
+    b.appendChild(top_left_corner);
+
+    var top_right_corner = corner.cloneNode(true);
+
+    top_right_corner.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+    top_right_corner.style.top = 0 + "px";
+    b.appendChild(top_right_corner);
+
+    var bottom_left_corner = corner.cloneNode(true);
+
+    bottom_left_corner.style.left = 0 + "px";
+    bottom_left_corner.style.top = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
+    b.appendChild(bottom_left_corner);
+
+    var bottom_right_corner = corner.cloneNode(true);
+
+    bottom_right_corner.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+    bottom_right_corner.style.top = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
+    b.appendChild(bottom_right_corner);
+
+    // show frame and index
+	  
+    for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+      
+      var top_side_frame = side_frame.cloneNode(true);
+      
+      top_side_frame.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px";
+      top_side_frame.style.top = 0 + "px";
+      top_side_frame.innerText = alphabet[x];
+      b.appendChild(top_side_frame);
+    }
+
+    for(var x = 0; x <BOARD_SIZE.WIDTH; x++) {
+
+      var bottom_side_frame = side_frame.cloneNode(true);
+
+      bottom_side_frame.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px";
+      bottom_side_frame.style.top  = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
+      b.appendChild(bottom_side_frame);
+    }
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+
+        var left_vertical_frame = vertical_frame.cloneNode(true);
+
+        left_vertical_frame.style.left = 0 + "px";
+        left_vertical_frame.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px";
+	left_vertical_frame.innerText = (y + 1).toString();
+        
+        b.appendChild(left_vertical_frame);
+      }
+    }
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+
+        var right_vertical_frame = vertical_frame.cloneNode(true);
+
+        right_vertical_frame.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+        right_vertical_frame.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px";
+        b.appendChild(right_vertical_frame);
+      }
+    }
+
+    // show cell
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+        
+	var cell = stone[board[0][x][y]].cloneNode(true);
+                
+        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
+        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
+        b.appendChild(cell);
+
+    // show stone choice cell
+
+	var black_stone_choice = stone[BLOCK_KIND.BLACK].cloneNode(true);
+
+	black_stone_choice.style.left = FRAME_WIDTH + 5 * CELL_WIDTH + "px";
+	black_stone_choice.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
+ 	b.appendChild(black_stone_choice);
+
+        var white_stone_choice = stone[BLOCK_KIND.WHITE].cloneNode(true);
+
+        white_stone_choice.style.left = FRAME_WIDTH + 6 * CELL_WIDTH + "px";
+        white_stone_choice.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
+	b.appendChild(white_stone_choice);
+
+	var none_stone_choice = stone[BLOCK_KIND.NONE].cloneNode(true);
+
+        none_stone_choice.style.left = FRAME_WIDTH + 7 * CELL_WIDTH + "px";
+        none_stone_choice.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
+	b.appendChild(none_stone_choice);
+
+
+    // show dot        
+
+	var top_left_dot = dot.cloneNode(true);
+
+        top_left_dot.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        top_left_dot.style.top = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        b.appendChild(top_left_dot);
+
+	var top_right_dot = dot.cloneNode(true);
+
+        top_right_dot.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        top_right_dot.style.top = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        b.appendChild(top_right_dot);
+ 
+        var bottom_left_dot = dot.cloneNode(true);
+
+        bottom_left_dot.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - 3 + "px";
+        bottom_left_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        b.appendChild(bottom_left_dot);
+
+	var bottom_right_dot = dot.cloneNode(true);
+
+        bottom_right_dot.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
+        b.appendChild(bottom_right_dot);
+        (function() {
+          var _x = x;
+          var _y = y;
+          cell.onclick = function() {
+	    //alert("クリックしました。");
+	    board[0][_x][_y] = BLOCK_KIND.BLACK;
+            doEditBoard();
+          };
+        })();
+      }
+    }
+    //showProgress(i);    
+  };
+
+	  
 
   var showBoard = function(i) {
     
@@ -213,6 +365,7 @@
         cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
         b.appendChild(cell);
 
+    
     // show dot        
 
 	var top_left_dot = dot.cloneNode(true);
@@ -326,7 +479,6 @@
 
     var simple_kifu = document.getElementById("simple_kifu");
     simple_kifu.innerHTML = kifu;
-
 
     for (var i = 0; i <= 60; i++) {
       $("#a" +  i).val(display_kifu[i]);
@@ -679,9 +831,8 @@
     //Object.freeze(BOARD_SIZE);
     //Object.freeze(FRAME_WIDTH);
     //Object.freeze(CELL_WIDTH);
-
     // initialize board
-    initBoard();
+    //initBoard();
     // start game
     //initRecord();
 
@@ -690,10 +841,22 @@
     from_saved = gon.from_saved;
     your_move = gon.your_move;
     vsAI = gon.vsAI;
+    edit_board = gon.edit_board;
    
     //alert(from_saved);
     //alert(your_move);
     //alert(vsAI);
+    alert("edit_board = " + edit_board);
+
+
+    initBoard();
+
+    if (edit_board == true) {
+      //alert("doEditBoard()");
+      doEditBoard();
+    }
+
+
 
     if(your_move == "first") {
       isFirst = true;
@@ -705,27 +868,161 @@
 
     alert("from_saved = " + from_saved);
 
-    if (from_saved == true ) {
-      kifu = gon.kifu;
-      alert("kifu = " + kifu);
-      var n;
-      var _x;
-      var _y;
-      var ii;
-      var temp_handd;
-      var number_str;
-      var invalid_flag = false;
-      //alert("kifu = " + kifu);
-      if (kifu.length == 0) {
-        
-	//initBoard();
-        //initRecord();
+    if (edit_finished == true) {
 
-        //vsAI = false;
+      if (from_saved == true ) {
+        kifu = gon.kifu;
+        alert("kifu = " + kifu);
+        var n;
+        var _x;
+        var _y;
+        var ii;
+        var temp_handd;
+        var number_str;
+        var invalid_flag = false;
+        //alert("kifu = " + kifu);
+        if (kifu.length == 0) {
+        
+	  //initBoard();
+          //initRecord();
+
+          //vsAI = false;
     
-        //isFirst = true;
+          //isFirst = true;
        
-        //$("#a" + temp_hand).unwrap();
+          //$("#a" + temp_hand).unwrap();
+          last_hand = 0;
+          temp_hand = 0;
+          previous_temp_hand = 0;
+          wrap_flag = true;
+          beginning_flag = false;
+          end_flag = false;
+          link_flag = false;
+          from_saved_first_flag = false;
+          for_jump_temp_hand = 0;
+
+          // start game
+          showBoard(last_hand);
+          if(!from_saved && !isFirst) {
+              doAiPlayer(last_hand);
+          }
+
+        } else {	      
+          i_loop:
+	  for (var i = 0; i < kifu.length; i += 2) { 
+            switch(kifu.charAt(i)){
+              case 'a':
+	      case 'A':
+                n = 0;
+                break;
+              case 'b':
+	      case 'B':
+                n = 1;
+                break;
+              case 'c':
+	      case 'C':
+                n = 2;
+                break;
+              case 'd':
+	      case 'D':
+                n = 3;
+                break;
+              case 'e':
+	      case 'E':
+                n = 4;
+                break;
+              case 'f':
+	      case 'F':
+                n = 5;
+                break;
+              case 'g':
+	      case 'G':
+                n = 6;
+                break;
+              case 'h':
+	      case 'H':
+                n = 7;
+                break;
+	      default:
+	        n = 8;
+	        break;
+            }
+	    if (n == 8) {
+	      invalid_flag = true;
+	      break;
+            }
+            _x = n;
+            _y = kifu.charAt(i + 1) - 1;
+	    if (!is07Number(_y)) {
+	      invalid_flag = true;
+	      break;
+            }
+	    //alert("x = " + _x);
+	    //alert("y = " + _y);
+	    ii = i / 2;
+	    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+              for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+                board[ii + 1][xx][yy] = board[ii][xx][yy];
+              }
+            }
+            if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
+              board[ii + 1][_x][_y] = player_color;
+              //if (isPass(ii + 1) == false) {
+              //  player_color_array[ii + 1] = BLOCK_KIND.MAX - player_color;
+              //} else {
+              //  player_color_array[ii + 1] = player_color;
+              //}
+	      previous_temp_hand = ii;
+	      ii++;
+                
+              temp_handd = ii;
+	      last_hand = temp_handd;
+	
+              if (temp_handd < 10) {
+	        number_str = " " + temp_handd;
+              } else {
+	        number_str = temp_handd;
+	      }
+	      if (player_color == BLOCK_KIND.BLACK) {
+	        display_kifu[temp_handd] = number_str + ": " + Alphabet[_x];
+	      } else if (player_color == BLOCK_KIND.WHITE) {
+	        display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
+	      }
+              display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
+              //showBoard(ii);
+	      changePlayer(ii);
+
+      
+              temp_hand = last_hand;
+	      for_jump_temp_hand = 0;
+              wrap_flag = true;
+	      beginning_flag = false;
+	      end_flag = false;
+	      link_flag = false;
+              if (temp_hand == 1) {
+	        from_saved_first_flag = true;
+              } else {
+	        from_saved_first_flag = false;
+	      }
+              showBoard(last_hand);
+              if(!from_saved && !isFirst) {
+                doAiPlayer(last_hand);
+              }
+
+
+
+	    } else {
+	      //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
+              invalid_flag = true;
+	      break i_loop;
+	    }	 
+          }
+          if (invalid_flag == true ) {
+            alert((temp_handd + 1) +  "手目が不正です。switch");
+          }
+        } 
+      } else if (from_saved == false) {
+               
         last_hand = 0;
         temp_hand = 0;
         previous_temp_hand = 0;
@@ -736,143 +1033,12 @@
         from_saved_first_flag = false;
         for_jump_temp_hand = 0;
 
-        // start game
         showBoard(last_hand);
         if(!from_saved && !isFirst) {
-            doAiPlayer(last_hand);
+          doAiPlayer(last_hand);
         }
-
-      } else {	      
-        i_loop:
-	for (var i = 0; i < kifu.length; i += 2) { 
-          switch(kifu.charAt(i)){
-            case 'a':
-	    case 'A':
-              n = 0;
-              break;
-            case 'b':
-	    case 'B':
-              n = 1;
-              break;
-            case 'c':
-	    case 'C':
-              n = 2;
-              break;
-            case 'd':
-	    case 'D':
-              n = 3;
-              break;
-            case 'e':
-	    case 'E':
-              n = 4;
-              break;
-            case 'f':
-	    case 'F':
-              n = 5;
-              break;
-            case 'g':
-	    case 'G':
-              n = 6;
-              break;
-            case 'h':
-	    case 'H':
-              n = 7;
-              break;
-	    default:
-	      n = 8;
-	      break;
-          }
-	  if (n == 8) {
-	    invalid_flag = true;
-	    break;
-          }
-          _x = n;
-          _y = kifu.charAt(i + 1) - 1;
-	  if (!is07Number(_y)) {
-	    invalid_flag = true;
-	    break;
-          }
-	  //alert("x = " + _x);
-	  //alert("y = " + _y);
-	  ii = i / 2;
-	  for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-            for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-              board[ii + 1][xx][yy] = board[ii][xx][yy];
-            }
-          }
-          if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
-            board[ii + 1][_x][_y] = player_color;
-            //if (isPass(ii + 1) == false) {
-            //  player_color_array[ii + 1] = BLOCK_KIND.MAX - player_color;
-            //} else {
-            //  player_color_array[ii + 1] = player_color;
-            //}
-	    previous_temp_hand = ii;
-	    ii++;
-                
-            temp_handd = ii;
-	    last_hand = temp_handd;
-	
-            if (temp_handd < 10) {
-	      number_str = " " + temp_handd;
-            } else {
-	      number_str = temp_handd;
-	    }
-	    if (player_color == BLOCK_KIND.BLACK) {
-	      display_kifu[temp_handd] = number_str + ": " + Alphabet[_x];
-	    } else if (player_color == BLOCK_KIND.WHITE) {
-	      display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
-	    }
-            display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
-            //showBoard(ii);
-	    changePlayer(ii);
-
       
-            temp_hand = last_hand;
-	    for_jump_temp_hand = 0;
-            wrap_flag = true;
-	    beginning_flag = false;
-	    end_flag = false;
-	    link_flag = false;
-            if (temp_hand == 1) {
-	      from_saved_first_flag = true;
-            } else {
-	      from_saved_first_flag = false;
-	    }
-            showBoard(last_hand);
-            if(!from_saved && !isFirst) {
-              doAiPlayer(last_hand);
-            }
-
-
-
-	  } else {
-	    //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
-            invalid_flag = true;
-	    break i_loop;
-	  }	 
-        }
-        if (invalid_flag == true ) {
-          alert((temp_handd + 1) +  "手目が不正です。switch");
-        }
-      } 
-    } else if (from_saved == false) {
-               
-      last_hand = 0;
-      temp_hand = 0;
-      previous_temp_hand = 0;
-      wrap_flag = true;
-      beginning_flag = false;
-      end_flag = false;
-      link_flag = false;
-      from_saved_first_flag = false;
-      for_jump_temp_hand = 0;
-
-      showBoard(last_hand);
-      if(!from_saved && !isFirst) {
-        doAiPlayer(last_hand);
       }
-      
     }
   };
 
