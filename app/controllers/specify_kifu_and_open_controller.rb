@@ -10,7 +10,7 @@ class SpecifyKifuAndOpenController < ApplicationController
     @game_record.your_move = "first"
     @game_record.vsAI = false
     if @game_record.save
-      flash[:success] = "プレイヤー情報を作成しました。"
+      #flash[:success] = "プレイヤー情報を作成しました。"
       redirect_to show_board_url(@game_record.id)
     else
       flash[:danger] = "プレイヤー情報の作成に失敗しました。"

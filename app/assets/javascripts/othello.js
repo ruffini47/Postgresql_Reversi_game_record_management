@@ -883,8 +883,8 @@
 
     alert("from_saved = " + from_saved);
 
-    if (edit_finished == true) {
-
+    if (edit_board == false) {
+      //alert("edit_board = " + edit_board);
       if (from_saved == true ) {
         kifu = gon.kifu;
         alert("kifu = " + kifu);
@@ -1130,7 +1130,6 @@
   });
 
   $("#SaveAs").click(function() {
-     
     $.ajax({
       url: '/save_as_game_record/update',
       type: "GET",

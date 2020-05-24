@@ -206,18 +206,6 @@ position: relative;
  // width: 43*8px;
 }
 
-#simple_kifu//for id
-{
-  position: absolute;
-  top: 43*11+30px;
-  height: 40px;
-  width: 352px;
-  overflow: scroll;
-  overflow-y: hidden;
-  border: 1px solid;
-  background-color: #ffffff;
-}
-
 #Computer_checkbox//for id
 {
   position: absolute; 
@@ -310,6 +298,18 @@ position: relative;
   position: absolute;
   top:43*16+20px;
   margin-left: 150px;
+}
+
+#simple_kifu//for id
+{
+  position: absolute;
+  top: 43*11+30px;
+  height: 40px;
+  width: 352px;
+  overflow: scroll;
+  overflow-y: hidden;
+  border: 1px solid;
+  background-color: #ffffff;
 }
 
 
