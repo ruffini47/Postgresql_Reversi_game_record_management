@@ -1,0 +1,2 @@
+module EditBoardHelper
+end
