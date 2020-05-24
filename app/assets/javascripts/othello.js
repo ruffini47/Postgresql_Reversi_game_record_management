@@ -211,6 +211,21 @@
         cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
         b.appendChild(cell);
 
+    //show next hand
+
+	var black_stone_next_hand = stone[BLOCK_KIND.BLACK].cloneNode(true);
+
+	black_stone_next_hand.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        black_stone_next_hand.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
+        b.appendChild(black_stone_next_hand);
+
+	var white_stone_next_hand = stone[BLOCK_KIND.WHITE].cloneNode(true);
+
+        white_stone_next_hand.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        white_stone_next_hand.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
+        b.appendChild(white_stone_next_hand);
+	 
+	     
     // show stone choice cell
 
 	var black_stone_choice = stone[BLOCK_KIND.BLACK].cloneNode(true);
@@ -445,7 +460,7 @@
         })();
       }
     }
-    showProgress(i);    
+    showProgress(i);  
   };
 
 
@@ -1226,6 +1241,11 @@
       showBoard(temp_hand);
     });
   }
+
+  $("#edit_board_ok").click(function() {
+    edit_finished = true;
+    alert("edit_board_ok");
+  });
 
 
 

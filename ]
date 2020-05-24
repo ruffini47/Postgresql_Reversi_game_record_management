@@ -112,28 +112,15 @@ position: relative;
 #edit_board_ok//for id
 { 
   position: absolute;
-  top: 43*12px;
-  margin-left: 380px;
+  top: 43*9+20px;
+  margin-left: 400px;
 }
 
 #edit_board_cancel//for id
 {
   position: absolute;
-  top: 43*12px;
-  margin-left: 430px;
-}
-
-#next_hand_text//for id
-{
-  position: absolute;
-  top: 43*12px;
-}
-
-#stone_selection//for id
-{
-  position: absolute;
-  top: 43*12px;
-  margin-left: 170px;
+  top: 43*9+20px;
+  margin-left: 450px;
 }
 
 .title//for class
