@@ -31,6 +31,7 @@
   var board = [];
   var player_color;
   var player_color_array = [];
+  var choiced_stone_color = BLOCK_KIND.BLACK;
 
   var kifu = "";
   var display_kifu = [];
@@ -276,9 +277,29 @@
         (function() {
           var _x = x;
           var _y = y;
-          cell.onclick = function() {
+          
+          black_stone_next_hand.onclick = function() {
+	    player_color = BLOCK_KIND.BLACK;
+	  };
+
+	  white_stone_next_hand.onclick = function() {
+            player_color = BLOCK_KIND.WHITE;
+          };
+
+	  black_stone_choice.onclick = function() {
+	    choiced_stone_color = BLOCK_KIND.BLACK;
+	  };
+ 
+          white_stone_choice.onclick = function() {
+	    choiced_stone_color = BLOCK_KIND.WHITE;
+	  };
+
+	  none_stone_choice.onclick = function() {
+	    choiced_stone_color = BLOCK_KIND.NONE;
+	  };
+	  cell.onclick = function() {
 	    //alert("クリックしました。");
-	    board[0][_x][_y] = BLOCK_KIND.BLACK;
+	    board[0][_x][_y] = choiced_stone_color;
 	    doEditBoard();
           };
         })();
