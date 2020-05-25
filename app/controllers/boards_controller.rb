@@ -13,6 +13,8 @@ class BoardsController < ApplicationController
     gon.your_move = @game_record.your_move
     gon.vsAI = @game_record.vsAI
     gon.edit_board = @game_record.edit_board
+    gon.board0 = @game_record.board0
+    gon.player_color0 = @game_record.player_color0
   end
 
   def index

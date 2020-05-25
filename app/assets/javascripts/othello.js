@@ -26,12 +26,14 @@
   var your_move = "first";
   var vsAI = false;
   var edit_board = false;
+  var board0 = "";
 
   var stone;
   var board = [];
   var player_color;
   var player_color_array = [];
   var choiced_stone_color = BLOCK_KIND.BLACK;
+  var player_color0 = 1;
 
   var kifu = "";
   var display_kifu = [];
@@ -280,11 +282,15 @@
           
           black_stone_next_hand.onclick = function() {
 	    player_color = BLOCK_KIND.BLACK;
+	    player_color_array[0] = BLOCK_KIND.BLACK;
 	  };
 
 	  white_stone_next_hand.onclick = function() {
             player_color = BLOCK_KIND.WHITE;
+	    player_color_array[0] = BLOCK_KIND.WHITE
           };
+
+        
 
 	  black_stone_choice.onclick = function() {
 	    choiced_stone_color = BLOCK_KIND.BLACK;
@@ -879,19 +885,25 @@
     vsAI = gon.vsAI;
     edit_board = gon.edit_board;
    
-    //alert(from_saved);
-    //alert(your_move);
-    //alert(vsAI);
+    //alert("from_saved = " + from_saved);
+    //alert("your_move = " + your_move);
+    //alert("vsAI = " + vsAI);
     alert("edit_board = " + edit_board);
-
+    
+    //if (board0 == null) {
+    //  board0 = "0000000000000000000000000002100000012000000000000000000000000000"
+    //}
 
     initBoard();
-
+    alert("board[0](initBoard() = " + board[0]);      
+    board0 = gon.board0;
+    alert("board0 = " + board0);
+    player_color0 = gon.player_color0;
+    alert("player_color0 = " + player_color0);
     if (edit_board == true) {
       //alert("doEditBoard()");
       doEditBoard();
     }
-
 
 
     if(your_move == "first") {
@@ -910,6 +922,19 @@
       $("#edit_board_cancel").hide();
       $("#next_hand_text").hide();
       $("#stone_selection").hide();
+
+      if (board0.length != 0) {
+	var iii = 0;
+	for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++) {
+          for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++ ) {
+	    board[0][xx][yy] = board0.charAt(iii);
+            iii++;
+          }
+	}
+	alert("board[0]saved = " + board[0]);      
+      }
+      player_color = player_color0;
+      player_color_array[0] = player_color0;
       if (from_saved == true ) {
         kifu = gon.kifu;
         alert("kifu = " + kifu);
@@ -1144,6 +1169,8 @@
         kifu: kifu,
 	your_move: your_move,
 	vsAI: vsAI,
+	initial_board: board[0],
+	player_color0: player_color_array[0],
       },
       success: function(data) {
         alert("success");
@@ -1298,9 +1325,11 @@
     end_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
-    for_jump_temp_hand = 0;  
+    for_jump_temp_hand = 0;
+    edit_board = false;
     // start game
     showBoard(last_hand);
+    alert("board[0] = " + board[0]);
     if(!from_saved && !isFirst) {
       doAiPlayer(last_hand);
     }
