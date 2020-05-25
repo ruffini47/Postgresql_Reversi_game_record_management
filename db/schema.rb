@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_05_23_135912) do
     t.string "title", default: "タイトル未設定"
     t.string "black_player", default: "プレイヤー1"
     t.string "white_player", default: "プレイヤー2"
-    t.datetime "date_played", default: "2020-05-24 13:41:23"
+    t.datetime "date_played", default: "2020-05-25 04:44:04"
     t.string "place_played", default: "場所未入力"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

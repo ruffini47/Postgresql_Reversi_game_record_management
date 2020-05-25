@@ -8,11 +8,7 @@
 
   <body>
     <div class = "title">	    
-      <% if @game_record.edit_board == true %>
-        <span> 盤面編集 </span>
-      <% else %>
-        <%= @game_record.title %>
-      <% end %>
+      <%= @game_record.title %>
     </div>
     <div class = "black_player">
       <p>● <span id="black_count"></span> <%= @game_record.black_player %></p>
@@ -30,13 +26,10 @@
     </div>
 
     <div id="board"></div>
-    <% if @game_record.edit_board == true %>
-      <input type="button" id="edit_board_ok" value="OK">
-      <input type="button" id="edit_board_cancel" value="Cancel">
-    <% end %>
+    <input type="button" id="edit_board_ok" value="OK">
+    <input type="button" id="edit_board_cancel" value="Cancel">
     <p class="bottom"><a href="#last-msg" data-box=".box" class="link" ></a></p>
-    <% if @game_record.edit_board == false %>
-      <div class="box" id="msg_kifu">
+    <div class="box" id="msg_kifu">
         <input type = "text" readonly="readonly" id = "a0" class="kifu_textbox"><br>
         <input type = "text" readonly="readonly" id = "a1" class="kifu_textbox"><br>
         <input type = "text" readonly="readonly" id = "a2" class="kifu_textbox"><br>
@@ -98,19 +91,14 @@
         <input type = "text" readonly="readonly" id = "a58" class="kifu_textbox"><br>
         <input type = "text" readonly="readonly" id = "a59" class="kifu_textbox"><br>
         <input type = "text" readonly="readonly" id = "a60" class="kifu_textbox"><br>
-      </div>
-    <% end %>
-    <% if @game_record.edit_board == false %>
-      <div id = "simple_kifu"></div>
-    <% end %>
-    <% if @game_record.edit_board == true %>
-      <div id = "next_hand_text">
-        <span> 次の手 </span>
-      </div>
-      <div id = "stone_selection">
-        <span> 石選択 </span>
-      </div>
-    <% end %>
+    </div>
+    <div id = "simple_kifu"></div>
+    <div id = "next_hand_text">
+      <span> 次の手 </span>
+    </div>
+    <div id = "stone_selection">
+      <span> 石選択 </span>
+    </div>
     <form action="#" name="form1" id="form1">
       <p>        
       <input type="checkbox" name="Computer" id="Computer_checkbox" />
