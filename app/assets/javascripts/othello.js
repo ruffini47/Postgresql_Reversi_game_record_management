@@ -895,11 +895,11 @@
     //}
 
     initBoard();
-    alert("board[0](initBoard() = " + board[0]);      
+    //alert("board[0](initBoard() = " + board[0]);      
     board0 = gon.board0;
-    alert("board0 = " + board0);
+    //alert("board0 = " + board0);
     player_color0 = gon.player_color0;
-    alert("player_color0 = " + player_color0);
+    //alert("player_color0 = " + player_color0);
     if (edit_board == true) {
       //alert("doEditBoard()");
       doEditBoard();
@@ -931,7 +931,7 @@
             iii++;
           }
 	}
-	alert("board[0]saved = " + board[0]);      
+	//alert("board[0]saved = " + board[0]);      
       }
       player_color = player_color0;
       player_color_array[0] = player_color0;
@@ -1302,6 +1302,15 @@
     $("#stone_selection").hide();
     $("#msg_kifu").show();
     $("#simple_kifu").show();
+    //your_move = gon.your_move;
+    //vsAI = gon.vsAI;
+    //if (vsAI == true) {
+    //  $("#Computer_checkbox").prop("checked",true);
+    //}
+    //if (your_move == "first") {
+    //  $("#First_checkbox").prop("checked",true);
+    //}
+	  
     if(document.form1.Computer.checked) {
       vsAI = true;
     } else {
@@ -1315,7 +1324,9 @@
       isFirst = false;
       your_move = "second";
     }
-       
+    alert("your_move = " + your_move);
+    alert("vsAI = " + vsAI);
+  
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
     $("#a" + temp_hand).unwrap();
@@ -1331,10 +1342,19 @@
     edit_board = false;
     // start game
     showBoard(last_hand);
-    alert("board[0] = " + board[0]);
+    //alert("board[0] = " + board[0]);
     if(!from_saved && !isFirst) {
       doAiPlayer(last_hand);
     }
+  });
+
+  $("#EditBoard").click(function() {
+    $("#next_hand_text").show();
+    $("#stone_selection").show();
+    $("#edit_board_ok").show();
+    $("#edit_board_cancel").show();
+    board[0] = board[last_hand];
+    doEditBoard();
   });
 
 

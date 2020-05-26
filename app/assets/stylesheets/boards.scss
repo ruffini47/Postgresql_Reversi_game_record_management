@@ -254,10 +254,18 @@ position: relative;
   margin-left: 800px;
 }
 
-#open//for id
+#EditBoard//for id
 {
   position: absolute;
   top: 43*14+20px;
+  width: 260px;
+  margin-left: 800px; 
+}
+
+#open//for id
+{
+  position: absolute;
+  top: 43*15+20px;
   margin-left: 800px;
  }
 
@@ -268,7 +276,7 @@ position: relative;
 .copy_clipboard//for class
 {
   position: absolute;
-  top: 43*15+20px;
+  top: 43*16+20px;
   width: 260px;
   margin-left: 800px;
 }
