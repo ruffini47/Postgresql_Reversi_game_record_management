@@ -1197,6 +1197,8 @@
 	kifu: kifu,
 	your_move: your_move,
 	vsAI: vsAI,
+        initial_board: board[0],
+	player_color0: player_color_array[0],
       },
       success: function(data) {
         alert("success");
