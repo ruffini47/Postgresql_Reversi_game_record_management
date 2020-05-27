@@ -1165,6 +1165,9 @@
     /*$('#result').load('/save_game_record/update');*/
     var game_record_id = gon.game_record_id;
     alert(game_record_id);
+    if (last_hand == 0) {
+      kifu = "";
+    }
     $.ajax({
       url: '/save_game_record/update',
       type: "GET",
@@ -1188,6 +1191,9 @@
   });
 
   $("#SaveAs").click(function() {
+    if (last_hand == 0) {
+      kifu = "";
+    }
     $.ajax({
       url: '/save_as_game_record/update',
       type: "GET",
