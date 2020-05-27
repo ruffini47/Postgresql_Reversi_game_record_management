@@ -439,7 +439,7 @@
           var _x = x;
           var _y = y;
           cell.onclick = function() {
-	    //alert("クリックしました。");
+	    alert("クリックしました。");
             for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
 	      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
 	          board[i+1][xx][yy] = board[i][xx][yy];
@@ -476,7 +476,7 @@
               kifu = kifu + (_y + 1).toString();
 	      wrap_flag = true;
 	      beginning_flag = false;
-	      end_flag = false;
+              end_flag = false;
 	      link_flag = false;
 	      from_saved_first_flag = false;
 	      showBoard(i);
@@ -493,6 +493,7 @@
 
 
   var showProgress = function(i) {
+    alert("board[0](showProgress) = " + board[0]);
     var black = 0;
     var white = 0;
 
@@ -904,16 +905,12 @@
 	  
     alert("edit_board = " + edit_board);
     
-    //if (board0 == null) {
-    //  board0 = "0000000000000000000000000002100000012000000000000000000000000000"
-    //}
-
     initBoard();
     //alert("board[0](initBoard() = " + board[0]);      
     board0 = gon.board0;
-    //alert("board0 = " + board0);
+    alert("board0(gon.board0) = " + board0);
     player_color0 = gon.player_color0;
-    //alert("player_color0 = " + player_color0);
+    alert("player_color0 = " + player_color0);
     if (edit_board == true) {
       //alert("doEditBoard()");
       doEditBoard();
@@ -1311,14 +1308,6 @@
     $("#stone_selection").hide();
     $("#msg_kifu").show();
     $("#simple_kifu").show();
-    //your_move = gon.your_move;
-    //vsAI = gon.vsAI;
-    //if (vsAI == true) {
-    //  $("#Computer_checkbox").prop("checked",true);
-    //}
-    //if (your_move == "first") {
-    //  $("#First_checkbox").prop("checked",true);
-    //}
 	  
     if(document.form1.Computer.checked) {
       vsAI = true;
@@ -1351,7 +1340,7 @@
     edit_board = false;
     // start game
     showBoard(last_hand);
-    //alert("board[0] = " + board[0]);
+    alert("board[0](edit_board_ok) = " + board[0]);
     if(!from_saved && !isFirst) {
       doAiPlayer(last_hand);
     }
@@ -1362,7 +1351,12 @@
     $("#stone_selection").show();
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
-    board[0] = board[last_hand];
+    
+    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+        board[0][xx][yy] = board[last_hand][xx][yy];
+      }
+    }
     doEditBoard();
   });
 
