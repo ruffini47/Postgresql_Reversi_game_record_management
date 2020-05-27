@@ -888,6 +888,20 @@
     //alert("from_saved = " + from_saved);
     //alert("your_move = " + your_move);
     //alert("vsAI = " + vsAI);
+   
+    if(your_move == "first") {
+      isFirst = true;
+    } else if(your_move == "second") {
+      isFirst = false;
+    }
+
+    if (vsAI == true) {
+      $("#Computer_checkbox").prop("checked",true);
+    }
+    if (your_move == "first") {
+      $("#First_checkbox").prop("checked",true);
+    }
+	  
     alert("edit_board = " + edit_board);
     
     //if (board0 == null) {
@@ -906,12 +920,7 @@
     }
 
 
-    if(your_move == "first") {
-      isFirst = true;
-    } else if(your_move == "second") {
-      isFirst = false;
-    }
-
+   
     //alert(isFirst);
 
     alert("from_saved = " + from_saved);
