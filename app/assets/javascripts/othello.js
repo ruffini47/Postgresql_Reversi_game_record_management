@@ -35,6 +35,23 @@
   var choiced_stone_color = BLOCK_KIND.BLACK;
   var player_color0 = 1;
 
+  //var saved_board0 = [];
+  var saved_vsAI;
+  var saved_isFirst;
+  var saved_your_move;
+  var saved_from_saved;
+  var saved_last_hand;
+  var saved_temp_hand;
+  var saved_previous_temp_hand;
+  var saved_wrap_flag;
+  var saved_beginning_flag;
+  var saved_end_flag;
+  var saved_link_flag;
+  var saved_from_saved_first_flag;
+  var saved_for_jump_temp_hand;
+ 
+
+
   var kifu = "";
   var display_kifu = [];
   var alphabet ="abcdefgh";
@@ -49,6 +66,7 @@
   var end_flag;
   var link_flag;
   var from_saved_first_flag;
+  var cancel_flag;
 
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
@@ -164,7 +182,7 @@
     for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
       
       var top_side_frame = side_frame.cloneNode(true);
-      
+     
       top_side_frame.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px";
       top_side_frame.style.top = 0 + "px";
       top_side_frame.innerText = alphabet[x];
@@ -439,7 +457,7 @@
           var _x = x;
           var _y = y;
           cell.onclick = function() {
-	    alert("クリックしました。");
+	    //alert("クリックしました。");
             for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
 	      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
 	          board[i+1][xx][yy] = board[i][xx][yy];
@@ -479,6 +497,7 @@
               end_flag = false;
 	      link_flag = false;
 	      from_saved_first_flag = false;
+	      cancel_flag = false;
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -493,7 +512,6 @@
 
 
   var showProgress = function(i) {
-    alert("board[0](showProgress) = " + board[0]);
     var black = 0;
     var white = 0;
 
@@ -522,37 +540,32 @@
 
     var simple_kifu = document.getElementById("simple_kifu");
     simple_kifu.innerHTML = kifu;
-
     for (var i = 0; i <= 60; i++) {
       $("#a" +  i).val(display_kifu[i]);
-    }
-	  
+    }  
     for (var i = 1; i <= 60; i++) {
       if (last_hand < i) {
 	$("#a" + i).hide();
       } else {
 	$("#a" + i).show();
       }
-    }
-       
+    } 
     $("#a" + temp_hand).css("color", "#ffffff");
     $("#a" + temp_hand).css("background-color", "blue");
-    
     for (var i = 0; i <= 60; i++) {
       if (i !=  temp_hand) {
 	$("#a" + i).css("color", "#000000");
 	$("#a" + i).css("background-color", "#ffffff");
       }
     }
- 
     //alert("temp_hand = " + temp_hand);
     //alert("previous_temp_hand = " + previous_temp_hand);
     //alert("for_jump_temp_hand = " + for_jump_temp_hand);
     //alert("last_hand = " + last_hand);
     //alert("wrap_flag = " + wrap_flag);
     //alert("end_flag = " + end_flag);
-
-    if (wrap_flag == true) {	  
+    
+    if (wrap_flag == true) {
       $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
     }
 
@@ -563,7 +576,7 @@
         }
       }
     }
-
+  
     if (beginning_flag == true) {
       if (for_jump_temp_hand - 0 >= 1) {
         $("#a" + for_jump_temp_hand).unwrap();
@@ -579,7 +592,6 @@
 	$("#a" + for_jump_temp_hand).unwrap();
       }
     }
-
     /*	  
     var parent = document.getElementById("msg_kifu");
     parent.insertAdjacentHTML('beforeend', '<input type="button" id="a1" value="１手目">');
@@ -607,7 +619,6 @@
       scrollTop: $box.scrollTop() + dist
     });
     
-   
 
               
     if (allSameColor(i)) {
@@ -689,7 +700,6 @@
 
 	
   var changePlayer = function(i) {
-    
     var pass = false;
     player_color = BLOCK_KIND.MAX - player_color;
     player_color_array[i] = player_color;
@@ -777,6 +787,7 @@
           end_flag = false;
           link_flag = false;
 	  from_saved_first_flag = false;
+	  cancel_flag = false;
           showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
@@ -908,9 +919,9 @@
     initBoard();
     //alert("board[0](initBoard() = " + board[0]);      
     board0 = gon.board0;
-    alert("board0(gon.board0) = " + board0);
+    //alert("board0(gon.board0) = " + board0);
     player_color0 = gon.player_color0;
-    alert("player_color0 = " + player_color0);
+    //alert("player_color0 = " + player_color0);
     if (edit_board == true) {
       //alert("doEditBoard()");
       doEditBoard();
@@ -970,6 +981,7 @@
           end_flag = false;
           link_flag = false;
           from_saved_first_flag = false;
+	  cancel_flag = false;
           for_jump_temp_hand = 0;
 
           // start game
@@ -1075,6 +1087,7 @@
               } else {
 	        from_saved_first_flag = false;
 	      }
+	      cancel_flag = false;
               showBoard(last_hand);
               if(!from_saved && !isFirst) {
                 doAiPlayer(last_hand);
@@ -1102,6 +1115,7 @@
         end_flag = false;
         link_flag = false;
         from_saved_first_flag = false;
+	cancel_flag = false;
         for_jump_temp_hand = 0;
 
         showBoard(last_hand);
@@ -1149,6 +1163,7 @@
     end_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
+    cancel_flag = false;
     for_jump_temp_hand = 0;
 
     // start game
@@ -1227,6 +1242,7 @@
     end_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
+    cancel_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand++;
     if (temp_hand <= last_hand) {
@@ -1244,6 +1260,7 @@
     end_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
+    cancel_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand--;
     if (temp_hand >= 0) {
@@ -1266,6 +1283,7 @@
     end_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
+    cancel_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = 0;
     player_color = BLOCK_KIND.BLACK;
@@ -1282,6 +1300,7 @@
     beginning_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
+    cancel_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = last_hand;
     player_color = player_color_array[last_hand];
@@ -1295,6 +1314,7 @@
       end_flag = false;
       link_flag = true;
       from_saved_first_flag = false;
+      cancel_flag = false;
       for_jump_temp_hand = temp_hand;
       temp_hand = event.data.value;
       if(temp_hand != for_jump_temp_hand) {
@@ -1342,15 +1362,93 @@
     end_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
+    cancel_flag = false;
     for_jump_temp_hand = 0;
     edit_board = false;
     // start game
     showBoard(last_hand);
-    alert("board[0](edit_board_ok) = " + board[0]);
+    //alert("board[0](edit_board_ok) = " + board[0]);
     if(!from_saved && !isFirst) {
       doAiPlayer(last_hand);
     }
   });
+
+  $("#edit_board_cancel").click(function() {
+    $("#edit_board_ok").hide();
+    $("#edit_board_cancel").hide();
+    $("#next_hand_text").hide();
+    $("#stone_selection").hide();
+    $("#msg_kifu").show();
+    $("#simple_kifu").show();
+
+    vsAI = saved_vsAI;
+    isFirst = saved_isFirst;
+    your_move = saved_your_move;
+    alert("your_move = " + your_move);
+    alert("vsAI = " + vsAI);
+    from_saved = saved_from_saved;
+    //alert("temp_hand = " + temp_hand);
+
+    last_hand = saved_last_hand;
+    temp_hand = saved_temp_hand;
+    alert("saved_temp_hand = " + saved_temp_hand);
+    alert("temp_hand = " + temp_hand);
+    //$("#a" + temp_hand).unwrap();
+    previous_temp_hand = saved_previous_temp_hand;
+    alert("previout_temp_hand = " + previous_temp_hand);
+    wrap_flag = saved_wrap_flag;
+    alert("wrap_flag = " + wrap_flag);
+    beginning_flag = saved_beginning_flag;
+    alert("beginning_flag = " + beginning_flag);
+    end_flag = saved_end_flag;
+    alert("end_flag = " + end_flag);
+    link_flag = saved_link_flag;
+    alert("link_flag = " + link_flag);
+    from_saved_first_flag = saved_from_saved_first_flag;
+    alert("from_saved_first_flag = " + from_saved_first_flag);
+    cancel_flag = true;
+    for_jump_temp_hand = saved_for_jump_temp_hand;
+
+    cancel_flag = true;	  
+    edit_board = false;
+
+/*
+    if (!(beginning_flag == true || end_flag == true || link_flag == true)) {
+      if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
+        if (from_saved_first_flag == false) {
+          $("#a" + previous_temp_hand).unwrap();
+        }
+      }
+    }
+*/
+
+    // init zero value
+    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+        board[0][i][j] = BLOCK_KIND.NONE;
+      }
+    }
+
+    // initial position
+    board[0][3][4] = BLOCK_KIND.BLACK;
+    board[0][4][3] = BLOCK_KIND.BLACK;
+    board[0][3][3] = BLOCK_KIND.WHITE;
+    board[0][4][4] = BLOCK_KIND.WHITE;
+
+
+
+    // start game
+    showBoard(temp_hand);
+    //alert("board[0](edit_board_ok) = " + board[0]);
+    if(!from_saved && !isFirst) {
+      doAiPlayer(temp_hand);
+    }
+ 
+
+
+
+  });
+
 
   $("#EditBoard").click(function() {
     $("#next_hand_text").show();
@@ -1358,11 +1456,43 @@
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     
+    //for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+    //  saved_board0[i] = [];
+    //  for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+    //    saved_board0[i][j] = BLOCK_KIND.NONE;
+    //  }
+    //}
+
+    //for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+    //  for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+    //    saved_board0[xx][yy] = board[last_hand][xx][yy];
+    //  }
+    //}
+	  
     for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
       for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-        board[0][xx][yy] = board[last_hand][xx][yy];
+        board[0][xx][yy] = board[temp_hand][xx][yy];
       }
     }
+
+    saved_vsAI = vsAI
+    saved_isFirst = isFirst;
+    saved_your_move = your_move;
+    saved_from_saved = from_saved;
+
+    saved_temp_hand = temp_hand;
+    saved_last_hand = last_hand;
+    saved_previous_temp_hand = previous_temp_hand;
+    saved_wrap_flag = wrap_flag;
+    saved_beginning_flag = beginning_flag;
+    saved_end_flag = end_flag;
+    saved_link_flag = link_flag;
+    saved_from_saved_first_flag = from_saved_first_flag;
+    saved_for_jump_temp_hand = for_jump_temp_hand;
+    
+
+    edit_board = false;
+ 
     doEditBoard();
   });
 
