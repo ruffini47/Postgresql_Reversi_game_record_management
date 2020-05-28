@@ -35,7 +35,7 @@
   var choiced_stone_color = BLOCK_KIND.BLACK;
   var player_color0 = 1;
 
-  //var saved_board0 = [];
+  var saved_board0 = [];
   var saved_vsAI;
   var saved_isFirst;
   var saved_your_move;
@@ -145,8 +145,35 @@
     
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
-    var b = document.getElementById("board");
+    if (edit_board == false) {
+      saved_vsAI = vsAI;
+      saved_isFirst = isFirst;
+      saved_your_move = your_move;
+      alert("your_move = " + your_move);
+      alert("vsAI = " + vsAI);
+      saved_from_saved = from_saved;
+      //alert("temp_hand = " + temp_hand);
 
+      saved_last_hand = last_hand;
+      saved_temp_hand = temp_hand;
+      alert("saved_temp_hand = " + saved_temp_hand);
+      alert("temp_hand = " + temp_hand);
+      //$("#a" + temp_hand).unwrap();
+      saved_previous_temp_hand = previous_temp_hand;
+      alert("saved_previous_temp_hand = " + saved_previous_temp_hand);
+      saved_beginning_flag = beginning_flag;
+      alert("saved_beginning_flag = " + saved_beginning_flag);
+      saved_end_flag = end_flag;
+      alert("saved_end_flag = " + saved_end_flag);
+      saved_link_flag = link_flag;
+      alert("saved_link_flag = " + saved_link_flag);
+      saved_from_saved_first_flag = from_saved_first_flag;
+      alert("saved_from_saved_first_flag = " + saved_from_saved_first_flag);
+      saved_for_jump_temp_hand = for_jump_temp_hand;
+    }
+
+    var b = document.getElementById("board");
+	  
     while(b.firstChild) {
       b.removeChild(b.firstChild);
     }
@@ -1391,36 +1418,86 @@
     $("#msg_kifu").show();
     $("#simple_kifu").show();
 
-    vsAI = saved_vsAI;
-    isFirst = saved_isFirst;
-    your_move = saved_your_move;
-    alert("your_move = " + your_move);
-    alert("vsAI = " + vsAI);
-    from_saved = saved_from_saved;
-    //alert("temp_hand = " + temp_hand);
+    if (edit_board == false) {	  
+      vsAI = saved_vsAI;
+      isFirst = saved_isFirst;
+      your_move = saved_your_move;
+      alert("your_move = " + your_move);
+      alert("vsAI = " + vsAI);
+      from_saved = saved_from_saved;
+      //alert("temp_hand = " + temp_hand);
 
-    last_hand = saved_last_hand;
-    temp_hand = saved_temp_hand;
-    alert("saved_temp_hand = " + saved_temp_hand);
-    alert("temp_hand = " + temp_hand);
-    //$("#a" + temp_hand).unwrap();
-    previous_temp_hand = saved_previous_temp_hand;
-    alert("previout_temp_hand = " + previous_temp_hand);
-    wrap_flag = false;
-    alert("wrap_flag = " + wrap_flag);
-    beginning_flag = saved_beginning_flag;
-    alert("beginning_flag = " + beginning_flag);
-    end_flag = saved_end_flag;
-    alert("end_flag = " + end_flag);
-    link_flag = saved_link_flag;
-    alert("link_flag = " + link_flag);
-    from_saved_first_flag = saved_from_saved_first_flag;
-    alert("from_saved_first_flag = " + from_saved_first_flag);
-    cancel_flag = true;
-    for_jump_temp_hand = saved_for_jump_temp_hand;
+      last_hand = saved_last_hand;
+      temp_hand = saved_temp_hand;
+      alert("saved_temp_hand = " + saved_temp_hand);
+      alert("temp_hand = " + temp_hand);
+      //$("#a" + temp_hand).unwrap();
+      previous_temp_hand = saved_previous_temp_hand;
+      alert("previout_temp_hand = " + previous_temp_hand);
+      wrap_flag = false;
+      alert("wrap_flag = " + wrap_flag);
+      beginning_flag = saved_beginning_flag;
+      alert("beginning_flag = " + beginning_flag);
+      end_flag = saved_end_flag;
+      alert("end_flag = " + end_flag);
+      link_flag = saved_link_flag;
+      alert("link_flag = " + link_flag);
+      from_saved_first_flag = saved_from_saved_first_flag;
+      alert("from_saved_first_flag = " + from_saved_first_flag);
+      for_jump_temp_hand = saved_for_jump_temp_hand;
 
-    cancel_flag = true;	  
-    edit_board = false;
+      cancel_flag = true;	  
+      edit_board = false;
+
+      // initial position
+      for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+        for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+          board[0][i][j] = saved_board0[i][j];
+        }
+      }
+
+    } else if (edit_board == true) {
+      // initialize board
+      initBoard();
+      //initRecord();
+      /*     
+      if(document.form1.Computer.checked) {
+        vsAI = true;
+      } else {
+        vsAI = false;
+      }
+
+      if(document.form1.First.checked) {
+        isFirst = true;
+        your_move = "first";
+      } else {
+        isFirst = false;
+        your_move = "second";
+      }
+      */ 
+      from_saved = false;
+      //alert("temp_hand = " + temp_hand);
+      //$("#a" + temp_hand).unwrap();
+      last_hand = 0;
+      temp_hand = 0;
+      //$("#a" + temp_hand).unwrap();
+      previous_temp_hand = 0;
+      wrap_flag = true;
+      beginning_flag = false;
+      end_flag = false;
+      link_flag = false;
+      from_saved_first_flag = false;
+      cancel_flag = false;
+      for_jump_temp_hand = 0;
+
+      // start game
+      showBoard(last_hand);
+      if(!from_saved && !isFirst) {
+        doAiPlayer(last_hand);
+      }  
+    }
+
+  
 
 /*
     if (!(beginning_flag == true || end_flag == true || link_flag == true)) {
@@ -1431,21 +1508,6 @@
       }
     }
 */
-
-    // init zero value
-    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-        board[0][i][j] = BLOCK_KIND.NONE;
-      }
-    }
-
-    // initial position
-    board[0][3][4] = BLOCK_KIND.BLACK;
-    board[0][4][3] = BLOCK_KIND.BLACK;
-    board[0][3][3] = BLOCK_KIND.WHITE;
-    board[0][4][4] = BLOCK_KIND.WHITE;
-
-
 
     // start game
     showBoard(temp_hand);
@@ -1466,18 +1528,18 @@
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     
-    //for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-    //  saved_board0[i] = [];
-    //  for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-    //    saved_board0[i][j] = BLOCK_KIND.NONE;
-    //  }
-    //}
+    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+      saved_board0[i] = [];
+      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+        saved_board0[i][j] = BLOCK_KIND.NONE;
+      }
+    }
 
-    //for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-    //  for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-    //    saved_board0[xx][yy] = board[last_hand][xx][yy];
-    //  }
-    //}
+    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+        saved_board0[xx][yy] = board[temp_hand][xx][yy];
+      }
+    }
 	  
     for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
       for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
