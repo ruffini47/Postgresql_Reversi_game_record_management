@@ -572,24 +572,34 @@
     if (!(beginning_flag == true || end_flag == true || link_flag == true)) { 
       if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
         if (from_saved_first_flag == false) {
-	  $("#a" + previous_temp_hand).unwrap();
+	  if (cancel_flag == false) {
+	    $("#a" + previous_temp_hand).unwrap();
+	  }
         }
       }
     }
   
     if (beginning_flag == true) {
       if (for_jump_temp_hand - 0 >= 1) {
-        $("#a" + for_jump_temp_hand).unwrap();
+	if (cancel_flag == false) {
+          $("#a" + for_jump_temp_hand).unwrap();
+        }
       }
     } else if (end_flag == true) {
       if (last_hand - for_jump_temp_hand >= 1) {
-	$("#a" + for_jump_temp_hand).unwrap();
+	if (cancel_flag == false) {
+	  $("#a" + for_jump_temp_hand).unwrap();
+	}
       }
     } else if (link_flag == true) {
-      if (temp_hand - for_jump_temp_hand >= 1) { 
-	$("#a" + for_jump_temp_hand).unwrap();
+      if (temp_hand - for_jump_temp_hand >= 1) {
+	if (cancel_flag == false) {
+	  $("#a" + for_jump_temp_hand).unwrap();
+        }
       } else if (for_jump_temp_hand - temp_hand >= 1) {
-	$("#a" + for_jump_temp_hand).unwrap();
+	if (cancel_flag == false) {
+	  $("#a" + for_jump_temp_hand).unwrap();
+	}
       }
     }
     /*	  
@@ -1396,7 +1406,7 @@
     //$("#a" + temp_hand).unwrap();
     previous_temp_hand = saved_previous_temp_hand;
     alert("previout_temp_hand = " + previous_temp_hand);
-    wrap_flag = saved_wrap_flag;
+    wrap_flag = false;
     alert("wrap_flag = " + wrap_flag);
     beginning_flag = saved_beginning_flag;
     alert("beginning_flag = " + beginning_flag);
