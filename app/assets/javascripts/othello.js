@@ -1487,7 +1487,7 @@
       end_flag = false;
       link_flag = false;
       from_saved_first_flag = false;
-      cancel_flag = false;
+      cancel_flag = true;
       for_jump_temp_hand = 0;
 
       // start game
@@ -1510,11 +1510,11 @@
 */
 
     // start game
-    showBoard(temp_hand);
+    //showBoard(temp_hand);
     //alert("board[0](edit_board_ok) = " + board[0]);
-    if(!from_saved && !isFirst) {
-      doAiPlayer(temp_hand);
-    }
+    //if(!from_saved && !isFirst) {
+    //  doAiPlayer(temp_hand);
+    //}
  
 
 
