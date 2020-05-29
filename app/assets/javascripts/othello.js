@@ -149,26 +149,26 @@
       saved_vsAI = vsAI;
       saved_isFirst = isFirst;
       saved_your_move = your_move;
-      alert("your_move = " + your_move);
-      alert("vsAI = " + vsAI);
+      alert("saved_your_move = " + your_move);
+      alert("saved_vsAI = " + vsAI);
       saved_from_saved = from_saved;
       //alert("temp_hand = " + temp_hand);
 
       saved_last_hand = last_hand;
       saved_temp_hand = temp_hand;
-      alert("saved_temp_hand = " + saved_temp_hand);
-      alert("temp_hand = " + temp_hand);
+      //alert("saved_temp_hand = " + saved_temp_hand);
+      //alert("temp_hand = " + temp_hand);
       //$("#a" + temp_hand).unwrap();
       saved_previous_temp_hand = previous_temp_hand;
-      alert("saved_previous_temp_hand = " + saved_previous_temp_hand);
+      //alert("saved_previous_temp_hand = " + saved_previous_temp_hand);
       saved_beginning_flag = beginning_flag;
-      alert("saved_beginning_flag = " + saved_beginning_flag);
+      //alert("saved_beginning_flag = " + saved_beginning_flag);
       saved_end_flag = end_flag;
-      alert("saved_end_flag = " + saved_end_flag);
+      //alert("saved_end_flag = " + saved_end_flag);
       saved_link_flag = link_flag;
-      alert("saved_link_flag = " + saved_link_flag);
+      //alert("saved_link_flag = " + saved_link_flag);
       saved_from_saved_first_flag = from_saved_first_flag;
-      alert("saved_from_saved_first_flag = " + saved_from_saved_first_flag);
+      //alert("saved_from_saved_first_flag = " + saved_from_saved_first_flag);
       saved_for_jump_temp_hand = for_jump_temp_hand;
     }
 
@@ -1388,6 +1388,23 @@
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);
   
+    
+    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+      saved_board0[i] = [];
+      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+        saved_board0[i][j] = BLOCK_KIND.NONE;
+      }
+    }
+
+    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+        saved_board0[xx][yy] = board[0][xx][yy];
+      }
+    }
+
+
+
+
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
     $("#a" + temp_hand).unwrap();
@@ -1429,21 +1446,21 @@
 
       last_hand = saved_last_hand;
       temp_hand = saved_temp_hand;
-      alert("saved_temp_hand = " + saved_temp_hand);
-      alert("temp_hand = " + temp_hand);
+      //alert("saved_temp_hand = " + saved_temp_hand);
+      //alert("temp_hand = " + temp_hand);
       //$("#a" + temp_hand).unwrap();
       previous_temp_hand = saved_previous_temp_hand;
-      alert("previout_temp_hand = " + previous_temp_hand);
+      //alert("previout_temp_hand = " + previous_temp_hand);
       wrap_flag = false;
-      alert("wrap_flag = " + wrap_flag);
+      //alert("wrap_flag = " + wrap_flag);
       beginning_flag = saved_beginning_flag;
-      alert("beginning_flag = " + beginning_flag);
+      //alert("beginning_flag = " + beginning_flag);
       end_flag = saved_end_flag;
-      alert("end_flag = " + end_flag);
+      //alert("end_flag = " + end_flag);
       link_flag = saved_link_flag;
-      alert("link_flag = " + link_flag);
+      //alert("link_flag = " + link_flag);
       from_saved_first_flag = saved_from_saved_first_flag;
-      alert("from_saved_first_flag = " + from_saved_first_flag);
+      //alert("from_saved_first_flag = " + from_saved_first_flag);
       for_jump_temp_hand = saved_for_jump_temp_hand;
 
       cancel_flag = true;	  
@@ -1528,18 +1545,18 @@
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     
-    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-      saved_board0[i] = [];
-      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-        saved_board0[i][j] = BLOCK_KIND.NONE;
-      }
-    }
+//    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+//      saved_board0[i] = [];
+//      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+//        saved_board0[i][j] = BLOCK_KIND.NONE;
+//      }
+//    }
 
-    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-        saved_board0[xx][yy] = board[temp_hand][xx][yy];
-      }
-    }
+//    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+//      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+//        saved_board0[xx][yy] = board[temp_hand][xx][yy];
+//      }
+//    }
 	  
     for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
       for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
