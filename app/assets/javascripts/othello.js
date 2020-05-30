@@ -277,61 +277,116 @@
         white_stone_next_hand.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
         b.appendChild(white_stone_next_hand);
 
-    //  show yellow_frame corner
+    //  show black_next yellow_frame corner
 
-        var yellow_frame_top_left_corner = yellow_frame_corner.cloneNode(true);
+        var black_next_yellow_frame_top_left_corner = black_next_yellow_frame_corner.cloneNode(true);
     
-        yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
-        b.appendChild(yellow_frame_top_left_corner);
+        black_next_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        black_next_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_top_left_corner);
 
-	var yellow_frame_top_right_corner = yellow_frame_corner.cloneNode(true);
+	var black_next_yellow_frame_top_right_corner = black_next_yellow_frame_corner.cloneNode(true);
 
-        yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
-        b.appendChild(yellow_frame_top_right_corner);
+        black_next_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        black_next_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_top_right_corner);
 
-        var yellow_frame_bottom_left_corner = yellow_frame_corner.cloneNode(true);
+        var black_next_yellow_frame_bottom_left_corner = black_next_yellow_frame_corner.cloneNode(true);
 
-        yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        b.appendChild(yellow_frame_bottom_left_corner);
+        black_next_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        black_next_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_bottom_left_corner);
 
-        var yellow_frame_bottom_right_corner = yellow_frame_corner.cloneNode(true);
+        var black_next_yellow_frame_bottom_right_corner = black_next_yellow_frame_corner.cloneNode(true);
 
-        yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        b.appendChild(yellow_frame_bottom_right_corner);
+        black_next_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        black_next_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_bottom_right_corner);
     
-    // show yellow_frame frame
+    // show black_next yellow_frame frame
 
-        var yellow_frame_top_side_frame = yellow_frame_side_frame.cloneNode(true);
+        var black_next_yellow_frame_top_side_frame = black_next_yellow_frame_side_frame.cloneNode(true);
 
-        yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
-        b.appendChild(yellow_frame_top_side_frame);
+        black_next_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        black_next_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_top_side_frame);
 
 
-        var yellow_frame_bottom_side_frame = yellow_frame_side_frame.cloneNode(true);
+        var black_next_yellow_frame_bottom_side_frame = black_next_yellow_frame_side_frame.cloneNode(true);
 
-        yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        b.appendChild(yellow_frame_bottom_side_frame);
+        black_next_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        black_next_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_bottom_side_frame);
 
 	      
-        var yellow_frame_left_vertical_frame = yellow_frame_vertical_frame.cloneNode(true);
+        var black_next_yellow_frame_left_vertical_frame = black_next_yellow_frame_vertical_frame.cloneNode(true);
 
-        yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH  + "px";
-        yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
-        b.appendChild(yellow_frame_left_vertical_frame);
+        black_next_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH  + "px";
+        black_next_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_left_vertical_frame);
 
 
-        var yellow_frame_right_vertical_frame = yellow_frame_vertical_frame.cloneNode(true);
+        var black_next_yellow_frame_right_vertical_frame = black_next_yellow_frame_vertical_frame.cloneNode(true);
 
-        yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
-        b.appendChild(yellow_frame_right_vertical_frame);
- 
+        black_next_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        black_next_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_next_yellow_frame_right_vertical_frame);
+
+    //  show white_next yellow_frame corner
+
+        var white_next_yellow_frame_top_left_corner = white_next_yellow_frame_corner.cloneNode(true);
+
+        white_next_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        white_next_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_top_left_corner);
+
+        var white_next_yellow_frame_top_right_corner = white_next_yellow_frame_corner.cloneNode(true);
+
+        white_next_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        white_next_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_top_right_corner);
+
+        var white_next_yellow_frame_bottom_left_corner = white_next_yellow_frame_corner.cloneNode(true);
+
+        white_next_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        white_next_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_bottom_left_corner);
+
+        var white_next_yellow_frame_bottom_right_corner = white_next_yellow_frame_corner.cloneNode(true);
+
+        white_next_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        white_next_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_bottom_right_corner);
+
+    // show white_next yellow_frame frame
+
+        var white_next_yellow_frame_top_side_frame = white_next_yellow_frame_side_frame.cloneNode(true);
+
+        white_next_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        white_next_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_top_side_frame);
+
+
+        var white_next_yellow_frame_bottom_side_frame = white_next_yellow_frame_side_frame.cloneNode(true);
+
+        white_next_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        white_next_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_bottom_side_frame);
+
+
+        var white_next_yellow_frame_left_vertical_frame = white_next_yellow_frame_vertical_frame.cloneNode(true);
+
+        white_next_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH  + "px";
+        white_next_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_left_vertical_frame);
+
+
+        var white_next_yellow_frame_right_vertical_frame = white_next_yellow_frame_vertical_frame.cloneNode(true);
+
+        white_next_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        white_next_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_next_yellow_frame_right_vertical_frame);
+
 
     // show stone choice cell
 
@@ -1006,11 +1061,17 @@
       document.getElementById("side_frame");
     vertical_frame =
       document.getElementById("vertical_frame");
-    yellow_frame_corner =
+    black_next_yellow_frame_corner =
       document.getElementById("yellow_frame_corner");
-    yellow_frame_side_frame =
+    black_next_yellow_frame_side_frame =
       document.getElementById("yellow_frame_side_frame");
-    yellow_frame_vertical_frame =
+    black_next_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    white_next_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    white_next_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    white_next_yellow_frame_vertical_frame =
       document.getElementById("yellow_frame_vertical_frame");
     stone = [
       document.getElementById("cell"),
