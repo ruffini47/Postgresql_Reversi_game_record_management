@@ -5,9 +5,11 @@
   --main-frame-width: 12px;
   --main-cell-width: 41px;
   --main-square-width: 43px;
+  --yellow-frame-width: 3px;
 }
 
-#board{//for id
+#board//for id
+{	
   position: relative;
 }
 
@@ -20,6 +22,7 @@
   height: var(--main-frame-width);
   background-color: #000000;	
 }
+
 .side_frame//for class
 {
   position: relative;
@@ -32,12 +35,42 @@
 
 .vertical_frame//for class
 {
-position: relative;
+  position: relative;
   top: 1px;
   left: 1px;
   width: var(--main-frame-width);
   height: var(--main-cell-width);
   background-color: #000000;
+}
+
+.yellow_frame_corner//for class
+{
+  position: relative;
+  top: 1px;
+  left: 1px;
+  width: var(--yellow-frame-width);
+  height: var(--yellow-frame-width);
+  background-color: yellow;
+}
+
+.yellow_frame_side_frame//for class
+{
+  position: relative;
+  top: 1px;
+  left: 1px;
+  width: var(--main-cell-width);
+  height: var(--yellow-frame-width);
+  background-color: yellow;
+}
+
+.yellow_frame_vertical_frame//for class
+{
+  position: relative;
+  top: 1px;
+  left: 1px;
+  width: var(--yellow-frame-width);
+  height: var(--main-square-width);
+  background-color: yellow;
 }
 
 .cell//for class
@@ -88,6 +121,30 @@ position: relative;
   text-align: center;
   line-height: 41px;
   color: white;
+}
+
+.yellow_frame_corner_square//for class
+{
+  position: absolute;
+  width: var(--yellow-frame-width);
+  height: var(--yellow-frame-width);
+  background-color: yellow;	
+}
+
+.yellow_frame_side_rectangle//for class
+{
+  position: absolute;
+  width: var(--main-cell-width);
+  height: var(--yellow-frame-width);
+  background-color: yellow;
+}
+
+.yellow_frame_vertical_rectangle//for class
+{
+  position: absolute;
+  width: var(--yellow-frame-width);
+  height: var(--main-square-width);
+  background-color: yellow;
 }
 
 .square//for class

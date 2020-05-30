@@ -14,6 +14,7 @@
 
   var FRAME_WIDTH = 12;
   var CELL_WIDTH = 41;
+  var YELLOW_WIDTH = 2;
 
   var SLEEP_KIND = {
     'TURNOVER' : 1000,
@@ -207,6 +208,7 @@
     // show frame and index
 	  
     for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+	   
       
       var top_side_frame = side_frame.cloneNode(true);
      
@@ -259,13 +261,14 @@
         cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
         cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
         b.appendChild(cell);
-
+      
+    
     //show next hand
 
-	var black_stone_next_hand = stone[BLOCK_KIND.BLACK].cloneNode(true);
+        var black_stone_next_hand = stone[BLOCK_KIND.BLACK].cloneNode(true);
 
 	black_stone_next_hand.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_stone_next_hand.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
+        black_stone_next_hand.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";	      
         b.appendChild(black_stone_next_hand);
 
 	var white_stone_next_hand = stone[BLOCK_KIND.WHITE].cloneNode(true);
@@ -273,8 +276,63 @@
         white_stone_next_hand.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
         white_stone_next_hand.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
         b.appendChild(white_stone_next_hand);
-	 
-	     
+
+    //  show yellow_frame corner
+
+        var yellow_frame_top_left_corner = yellow_frame_corner.cloneNode(true);
+    
+        yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(yellow_frame_top_left_corner);
+
+	var yellow_frame_top_right_corner = yellow_frame_corner.cloneNode(true);
+
+        yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(yellow_frame_top_right_corner);
+
+        var yellow_frame_bottom_left_corner = yellow_frame_corner.cloneNode(true);
+
+        yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(yellow_frame_bottom_left_corner);
+
+        var yellow_frame_bottom_right_corner = yellow_frame_corner.cloneNode(true);
+
+        yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(yellow_frame_bottom_right_corner);
+    
+    // show yellow_frame frame
+
+        var yellow_frame_top_side_frame = yellow_frame_side_frame.cloneNode(true);
+
+        yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(yellow_frame_top_side_frame);
+
+
+        var yellow_frame_bottom_side_frame = yellow_frame_side_frame.cloneNode(true);
+
+        yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(yellow_frame_bottom_side_frame);
+
+	      
+        var yellow_frame_left_vertical_frame = yellow_frame_vertical_frame.cloneNode(true);
+
+        yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH  + "px";
+        yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(yellow_frame_left_vertical_frame);
+
+
+        var yellow_frame_right_vertical_frame = yellow_frame_vertical_frame.cloneNode(true);
+
+        yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(yellow_frame_right_vertical_frame);
+ 
+
     // show stone choice cell
 
 	var black_stone_choice = stone[BLOCK_KIND.BLACK].cloneNode(true);
@@ -320,8 +378,77 @@
 
         bottom_right_dot.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
-        b.appendChild(bottom_right_dot);
-        (function() {
+        b.appendChild(bottom_right_dot);  
+	      
+/*
+    var top_right_corner = corner.cloneNode(true);
+
+    top_right_corner.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+    top_right_corner.style.top = 0 + "px";
+    b.appendChild(top_right_corner);
+
+    var bottom_left_corner = corner.cloneNode(true);
+
+    bottom_left_corner.style.left = 0 + "px";
+    bottom_left_corner.style.top = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
+    b.appendChild(bottom_left_corner);
+
+    var bottom_right_corner = corner.cloneNode(true);
+
+    bottom_right_corner.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+    bottom_right_corner.style.top = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
+    b.appendChild(bottom_right_corner);
+
+    // show frame and index
+	  
+    for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+	   
+      
+      var top_side_frame = side_frame.cloneNode(true);
+     
+      top_side_frame.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px";
+      top_side_frame.style.top = 0 + "px";
+      top_side_frame.innerText = alphabet[x];
+      b.appendChild(top_side_frame);
+    }
+
+    for(var x = 0; x <BOARD_SIZE.WIDTH; x++) {
+
+      var bottom_side_frame = side_frame.cloneNode(true);
+
+      bottom_side_frame.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px";
+      bottom_side_frame.style.top  = FRAME_WIDTH + (BOARD_SIZE.HEIGHT * CELL_WIDTH) + "px";
+      b.appendChild(bottom_side_frame);
+    }
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+
+        var left_vertical_frame = vertical_frame.cloneNode(true);
+
+        left_vertical_frame.style.left = 0 + "px";
+        left_vertical_frame.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px";
+	left_vertical_frame.innerText = (y + 1).toString();
+        
+        b.appendChild(left_vertical_frame);
+      }
+    }
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+
+        var right_vertical_frame = vertical_frame.cloneNode(true);
+
+        right_vertical_frame.style.left = FRAME_WIDTH + (BOARD_SIZE.WIDTH * CELL_WIDTH) + "px";
+        right_vertical_frame.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px";
+        b.appendChild(right_vertical_frame);
+      }
+    }
+*/
+      
+	      
+	      
+	(function() {
           var _x = x;
           var _y = y;
           
@@ -879,6 +1006,12 @@
       document.getElementById("side_frame");
     vertical_frame =
       document.getElementById("vertical_frame");
+    yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
     stone = [
       document.getElementById("cell"),
       document.getElementById("black"),
