@@ -408,6 +408,170 @@
         none_stone_choice.style.top = FRAME_WIDTH +  9 * CELL_WIDTH + "px";
 	b.appendChild(none_stone_choice);
 
+    //  show black_select yellow_frame corner
+
+        var black_select_yellow_frame_top_left_corner = black_select_yellow_frame_corner.cloneNode(true);
+
+        black_select_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 5 * CELL_WIDTH + "px";
+        black_select_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_top_left_corner);
+
+        var black_select_yellow_frame_top_right_corner = black_select_yellow_frame_corner.cloneNode(true);
+
+        black_select_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        black_select_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_top_right_corner);
+
+        var black_select_yellow_frame_bottom_left_corner = black_select_yellow_frame_corner.cloneNode(true);
+
+        black_select_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 5 * CELL_WIDTH + "px";
+        black_select_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_bottom_left_corner);
+
+        var black_select_yellow_frame_bottom_right_corner = black_select_yellow_frame_corner.cloneNode(true);
+
+        black_select_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        black_select_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_bottom_right_corner);
+
+    // show black_select yellow_frame frame
+
+        var black_select_yellow_frame_top_side_frame = black_select_yellow_frame_side_frame.cloneNode(true);
+
+        black_select_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 5 * CELL_WIDTH + "px";
+        black_select_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_top_side_frame);
+
+
+        var black_select_yellow_frame_bottom_side_frame = black_select_yellow_frame_side_frame.cloneNode(true);
+
+        black_select_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 5 * CELL_WIDTH + "px";
+        black_select_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_bottom_side_frame);
+
+
+        var black_select_yellow_frame_left_vertical_frame = black_select_yellow_frame_vertical_frame.cloneNode(true);
+
+        black_select_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 5 * CELL_WIDTH  + "px";
+        black_select_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_left_vertical_frame);
+
+
+        var black_select_yellow_frame_right_vertical_frame = black_select_yellow_frame_vertical_frame.cloneNode(true);
+
+        black_select_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        black_select_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(black_select_yellow_frame_right_vertical_frame);
+
+    //  show white_select yellow_frame corner
+
+        var white_select_yellow_frame_top_left_corner = white_select_yellow_frame_corner.cloneNode(true);
+
+        white_select_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 6 * CELL_WIDTH + "px";
+        white_select_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_top_left_corner);
+
+        var white_select_yellow_frame_top_right_corner = white_select_yellow_frame_corner.cloneNode(true);
+
+        white_select_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 7 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        white_select_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_top_right_corner);
+
+        var white_select_yellow_frame_bottom_left_corner = white_select_yellow_frame_corner.cloneNode(true);
+
+        white_select_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 6 * CELL_WIDTH + "px";
+        white_select_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_bottom_left_corner);
+
+        var white_select_yellow_frame_bottom_right_corner = white_select_yellow_frame_corner.cloneNode(true);
+
+        white_select_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 7 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        white_select_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_bottom_right_corner);
+
+    // show white_select yellow_frame frame
+
+        var white_select_yellow_frame_top_side_frame = white_select_yellow_frame_side_frame.cloneNode(true);
+
+        white_select_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 6 * CELL_WIDTH + "px";
+        white_select_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_top_side_frame);
+
+
+        var white_select_yellow_frame_bottom_side_frame = white_select_yellow_frame_side_frame.cloneNode(true);
+
+        white_select_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 6 * CELL_WIDTH + "px";
+        white_select_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_bottom_side_frame);
+
+
+        var white_select_yellow_frame_left_vertical_frame = white_select_yellow_frame_vertical_frame.cloneNode(true);
+
+        white_select_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 6 * CELL_WIDTH  + "px";
+        white_select_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_left_vertical_frame);
+
+
+        var white_select_yellow_frame_right_vertical_frame = white_select_yellow_frame_vertical_frame.cloneNode(true);
+
+        white_select_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 7 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        white_select_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(white_select_yellow_frame_right_vertical_frame);
+
+    //  show none_select yellow_frame corner
+
+        var none_select_yellow_frame_top_left_corner = none_select_yellow_frame_corner.cloneNode(true);
+
+        none_select_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 7 * CELL_WIDTH + "px";
+        none_select_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_top_left_corner);
+
+        var none_select_yellow_frame_top_right_corner = none_select_yellow_frame_corner.cloneNode(true);
+
+        none_select_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 8 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        none_select_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_top_right_corner);
+
+        var none_select_yellow_frame_bottom_left_corner = none_select_yellow_frame_corner.cloneNode(true);
+
+        none_select_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 7 * CELL_WIDTH + "px";
+        none_select_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_bottom_left_corner);
+
+        var none_select_yellow_frame_bottom_right_corner = none_select_yellow_frame_corner.cloneNode(true);
+
+        none_select_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 8 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        none_select_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_bottom_right_corner);
+
+    // show none_select yellow_frame frame
+
+        var none_select_yellow_frame_top_side_frame = none_select_yellow_frame_side_frame.cloneNode(true);
+
+        none_select_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 7 * CELL_WIDTH + "px";
+        none_select_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_top_side_frame);
+
+
+        var none_select_yellow_frame_bottom_side_frame = none_select_yellow_frame_side_frame.cloneNode(true);
+
+        none_select_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 7 * CELL_WIDTH + "px";
+        none_select_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 10 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_bottom_side_frame);
+
+
+        var none_select_yellow_frame_left_vertical_frame = none_select_yellow_frame_vertical_frame.cloneNode(true);
+
+        none_select_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 7 * CELL_WIDTH  + "px";
+        none_select_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_left_vertical_frame);
+
+
+        var none_select_yellow_frame_right_vertical_frame = none_select_yellow_frame_vertical_frame.cloneNode(true);
+
+        none_select_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 8 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        none_select_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
+        b.appendChild(none_select_yellow_frame_right_vertical_frame);
 
     // show dot        
 
@@ -1072,6 +1236,24 @@
     white_next_yellow_frame_side_frame =
       document.getElementById("yellow_frame_side_frame");
     white_next_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    black_select_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    black_select_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    black_select_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    white_select_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    white_select_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    white_select_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    none_select_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    none_select_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    none_select_yellow_frame_vertical_frame =
       document.getElementById("yellow_frame_vertical_frame");
     stone = [
       document.getElementById("cell"),
