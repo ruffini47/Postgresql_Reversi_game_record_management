@@ -58,7 +58,7 @@
   position: relative;
   top: 1px;
   left: 1px;
-  width: var(--main-cell-width);
+  width: var(--main-square-width);
   height: var(--yellow-frame-width);
   background-color: yellow;
 }
@@ -134,7 +134,7 @@
 .yellow_frame_side_rectangle//for class
 {
   position: absolute;
-  width: var(--main-cell-width);
+  width: var(--main-square-width);
   height: var(--yellow-frame-width);
   background-color: yellow;
 }

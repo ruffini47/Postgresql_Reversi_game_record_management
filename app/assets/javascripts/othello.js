@@ -14,7 +14,7 @@
 
   var FRAME_WIDTH = 12;
   var CELL_WIDTH = 41;
-  var YELLOW_WIDTH = 2;
+  var YELLOW_WIDTH = 0;
 
   var SLEEP_KIND = {
     'TURNOVER' : 1000,
