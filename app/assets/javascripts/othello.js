@@ -143,15 +143,14 @@
   };
 
   var doEditBoard = function() {
-    
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
     if (edit_board == false) {
       saved_vsAI = vsAI;
       saved_isFirst = isFirst;
       saved_your_move = your_move;
-      alert("saved_your_move = " + your_move);
-      alert("saved_vsAI = " + vsAI);
+      //alert("saved_your_move = " + your_move);
+      //alert("saved_vsAI = " + vsAI);
       saved_from_saved = from_saved;
       //alert("temp_hand = " + temp_hand);
 
@@ -283,7 +282,7 @@
     
         black_next_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
         black_next_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
-        b.appendChild(black_next_yellow_frame_top_left_corner);
+        //b.appendChild(black_next_yellow_frame_top_left_corner);
 
 	var black_next_yellow_frame_top_right_corner = black_next_yellow_frame_corner.cloneNode(true);
 
@@ -331,6 +330,17 @@
         black_next_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
         black_next_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 9 * CELL_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_right_vertical_frame);
+
+
+        //b.append(black_next_yellow_frame_top_left_corner);
+        //b.append(black_next_yellow_frame_top_right_corner);
+        //b.append(black_next_yellow_frame_bottom_left_corner);
+        //b.append(black_next_yellow_frame_bottom_right_corner);
+        //b.append(black_next_yellow_frame_top_side_frame);
+        //b.append(black_next_yellow_frame_bottom_side_frame);
+        //b.append(black_next_yellow_frame_left_vertical_frame);
+        //b.append(black_next_yellow_frame_right_vertical_frame); 
+        
 
     //  show white_next yellow_frame corner
 
@@ -604,50 +614,158 @@
 	(function() {
           var _x = x;
           var _y = y;
-          
+        
+
           black_stone_next_hand.onclick = function() {
 	    player_color = BLOCK_KIND.BLACK;
 	    player_color_array[0] = BLOCK_KIND.BLACK;
-            black_next_yellow_frame_top_left_corner
-	    alert("black_next_yellow_frame_top_left_corner = " + $("#board").find(black_next_yellow_frame_top_left_corner).length);
 	    if ($("#board").find(black_next_yellow_frame_top_left_corner).length == 0) {
 	      b.append(black_next_yellow_frame_top_left_corner);
+	      b.append(black_next_yellow_frame_top_right_corner);
+	      b.append(black_next_yellow_frame_bottom_left_corner);
+	      b.append(black_next_yellow_frame_bottom_right_corner);
+	      b.append(black_next_yellow_frame_top_side_frame);
+	      b.append(black_next_yellow_frame_bottom_side_frame);
+	      b.append(black_next_yellow_frame_left_vertical_frame);
+	      b.append(black_next_yellow_frame_right_vertical_frame);
             }
-	    alert("black_next_yellow_frame_top_left_corner = " + $("#board").find(black_next_yellow_frame_top_left_corner).length);
-	    alert("white_next_yellow_frame_top_left_corner.length = " + $("#board").find(white_next_yellow_frame_top_left_corner).length);
 	    if ($("#board").find(white_next_yellow_frame_top_left_corner).length > 0) {
               white_next_yellow_frame_top_left_corner.remove();
+	      white_next_yellow_frame_top_right_corner.remove();
+              white_next_yellow_frame_bottom_left_corner.remove();
+              white_next_yellow_frame_bottom_right_corner.remove();
+	      white_next_yellow_frame_top_side_frame.remove();
+              white_next_yellow_frame_bottom_side_frame.remove();
+              white_next_yellow_frame_left_vertical_frame.remove();
+              white_next_yellow_frame_right_vertical_frame.remove();
             }
-            alert("white_next_yellow_frame_top_left_corner = " + $("#board").find(white_next_yellow_frame_top_left_corner).length);
 	  };
 
 	  white_stone_next_hand.onclick = function() {
             player_color = BLOCK_KIND.WHITE;
 	    player_color_array[0] = BLOCK_KIND.WHITE;
-	    alert("white_next_yellow_frame_top_left_corner.length= " + $("#board").find(white_next_yellow_frame_top_left_corner).length);
 	    if ($("#board").find(white_next_yellow_frame_top_left_corner).length == 0) {
               b.append(white_next_yellow_frame_top_left_corner);
+	      b.append(white_next_yellow_frame_top_right_corner);
+              b.append(white_next_yellow_frame_bottom_left_corner);
+              b.append(white_next_yellow_frame_bottom_right_corner);
+	      b.append(white_next_yellow_frame_top_side_frame);
+              b.append(white_next_yellow_frame_bottom_side_frame);
+              b.append(white_next_yellow_frame_left_vertical_frame);
+              b.append(white_next_yellow_frame_right_vertical_frame);
             }
-	    alert("white_next_yellow_frame_top_left_corner.length= " + $("#board").find(white_next_yellow_frame_top_left_corner).length);
-	    alert("black_next_yellow_frame_top_left_corner.length = " + $("#board").find(black_next_yellow_frame_top_left_corner).length);
             if ($("#board").find(black_next_yellow_frame_top_left_corner).length > 0) {
 	      black_next_yellow_frame_top_left_corner.remove();
+	      black_next_yellow_frame_top_right_corner.remove();
+              black_next_yellow_frame_bottom_left_corner.remove();
+              black_next_yellow_frame_bottom_right_corner.remove();
+	      black_next_yellow_frame_top_side_frame.remove();
+              black_next_yellow_frame_bottom_side_frame.remove();
+              black_next_yellow_frame_left_vertical_frame.remove();
+              black_next_yellow_frame_right_vertical_frame.remove();
             }
-	    alert("black_next_yellow_frame_top_left_corner.length = " + $("#board").find(black_next_yellow_frame_top_left_corner).length);
           };
-
-        
 
 	  black_stone_choice.onclick = function() {
 	    choiced_stone_color = BLOCK_KIND.BLACK;
+	    if ($("#board").find(black_select_yellow_frame_top_left_corner).length == 0) {
+              b.append(black_select_yellow_frame_top_left_corner);
+              b.append(black_select_yellow_frame_top_right_corner);
+              b.append(black_select_yellow_frame_bottom_left_corner);
+              b.append(black_select_yellow_frame_bottom_right_corner);
+              b.append(black_select_yellow_frame_top_side_frame);
+              b.append(black_select_yellow_frame_bottom_side_frame);
+              b.append(black_select_yellow_frame_left_vertical_frame);
+              b.append(black_select_yellow_frame_right_vertical_frame);
+            }
+            if ($("#board").find(white_select_yellow_frame_top_left_corner).length > 0) {
+              white_select_yellow_frame_top_left_corner.remove();
+              white_select_yellow_frame_top_right_corner.remove();
+              white_select_yellow_frame_bottom_left_corner.remove();
+              white_select_yellow_frame_bottom_right_corner.remove();
+              white_select_yellow_frame_top_side_frame.remove();
+              white_select_yellow_frame_bottom_side_frame.remove();
+              white_select_yellow_frame_left_vertical_frame.remove();
+              white_select_yellow_frame_right_vertical_frame.remove();
+            }
+	    if ($("#board").find(none_select_yellow_frame_top_left_corner).length > 0) {
+              none_select_yellow_frame_top_left_corner.remove();
+              none_select_yellow_frame_top_right_corner.remove();
+              none_select_yellow_frame_bottom_left_corner.remove();
+              none_select_yellow_frame_bottom_right_corner.remove();
+              none_select_yellow_frame_top_side_frame.remove();
+              none_select_yellow_frame_bottom_side_frame.remove();
+              none_select_yellow_frame_left_vertical_frame.remove();
+              none_select_yellow_frame_right_vertical_frame.remove();
+            }
 	  };
  
           white_stone_choice.onclick = function() {
 	    choiced_stone_color = BLOCK_KIND.WHITE;
+            if ($("#board").find(white_select_yellow_frame_top_left_corner).length == 0) {
+              b.append(white_select_yellow_frame_top_left_corner);
+              b.append(white_select_yellow_frame_top_right_corner);
+              b.append(white_select_yellow_frame_bottom_left_corner);
+              b.append(white_select_yellow_frame_bottom_right_corner);
+              b.append(white_select_yellow_frame_top_side_frame);
+              b.append(white_select_yellow_frame_bottom_side_frame);
+              b.append(white_select_yellow_frame_left_vertical_frame);
+              b.append(white_select_yellow_frame_right_vertical_frame);
+            }
+            if ($("#board").find(black_select_yellow_frame_top_left_corner).length > 0) {
+              black_select_yellow_frame_top_left_corner.remove();
+              black_select_yellow_frame_top_right_corner.remove();
+              black_select_yellow_frame_bottom_left_corner.remove();
+              black_select_yellow_frame_bottom_right_corner.remove();
+              black_select_yellow_frame_top_side_frame.remove();
+              black_select_yellow_frame_bottom_side_frame.remove();
+              black_select_yellow_frame_left_vertical_frame.remove();
+              black_select_yellow_frame_right_vertical_frame.remove();
+            }
+            if ($("#board").find(none_select_yellow_frame_top_left_corner).length > 0) {
+              none_select_yellow_frame_top_left_corner.remove();
+              none_select_yellow_frame_top_right_corner.remove();
+              none_select_yellow_frame_bottom_left_corner.remove();
+              none_select_yellow_frame_bottom_right_corner.remove();
+              none_select_yellow_frame_top_side_frame.remove();
+              none_select_yellow_frame_bottom_side_frame.remove();
+              none_select_yellow_frame_left_vertical_frame.remove();
+              none_select_yellow_frame_right_vertical_frame.remove();
+            }
 	  };
 
 	  none_stone_choice.onclick = function() {
 	    choiced_stone_color = BLOCK_KIND.NONE;
+            if ($("#board").find(none_select_yellow_frame_top_left_corner).length == 0) {
+              b.append(none_select_yellow_frame_top_left_corner);
+              b.append(none_select_yellow_frame_top_right_corner);
+              b.append(none_select_yellow_frame_bottom_left_corner);
+              b.append(none_select_yellow_frame_bottom_right_corner);
+              b.append(none_select_yellow_frame_top_side_frame);
+              b.append(none_select_yellow_frame_bottom_side_frame);
+              b.append(none_select_yellow_frame_left_vertical_frame);
+              b.append(none_select_yellow_frame_right_vertical_frame);
+            }
+            if ($("#board").find(black_select_yellow_frame_top_left_corner).length > 0) {
+              black_select_yellow_frame_top_left_corner.remove();
+              black_select_yellow_frame_top_right_corner.remove();
+              black_select_yellow_frame_bottom_left_corner.remove();
+              black_select_yellow_frame_bottom_right_corner.remove();
+              black_select_yellow_frame_top_side_frame.remove();
+              black_select_yellow_frame_bottom_side_frame.remove();
+              black_select_yellow_frame_left_vertical_frame.remove();
+              black_select_yellow_frame_right_vertical_frame.remove();
+            }
+            if ($("#board").find(white_select_yellow_frame_top_left_corner).length > 0) {
+              white_select_yellow_frame_top_left_corner.remove();
+              white_select_yellow_frame_top_right_corner.remove();
+              white_select_yellow_frame_bottom_left_corner.remove();
+              white_select_yellow_frame_bottom_right_corner.remove();
+              white_select_yellow_frame_top_side_frame.remove();
+              white_select_yellow_frame_bottom_side_frame.remove();
+              white_select_yellow_frame_left_vertical_frame.remove();
+              white_select_yellow_frame_right_vertical_frame.remove();
+            }
 	  };
 	  cell.onclick = function() {
 	    //alert("クリックしました。");
@@ -1291,7 +1409,6 @@
     player_color0 = gon.player_color0;
     //alert("player_color0 = " + player_color0);
     if (edit_board == true) {
-      //alert("doEditBoard()");
       doEditBoard();
     }
 
@@ -1912,7 +2029,6 @@
     
 
     edit_board = false;
- 
     doEditBoard();
   });
 
