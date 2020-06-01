@@ -186,17 +186,24 @@
   top: 43*12px;
 }
 
-#stone_selection//for id
+#stone_selection_text//for id
 {
   position: absolute;
   top: 43*12px;
   margin-left: 170px;
 }
 
-#select_board//for id
+#next_hand//for id
 {
   position: absolute;
   top: 12 + 43 * 11px; 
+}
+
+#stone_selection//for id
+{
+  position: absolute;
+  top: 12 + 43 * 11px;
+  margin-left: 41 * 5px;
 }
 
 .title//for class
