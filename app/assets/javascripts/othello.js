@@ -42,7 +42,7 @@
   var white_select_yellow_frame_length = 0;
   var none_select_yellow_frame_length = 0;
 
-  var saved_board0 = [];
+  var saved_board = [];
   var saved_vsAI;
   var saved_isFirst;
   var saved_your_move;
@@ -1831,8 +1831,6 @@
     $("#edit_board_cancel").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
-    $("#next_hand").hide();
-    $("#stone_selection").hide();
     $("#msg_kifu").show();
     $("#simple_kifu").show();
     
@@ -1853,18 +1851,18 @@
     alert("vsAI = " + vsAI);
   
     
-    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-      saved_board0[i] = [];
-      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-        saved_board0[i][j] = BLOCK_KIND.NONE;
-      }
-    }
+//    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+//      saved_board[i] = [];
+//      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+//        saved_board[i][j] = BLOCK_KIND.NONE;
+//      }
+//    }
 
-    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-        saved_board0[xx][yy] = board[0][xx][yy];
-      }
-    }
+//    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+//      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+//        saved_board[xx][yy] = board[0][xx][yy];
+//      }
+//    }
 
 
 
@@ -1883,6 +1881,24 @@
     cancel_flag = false;
     for_jump_temp_hand = 0;
     edit_board = false;
+    //alert("koko0");
+    
+    //alert("black_next_yellow_frame__length = " + $("#next_hand").find(yellow_frame_corner).length);
+	  
+    //while(c.firstChild) {
+    //  alert("koko1");
+    //  c.removeChild(c.firstChild);
+    //}
+    $("#next_hand").children().remove();
+    $("#stone_selection").children().remove();
+    //c.removmeChild(yellow_frame_corner);	  
+    //while(d.firstChild) {
+    //  alert("koko2");
+    //  d.removeChild(d.firstChild);
+    //}
+    //$("#next_hand").hide();
+    //$("#stone_selection").hide();
+ 
     // start game
     showBoard(last_hand);
     //alert("board[0](edit_board_ok) = " + board[0]);
@@ -1896,8 +1912,6 @@
     $("#edit_board_cancel").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
-    $("#next_hand").hide();
-    $("#stone_selection").hide();
     $("#msg_kifu").show();
     $("#simple_kifu").show();
 
@@ -1907,13 +1921,14 @@
       your_move = saved_your_move;
       alert("your_move = " + your_move);
       alert("vsAI = " + vsAI);
+      alert("edit_board = " + edit_board);
       from_saved = saved_from_saved;
       //alert("temp_hand = " + temp_hand);
 
       last_hand = saved_last_hand;
       temp_hand = saved_temp_hand;
       //alert("saved_temp_hand = " + saved_temp_hand);
-      //alert("temp_hand = " + temp_hand);
+      alert("temp_hand = " + temp_hand);
       //$("#a" + temp_hand).unwrap();
       previous_temp_hand = saved_previous_temp_hand;
       //alert("previout_temp_hand = " + previous_temp_hand);
@@ -1935,11 +1950,26 @@
       // initial position
       for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
         for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-          board[0][i][j] = saved_board0[i][j];
+          board[0][i][j] = saved_board[i][j];
         }
       }
 
+      alert("koko kitenai");
+
+      $("#next_hand").children().remove();
+      $("#stone_selection").children().remove();
+      //$("#next_hand").hide();
+      //$("#stone_selection").hide();
+       
+      // start game
+      showBoard(temp_hand);
+      //alert("board[0](edit_board_ok) = " + board[0]);
+      if(!from_saved && !isFirst) {
+        doAiPlayer(temp_hand);
+      }          
+
     } else if (edit_board == true) {
+      alert("edit_board = " + edit_board);
       // initialize board
       initBoard();
       //initRecord();
@@ -1972,6 +2002,13 @@
       from_saved_first_flag = false;
       cancel_flag = true;
       for_jump_temp_hand = 0;
+
+      $("#next_hand").children().remove();
+      $("#stone_selection").children().remove();
+      $("#next_hand").hide();
+      $("#stone_selection").hide();
+
+
 
       // start game
       showBoard(last_hand);
@@ -2013,18 +2050,18 @@
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     
-//    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-//      saved_board0[i] = [];
-//      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-//        saved_board0[i][j] = BLOCK_KIND.NONE;
-//      }
-//    }
+    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+      saved_board[i] = [];
+      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+        saved_board[i][j] = BLOCK_KIND.NONE;
+      }
+    }
 
-//    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-//      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-//        saved_board0[xx][yy] = board[temp_hand][xx][yy];
-//      }
-//    }
+    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+        saved_board[xx][yy] = board[0][xx][yy];
+      }
+    }
 	  
     for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
       for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
