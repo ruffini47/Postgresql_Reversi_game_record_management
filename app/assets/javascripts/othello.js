@@ -641,8 +641,6 @@
             black_stone_next_hand.onclick = function() {
 	    player_color = BLOCK_KIND.BLACK;
 	    player_color_array[0] = BLOCK_KIND.BLACK;
-            //alert("white_next_yellow_frame_length = " + white_next_yellow_frame_length);
-	    //alert("white_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(white_next_yellow_frame_top_left_corner).length);
 	    if (white_next_yellow_frame_length > 0) {
               while(c.firstChild) {
                 c.removeChild(c.firstChild);
@@ -650,23 +648,15 @@
 	      //white_next_yellow_frame_top_left_corner.remove();
 	      white_next_yellow_frame_length -= 1;
             }
-            //alert("white_next_yellow_frame_length = " + white_next_yellow_frame_length);
-	    //alert("white_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(white_next_yellow_frame_top_left_corner).length);
-	    //alert("black_next_yellow_frame_length = " + black_next_yellow_frame_length);
-	    //alert("black_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(black_next_yellow_frame_top_left_corner).length);
 	    if (black_next_yellow_frame_length == 0) {
 	      c.append(black_next_yellow_frame_top_left_corner);
 	      black_next_yellow_frame_length += 1;	    
             }
-	    //alert("black_next_yellow_frame_length = " + black_next_yellow_frame_length);
-	    //alert("black_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(black_next_yellow_frame_top_left_corner).length);
           };
 
 	  white_stone_next_hand.onclick = function() {
             player_color = BLOCK_KIND.WHITE;
 	    player_color_array[0] = BLOCK_KIND.WHITE;
-	    //alert("black_next_yellow_frame_length = " + black_next_yellow_frame_length);
-	    //alert("black_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(black_next_yellow_frame_top_left_corner).length);
 	    if (black_next_yellow_frame_length > 0) {
 	       while(c.firstChild) {
                 c.removeChild(c.firstChild);
@@ -674,113 +664,71 @@
 	      //black_next_yellow_frame_top_left_corner.remove();
 	      black_next_yellow_frame_length -= 1;
             }
-	    //alert("black_next_yellow_frame_length = " + black_next_yellow_frame_length);
-	    //alert("black_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(black_next_yellow_frame_top_left_corner).length);
-	    //alert("white_next_yellow_frame_length = " + white_next_yellow_frame_length);
-	    //alert("white_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(white_next_yellow_frame_top_left_corner).length);
             if (white_next_yellow_frame_length == 0) {  
 	      c.append(white_next_yellow_frame_top_left_corner);
 	      white_next_yellow_frame_length += 1;
             }
-            //alert("white_next_yellow_frame_length = " + white_next_yellow_frame_length);
-	    //alert("white_next_yellow_frame_top_left_corner_length = " + $("#next_hand").find(white_next_yellow_frame_top_left_corner).length);
 	  };
           
 
           black_stone_choice.onclick = function() {
 	    choiced_stone_color = BLOCK_KIND.BLACK;
-	    //alert("white_select_yellow_frame_length = " + white_select_yellow_frame_length);
-            //alert("white_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(white_select_yellow_frame_top_left_corner).length);
             if (white_select_yellow_frame_length > 0) {
               while(d.firstChild) {
                 d.removeChild(d.firstChild);
               }
 	      white_select_yellow_frame_length -= 1;
 	    }
-            //alert("white_select_yellow_frame_length = " + white_select_yellow_frame_length);
-            //alert("white_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(white_select_yellow_frame_top_left_corner).length);
-            //alert("none_select_yellow_frame_length = " + none_select_yellow_frame_length);
-            //alert("none_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(none_select_yellow_frame_top_left_corner).length);
             if (none_select_yellow_frame_length > 0) {
               while(d.firstChild) {
                 d.removeChild(d.firstChild);
               }
               none_select_yellow_frame_length -= 1;
             }
-            //alert("none_select_yellow_frame_length = " + none_select_yellow_frame_length);
-            //alert("none_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(none_select_yellow_frame_top_left_corner).length);
-	    //alert("black_select_yellow_frame_length = " + black_select_yellow_frame_length);
-	    //alert("black_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(black_select_yellow_frame_top_left_corner).length);
 	    if (black_select_yellow_frame_length == 0) {
 	      d.append(black_select_yellow_frame_top_left_corner);
 	      black_select_yellow_frame_length += 1;
 	    }
-            //alert("black_select_yellow_frame_length = " + black_select_yellow_frame_length);
-            //alert("black_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(black_select_yellow_frame_top_left_corner).length);
 	  };
  
           white_stone_choice.onclick = function() {
 	    choiced_stone_color = BLOCK_KIND.WHITE;
-            //alert("black_select_yellow_frame_length = " + black_select_yellow_frame_length);
-            //alert("black_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(black_select_yellow_frame_top_left_corner).length);
             if (black_select_yellow_frame_length > 0) {
               while(d.firstChild) {
                 d.removeChild(d.firstChild);
               }
               black_select_yellow_frame_length -= 1;
             }
-            //alert("black_select_yellow_frame_length = " + black_select_yellow_frame_length);
-            //alert("black_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(black_select_yellow_frame_top_left_corner).length);
-            //alert("none_select_yellow_frame_length = " + none_select_yellow_frame_length);
-            //alert("none_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(none_select_yellow_frame_top_left_corner).length);
             if (none_select_yellow_frame_length > 0) {
               while(d.firstChild) {
                 d.removeChild(d.firstChild);
               }
               none_select_yellow_frame_length -= 1;
             }
-            //alert("none_select_yellow_frame_length = " + none_select_yellow_frame_length);
-            //alert("none_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(none_select_yellow_frame_top_left_corner).length);
-            //alert("white_select_yellow_frame_length = " + white_select_yellow_frame_length);
-            //alert("white_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(white_select_yellow_frame_top_left_corner).length);
             if (white_select_yellow_frame_length == 0) {
               d.append(white_select_yellow_frame_top_left_corner);
               white_select_yellow_frame_length += 1;
             }
-            //alert("white_select_yellow_frame_length = " + white_select_yellow_frame_length);
-            //alert("white_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(white_select_yellow_frame_top_left_corner).length);
           };
 
 	  none_stone_choice.onclick = function() {
 	    choiced_stone_color = BLOCK_KIND.NONE;
-	    //alert("black_select_yellow_frame_length = " + black_select_yellow_frame_length);
-            //alert("black_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(black_select_yellow_frame_top_left_corner).length);
             if (black_select_yellow_frame_length > 0) {
               while(d.firstChild) {
                 d.removeChild(d.firstChild);
               }
               black_select_yellow_frame_length -= 1;
             }
-            //alert("black_select_yellow_frame_length = " + black_select_yellow_frame_length);
-            //alert("black_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(black_select_yellow_frame_top_left_corner).length);
-            //alert("white_select_yellow_frame_length = " + white_select_yellow_frame_length);
-            //alert("white_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(white_select_yellow_frame_top_left_corner).length);
             if (white_select_yellow_frame_length > 0) {
               while(d.firstChild) {
                 d.removeChild(d.firstChild);
               }
               white_select_yellow_frame_length -= 1;
             }
-            //alert("white_select_yellow_frame_length = " + white_select_yellow_frame_length);
-            //alert("white_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(white_select_yellow_frame_top_left_corner).length);
-            //alert("none_select_yellow_frame_length = " + none_select_yellow_frame_length);
-            //alert("none_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(none_select_yellow_frame_top_left_corner).length);
             if (none_select_yellow_frame_length == 0) {
               d.append(none_select_yellow_frame_top_left_corner);
               none_select_yellow_frame_length += 1;
             }
-            //alert("none_select_yellow_frame_length = " + none_select_yellow_frame_length);
-            //alert("none_select_yellow_frame_top_left_corner_length = " + $("#stone_selection").find(none_select_yellow_frame_top_left_corner).length);
           };
 	  
 	  
