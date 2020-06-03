@@ -996,10 +996,10 @@
 
     var simple_kifu = document.getElementById("simple_kifu");
     simple_kifu.innerHTML = kifu;
-    for (var i = 0; i <= 60; i++) {
+    for (var i = 0; i <= 64; i++) {
       $("#a" +  i).val(display_kifu[i]);
     }  
-    for (var i = 1; i <= 60; i++) {
+    for (var i = 1; i <= 64; i++) {
       if (last_hand < i) {
 	$("#a" + i).hide();
       } else {
@@ -1008,7 +1008,7 @@
     } 
     $("#a" + temp_hand).css("color", "#ffffff");
     $("#a" + temp_hand).css("background-color", "blue");
-    for (var i = 0; i <= 60; i++) {
+    for (var i = 0; i <= 64; i++) {
       if (i !=  temp_hand) {
 	$("#a" + i).css("color", "#000000");
 	$("#a" + i).css("background-color", "#ffffff");
@@ -1345,7 +1345,7 @@
     ];
  
     // init zero value
-    for(var k = 0; k < 64; k++) {
+    for(var k = 0; k <= 64; k++) {
       board[k] = [];
       for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
         board[k][i] = [];
@@ -1356,7 +1356,7 @@
     }
 
     // initial position
-    for(var k = 0; k < 64; k++) {
+    for(var k = 0; k <= 64; k++) {
       board[k][3][4] = BLOCK_KIND.BLACK;
       board[k][4][3] = BLOCK_KIND.BLACK;
       board[k][3][3] = BLOCK_KIND.WHITE;
@@ -1806,7 +1806,7 @@
     showBoard(last_hand);
   });
 
-  for (var i = 0; i <= 60; i++) {
+  for (var i = 0; i <= 64; i++) {
     $("#a" + i).on("click", {value: i}, function(event) {
       wrap_flag = true;
       beginning_flag = false;
