@@ -143,6 +143,10 @@
       <%= link_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), class: "btn btn-primary w-260px"%>
     </div>
     <button class="btn btn-primary copy_clipboard" data-clipboard-action="copy" data-clipboard-target="#simple_kifu"%>棋譜をクリップボードにコピーする</button>
+    <textarea name="test1" value="1" id="text1" cols="50" rows=18></textarea><br/>
+    <input type="button" id="delete_comment" value="削除" />
+    <input type="button" id="cancel_comment" value="キャンセル" />
+    <input type="button" id="save_comment" value="保存" />
     </body>
   <%= javascript_include_tag 'othello.js'%>
 </html>

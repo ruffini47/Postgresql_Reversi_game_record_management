@@ -314,7 +314,7 @@
   position: absolute;
   top: 43*12+20px;
   width: 260px;
-  margin-left: 800px;
+  margin-left: 530px;
 }
 
 #SaveAs//for id
@@ -322,7 +322,7 @@
   position: absolute;
   top: 43*13+20px;
   width: 260px;
-  margin-left: 800px;
+  margin-left: 530px;
 }
 
 #EditBoard//for id
@@ -330,14 +330,14 @@
   position: absolute;
   top: 43*14+20px;
   width: 260px;
-  margin-left: 800px; 
+  margin-left: 530px; 
 }
 
 #open//for id
 {
   position: absolute;
   top: 43*15+20px;
-  margin-left: 800px;
+  margin-left: 530px;
  }
 
 .w-260px {
@@ -349,7 +349,7 @@
   position: absolute;
   top: 43*16+20px;
   width: 260px;
-  margin-left: 800px;
+  margin-left: 530px;
 }
 
 #back_to_beginning//for id
@@ -389,6 +389,34 @@
   overflow-y: hidden;
   border: 1px solid;
   background-color: #ffffff;
+}
+
+#text1//for id
+{
+  position: absolute;
+  margin-left: 530px;
+  border:none;
+}
+
+#delete_comment//for id
+{
+  position: absolute;
+  margin-left: 530px;
+  top:43*11+20px;
+}
+
+#cancel_comment//for id
+{
+  position: absolute;
+  margin-left: 763px;
+  top:43*11+20px;
+}
+
+#save_comment//for id
+{
+  position: absolute;
+  margin-left: 857px;
+  top:43*11+20px;
 }
 
 
