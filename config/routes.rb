@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'save_comment/update'
   get 'edit_board/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'

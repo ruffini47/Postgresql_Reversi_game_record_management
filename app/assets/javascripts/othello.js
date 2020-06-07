@@ -76,6 +76,9 @@
   var from_saved_first_flag;
   var cancel_flag;
 
+  var game_record_id;
+  var comment = [];
+
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
     var count = 0;
@@ -1683,7 +1686,7 @@
   $("#Save").click(function() {
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_game_record/update');*/
-    var game_record_id = gon.game_record_id;
+    game_record_id = gon.game_record_id;
     alert(game_record_id);
     if (last_hand == 0) {
       kifu = "";
@@ -2101,6 +2104,36 @@
     edit_flag = true;
     doEditBoard();
   });
+
+  $("#save_comment").click(function() {
+    game_record_id = gon.game_record_id;
+    alert(game_record_id);
+    alert("save_comment");
+    var str1 = $('textarea[name="test1"]').val();
+    alert(str1);
+    comment[temp_hand] = str1;
+    alert(comment[temp_hand]);
+    $.ajax({
+      url: '/save_commnet/update',
+      type: "GET",
+      dataType: "html",
+      async: true,
+      data: {
+        game_record_id: game_record_id,
+        temp_hand: temp_hand,
+	comment: comment[temp_hand],
+      },
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
+    });
+
+
+  });
+
 
 
 })();
