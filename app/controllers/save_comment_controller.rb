@@ -136,7 +136,6 @@ class SaveCommentController < ApplicationController
     when 64
       @game_record.comment64 = comment
     end
-    debugger
     @game_record.save
   end
 end
