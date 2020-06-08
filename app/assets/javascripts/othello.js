@@ -2211,7 +2211,11 @@
       }
     });
 
+  });
 
+  $("#cancel_comment").click(function() {
+    var str = $('#text' + temp_hand).val("");
+    //alert(str);
   });
 
 
