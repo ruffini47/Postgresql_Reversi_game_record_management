@@ -391,6 +391,13 @@
   background-color: #ffffff;
 }
 
+#text1//for id
+{
+  position: absolute;
+  margin-left: 530px;
+  border:none;
+}
+
 #delete_comment//for id
 {
   position: absolute;
@@ -412,12 +419,4 @@
   top:43*11+20px;
 }
 
-.comment_textarea//for class
-{
-  position: absolute;
-  top: 43*2 + 32px;
-  margin-left: 530px;
-  height: 12 + 41 * 8 + 12px;
-  border:none;
-}
 

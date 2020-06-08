@@ -1094,15 +1094,7 @@
       scrollTop: $box.scrollTop() + dist
     });
     
-    for (var i = 0; i <= 64 ; i++) {
-      if (i < temp_hand) {
-	$("#text" + i).hide();
-      } else if (i == temp_hand){
-	$("#text" + i).show();
-      } else if (temp_hand < i) {
-	$("#text" + i).hide();
-      }
-    } 
+
               
     if (allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
@@ -2112,22 +2104,24 @@
     edit_flag = true;
     doEditBoard();
   });
-/*
+
   $("#save_comment").click(function() {
     game_record_id = gon.game_record_id;
     alert(game_record_id);
     alert("save_comment");
-    var str = $('textarea[name="test0"]').val(); 
-    alert(str);
+    var str1 = $('textarea[name="test1"]').val();
+    alert(str1);
+    comment[temp_hand] = str1;
+    alert(comment[temp_hand]);
     $.ajax({
-      url: '/save_comment/update',
+      url: '/save_commnet/update',
       type: "GET",
       dataType: "html",
       async: true,
       data: {
         game_record_id: game_record_id,
         temp_hand: temp_hand,
-	comment: str,
+	comment: comment[temp_hand],
       },
       success: function(data) {
         alert("success");
@@ -2139,7 +2133,7 @@
 
 
   });
-*/
+
 
 
 })();
