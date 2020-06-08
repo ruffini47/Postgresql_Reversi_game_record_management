@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'delete_comment/update'
   get 'save_comment/update'
   get 'edit_board/new'
   root 'static_pages#top'

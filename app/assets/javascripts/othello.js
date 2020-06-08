@@ -2218,7 +2218,30 @@
     //alert(str);
   });
 
+  $("#delete_comment").click(function() {
+    game_record_id = gon.game_record_id;
+    alert(game_record_id);
+    alert("delete_comment");
+    $('#text' + temp_hand).val("");
+    //alert(str);
+    $.ajax({
+      url: '/delete_comment/update',
+      type: "GET",
+      dataType: "html",
+      async: true,
+      data: {
+        game_record_id: game_record_id,
+        temp_hand: temp_hand,
+      },
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
+    });
 
+  });
 
 })();
 
