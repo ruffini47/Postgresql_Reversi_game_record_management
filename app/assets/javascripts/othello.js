@@ -2126,7 +2126,7 @@
     game_record_id = gon.game_record_id;
     alert(game_record_id);
     alert("save_comment");
-    var str = $('textarea[name="test0"]').val();
+    var str = $('#text' + temp_hand).val();
     alert(str);
     $.ajax({
       url: '/save_comment/update',
