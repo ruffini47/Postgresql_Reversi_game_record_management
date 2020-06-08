@@ -1628,7 +1628,72 @@
           }
           if (invalid_flag == true ) {
             alert((temp_handd + 1) +  "手目が不正です。switch");
-          }
+          }	  
+          $('#text0').val(gon.comment0);
+	  $('#text1').val(gon.comment1);
+	  $('#text2').val(gon.comment2);
+          $('#text3').val(gon.comment3);
+          $('#text4').val(gon.comment4);
+          $('#text5').val(gon.comment5);
+          $('#text6').val(gon.comment6);
+          $('#text7').val(gon.comment7);
+	  $('#text8').val(gon.comment8);
+          $('#text9').val(gon.comment9);
+          $('#text10').val(gon.comment10);
+          $('#text11').val(gon.comment11);
+          $('#text12').val(gon.comment12);
+          $('#text13').val(gon.comment13);
+          $('#text14').val(gon.comment14);
+          $('#text15').val(gon.comment15);
+          $('#text16').val(gon.comment16);
+          $('#text17').val(gon.comment17);
+          $('#text18').val(gon.comment18);
+          $('#text19').val(gon.comment19);
+	  $('#text20').val(gon.comment20);
+          $('#text21').val(gon.comment21);
+          $('#text22').val(gon.comment22);
+          $('#text23').val(gon.comment23);
+          $('#text24').val(gon.comment24);
+          $('#text25').val(gon.comment25);
+          $('#text26').val(gon.comment26);
+          $('#text27').val(gon.comment27);
+          $('#text28').val(gon.comment28);
+          $('#text29').val(gon.comment29);
+	  $('#text30').val(gon.comment30);
+          $('#text31').val(gon.comment31);
+          $('#text32').val(gon.comment32);
+          $('#text33').val(gon.comment33);
+          $('#text34').val(gon.comment34);
+          $('#text35').val(gon.comment35);
+          $('#text36').val(gon.comment36);
+          $('#text37').val(gon.comment37);
+          $('#text38').val(gon.comment38);
+          $('#text39').val(gon.comment39);
+	  $('#text40').val(gon.comment40);
+          $('#text41').val(gon.comment41);
+          $('#text42').val(gon.comment42);
+          $('#text43').val(gon.comment43);
+          $('#text44').val(gon.comment44);
+          $('#text45').val(gon.comment45);
+          $('#text46').val(gon.comment46);
+          $('#text47').val(gon.comment47);
+          $('#text48').val(gon.comment48);
+          $('#text49').val(gon.comment49);
+	  $('#text50').val(gon.comment50);
+          $('#text51').val(gon.comment51);
+          $('#text52').val(gon.comment52);
+          $('#text53').val(gon.comment53);
+          $('#text54').val(gon.comment54);
+          $('#text55').val(gon.comment55);
+          $('#text56').val(gon.comment56);
+          $('#text57').val(gon.comment57);
+          $('#text58').val(gon.comment58);
+          $('#text59').val(gon.comment59);
+	  $('#text60').val(gon.comment60);
+          $('#text61').val(gon.comment61);
+          $('#text62').val(gon.comment62);
+          $('#text63').val(gon.comment63);
+          $('#text64').val(gon.comment64);
         } 
       } else if (from_saved == false) {
                
