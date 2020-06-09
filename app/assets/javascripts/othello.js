@@ -1113,16 +1113,12 @@
     }
  
               
-    if (allSameColor(i)) {
-      if(player_color == BLOCK_KIND.BLACK) {
+    
+      if(white == 0) {
         alert("黒のパーフェクト勝ちです。1");
-      } else if (player_color == BLOCK_KIND.WHITE) {
+      } else if (black == 0) {
         alert("白のパーフェクト勝ちです。1");   
-      } else {
-        alert("invalid status 4");
-      }
-    } else {
-      if (black + white == 64 || isFinished == true ) {
+      } else if (black + white == 64 || isFinished == true ) {
         if (black > white) {
           alert("黒の勝ちです。");
         } else if(white > black) {
@@ -1131,7 +1127,7 @@
 	  alert("引き分けです。");
         }
       }
-    }
+    
 
     isFinished = false;
   };
@@ -1195,7 +1191,7 @@
     var pass = false;
     player_color = BLOCK_KIND.MAX - player_color;
     player_color_array[i] = player_color;
-    if (isPass(i) && !isFinish(i)) {
+    if (isPass(i) && !isFinish(i) && !allSameColor(i)) {
       if(player_color == BLOCK_KIND.BLACK) {
         alert("黒の置ける場所がありません。続けて白の番となります。");
       } else if (player_color == BLOCK_KIND.WHITE) {
