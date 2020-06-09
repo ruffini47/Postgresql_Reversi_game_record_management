@@ -1202,15 +1202,13 @@
         
       player_color = BLOCK_KIND.MAX - player_color;
       player_color_array[i] = player_color;
-      if(isPass(i) && !isFinish(i)) {
-        if (!(allSameColor())) {
-	  if(player_color == BLOCK_KIND.BLACK) {
-            alert("黒も置ける場所がありません。試合終了です。");
-          } else if (player_color == BLOCK_KIND.WHITE) {
-            alert("白も置ける場所がありません。試合終了です。");
-          } else {
-            alert("invalid status 3");
-          }
+      if(isPass(i) && !isFinish(i) && !allSameColor(i)) {
+	if(player_color == BLOCK_KIND.BLACK) {
+          alert("黒も置ける場所がありません。試合終了です。");
+        } else if (player_color == BLOCK_KIND.WHITE) {
+          alert("白も置ける場所がありません。試合終了です。");
+        } else {
+          alert("invalid status 3");
         }
 	
         isFinished = true;
