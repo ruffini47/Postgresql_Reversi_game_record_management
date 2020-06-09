@@ -1986,7 +1986,9 @@
 
     //$("#next_hand").hide();
     //$("#stone_selection").hide();
- 
+
+    kifu = ""
+
     // start game
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
