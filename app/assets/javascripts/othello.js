@@ -1115,9 +1115,9 @@
  
               
     
-      if(white == 0) {
+      if(allBlackColor(temp_hand)) {
         alert("黒のパーフェクト勝ちです。1");
-      } else if (black == 0) {
+      } else if (allWhiteColor(temp_hand)) {
         alert("白のパーフェクト勝ちです。1");   
       } else if (black + white == 64 || isFinished == true ) {
         if (black > white) {
