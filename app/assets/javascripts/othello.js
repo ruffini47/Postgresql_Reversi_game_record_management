@@ -21,7 +21,7 @@
   };
 
   var isFirst = false;
-  var isFinished = false;
+  //var isFinished = false;
 
   var from_saved = false;
   var your_move = "first";
@@ -1119,7 +1119,7 @@
         alert("黒のパーフェクト勝ちです。1");
       } else if (allWhiteColor(temp_hand)) {
         alert("白のパーフェクト勝ちです。1");   
-      } else if (black + white == 64 || isFinished == true ) {
+      } else if (black + white == 64) {
         if (black > white) {
           alert("黒の勝ちです。");
         } else if(white > black) {
@@ -1130,7 +1130,7 @@
       }
     
 
-    isFinished = false;
+    //isFinished = false;
   };
 
   var isFinish = function(i) {
@@ -1213,7 +1213,7 @@
         }
 	judgment(i);
         
-	isFinished = true;
+	//isFinished = true;
       }
 
       pass = true;
