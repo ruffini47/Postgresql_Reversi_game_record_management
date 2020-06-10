@@ -1734,7 +1734,6 @@
         if(!from_saved && !isFirst) {
           doAiPlayer(last_hand);
         }
-      
       }
     }
   };
@@ -1838,6 +1837,71 @@
 	vsAI: vsAI,
         initial_board: board[0],
 	player_color0: player_color_array[0],
+	comment0: $('#text0').val(),
+	comment1: $('#text1').val(),
+        comment2: $('#text2').val(),
+	comment3: $('#text3').val(),
+	comment4: $('#text4').val(),
+	comment5: $('#text5').val(),
+        comment6: $('#text6').val(),
+        comment7: $('#text7').val(),
+        comment8: $('#text8').val(),
+        comment9: $('#text9').val(),
+        comment10: $('#text10').val(),
+        comment11: $('#text11').val(),
+        comment12: $('#text12').val(),
+        comment13: $('#text13').val(),
+        comment14: $('#text14').val(),
+        comment15: $('#text15').val(),
+        comment16: $('#text16').val(),
+        comment17: $('#text17').val(),
+        comment18: $('#text18').val(),
+        comment19: $('#text19').val(),
+	comment20: $('#text20').val(),
+        comment21: $('#text21').val(),
+        comment22: $('#text22').val(),
+        comment23: $('#text23').val(),
+        comment24: $('#text24').val(),
+        comment25: $('#text25').val(),
+        comment26: $('#text26').val(),
+        comment27: $('#text27').val(),
+        comment28: $('#text28').val(),
+        comment29: $('#text29').val(),
+	comment30: $('#text30').val(),
+        comment31: $('#text31').val(),
+        comment32: $('#text32').val(),
+        comment33: $('#text33').val(),
+        comment34: $('#text34').val(),
+        comment35: $('#text35').val(),
+        comment36: $('#text36').val(),
+        comment37: $('#text37').val(),
+        comment38: $('#text38').val(),
+        comment39: $('#text39').val(),
+	comment40: $('#text40').val(),
+        comment41: $('#text41').val(),
+        comment42: $('#text42').val(),
+        comment43: $('#text43').val(),
+        comment44: $('#text44').val(),
+        comment45: $('#text45').val(),
+        comment46: $('#text46').val(),
+        comment47: $('#text47').val(),
+        comment48: $('#text48').val(),
+        comment49: $('#text49').val(),
+	comment50: $('#text50').val(),
+        comment51: $('#text51').val(),
+        comment52: $('#text52').val(),
+        comment53: $('#text53').val(),
+        comment54: $('#text54').val(),
+        comment55: $('#text55').val(),
+        comment56: $('#text56').val(),
+        comment57: $('#text57').val(),
+        comment58: $('#text58').val(),
+        comment59: $('#text59').val(),
+	comment60: $('#text60').val(),
+        comment61: $('#text61').val(),
+        comment62: $('#text62').val(),
+        comment63: $('#text63').val(),
+        comment64: $('#text64').val(),
       },
       success: function(data) {
         alert("success");
@@ -2077,7 +2141,7 @@
       white_select_yellow_frame_length = 0;
       none_select_yellow_frame_length = 0;     
  
-
+      
       // start game
       showBoard(temp_hand);
       //alert("board[0](edit_board_ok) = " + board[0]);
@@ -2238,8 +2302,7 @@
   });
 
   $("#cancel_comment").click(function() {
-    var str = $('#text' + temp_hand).val("");
-    //alert(str);
+    $('#text' + temp_hand).val("");
   });
 
   $("#delete_comment").click(function() {
