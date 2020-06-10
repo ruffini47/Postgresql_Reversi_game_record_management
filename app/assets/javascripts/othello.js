@@ -970,7 +970,8 @@
   };
 
 
-  var showProgress = function(i) {
+  var showProgress = function(i) { 
+	  
     var black = 0;
     var white = 0;
 
@@ -1210,8 +1211,9 @@
         } else {
           alert("invalid status 3");
         }
-	
-        isFinished = true;
+	judgment(i);
+        
+	isFinished = true;
       }
 
       pass = true;
@@ -1219,6 +1221,32 @@
 
     return pass;
   };
+
+  var judgment = function(i) {
+    var black = 0;
+    var white = 0;
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+        if (board[i][x][y] == BLOCK_KIND.BLACK) {
+          black++;
+        } else if (board[i][x][y] == BLOCK_KIND.WHITE) {
+          white++;
+        } else {
+          // no opereation
+        }
+      }
+    }
+ 
+    if (black > white) {
+      alert("黒の勝ちです。");
+    } else if(white > black) {
+      alert("白の勝ちです。");
+　  } else {
+      alert("引き分けです。");
+    }   
+  
+  }
 
   var doAiPlayer = function(i) {
 
