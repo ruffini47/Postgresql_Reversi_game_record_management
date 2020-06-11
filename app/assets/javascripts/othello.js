@@ -2012,7 +2012,18 @@
     $("#stone_selection_text").hide();
     $("#msg_kifu").show();
     $("#simple_kifu").show();
-    
+    $("#Reset").prop("disabled", false);
+    $("#Save").prop("disabled", false);
+    $("#SaveAs").prop("disabled", false);
+    $("#EditBoard").prop("disabled", false);
+    $("#back_to_beginning").prop("disabled", false);
+    $("#previous_button").prop("disabled", false);
+    $("#next_button").prop("disabled", false);
+    $("#go_to_end").prop("disabled", false);
+    $("#open_button").prop("disabled", false);
+    $("#clipboard_button").prop("disabled", false);
+    $(".comment_textarea").attr("disabled", false);
+	  
     if(document.form1.Computer.checked) {
       vsAI = true;
     } else {
@@ -2091,6 +2102,17 @@
     $("#stone_selection_text").hide();
     $("#msg_kifu").show();
     $("#simple_kifu").show();
+    $("#Reset").prop("disabled", false);
+    $("#Save").prop("disabled", false);
+    $("#SaveAs").prop("disabled", false);
+    $("#EditBoard").prop("disabled", false);
+    $("#back_to_beginning").prop("disabled", false);
+    $("#previous_button").prop("disabled", false);
+    $("#next_button").prop("disabled", false);
+    $("#go_to_end").prop("disabled", false);
+    $("#open_button").prop("disabled", false);
+    $("#clipboard_button").prop("disabled", false);
+    $(".comment_textarea").attr("disabled", false);
 
     if (edit_board == false) {	  
       vsAI = saved_vsAI;
@@ -2142,8 +2164,7 @@
       black_select_yellow_frame_length = 0;
       white_select_yellow_frame_length = 0;
       none_select_yellow_frame_length = 0;     
- 
-      
+
       // start game
       showBoard(temp_hand);
       //alert("board[0](edit_board_ok) = " + board[0]);
@@ -2236,7 +2257,18 @@
     $("#stone_selection").show();
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
-    
+    $("#Reset").prop("disabled", true);
+    $("#Save").prop("disabled", true);
+    $("#SaveAs").prop("disabled", true);
+    $("#EditBoard").prop("disabled", true);
+    $("#back_to_beginning").prop("disabled", true);
+    $("#previous_button").prop("disabled", true);
+    $("#next_button").prop("disabled", true);
+    $("#go_to_end").prop("disabled", true);
+    $("#open_button").prop("disabled", true);
+    $("#clipboard_button").prop("disabled", true);
+    $(".comment_textarea").attr("disabled", true);	  
+
     for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
       saved_board[i] = [];
       for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
