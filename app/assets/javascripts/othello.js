@@ -1468,6 +1468,20 @@
     //alert("player_color0 = " + player_color0);
     if (edit_board == true) {
       edit_flag = true;
+      $("#Reset").prop("disabled", true);
+      $("#Save").prop("disabled", true);
+      $("#SaveAs").prop("disabled", true);
+      $("#EditBoard").prop("disabled", true);
+      $("#back_to_beginning").prop("disabled", true);
+      $("#previous_button").prop("disabled", true);
+      $("#next_button").prop("disabled", true);
+      $("#go_to_end").prop("disabled", true);
+      $("#open_button").prop("disabled", true);
+      $("#clipboard_button").prop("disabled", true);
+      $(".comment_textarea").attr("disabled", true);
+      $("#save_comment").hide();
+      $("#cancel_comment").hide();
+      $("#delete_comment").hide();
       doEditBoard();
     }
 
