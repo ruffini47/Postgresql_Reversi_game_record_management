@@ -957,6 +957,7 @@
 	      link_flag = false;
 	      from_saved_first_flag = false;
 	      cancel_flag = false;
+	      //showBoard関数内
 	      showBoard(i);
               if (!changePlayer(i)) {
 		doAiPlayer(i);
@@ -1302,7 +1303,8 @@
           link_flag = false;
 	  from_saved_first_flag = false;
 	  cancel_flag = false;
-          showBoard(i);
+          //doAiPlayer関数内
+	  showBoard(i);
 	  if (changePlayer(i)) {
             doAiPlayer(i);
           }
@@ -1482,6 +1484,7 @@
       $("#save_comment").hide();
       $("#cancel_comment").hide();
       $("#delete_comment").hide();
+　　　//トップページで盤面編集を選んだ場合
       doEditBoard();
     }
 
@@ -1548,6 +1551,7 @@
           for_jump_temp_hand = 0;
 
           // start game
+	  // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空の場合
           showBoard(last_hand);
           if(!from_saved && !isFirst) {
               doAiPlayer(last_hand);
@@ -1635,7 +1639,7 @@
 	        display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
 	      }
               display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
-              //showBoard(ii);
+
 	      changePlayer(ii);
 
       
@@ -1651,6 +1655,7 @@
 	        from_saved_first_flag = false;
 	      }
 	      cancel_flag = false;
+	　　　//トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空でない場合
               showBoard(last_hand);
               if(!from_saved && !isFirst) {
                 doAiPlayer(last_hand);
@@ -1746,6 +1751,7 @@
 	cancel_flag = false;
         for_jump_temp_hand = 0;
 
+	//トップページで盤面編集を選ばず、ファイルから開かない場合
         showBoard(last_hand);
         if(!from_saved && !isFirst) {
           doAiPlayer(last_hand);
@@ -1794,6 +1800,7 @@
     for_jump_temp_hand = 0;
 
     // start game
+    //Resetボタンを押した場合
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
         doAiPlayer(last_hand);
@@ -2103,6 +2110,7 @@
     kifu = ""
 
     // start game
+    //edit_board_okを選んだ場合
     showBoard(last_hand);
     if(!from_saved && !isFirst) {
       doAiPlayer(last_hand);
@@ -2180,6 +2188,7 @@
       none_select_yellow_frame_length = 0;     
 
       // start game
+      //トップページで盤面編集を選ばず、edit_board_cancelを選んだ場合
       showBoard(temp_hand);
       //alert("board[0](edit_board_ok) = " + board[0]);
       if(!from_saved && !isFirst) {
@@ -2233,6 +2242,7 @@
 
 
       // start game
+      //トップページで盤面編集を選んで、edit_board_cancelを選んだ場合
       showBoard(last_hand);
       if(!from_saved && !isFirst) {
         doAiPlayer(last_hand);
