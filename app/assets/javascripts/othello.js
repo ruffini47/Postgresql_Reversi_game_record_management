@@ -1485,7 +1485,9 @@
       $("#stone_selection_text").hide();
       $("#next_hand").hide();
       $("#stone_selection").hide();
-      
+      $("#save_comment").hide();
+      $("#cancel_comment").hide();
+      $("#delete_comment").hide();
 
       if (board0.length != 0) {
 	var iii = 0;
@@ -2329,6 +2331,21 @@
     });
 
   });
+
+  $(".comment_textarea").click(function() {
+    $("#save_comment").show();
+    $("#cancel_comment").show();
+    $("#delete_comment").show();
+  });
+
+  $('body').click(function(event) {
+    if (!$(event.target).closest('.comment_textarea').length) {
+      $('#save_comment').hide();
+      $('#cancel_comment').hide();
+      $('#delete_comment').hide();
+    };
+  });
+
 
 })();
 
