@@ -44,6 +44,7 @@
   var none_select_yellow_frame_length = 0;
 
   var saved_board = [];
+  var saved_player_color;
   var saved_vsAI;
   var saved_isFirst;
   var saved_your_move;
@@ -155,7 +156,7 @@
   var doEditBoard = function() {
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
-    
+    /*
     if (edit_board == false) {
       saved_vsAI = vsAI;
       saved_isFirst = isFirst;
@@ -171,7 +172,7 @@
       saved_from_saved_first_flag = from_saved_first_flag;
       saved_for_jump_temp_hand = for_jump_temp_hand;
     }
-    
+    */
     var b = document.getElementById("board");
 	  
     while(b.firstChild) {
@@ -2132,6 +2133,9 @@
     $(".comment_textarea").attr("disabled", false);
 
     if (edit_board == false) {	  
+    
+      player_color = saved_player_color;
+ 	    
       vsAI = saved_vsAI;
       isFirst = saved_isFirst;
       your_move = saved_your_move;
@@ -2139,25 +2143,16 @@
       alert("vsAI = " + vsAI);
       alert("edit_board = " + edit_board);
       from_saved = saved_from_saved;
-      //alert("temp_hand = " + temp_hand);
 
       last_hand = saved_last_hand;
       temp_hand = saved_temp_hand;
-      //alert("saved_temp_hand = " + saved_temp_hand);
       alert("temp_hand = " + temp_hand);
-      //$("#a" + temp_hand).unwrap();
       previous_temp_hand = saved_previous_temp_hand;
-      //alert("previout_temp_hand = " + previous_temp_hand);
       wrap_flag = false;
-      //alert("wrap_flag = " + wrap_flag);
       beginning_flag = saved_beginning_flag;
-      //alert("beginning_flag = " + beginning_flag);
       end_flag = saved_end_flag;
-      //alert("end_flag = " + end_flag);
       link_flag = saved_link_flag;
-      //alert("link_flag = " + link_flag);
       from_saved_first_flag = saved_from_saved_first_flag;
-      //alert("from_saved_first_flag = " + from_saved_first_flag);
       for_jump_temp_hand = saved_for_jump_temp_hand;
 
       cancel_flag = true;	  
@@ -2307,8 +2302,11 @@
       }
     }
 
+    saved_player_color = player_color;
    
-    saved_vsAI = vsAI
+    from_saved = false;
+
+    saved_vsAI = vsAI;
     saved_isFirst = isFirst;
     saved_your_move = your_move;
     saved_from_saved = from_saved;
