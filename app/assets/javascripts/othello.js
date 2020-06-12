@@ -155,33 +155,23 @@
   var doEditBoard = function() {
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
+    
     if (edit_board == false) {
       saved_vsAI = vsAI;
       saved_isFirst = isFirst;
       saved_your_move = your_move;
-      //alert("saved_your_move = " + your_move);
-      //alert("saved_vsAI = " + vsAI);
       saved_from_saved = from_saved;
-      //alert("temp_hand = " + temp_hand);
 
       saved_last_hand = last_hand;
       saved_temp_hand = temp_hand;
-      //alert("saved_temp_hand = " + saved_temp_hand);
-      //alert("temp_hand = " + temp_hand);
-      //$("#a" + temp_hand).unwrap();
       saved_previous_temp_hand = previous_temp_hand;
-      //alert("saved_previous_temp_hand = " + saved_previous_temp_hand);
       saved_beginning_flag = beginning_flag;
-      //alert("saved_beginning_flag = " + saved_beginning_flag);
       saved_end_flag = end_flag;
-      //alert("saved_end_flag = " + saved_end_flag);
       saved_link_flag = link_flag;
-      //alert("saved_link_flag = " + saved_link_flag);
       saved_from_saved_first_flag = from_saved_first_flag;
-      //alert("saved_from_saved_first_flag = " + saved_from_saved_first_flag);
       saved_for_jump_temp_hand = for_jump_temp_hand;
     }
-
+    
     var b = document.getElementById("board");
 	  
     while(b.firstChild) {
@@ -1553,9 +1543,9 @@
           // start game
 	  // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空の場合
           showBoard(last_hand);
-          if(!from_saved && !isFirst) {
-              doAiPlayer(last_hand);
-          }
+          //if(!from_saved && !isFirst) {
+          //    doAiPlayer(last_hand);
+          //}
 
         } else {	      
           i_loop:
@@ -1655,11 +1645,14 @@
 	        from_saved_first_flag = false;
 	      }
 	      cancel_flag = false;
-	　　　//トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空でない場合
-              showBoard(last_hand);
-              if(!from_saved && !isFirst) {
-                doAiPlayer(last_hand);
-              }
+	　　　
+              
+              //start game
+              //トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空でない場合
+	      showBoard(last_hand);
+              //if(!from_saved && !isFirst) {
+              //  doAiPlayer(last_hand);
+              //}
 
 
 
@@ -1751,9 +1744,11 @@
 	cancel_flag = false;
         for_jump_temp_hand = 0;
 
+
+        // start game
 	//トップページで盤面編集を選ばず、ファイルから開かない場合
         showBoard(last_hand);
-        if(!from_saved && !isFirst) {
+        if(!isFirst) {
           doAiPlayer(last_hand);
         }
       }
@@ -1802,8 +1797,8 @@
     // start game
     //Resetボタンを押した場合
     showBoard(last_hand);
-    if(!from_saved && !isFirst) {
-        doAiPlayer(last_hand);
+    if(!isFirst) {
+      doAiPlayer(last_hand);
     }
 
   };
@@ -2112,7 +2107,7 @@
     // start game
     //edit_board_okを選んだ場合
     showBoard(last_hand);
-    if(!from_saved && !isFirst) {
+    if(!isFirst) {
       doAiPlayer(last_hand);
     }
   });
@@ -2312,6 +2307,7 @@
       }
     }
 
+   
     saved_vsAI = vsAI
     saved_isFirst = isFirst;
     saved_your_move = your_move;
@@ -2327,7 +2323,6 @@
     saved_from_saved_first_flag = from_saved_first_flag;
     saved_for_jump_temp_hand = for_jump_temp_hand;
     
-
     edit_board = false;
     edit_flag = true;
     doEditBoard();
