@@ -1446,9 +1446,13 @@
 
     if (vsAI == true) {
       $("#Computer_checkbox").prop("checked",true);
+    } else if (vsAI == false) {
+      $("#Computer_checkbox").prop("checked",false);
     }
     if (your_move == "first") {
       $("#First_checkbox").prop("checked",true);
+    } else if (your_move == "second") {
+      $("#First_checkbox").prop("checked",false);
     }
 	  
     alert("edit_board = " + edit_board);
@@ -2139,11 +2143,23 @@
       vsAI = saved_vsAI;
       isFirst = saved_isFirst;
       your_move = saved_your_move;
+      
+      if (vsAI == true) {
+        $("#Computer_checkbox").prop("checked",true);
+      } else if (vsAI == false) {
+	$("#Computer_checkbox").prop("checked",false);
+      }
+      if (your_move == "first") {
+        $("#First_checkbox").prop("checked",true);
+      } else if (your_move == "second") {
+	$("#First_checkbox").prop("checked",false);
+      }
+	    
       alert("your_move = " + your_move);
       alert("vsAI = " + vsAI);
       alert("edit_board = " + edit_board);
       from_saved = saved_from_saved;
-
+      from_saved = false;
       last_hand = saved_last_hand;
       temp_hand = saved_temp_hand;
       alert("temp_hand = " + temp_hand);
@@ -2181,7 +2197,7 @@
       //トップページで盤面編集を選ばず、edit_board_cancelを選んだ場合
       showBoard(temp_hand);
       //alert("board[0](edit_board_ok) = " + board[0]);
-      if(!from_saved && !isFirst) {
+      if(!isFirst) {
         doAiPlayer(temp_hand);
       }          
 
@@ -2190,7 +2206,13 @@
       // initialize board
       initBoard();
       //initRecord();
-      /*     
+
+      vsAI = false;
+      isFirst = true;
+      your_move = "first";
+	    
+	    
+	    /*     
       if(document.form1.Computer.checked) {
         vsAI = true;
       } else {
@@ -2234,9 +2256,9 @@
       // start game
       //トップページで盤面編集を選んで、edit_board_cancelを選んだ場合
       showBoard(last_hand);
-      if(!from_saved && !isFirst) {
+      if(!isFirst) {
         doAiPlayer(last_hand);
-      }  
+      }
     }
 
   
