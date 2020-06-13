@@ -76,6 +76,7 @@
   var link_flag;
   var from_saved_first_flag;
   var cancel_flag;
+  var hand_flag;
 
   var game_record_id;
   var comment = [];
@@ -948,6 +949,7 @@
 	      link_flag = false;
 	      from_saved_first_flag = false;
 	      cancel_flag = false;
+	      hand_flag = true;
 	      //showBoard関数内
 	      showBoard(i);
               if (!changePlayer(i)) {
@@ -1060,26 +1062,7 @@
 	}
       }
     }
-    /*	  
-    var parent = document.getElementById("msg_kifu");
-    parent.insertAdjacentHTML('beforeend', '<input type="button" id="a1" value="１手目">');
-    */
 	  
-    /*
-    var parent = document.getElementById("msg_kifu");
-    
-    var child = document.createElement("input");
- 
-    child.setAttribute("type","button");
-    child.setAttribute("id","a1");
-    child.setAttribute("value","１手目");
-           
-    parent.appendChild(child);
-    */
-    
-    /*
-    msg_kifu.innerHTML = kifu_highlight;
-    */
     var $box = $($(".link").data("box"));
     var $tareget = $($(".link").attr("href"));
     var dist = $tareget.position().top - $box.position().top;
@@ -1105,7 +1088,7 @@
       }
     }
  
-    if (temp_hand == 0) {	  
+    if (hand_flag == false || (hand_flag == true && temp_hand == 0)) {	  
       if (player_color == BLOCK_KIND.BLACK) {	  
         $("#black_player_name").css({
           backgroundColor: "gainsboro",
@@ -1131,7 +1114,7 @@
           border: "none"
         });
       }
-    } else if (temp_hand > 0) {
+    } else if (hand_flag == true && temp_hand > 0) {
       if (player_color == BLOCK_KIND.WHITE) {
         $("#black_player_name").css({
           backgroundColor: "gainsboro",
@@ -1354,6 +1337,7 @@
           link_flag = false;
 	  from_saved_first_flag = false;
 	  cancel_flag = false;
+          hand_flag = true;
           //doAiPlayer関数内
 	  showBoard(i);
 	  if (changePlayer(i)) {
@@ -1603,6 +1587,7 @@
           link_flag = false;
           from_saved_first_flag = false;
 	  cancel_flag = false;
+	  hand_flag = false;
           for_jump_temp_hand = 0;
 
           // start game
@@ -1707,6 +1692,7 @@
 	        from_saved_first_flag = false;
 	      }
 	      cancel_flag = false;
+	      hand_flag = false;
 	　　　
               
               //start game
@@ -1800,6 +1786,7 @@
         link_flag = false;
         from_saved_first_flag = false;
 	cancel_flag = false;
+	hand_flag = true;
         for_jump_temp_hand = 0;
 
 
@@ -1849,6 +1836,7 @@
     link_flag = false;
     from_saved_first_flag = false;
     cancel_flag = false;
+    hand_flag = true;
     for_jump_temp_hand = 0;
 
     // start game
@@ -1994,6 +1982,7 @@
     link_flag = false;
     from_saved_first_flag = false;
     cancel_flag = false;
+    hand_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand++;
     if (temp_hand <= last_hand) {
@@ -2012,6 +2001,7 @@
     link_flag = false;
     from_saved_first_flag = false;
     cancel_flag = false;
+    hand_flag = false;
     previous_temp_hand = temp_hand;
     temp_hand--;
     if (temp_hand >= 0) {
@@ -2035,6 +2025,7 @@
     link_flag = false;
     from_saved_first_flag = false;
     cancel_flag = false;
+    hand_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = 0;
     player_color = BLOCK_KIND.BLACK;
@@ -2052,6 +2043,8 @@
     link_flag = false;
     from_saved_first_flag = false;
     cancel_flag = false;
+    hand_flag = false;
+    hand_flag = false;
     for_jump_temp_hand = temp_hand;
     temp_hand = last_hand;
     player_color = player_color_array[last_hand];
@@ -2066,6 +2059,7 @@
       link_flag = true;
       from_saved_first_flag = false;
       cancel_flag = false;
+      hand_flag = false;
       for_jump_temp_hand = temp_hand;
       temp_hand = event.data.value;
       if(temp_hand != for_jump_temp_hand) {
@@ -2126,6 +2120,7 @@
     link_flag = false;
     from_saved_first_flag = false;
     cancel_flag = false;
+    hand_flag = true;
     for_jump_temp_hand = 0;
     edit_board = false;
     
@@ -2203,7 +2198,8 @@
       from_saved_first_flag = saved_from_saved_first_flag;
       for_jump_temp_hand = saved_for_jump_temp_hand;
 
-      cancel_flag = true;	  
+      cancel_flag = true;
+      hand_flag =  true;
       edit_board = false;
 
       // initial position
@@ -2252,6 +2248,7 @@
       link_flag = false;
       from_saved_first_flag = false;
       cancel_flag = true;
+      hand_flag = true;
       for_jump_temp_hand = 0;
 
       $("#next_hand").children().remove();
