@@ -1548,9 +1548,6 @@
           // start game
 	  // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空の場合
           showBoard(last_hand);
-          //if(!from_saved && !isFirst) {
-          //    doAiPlayer(last_hand);
-          //}
 
         } else {	      
           i_loop:
@@ -1655,10 +1652,6 @@
               //start game
               //トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空でない場合
 	      showBoard(last_hand);
-              //if(!from_saved && !isFirst) {
-              //  doAiPlayer(last_hand);
-              //}
-
 
 
 	    } else {
@@ -1769,7 +1762,6 @@
     
     // initialize board
     initBoard();
-    //initRecord();
 
     if(document.form1.Computer.checked) {
       vsAI = true;
@@ -2061,22 +2053,6 @@
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);
   
-    
-//    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-//      saved_board[i] = [];
-//      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-//        saved_board[i][j] = BLOCK_KIND.NONE;
-//      }
-//    }
-
-//    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-//      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-//        saved_board[xx][yy] = board[0][xx][yy];
-//      }
-//    }
-
-
-
 
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
@@ -2102,8 +2078,6 @@
     white_select_yellow_frame_length = 0;
     none_select_yellow_frame_length = 0;   
 
-
-
     //$("#next_hand").hide();
     //$("#stone_selection").hide();
 
@@ -2112,9 +2086,7 @@
     // start game
     //edit_board_okを選んだ場合
     showBoard(last_hand);
-    if(!isFirst) {
-      doAiPlayer(last_hand);
-    }
+    doAiPlayer(last_hand);
   });
 
   $("#edit_board_cancel").click(function() {
@@ -2196,7 +2168,6 @@
       // start game
       //トップページで盤面編集を選ばず、edit_board_cancelを選んだ場合
       showBoard(temp_hand);
-      //alert("board[0](edit_board_ok) = " + board[0]);
       if(!isFirst) {
         doAiPlayer(temp_hand);
       }          
@@ -2205,34 +2176,15 @@
       alert("edit_board = " + edit_board);
       // initialize board
       initBoard();
-      //initRecord();
 
       vsAI = false;
       isFirst = true;
       your_move = "first";
 	    
-	    
-	    /*     
-      if(document.form1.Computer.checked) {
-        vsAI = true;
-      } else {
-        vsAI = false;
-      }
-
-      if(document.form1.First.checked) {
-        isFirst = true;
-        your_move = "first";
-      } else {
-        isFirst = false;
-        your_move = "second";
-      }
-      */ 
       from_saved = false;
-      //alert("temp_hand = " + temp_hand);
-      //$("#a" + temp_hand).unwrap();
       last_hand = 0;
       temp_hand = 0;
-      //$("#a" + temp_hand).unwrap();
+
       previous_temp_hand = 0;
       wrap_flag = true;
       beginning_flag = false;
@@ -2260,27 +2212,6 @@
         doAiPlayer(last_hand);
       }
     }
-
-  
-
-/*
-    if (!(beginning_flag == true || end_flag == true || link_flag == true)) {
-      if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
-        if (from_saved_first_flag == false) {
-          $("#a" + previous_temp_hand).unwrap();
-        }
-      }
-    }
-*/
-
-    // start game
-    //showBoard(temp_hand);
-    //alert("board[0](edit_board_ok) = " + board[0]);
-    //if(!from_saved && !isFirst) {
-    //  doAiPlayer(temp_hand);
-    //}
- 
-
 
 
   });
