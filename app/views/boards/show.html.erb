@@ -11,7 +11,7 @@
       <%= @game_record.title %>
     </div>
     <div class = "black_player">
-      <p>● <span id="black_count"></span> <%= @game_record.black_player %></p>
+    <p>● <span id="black_count"></span> <span id="black_player_name"><%= @game_record.black_player %></span></p>
     </div>
     <div id="black_count"></div>
     <!-- 盤面の要素定義 -->
@@ -137,7 +137,7 @@
       </p>
     </form>
     <div class = "white_player">
-      <p>◯ <span id="white_count"></span> <%= @game_record.white_player %></p>
+    <p>◯ <span id="white_count"></span> <span id="white_player_name"><%= @game_record.white_player %></span></p>
     </div>
     <div id = "open">
     <%= button_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), {method: :get, id: "open_button", class: "btn btn-primary w-260px"}%>

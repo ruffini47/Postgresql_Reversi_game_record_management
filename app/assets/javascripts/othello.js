@@ -1105,21 +1105,81 @@
       }
     }
  
-              
-    
-      if(allBlackColor(temp_hand)) {
-        alert("黒のパーフェクト勝ちです。1");
-      } else if (allWhiteColor(temp_hand)) {
-        alert("白のパーフェクト勝ちです。1");   
-      } else if (black + white == 64) {
-        if (black > white) {
-          alert("黒の勝ちです。");
-        } else if(white > black) {
-	  alert("白の勝ちです。");
-　　　  } else {
-	  alert("引き分けです。");
-        }
+    if (temp_hand == 0) {	  
+      if (player_color == BLOCK_KIND.BLACK) {	  
+        $("#black_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+      } else if (player_color == BLOCK_KIND.WHITE) {
+        $("#black_player_name").css({
+          backgroundColor: "white",
+	  border: "none"
+        });
       }
+
+      if (player_color == BLOCK_KIND.WHITE) {
+        $("#white_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+      } else if (player_color == BLOCK_KIND.BLACK) {
+        $("#white_player_name").css({
+          backgroundColor: "white",
+          border: "none"
+        });
+      }
+    } else if (temp_hand > 0) {
+      if (player_color == BLOCK_KIND.WHITE) {
+        $("#black_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+      } else if (player_color == BLOCK_KIND.BLACK) {
+        $("#black_player_name").css({
+          backgroundColor: "white",
+          border: "none"
+        });
+      }
+
+      if (player_color == BLOCK_KIND.BLACK) {
+        $("#white_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+      } else if (player_color == BLOCK_KIND.WHITE) {
+        $("#white_player_name").css({
+          backgroundColor: "white",
+          border: "none"
+        });
+      }
+    }
+
+
+
+
+
+
+
+
+    
+    if(allBlackColor(temp_hand)) {
+      alert("黒のパーフェクト勝ちです。1");
+    } else if (allWhiteColor(temp_hand)) {
+      alert("白のパーフェクト勝ちです。1");   
+    } else if (black + white == 64) {
+      if (black > white) {
+        alert("黒の勝ちです。");
+      } else if(white > black) {
+	alert("白の勝ちです。");
+　　　} else {
+	alert("引き分けです。");
+      }
+    }
     
 
     //isFinished = false;
