@@ -21,7 +21,7 @@
   };
 
   var isFirst = false;
-  //var isFinished = false;
+  var isFinished = false;
 
   var from_saved = false;
   var your_move = "first";
@@ -1151,10 +1151,13 @@
 
     
     if(allBlackColor(temp_hand)) {
-      alert("黒のパーフェクト勝ちです。1");
+      alert("黒のパーフェクト勝ちです。");
+      isFinished = true;
     } else if (allWhiteColor(temp_hand)) {
-      alert("白のパーフェクト勝ちです。1");   
+      alert("白のパーフェクト勝ちです。");
+      isFinished = true;
     } else if (black + white == 64) {
+      isFinished = true;
       if (black > white) {
         alert("黒の勝ちです。");
       } else if(white > black) {
@@ -1164,8 +1167,18 @@
       }
     }
     
+    if (isFinished == true) {
+      $("#black_player_name").css({
+        backgroundColor: "white",
+        border: "none"
+      });
+      $("#white_player_name").css({
+        backgroundColor: "white",
+        border: "none"
+      });
+      isFinished = false;
+    }	    
 
-    //isFinished = false;
   };
 
   var isFinish = function(i) {
@@ -1240,17 +1253,30 @@
       player_color_array[i] = player_color;
       if(isPass(i) && !isFinish(i) && !allSameColor(i)) {
 	if(player_color == BLOCK_KIND.BLACK) {
+          isFinished = true;
           alert("黒も置ける場所がありません。試合終了です。");
         } else if (player_color == BLOCK_KIND.WHITE) {
+	  isFinished = true;
           alert("白も置ける場所がありません。試合終了です。");
         } else {
           alert("invalid status 3");
         }
 	judgment(i);
-        
-	//isFinished = true;
-      }
 
+        if (isFinished == true) {
+          $("#black_player_name").css({
+            backgroundColor: "white",
+            border: "none"
+          });
+          $("#white_player_name").css({
+            backgroundColor: "white",
+            border: "none"
+          });
+	  isFinished = false;
+        }	
+
+      }
+     
       pass = true;
     }
 
