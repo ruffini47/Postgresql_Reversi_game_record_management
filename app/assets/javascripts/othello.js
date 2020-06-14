@@ -964,8 +964,7 @@
   };
 
 
-  var showProgress = function(i) { 
-	  
+  var showProgress = function(i) {
     var black = 0;
     var white = 0;
 
@@ -1119,14 +1118,21 @@
   };
 
   var enclose_frame = function(i) {
-/*
-    if (temp_hand >= 50) {
-      alert("temp_hand = " + temp_hand);
-      alert("player_color_array[" + (temp_hand-1) + "] = " + player_color_array[temp_hand-1]);
-      alert("player_color_array[" + (temp_hand) + "] = " + player_color_array[temp_hand]);
+    var pass_or_not;
+    if (temp_hand == 0) {
+      pass_or_not = false;
     }
-*/
-    if (player_color_array[i-1] == player_color_array[i] || (hand_flag == false || (hand_flag == true && temp_hand == 0))) {
+    //alert("player_color1 = " + player_color);
+    if(temp_hand >= 1) {
+      player_color = BLOCK_KIND.MAX - player_color;
+      //alert("player_color2 = " + player_color);
+      pass_or_not = isPass(i) && !isFinish(i) && !allSameColor(i);
+      //alert("pass_or_not(" + temp_hand + ") = " + pass_or_not);
+      player_color = BLOCK_KIND.MAX - player_color;
+      //alert("player_color3 = " + player_color);
+    }
+	  
+    if ((pass_or_not) || (hand_flag == false || (hand_flag == true && temp_hand == 0))) {
       if (player_color == BLOCK_KIND.BLACK) {	  
         $("#black_player_name").css({
           backgroundColor: "gainsboro",
@@ -1179,7 +1185,6 @@
         });
       }
     }
-
   };
 
 
