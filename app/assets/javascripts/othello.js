@@ -1018,13 +1018,8 @@
         $("#a" + i).css("background-color", "#ffffff");
       }
     }
-    //alert("temp_hand = " + temp_hand);
-    //alert("previous_temp_hand = " + previous_temp_hand);
-    //alert("for_jump_temp_hand = " + for_jump_temp_hand);
-    //alert("last_hand = " + last_hand);
-    //alert("wrap_flag = " + wrap_flag);
-    //alert("end_flag = " + end_flag);
-    
+
+
     if (wrap_flag == true) {
       $("#a" + temp_hand).wrap('<span id="last-msg"></span>');
     }
@@ -1087,8 +1082,51 @@
 	$("#text" + i).hide();
       }
     }
- 
-    if (hand_flag == false || (hand_flag == true && temp_hand == 0)) {	  
+
+    enclose_frame(temp_hand);
+
+
+	  
+    if(allBlackColor(temp_hand)) {
+      alert("黒のパーフェクト勝ちです。");
+      isFinished = true;
+    } else if (allWhiteColor(temp_hand)) {
+      alert("白のパーフェクト勝ちです。");
+      isFinished = true;
+    } else if (black + white == 64) {
+      isFinished = true;
+      if (black > white) {
+        alert("黒の勝ちです。");
+      } else if(white > black) {
+	alert("白の勝ちです。");
+　　　} else {
+	alert("引き分けです。");
+      }
+    }
+    
+    if (isFinished == true) {
+      $("#black_player_name").css({
+        backgroundColor: "white",
+        border: "none"
+      });
+      $("#white_player_name").css({
+        backgroundColor: "white",
+        border: "none"
+      });
+      isFinished = false;
+    }	    
+
+  };
+
+  var enclose_frame = function(i) {
+/*
+    if (temp_hand >= 50) {
+      alert("temp_hand = " + temp_hand);
+      alert("player_color_array[" + (temp_hand-1) + "] = " + player_color_array[temp_hand-1]);
+      alert("player_color_array[" + (temp_hand) + "] = " + player_color_array[temp_hand]);
+    }
+*/
+    if (player_color_array[i-1] == player_color_array[i] || (hand_flag == false || (hand_flag == true && temp_hand == 0))) {
       if (player_color == BLOCK_KIND.BLACK) {	  
         $("#black_player_name").css({
           backgroundColor: "gainsboro",
@@ -1142,44 +1180,8 @@
       }
     }
 
-
-
-
-
-
-
-
-    
-    if(allBlackColor(temp_hand)) {
-      alert("黒のパーフェクト勝ちです。");
-      isFinished = true;
-    } else if (allWhiteColor(temp_hand)) {
-      alert("白のパーフェクト勝ちです。");
-      isFinished = true;
-    } else if (black + white == 64) {
-      isFinished = true;
-      if (black > white) {
-        alert("黒の勝ちです。");
-      } else if(white > black) {
-	alert("白の勝ちです。");
-　　　} else {
-	alert("引き分けです。");
-      }
-    }
-    
-    if (isFinished == true) {
-      $("#black_player_name").css({
-        backgroundColor: "white",
-        border: "none"
-      });
-      $("#white_player_name").css({
-        backgroundColor: "white",
-        border: "none"
-      });
-      isFinished = false;
-    }	    
-
   };
+
 
   var isFinish = function(i) {
 
@@ -1248,9 +1250,10 @@
       } else {
         alert("invalid status 1");
       }
-        
+      
       player_color = BLOCK_KIND.MAX - player_color;
       player_color_array[i] = player_color;
+
       if(isPass(i) && !isFinish(i) && !allSameColor(i)) {
 	if(player_color == BLOCK_KIND.BLACK) {
           isFinished = true;
@@ -2434,8 +2437,3 @@
 
 })();
 
-/*
-$(function(){
-  $('.title').css('color', 'red');
-});
-*/
