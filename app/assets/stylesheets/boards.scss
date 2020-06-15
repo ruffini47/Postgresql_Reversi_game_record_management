@@ -183,28 +183,40 @@
 #next_hand_text//for id
 {
   position: absolute;
-  top: 43*12px;
+  margin-top: 12 + 41* 8 + 12 + 41 * 3 + 5px;
 }
 
 #stone_selection_text//for id
 {
   position: absolute;
-  top: 43*12px;
+  margin-top: 12 + 41* 8 + 12 + 41 * 3 + 5px;
   margin-left: 170px;
+}
+
+#your_stone_color_text//for id
+{
+  position: absolute;
+  margin-top: 12 + 41* 8 + 12 + 41 * 2px;
 }
 
 #next_hand//for id
 {
   position: absolute;
-  top: 12 + 43 * 11px; 
+  top: 43*14px;
 }
 
 #stone_selection//for id
 {
   position: absolute;
-  top: 12 + 43 * 11px;
+  top: 43*14px;
   margin-left: 41 * 5px;
 }
+
+#your_stone_color//for id
+{
+  position: absolute;
+  top: 12 + 43 * 11px;
+} 
 
 .title//for class
 {
@@ -280,16 +292,16 @@
 #Computer_checkbox//for id
 {
   position: absolute; 
-  top: 43*13+20px; 
+  top: 43*14+20px; 
 }
 
 #Computer_text//for id
 {
   position: absolute;
-  top: 43*13+18px;
+  top: 43*14+18px;
   margin-left: 20px;
 }
-
+/*
 #First_checkbox//for id
 {
   position: absolute;
@@ -302,7 +314,7 @@
   top: 43*14+18px;
   margin-left: 20px;
 }
-
+*/
 #Reset//for id
 {
   position: absolute;
@@ -355,34 +367,39 @@
 #back_to_beginning//for id
 {
   position: absolute;
-  top:43*16+20px;
+  width: 41px;
+  margin-top:12 + 41* 8 + 12 + 41 -7px;
+  margin-left:12 + 41 * 1.25px;
 }
 
 #previous_button//for id
 {
   position: absolute;
-  top:43*16+20px;
-  margin-left: 50px;
+  width: 41px;
+  margin-top: 12 + 41* 8 + 12 + 41 -7px;
+  margin-left: 12 + 41 * 2.75px;
 }
 
 #next_button//for id
 {
   position: absolute;
-  top:43*16+20px;
-  margin-left: 100px;
+  width: 41px;
+  margin-top: 12 + 41* 8 + 12 + 41 -7px;
+  margin-left:12 + 41 * 4.25px;
 }
 
 #go_to_end//for id
 {
   position: absolute;
-  top:43*16+20px;
-  margin-left: 150px;
+  width: 41px;
+  margin-top: 12 + 41* 8 + 12 + 41 -7px;
+  margin-left:12 + 41 * 5.75px;
 }
 
 #simple_kifu//for id
 {
   position: absolute;
-  top: 43*11+30px;
+  top: 43*16+20px;
   height: 40px;
   width: 352px;
   overflow: scroll;
