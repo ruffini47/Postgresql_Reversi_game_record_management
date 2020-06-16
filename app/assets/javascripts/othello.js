@@ -183,7 +183,15 @@
     
     var c = document.getElementById("next_hand_frame");
 
+    while(c.firstChild) {
+      c.removeChild(c.firstChild);
+    }
+
     var d = document.getElementById("stone_selection_frame");
+
+    while(d.firstChild) {
+      d.removeChild(d.firstChild);
+    }
 
     var c1 = document.getElementById("next_hand");
 
@@ -196,6 +204,11 @@
     while(d1.firstChild) {
       d1.removeChild(d1.firstChild);
     }
+
+    $("#next_hand_frame").children().remove();
+    $("#stone_selection_frame").children().remove();
+    //$("#next_hand").children().remove();
+    //$("#stone_selection").children().remove();
 
 
     //  show corner frame
@@ -270,27 +283,17 @@
       }
     }
 
-    // show cell
-
-    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
-      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        
-	var cell = stone[board[0][x][y]].cloneNode(true);
-                
-        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
-        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
-        b.appendChild(cell);
-      
+     
     
     //show next hand
 
-        var black_stone_next_hand = stone[BLOCK_KIND.BLACK].cloneNode(true);
+        var black_stone_next_hand = black_stone_next_hand_cell.cloneNode(true);
 
 	black_stone_next_hand.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
         black_stone_next_hand.style.top = 0 * CELL_WIDTH +"px";	      
         c1.appendChild(black_stone_next_hand);
-
-	var white_stone_next_hand = stone[BLOCK_KIND.WHITE].cloneNode(true);
+     
+	var white_stone_next_hand = white_stone_next_hand_cell.cloneNode(true);
 
         white_stone_next_hand.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
         white_stone_next_hand.style.top = 0 * CELL_WIDTH + "px";
@@ -423,19 +426,19 @@
 
     // show stone choice cell
 
-	var black_stone_choice = stone[BLOCK_KIND.BLACK].cloneNode(true);
+	var black_stone_choice = black_stone_choice_cell.cloneNode(true);
 
 	black_stone_choice.style.left = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
 	black_stone_choice.style.top = 0 * CELL_WIDTH + "px";
  	d1.appendChild(black_stone_choice);
 
-        var white_stone_choice = stone[BLOCK_KIND.WHITE].cloneNode(true);
+        var white_stone_choice = white_stone_choice_cell.cloneNode(true);
 
         white_stone_choice.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
         white_stone_choice.style.top = 0 * CELL_WIDTH + "px";
 	d1.appendChild(white_stone_choice);
 
-	var none_stone_choice = stone[BLOCK_KIND.NONE].cloneNode(true);
+	var none_stone_choice = none_stone_choice_cell.cloneNode(true);
 
         none_stone_choice.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
         none_stone_choice.style.top = 0 * CELL_WIDTH + "px";
@@ -788,7 +791,19 @@
         bottom_right_dot.style.left = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         b.appendChild(bottom_right_dot);    
-      
+
+	  
+    // show cell
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+        
+	var cell = stone[board[0][x][y]].cloneNode(true);
+                
+        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
+        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
+        b.appendChild(cell);
+ 
 	      
 	(function() {
           var _x = x;
@@ -927,6 +942,10 @@
 	    //alert("クリックしました。");
 	    board[0][_x][_y] = choiced_stone_color;
 	    edit_flag = false;
+            c1 = document.getElementById("next_hand");
+	    //while(c1.firstChild) {
+            //  c1.removeChild(c1.firstChild);
+            //}
 	    doEditBoard();
           };
         })();
@@ -947,7 +966,7 @@
       b.removeChild(b.firstChild);
     }
 
-    var e = document.getElementById("your_stone_color");
+    //var e = document.getElementById("your_stone_color");
 
     //  show corner frame
 
@@ -1720,6 +1739,16 @@
       document.getElementById("side_frame");
     vertical_frame =
       document.getElementById("vertical_frame");
+    black_stone_next_hand_cell = 
+      document.getElementById("black_cell");
+    white_stone_next_hand_cell =
+      document.getElementById("white_cell");
+    black_stone_choice_cell =
+      document.getElementById("black_cell");
+    white_stone_choice_cell =
+      document.getElementById("white_cell");
+    none_stone_choice_cell =
+      document.getElementById("cell2");
     black_next_yellow_frame_corner =
       document.getElementById("yellow_frame_corner");
     black_next_yellow_frame_side_frame =
@@ -2451,19 +2480,39 @@
     for_jump_temp_hand = 0;
     edit_board = false;
     
-	  
     $("#next_hand_frame").children().remove();
     $("#stone_selection_frame").children().remove();
+    $("#next_hand").children().remove();
+    $("#stone_selection").children().remove();
+
+
+
+    var black_stone_next_hand = black_stone_next_hand_cell.cloneNode(true);
+    black_stone_next_hand.style.display="none";	  
+	  
+	  
+    //document.getElementById("next_hand").style.display="none";
+    //$("#next_hand").hide();
+    $("#stone_selection").css('display', 'none');
+/*
+    var c1 = document.getElementById("black_cell");
+    while(c1.firstChild) {
+      c1.removeChild(c1.firstChild);
+    }
+*/
+    //$("#stone_selection").hide();
+	  
     black_next_yellow_frame_length = 0;
     white_next_yellow_frame_length = 0;
     black_select_yellow_frame_length = 0;
     white_select_yellow_frame_length = 0;
     none_select_yellow_frame_length = 0;   
+/*
+    var element = document.getElementById("next_hand");
+    element.remove();
+*/
 
-    //$("#next_hand").hide();
-    //$("#stone_selection").hide();
-
-    kifu = ""
+    kifu = "";
 
     // start game
     //edit_board_okを選んだ場合
@@ -2540,6 +2589,9 @@
 
       $("#next_hand_frame").children().remove();
       $("#stone_selection_frame").children().remove();
+      $("#next_hand").children().remove();
+      $("#stone_selection").children().remove();
+      
       //$("#next_hand").hide();
       //$("#stone_selection").hide();
       black_next_yellow_frame_length = 0;
@@ -2580,8 +2632,14 @@
 
       $("#next_hand_frame").children().remove();
       $("#stone_selection_frame").children().remove();
+      $("#next_hand").children().remove();
+      $("#stone_selection").children().remove();	  
+/*
       $("#next_hand_frame").hide();
       $("#stone_selection_frame").hide();
+      $("#next_hand_frame").hide();
+      $("#stone_selection_frame").hide();
+*/
       black_next_yellow_frame_length = 0;
       white_next_yellow_frame_length = 0;
       black_select_yellow_frame_length = 0;
@@ -2604,8 +2662,8 @@
   $("#EditBoard").click(function() {
     $("#next_hand_text").show();
     $("#stone_selection_text").show();
-    $("#next_hand_frame").show();
-    $("#stone_selection_frame").show();
+    //$("#next_hand_frame").show();
+    //$("#stone_selection_frame").show();
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     $("#Reset").prop("disabled", true);
