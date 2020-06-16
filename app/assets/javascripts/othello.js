@@ -181,9 +181,9 @@
     }
 
     
-    var c = document.getElementById("next_hand");
+    var c = document.getElementById("next_hand_frame");
 
-    var d = document.getElementById("stone_selection");
+    var d = document.getElementById("stone_selection_frame");
 
 	  
 
@@ -1856,8 +1856,8 @@
       $("#edit_board_cancel").hide();
       $("#next_hand_text").hide();
       $("#stone_selection_text").hide();
-      $("#next_hand").hide();
-      $("#stone_selection").hide();
+      $("#next_hand_frame").hide();
+      $("#stone_selection_frame").hide();
       $("#save_comment").hide();
       $("#cancel_comment").hide();
       $("#delete_comment").hide();
@@ -2442,8 +2442,8 @@
     edit_board = false;
     
 	  
-    $("#next_hand").children().remove();
-    $("#stone_selection").children().remove();
+    $("#next_hand_frame").children().remove();
+    $("#stone_selection_frame").children().remove();
     black_next_yellow_frame_length = 0;
     white_next_yellow_frame_length = 0;
     black_select_yellow_frame_length = 0;
@@ -2528,8 +2528,8 @@
 
       //alert("koko kitenai");
 
-      $("#next_hand").children().remove();
-      $("#stone_selection").children().remove();
+      $("#next_hand_frame").children().remove();
+      $("#stone_selection_frame").children().remove();
       //$("#next_hand").hide();
       //$("#stone_selection").hide();
       black_next_yellow_frame_length = 0;
@@ -2568,10 +2568,10 @@
       hand_flag = true;
       for_jump_temp_hand = 0;
 
-      $("#next_hand").children().remove();
-      $("#stone_selection").children().remove();
-      $("#next_hand").hide();
-      $("#stone_selection").hide();
+      $("#next_hand_frame").children().remove();
+      $("#stone_selection_frame").children().remove();
+      $("#next_hand_frame").hide();
+      $("#stone_selection_frame").hide();
       black_next_yellow_frame_length = 0;
       white_next_yellow_frame_length = 0;
       black_select_yellow_frame_length = 0;
@@ -2594,8 +2594,8 @@
   $("#EditBoard").click(function() {
     $("#next_hand_text").show();
     $("#stone_selection_text").show();
-    $("#next_hand").show();
-    $("#stone_selection").show();
+    $("#next_hand_frame").show();
+    $("#stone_selection_frame").show();
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     $("#Reset").prop("disabled", true);
