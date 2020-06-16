@@ -183,13 +183,13 @@
 #next_hand_text//for id
 {
   position: absolute;
-  margin-top: 12 + 41* 8 + 12 + 41 * 3 + 5px;
+  margin-top: 12 + 41* 8 + 12 + 41 + 5px;
 }
 
 #stone_selection_text//for id
 {
   position: absolute;
-  margin-top: 12 + 41* 8 + 12 + 41 * 3 + 5px;
+  margin-top: 12 + 41* 8 + 12 + 41 + 5px;
   margin-left: 170px;
 }
 
@@ -205,7 +205,20 @@
   top: 43*14px;
 }
 
+#next_hand_frame//for id
+{
+  position: absolute;
+  top: 43*14px;
+}
+
 #stone_selection//for id
+{
+  position: absolute;
+  top: 43*14px;
+  margin-left: 41 * 5px;
+}
+
+#stone_selection_frame//for id
 {
   position: absolute;
   top: 43*14px;

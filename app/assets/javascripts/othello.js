@@ -181,11 +181,21 @@
     }
 
     
-    var c = document.getElementById("next_hand");
+    var c1 = document.getElementById("next_hand");
 
-    var d = document.getElementById("stone_selection");
+    while(c1.firstChild) {
+      c1.removeChild(c1.firstChild);
+    }
 
-	  
+    var d1 = document.getElementById("stone_selection");
+
+    while(d1.firstChild) {
+      d1.removeChild(d1.firstChild);
+    }
+
+    var c = document.getElementById("next_hand_frame");
+
+    var d = document.getElemetById("stone_selection_frame");
 
 
     //  show corner frame
@@ -277,14 +287,14 @@
         var black_stone_next_hand = stone[BLOCK_KIND.BLACK].cloneNode(true);
 
 	black_stone_next_hand.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_stone_next_hand.style.top = FRAME_WIDTH + 11 * CELL_WIDTH + 5 +"px";	      
-        b.appendChild(black_stone_next_hand);
+        black_stone_next_hand.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + 5 +"px";	      
+        c1.appendChild(black_stone_next_hand);
 
 	var white_stone_next_hand = stone[BLOCK_KIND.WHITE].cloneNode(true);
 
         white_stone_next_hand.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_stone_next_hand.style.top = FRAME_WIDTH + 11 * CELL_WIDTH + 5 + "px";
-        b.appendChild(white_stone_next_hand);
+        white_stone_next_hand.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + 5 + "px";
+        c1.appendChild(white_stone_next_hand);
         
     //  show black_next yellow_frame corner
 
@@ -416,20 +426,20 @@
 	var black_stone_choice = stone[BLOCK_KIND.BLACK].cloneNode(true);
 
 	black_stone_choice.style.left = FRAME_WIDTH + 5 * CELL_WIDTH + "px";
-	black_stone_choice.style.top = FRAME_WIDTH + 11 * CELL_WIDTH + 5 + "px";
- 	b.appendChild(black_stone_choice);
+	black_stone_choice.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + 5 + "px";
+ 	d1.appendChild(black_stone_choice);
 
         var white_stone_choice = stone[BLOCK_KIND.WHITE].cloneNode(true);
 
         white_stone_choice.style.left = FRAME_WIDTH + 6 * CELL_WIDTH + "px";
-        white_stone_choice.style.top = FRAME_WIDTH + 11 * CELL_WIDTH + 5 + "px";
-	b.appendChild(white_stone_choice);
+        white_stone_choice.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + 5 + "px";
+	d1.appendChild(white_stone_choice);
 
 	var none_stone_choice = stone[BLOCK_KIND.NONE].cloneNode(true);
 
         none_stone_choice.style.left = FRAME_WIDTH + 7 * CELL_WIDTH + "px";
-        none_stone_choice.style.top = FRAME_WIDTH + 11 * CELL_WIDTH + 5 + "px";
-	b.appendChild(none_stone_choice);
+        none_stone_choice.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + 5 + "px";
+	d1.appendChild(none_stone_choice);
 
     //  show black_select yellow_frame corner
 
@@ -615,14 +625,14 @@
         var your_stone_color_black = stone[BLOCK_KIND.BLACK].cloneNode(true);
 
         your_stone_color_black.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - 12 * 1.5 + "px";
-        your_stone_color_black.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + "px";
-        b.appendChild(your_stone_color_black);
+        your_stone_color_black.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + 10 + "px";
+        d.appendChild(your_stone_color_black);
 
         var your_stone_color_white = stone[BLOCK_KIND.WHITE].cloneNode(true);
 
         your_stone_color_white.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - 12 * 1.5 + "px";
-        your_stone_color_white.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + "px";
-        b.appendChild(your_stone_color_white);
+        your_stone_color_white.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + 10 + "px";
+        d.appendChild(your_stone_color_white);
 
 /*        
     //  show black_next yellow_frame corner
@@ -811,7 +821,7 @@
             player_color = BLOCK_KIND.WHITE;
 	    player_color_array[0] = BLOCK_KIND.WHITE;
 	    if (black_next_yellow_frame_length > 0) {
-	       while(c.firstChild) {
+	      while(c.firstChild) {
                 c.removeChild(c.firstChild);
               }
 	      //black_next_yellow_frame_top_left_corner.remove();
@@ -2400,10 +2410,10 @@
     $("#Save").prop("disabled", false);
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
-    $("#back_to_beginning").prop("disabled", false);
-    $("#previous_button").prop("disabled", false);
-    $("#next_button").prop("disabled", false);
-    $("#go_to_end").prop("disabled", false);
+    $("#back_to_beginning").show();
+    $("#previous_button").show();
+    $("#next_button").show();
+    $("#go_to_end").show();
     $("#open_button").prop("disabled", false);
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
@@ -2441,7 +2451,6 @@
     for_jump_temp_hand = 0;
     edit_board = false;
     
-	  
     $("#next_hand").children().remove();
     $("#stone_selection").children().remove();
     black_next_yellow_frame_length = 0;
@@ -2452,6 +2461,11 @@
 
     //$("#next_hand").hide();
     //$("#stone_selection").hide();
+
+    while(c.firstChild) {
+      c.removeChild(b.firstChild);
+    }
+
 
     kifu = ""
 
@@ -2472,10 +2486,10 @@
     $("#Save").prop("disabled", false);
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
-    $("#back_to_beginning").prop("disabled", false);
-    $("#previous_button").prop("disabled", false);
-    $("#next_button").prop("disabled", false);
-    $("#go_to_end").prop("disabled", false);
+    $("#back_to_beginning").show();
+    $("#previous_button").show();
+    $("#next_button").show();
+    $("#go_to_end").show();
     $("#open_button").prop("disabled", false);
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
@@ -2602,10 +2616,10 @@
     $("#Save").prop("disabled", true);
     $("#SaveAs").prop("disabled", true);
     $("#EditBoard").prop("disabled", true);
-    $("#back_to_beginning").prop("disabled", true);
-    $("#previous_button").prop("disabled", true);
-    $("#next_button").prop("disabled", true);
-    $("#go_to_end").prop("disabled", true);
+    $("#back_to_beginning").hide();
+    $("#previous_button").hide();
+    $("#next_button").hide();
+    $("#go_to_end").hide();
     $("#open_button").prop("disabled", true);
     $("#clipboard_button").prop("disabled", true);
     $(".comment_textarea").attr("disabled", true);	  
