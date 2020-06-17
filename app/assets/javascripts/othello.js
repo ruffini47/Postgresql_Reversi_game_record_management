@@ -1740,15 +1740,15 @@
     vertical_frame =
       document.getElementById("vertical_frame");
     black_stone_next_hand_cell = 
-      document.getElementById("black_cell");
+      document.getElementById("black");
     white_stone_next_hand_cell =
-      document.getElementById("white_cell");
+      document.getElementById("white");
     black_stone_choice_cell =
-      document.getElementById("black_cell");
+      document.getElementById("black");
     white_stone_choice_cell =
-      document.getElementById("white_cell");
+      document.getElementById("white");
     none_stone_choice_cell =
-      document.getElementById("cell2");
+      document.getElementById("cell");
     black_next_yellow_frame_corner =
       document.getElementById("yellow_frame_corner");
     black_next_yellow_frame_side_frame =
@@ -2448,7 +2448,6 @@
     $(".comment_textarea").attr("disabled", false);
 	
     
-    alert("koko,kiteru1?");
 
     if(document.form1.Computer.checked) {
       vsAI = true;
@@ -2456,7 +2455,6 @@
       vsAI = false;
     }
     
-    alert("koko,kiteru2?");
 /*
     if(document.form1.First.checked) {
       isFirst = true;
@@ -2467,13 +2465,11 @@
     }
 */
     
-    alert("koko,kiteru?3");
 
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);
   
     
-    alert("koko,kiteru4?");
 
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
@@ -2492,7 +2488,6 @@
     edit_board = false;
     
     
-    alert("koko,kiteru5?");
 
     $("#next_hand_frame").children().remove();
     $("#stone_selection_frame").children().remove();
