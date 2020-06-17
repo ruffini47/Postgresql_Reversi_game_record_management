@@ -2446,13 +2446,18 @@
     $("#open_button").prop("disabled", false);
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
-	  
+	
+    
+    alert("koko,kiteru1?");
+
     if(document.form1.Computer.checked) {
       vsAI = true;
     } else {
       vsAI = false;
     }
     
+    alert("koko,kiteru2?");
+/*
     if(document.form1.First.checked) {
       isFirst = true;
       your_move = "first";
@@ -2460,9 +2465,15 @@
       isFirst = false;
       your_move = "second";
     }
+*/
+    
+    alert("koko,kiteru?3");
+
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);
   
+    
+    alert("koko,kiteru4?");
 
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
@@ -2480,28 +2491,33 @@
     for_jump_temp_hand = 0;
     edit_board = false;
     
+    
+    alert("koko,kiteru5?");
+
     $("#next_hand_frame").children().remove();
     $("#stone_selection_frame").children().remove();
     $("#next_hand").children().remove();
     $("#stone_selection").children().remove();
 
 
-
-    var black_stone_next_hand = black_stone_next_hand_cell.cloneNode(true);
-    black_stone_next_hand.style.display="none";	  
+    //var black_stone_next_hand = black_stone_next_hand_cell.cloneNode(true);
+    //black_stone_next_hand.style.display="none";	  
 	  
 	  
     //document.getElementById("next_hand").style.display="none";
     //$("#next_hand").hide();
-    $("#stone_selection").css('display', 'none');
-/*
-    var c1 = document.getElementById("black_cell");
-    while(c1.firstChild) {
-      c1.removeChild(c1.firstChild);
-    }
-*/
+    //$("#next_hand").css('margin-top', '0px');
+
+    //var c1 = document.getElementById("black_cell");
+    //while(c1.firstChild) {
+    //  c1.removeChild(c1.firstChild);
+    //}
+
     //$("#stone_selection").hide();
-	  
+
+   
+
+
     black_next_yellow_frame_length = 0;
     white_next_yellow_frame_length = 0;
     black_select_yellow_frame_length = 0;
