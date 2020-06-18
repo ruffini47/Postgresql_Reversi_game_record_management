@@ -287,13 +287,13 @@
     
     //show next hand
 
-        var black_stone_next_hand = black_stone_next_hand_cell.cloneNode(true);
+        var black_stone_next_hand =  stone[BLOCK_KIND.BLACK].cloneNode(true);
 
 	black_stone_next_hand.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
         black_stone_next_hand.style.top = 0 * CELL_WIDTH +"px";	      
         c1.appendChild(black_stone_next_hand);
      
-	var white_stone_next_hand = white_stone_next_hand_cell.cloneNode(true);
+	var white_stone_next_hand =  stone[BLOCK_KIND.WHITE].cloneNode(true);
 
         white_stone_next_hand.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
         white_stone_next_hand.style.top = 0 * CELL_WIDTH + "px";
@@ -426,19 +426,19 @@
 
     // show stone choice cell
 
-	var black_stone_choice = black_stone_choice_cell.cloneNode(true);
+	var black_stone_choice =  stone[BLOCK_KIND.BLACK].cloneNode(true);
 
 	black_stone_choice.style.left = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
 	black_stone_choice.style.top = 0 * CELL_WIDTH + "px";
  	d1.appendChild(black_stone_choice);
 
-        var white_stone_choice = white_stone_choice_cell.cloneNode(true);
+        var white_stone_choice = stone[BLOCK_KIND.WHITE].cloneNode(true);
 
         white_stone_choice.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
         white_stone_choice.style.top = 0 * CELL_WIDTH + "px";
 	d1.appendChild(white_stone_choice);
 
-	var none_stone_choice = none_stone_choice_cell.cloneNode(true);
+	var none_stone_choice =  stone[BLOCK_KIND.NONE].cloneNode(true);
 
         none_stone_choice.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
         none_stone_choice.style.top = 0 * CELL_WIDTH + "px";
@@ -766,6 +766,18 @@
 
 
 
+	  
+    // show cell
+
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+        
+	var cell = stone[board[0][x][y]].cloneNode(true);
+                
+        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
+        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
+        b.appendChild(cell);
+
     // show dot        
 
 	var top_left_dot = dot.cloneNode(true);
@@ -792,18 +804,7 @@
         bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         b.appendChild(bottom_right_dot);    
 
-	  
-    // show cell
 
-    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
-      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        
-	var cell = stone[board[0][x][y]].cloneNode(true);
-                
-        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
-        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
-        b.appendChild(cell);
- 
 	      
 	(function() {
           var _x = x;
@@ -1039,17 +1040,6 @@
       }
     }
 
-    // show cell
-
-    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
-      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
-        
-	var cell = stone[board[i][x][y]].cloneNode(true);
-                
-        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
-        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
-        b.appendChild(cell);
-
     //show your stone color
 
         var your_stone_color_black = stone[BLOCK_KIND.BLACK].cloneNode(true);
@@ -1189,9 +1179,18 @@
         //b.appendChild(white_next_yellow_frame_right_vertical_frame);
 
 */ 
+     // show cell
 
-    
-    // show dot        
+    for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+      for(var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+        
+	var cell = stone[board[i][x][y]].cloneNode(true);
+                
+        cell.style.left = FRAME_WIDTH + (x * CELL_WIDTH) + "px"; 
+        cell.style.top = FRAME_WIDTH + (y * CELL_WIDTH) + "px"; 
+        b.appendChild(cell);
+
+     // show dot        
 
 	var top_left_dot = dot.cloneNode(true);
 
@@ -1217,6 +1216,8 @@
         bottom_right_dot.style.top = FRAME_WIDTH + 6 * CELL_WIDTH - 3 + "px";
         b.appendChild(bottom_right_dot);
 
+
+  
         (function() {
           var _x = x;
           var _y = y;
@@ -1739,16 +1740,16 @@
       document.getElementById("side_frame");
     vertical_frame =
       document.getElementById("vertical_frame");
-    black_stone_next_hand_cell = 
-      document.getElementById("black");
-    white_stone_next_hand_cell =
-      document.getElementById("white");
-    black_stone_choice_cell =
-      document.getElementById("black");
-    white_stone_choice_cell =
-      document.getElementById("white");
-    none_stone_choice_cell =
-      document.getElementById("cell");
+//    black_stone_next_hand_cell = 
+//      document.getElementById("black");
+//    white_stone_next_hand_cell =
+//      document.getElementById("white");
+//    black_stone_choice_cell =
+//      document.getElementById("black");
+//    white_stone_choice_cell =
+//      document.getElementById("white");
+//    none_stone_choice_cell =
+//      document.getElementById("cell");
     black_next_yellow_frame_corner =
       document.getElementById("yellow_frame_corner");
     black_next_yellow_frame_side_frame =
