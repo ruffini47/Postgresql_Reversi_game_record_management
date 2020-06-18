@@ -2205,6 +2205,50 @@
 
   };
 
+document.getElementById("Reset2").onclick = function() {
+    
+    // initialize board
+    initBoard();
+
+    if(document.form1.Computer.checked) {
+      vsAI = true;
+    } else {
+      vsAI = false;
+    }
+    
+    if(document.form1.First.checked) {
+      isFirst = true;
+      your_move = "first";
+    } else {
+      isFirst = false;
+      your_move = "second";
+    }
+       
+    from_saved = false;
+    //alert("temp_hand = " + temp_hand);
+    $("#a" + temp_hand).unwrap();
+    last_hand = 0;
+    temp_hand = 0;
+    previous_temp_hand = 0;
+    wrap_flag = true;
+    beginning_flag = false;
+    end_flag = false;
+    link_flag = false;
+    from_saved_first_flag = false;
+    cancel_flag = false;
+    hand_flag = true;
+    for_jump_temp_hand = 0;
+
+    // start game
+    //Resetボタンを押した場合
+    showBoard(last_hand);
+    if(!isFirst) {
+      doAiPlayer(last_hand);
+    }
+
+  };
+
+
   /*var kifu1 = $('.title').text();*/
   $("#Save").click(function() {
     /*$('.title').css('color', 'red');*/
@@ -2456,7 +2500,7 @@
       vsAI = false;
     }
     
-/*
+
     if(document.form1.First.checked) {
       isFirst = true;
       your_move = "first";
@@ -2464,7 +2508,7 @@
       isFirst = false;
       your_move = "second";
     }
-*/
+
     
 
     alert("your_move = " + your_move);
