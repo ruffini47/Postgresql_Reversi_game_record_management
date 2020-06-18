@@ -10,7 +10,8 @@
 
 #board//for id
 {	
-  position: relative;
+  position: absolute;
+  margin-top: 5px;
 }
 
 .corner//for class
@@ -169,40 +170,40 @@
 #edit_board_ok//for id
 { 
   position: absolute;
-  top: 43*12px;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 24px; 
   margin-left: 380px;
 }
 
 #edit_board_cancel//for id
 {
   position: absolute;
-  top: 43*12px;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 24px;
   margin-left: 430px;
 }
 
 #next_hand_text//for id
 {
   position: absolute;
-  margin-top: 12 + 41* 8 + 12 + 41 + 5px;
+  margin-top: 12 + 41* 8 + 12 + 41 + 25px;
 }
 
 #stone_selection_text//for id
 {
   position: absolute;
-  margin-top: 12 + 41* 8 + 12 + 41 + 5px;
+  margin-top: 12 + 41* 8 + 12 + 41 + 25px;
   margin-left: 170px;
 }
 
 #your_stone_color_text//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 13px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 38px;
 }
 
 #next_hand//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 - 5px;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 15px;
 }
 
 #next_hand_frame//for id
@@ -214,7 +215,7 @@
 #stone_selection//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 - 5px;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 15px;
   margin-left: 41 * 5px;
 }
 
@@ -297,7 +298,8 @@
 .white_player//for class
 {
   position: absolute; 
-  top: 43*11px; 
+  margin-top: 12 + 41 * 8 + 12 + 20px;
+  //top: 43*11px; 
   font-size: medium;
  // width: 43*8px;
 }
@@ -305,35 +307,35 @@
 #Computer_checkbox//for id
 {
   position: absolute; 
-  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 17px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 42px;
   margin-left : 12 + 41 * 4 + 5px;
 }
 
 #Computer_text//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 11px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 36px;
   margin-left: 12 + 41 * 4 + 5 + 20px;
 }
 
 #First_checkbox//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 17px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 43px;
   margin-left: 12 + 41 * 8px;
 }
 
 #First_text//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 11px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 2 + 36px;
   margin-left: 12 + 41 * 8 + 20px;
 }
 
 #Reset//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 * 3 + 18px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 4 + 5px;
   width: 300px;
   font-size: 14px;
 }
@@ -341,7 +343,7 @@
 #Reset2//for id
 {
   position: absolute;
-  margin-top: 12 + 41 * 8 + 12 + 41 * 4 + 22px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 5 + 9px;
   width: 300px;
   font-size: 14px;
 }
@@ -394,7 +396,7 @@
 {
   position: absolute;
   width: 41px;
-  margin-top:12 + 41* 8 + 12 + 41 - 1px;
+  margin-top:12 + 41* 8 + 12 + 41 + 20px;
   margin-left:12 + 41 * 1.25px;
 }
 
@@ -402,7 +404,7 @@
 {
   position: absolute;
   width: 41px;
-  margin-top: 12 + 41* 8 + 12 + 41 - 1px;
+  margin-top: 12 + 41* 8 + 12 + 41 + 20px;
   margin-left: 12 + 41 * 2.75px;
 }
 
@@ -410,7 +412,7 @@
 {
   position: absolute;
   width: 41px;
-  margin-top: 12 + 41* 8 + 12 + 41 - 1px;
+  margin-top: 12 + 41* 8 + 12 + 41 + 20px;
   margin-left:12 + 41 * 4.25px;
 }
 
@@ -418,14 +420,14 @@
 {
   position: absolute;
   width: 41px;
-  margin-top: 12 + 41* 8 + 12 + 41 - 1px;
+  margin-top: 12 + 41* 8 + 12 + 41 + 20px;
   margin-left:12 + 41 * 5.75px;
 }
 
 #simple_kifu//for id
 {
   position: absolute;
-  top: 43*16+20px;
+  margin-top: 12 + 41 * 8 + 12 + 41 * 6 + 23px;
   height: 40px;
   width: 352px;
   overflow: scroll;
