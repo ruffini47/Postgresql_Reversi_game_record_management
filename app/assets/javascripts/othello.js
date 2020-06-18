@@ -1867,6 +1867,7 @@
     if (edit_board == true) {
       edit_flag = true;
       $("#Reset").prop("disabled", true);
+      $("#Reset2").prop("disabled", true);
       $("#Save").prop("disabled", true);
       $("#SaveAs").prop("disabled", true);
       $("#EditBoard").prop("disabled", true);
@@ -2240,7 +2241,7 @@ document.getElementById("Reset2").onclick = function() {
     for_jump_temp_hand = 0;
 
     // start game
-    //Resetボタンを押した場合
+    //Reset2ボタンを押した場合
     showBoard(last_hand);
     if(!isFirst) {
       doAiPlayer(last_hand);
@@ -2481,6 +2482,7 @@ document.getElementById("Reset2").onclick = function() {
     $("#msg_kifu").show();
     $("#simple_kifu").show();
     $("#Reset").prop("disabled", false);
+    $("#Reset2").prop("disabled", false);
     $("#Save").prop("disabled", false);
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
@@ -2584,6 +2586,7 @@ document.getElementById("Reset2").onclick = function() {
     $("#msg_kifu").show();
     $("#simple_kifu").show();
     $("#Reset").prop("disabled", false);
+    $("#Reset2").prop("disabled", false);
     $("#Save").prop("disabled", false);
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
@@ -2723,6 +2726,7 @@ document.getElementById("Reset2").onclick = function() {
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     $("#Reset").prop("disabled", true);
+    $("#Reset2").prop("disabled", true);	  
     $("#Save").prop("disabled", true);
     $("#SaveAs").prop("disabled", true);
     $("#EditBoard").prop("disabled", true);
