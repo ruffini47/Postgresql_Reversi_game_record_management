@@ -1871,10 +1871,10 @@
       $("#Save").prop("disabled", true);
       $("#SaveAs").prop("disabled", true);
       $("#EditBoard").prop("disabled", true);
-      $("#back_to_beginning").prop("disabled", true);
-      $("#previous_button").prop("disabled", true);
-      $("#next_button").prop("disabled", true);
-      $("#go_to_end").prop("disabled", true);
+      $("#back_to_beginning").hide();
+      $("#previous_button").hide();
+      $("#next_button").hide();
+      $("#go_to_end").hide();
       $("#open_button").prop("disabled", true);
       $("#clipboard_button").prop("disabled", true);
       $(".comment_textarea").attr("disabled", true);
