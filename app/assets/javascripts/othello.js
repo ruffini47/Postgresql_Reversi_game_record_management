@@ -967,13 +967,7 @@
       b.removeChild(b.firstChild);
     }
 
-    //e = document.getElementById("your_stone_color");
-
-    //while(e.firstChild) {
-    //  e.removeChild(b.firstChild);
-    }
-
-
+    //var e = document.getElementById("your_stone_color");
 
     //  show corner frame
 
