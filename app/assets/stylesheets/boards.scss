@@ -350,32 +350,32 @@
 #Save//for id
 {
   position: absolute;
-  top: 43*12+20px;
+  margin-top: 0px;
   width: 260px;
-  margin-left: 530px;
+  margin-left: 930px;
 }
 
 #SaveAs//for id
 {
   position: absolute;
-  top: 43*13+20px;
+  margin-top: 43px;
   width: 260px;
-  margin-left: 530px;
+  margin-left: 930px;
 }
 
 #EditBoard//for id
 {
   position: absolute;
-  top: 43*14+20px;
+  margin-top: 43 * 2px;
   width: 260px;
-  margin-left: 530px; 
+  margin-left: 930px; 
 }
 
 #open//for id
 {
   position: absolute;
-  top: 43*15+20px;
-  margin-left: 530px;
+  margin-top: 43 * 3px;
+  margin-left: 930px;
  }
 
 .w-260px {
@@ -385,9 +385,9 @@
 .copy_clipboard//for class
 {
   position: absolute;
-  top: 43*16+20px;
+  margin-top: 43 * 4px;
   width: 260px;
-  margin-left: 530px;
+  margin-left: 930px;
 }
 
 #back_to_beginning//for id
@@ -465,6 +465,7 @@
 .comment_textarea//for class
 {
   position: absolute;
+  //margin-top: 0px;
   top: 43*2 + 32px;
   margin-left: 530px;
   height: 12 + 41 * 8 + 12px;
