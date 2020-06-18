@@ -204,26 +204,28 @@
 {
   position: absolute;
   margin-top: 12 + 41 * 8 + 12 + 41 + 15px;
+  margin-left: 12px;
 }
 
 #next_hand_frame//for id
 {
   position: absolute;
-  top: 43*14px;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 15px;
+  margin-left: 12px;
 }
 
 #stone_selection//for id
 {
   position: absolute;
   margin-top: 12 + 41 * 8 + 12 + 41 + 15px;
-  margin-left: 41 * 5px;
+  margin-left: 12 + 41 * 5px;
 }
 
 #stone_selection_frame//for id
 {
   position: absolute;
-  top: 43*14px;
-  margin-left: 41 * 5px;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 15px;
+  margin-left: 12 + 41 * 5px;
 }
 /*
 #your_stone_color//for id
