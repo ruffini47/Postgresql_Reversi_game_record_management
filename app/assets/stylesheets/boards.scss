@@ -8,6 +8,7 @@
   --yellow-frame-width: 3px;
 }
 
+
 #board//for id
 {	
   position: relative;
@@ -202,7 +203,7 @@
 #next_hand//for id
 {
   position: absolute;
-  top: 43*14px;
+  margin-top: 12 + 41 * 8 + 12 + 41 -5px;
 }
 
 #next_hand_frame//for id
@@ -214,7 +215,7 @@
 #stone_selection//for id
 {
   position: absolute;
-  top: 43*14px;
+  margin-top: 12 + 41 * 8 + 12 + 41 -5px;
   margin-left: 41 * 5px;
 }
 
@@ -225,11 +226,11 @@
   margin-left: 41 * 5px;
 }
 
-#your_stone_color//for id
+#your_stone//for id
 {
   position: absolute;
-  top: 12 + 43 * 11px;
-} 
+}
+
 
 .title//for class
 {
