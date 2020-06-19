@@ -183,30 +183,30 @@
     
     var c = document.getElementById("next_hand_frame");
 
-    while(c.firstChild) {
-      c.removeChild(c.firstChild);
-    }
+    //while(c.firstChild) {
+    //  c.removeChild(c.firstChild);
+    //}
 
     var d = document.getElementById("stone_selection_frame");
 
-    while(d.firstChild) {
-      d.removeChild(d.firstChild);
-    }
+    //while(d.firstChild) {
+    //  d.removeChild(d.firstChild);
+    //}
 
     var c1 = document.getElementById("next_hand");
 
-    while(c1.firstChild) {
-      c1.removeChild(c1.firstChild);
-    }
+    //while(c1.firstChild) {
+    //  c1.removeChild(c1.firstChild);
+    //}
 
     var d1 = document.getElementById("stone_selection");
 
-    while(d1.firstChild) {
-      d1.removeChild(d1.firstChild);
-    }
+    //while(d1.firstChild) {
+    //  d1.removeChild(d1.firstChild);
+    //}
 
-    $("#next_hand_frame").children().remove();
-    $("#stone_selection_frame").children().remove();
+    //$("#next_hand_frame").children().remove();
+    //$("#stone_selection_frame").children().remove();
     //$("#next_hand").children().remove();
     //$("#stone_selection").children().remove();
 
@@ -943,10 +943,6 @@
 	    //alert("クリックしました。");
 	    board[0][_x][_y] = choiced_stone_color;
 	    edit_flag = false;
-            c1 = document.getElementById("next_hand");
-	    //while(c1.firstChild) {
-            //  c1.removeChild(c1.firstChild);
-            //}
 	    doEditBoard();
           };
         })();
@@ -2721,8 +2717,10 @@ document.getElementById("Reset2").onclick = function() {
   $("#EditBoard").click(function() {
     $("#next_hand_text").show();
     $("#stone_selection_text").show();
-    //$("#next_hand_frame").show();
-    //$("#stone_selection_frame").show();
+    $("#next_hand").show();
+    $("#stone_selection").show();
+    $("#next_hand_frame").show();
+    $("#stone_selection_frame").show();
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
     $("#Reset").prop("disabled", true);
