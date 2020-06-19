@@ -183,33 +183,17 @@
     
     var c = document.getElementById("next_hand_frame");
 
-    //while(c.firstChild) {
-    //  c.removeChild(c.firstChild);
-    //}
 
     var d = document.getElementById("stone_selection_frame");
 
-    //while(d.firstChild) {
-    //  d.removeChild(d.firstChild);
-    //}
 
     var c1 = document.getElementById("next_hand");
 
-    //while(c1.firstChild) {
-    //  c1.removeChild(c1.firstChild);
-    //}
 
     var d1 = document.getElementById("stone_selection");
 
-    //while(d1.firstChild) {
-    //  d1.removeChild(d1.firstChild);
-    //}
 
-    //$("#next_hand_frame").children().remove();
-    //$("#stone_selection_frame").children().remove();
-    //$("#next_hand").children().remove();
-    //$("#stone_selection").children().remove();
-
+    var e = document.getElementById("your_stone_color_frame");
 
     //  show corner frame
 
@@ -637,61 +621,62 @@
         your_stone_color_white.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + FRAME_WIDTH + 22 + "px";
         b.appendChild(your_stone_color_white);
 
-/*        
-    //  show black_next yellow_frame corner
+        
+    //  show stone_black yellow_frame corner
 
-        var black_next_yellow_frame_top_left_corner = black_next_yellow_frame_corner.cloneNode(true);
+        var stone_black_yellow_frame_top_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
     
-        black_next_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
-       	
-	var black_next_yellow_frame_top_right_corner = black_next_yellow_frame_corner.cloneNode(true);
+        stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+       	//e.appendChild(stone_black_yellow_frame_top_left_corner);
 
-        black_next_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        black_next_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
-        //c.appendChild(black_next_yellow_frame_top_right_corner);
+	var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
-        var black_next_yellow_frame_bottom_left_corner = black_next_yellow_frame_corner.cloneNode(true);
+        stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+        //e.appendChild(stone_black_yellow_frame_top_right_corner);
 
-        black_next_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        //c.appendChild(black_next_yellow_frame_bottom_left_corner);
+        var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
-        var black_next_yellow_frame_bottom_right_corner = black_next_yellow_frame_corner.cloneNode(true);
+        stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
 
-        black_next_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        black_next_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        //c.appendChild(black_next_yellow_frame_bottom_right_corner);
+        var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+        stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
     
     // show black_next yellow_frame frame
 
-        var black_next_yellow_frame_top_side_frame = black_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_black_yellow_frame_top_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
 
-        black_next_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_top_side_frame);
 
 
-        var black_next_yellow_frame_bottom_side_frame = black_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
 
-        black_next_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_bottom_side_frame);
 
 	      
-        var black_next_yellow_frame_left_vertical_frame = black_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
-        black_next_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH  + "px";
-        black_next_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH  + "px";
+        stone_black_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_left_vertical_frame);
 
 
-        var black_next_yellow_frame_right_vertical_frame = black_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
-        black_next_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        black_next_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_right_vertical_frame);
-
+/*
          if (edit_flag == true) {
 	  player_color = BLOCK_KIND.BLACK;
           player_color_array[0] = BLOCK_KIND.BLACK;
@@ -705,64 +690,63 @@
           c.appendChild(black_next_yellow_frame_right_vertical_frame);
           black_next_yellow_frame_length = 1;
         }
-    
+*/    
 
-    //  show white_next yellow_frame corner
+    //  show stone_white yellow_frame corner
 
-        var white_next_yellow_frame_top_left_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_top_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_top_left_corner);
 
-        var white_next_yellow_frame_top_right_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        white_next_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_top_right_corner);
 
-        var white_next_yellow_frame_bottom_left_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_bottom_left_corner);
 
-        var white_next_yellow_frame_bottom_right_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        white_next_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_bottom_right_corner);
 
-    // show white_next yellow_frame frame
+    // show stone_white yellow_frame frame
 
-        var white_next_yellow_frame_top_side_frame = white_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_white_yellow_frame_top_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
 
-        white_next_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_top_side_frame);
 
 
-        var white_next_yellow_frame_bottom_side_frame = white_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
 
-        white_next_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_bottom_side_frame);
 
 
-        var white_next_yellow_frame_left_vertical_frame = white_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
-        white_next_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH  + "px";
-        white_next_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH  + "px";
+        stone_white_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_left_vertical_frame);
 
 
-        var white_next_yellow_frame_right_vertical_frame = white_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
-        white_next_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        white_next_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_right_vertical_frame);
 
-*/ 
 
 
 
@@ -963,7 +947,7 @@
       b.removeChild(b.firstChild);
     }
 
-    //var e = document.getElementById("your_stone_color");
+    var e = document.getElementById("your_stone_color_frame");
 
     //  show corner frame
 
@@ -1049,61 +1033,62 @@
         your_stone_color_white.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - 12 * 1.5 + "px";
         your_stone_color_white.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + FRAME_WIDTH + 22 + "px";
         b.appendChild(your_stone_color_white);
-/*        
-    //  show black_next yellow_frame corner
 
-        var black_next_yellow_frame_top_left_corner = black_next_yellow_frame_corner.cloneNode(true);
+    //  show stone_black yellow_frame corner
+
+        var stone_black_yellow_frame_top_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
     
-        black_next_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
-       	
-	var black_next_yellow_frame_top_right_corner = black_next_yellow_frame_corner.cloneNode(true);
+        stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+       	e.appendChild(stone_black_yellow_frame_top_left_corner);
 
-        black_next_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        black_next_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
-        //c.appendChild(black_next_yellow_frame_top_right_corner);
+	var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
-        var black_next_yellow_frame_bottom_left_corner = black_next_yellow_frame_corner.cloneNode(true);
+        stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+        e.appendChild(stone_black_yellow_frame_top_right_corner);
 
-        black_next_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        //c.appendChild(black_next_yellow_frame_bottom_left_corner);
+        var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
-        var black_next_yellow_frame_bottom_right_corner = black_next_yellow_frame_corner.cloneNode(true);
+        stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        e.appendChild(stone_black_yellow_frame_bottom_left_corner);
 
-        black_next_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        black_next_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        //c.appendChild(black_next_yellow_frame_bottom_right_corner);
+        var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+        stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        e.appendChild(stone_black_yellow_frame_bottom_right_corner);
     
     // show black_next yellow_frame frame
 
-        var black_next_yellow_frame_top_side_frame = black_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_black_yellow_frame_top_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
 
-        black_next_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_top_side_frame);
 
 
-        var black_next_yellow_frame_bottom_side_frame = black_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
 
-        black_next_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
-        black_next_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_bottom_side_frame);
 
 	      
-        var black_next_yellow_frame_left_vertical_frame = black_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
-        black_next_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH  + "px";
-        black_next_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 1 * CELL_WIDTH  + "px";
+        stone_black_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_left_vertical_frame);
 
 
-        var black_next_yellow_frame_right_vertical_frame = black_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
-        black_next_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        black_next_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_black_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_black_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(black_next_yellow_frame_right_vertical_frame);
-
+/*
          if (edit_flag == true) {
 	  player_color = BLOCK_KIND.BLACK;
           player_color_array[0] = BLOCK_KIND.BLACK;
@@ -1117,64 +1102,70 @@
           c.appendChild(black_next_yellow_frame_right_vertical_frame);
           black_next_yellow_frame_length = 1;
         }
-    
+*/    
 
-    //  show white_next yellow_frame corner
+    //  show stone_white yellow_frame corner
 
-        var white_next_yellow_frame_top_left_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_top_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_left_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_top_left_corner);
 
-        var white_next_yellow_frame_top_right_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        white_next_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_top_right_corner.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_top_right_corner);
 
-        var white_next_yellow_frame_bottom_left_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_left_corner.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_bottom_left_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_bottom_left_corner);
 
-        var white_next_yellow_frame_bottom_right_corner = white_next_yellow_frame_corner.cloneNode(true);
+        var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
-        white_next_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        white_next_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_right_corner.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_right_corner.style.top = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_bottom_right_corner);
 
-    // show white_next yellow_frame frame
+    // show stone_white yellow_frame frame
 
-        var white_next_yellow_frame_top_side_frame = white_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_white_yellow_frame_top_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
 
-        white_next_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_top_side_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_top_side_frame);
 
 
-        var white_next_yellow_frame_bottom_side_frame = white_next_yellow_frame_side_frame.cloneNode(true);
+        var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
 
-        white_next_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
-        white_next_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_bottom_side_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_bottom_side_frame.style.top  = FRAME_WIDTH + 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_bottom_side_frame);
 
 
-        var white_next_yellow_frame_left_vertical_frame = white_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
-        white_next_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH  + "px";
-        white_next_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_left_vertical_frame.style.left = FRAME_WIDTH + 2 * CELL_WIDTH  + "px";
+        stone_white_yellow_frame_left_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_left_vertical_frame);
 
 
-        var white_next_yellow_frame_right_vertical_frame = white_next_yellow_frame_vertical_frame.cloneNode(true);
+        var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
-        white_next_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
-        white_next_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
+        stone_white_yellow_frame_right_vertical_frame.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
+        stone_white_yellow_frame_right_vertical_frame.style.top = FRAME_WIDTH + 0 * CELL_WIDTH + "px";
         //b.appendChild(white_next_yellow_frame_right_vertical_frame);
 
-*/ 
+
+
+
+
+
+
+
      // show cell
 
     for(var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
@@ -1775,6 +1766,18 @@
     none_select_yellow_frame_side_frame =
       document.getElementById("yellow_frame_side_frame");
     none_select_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    stone_black_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    stone_black_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    stone_black_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    stone_white_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    stone_white_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    stone_white_yellow_frame_vertical_frame =
       document.getElementById("yellow_frame_vertical_frame");
     stone = [
       document.getElementById("cell"),

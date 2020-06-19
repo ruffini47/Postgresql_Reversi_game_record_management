@@ -227,13 +227,14 @@
   margin-top: 12 + 41 * 8 + 12 + 41 + 15px;
   margin-left: 12 + 41 * 5px;
 }
-/*
-#your_stone_color//for id
+
+#your_stone_color_frame//for id
 {
   position: absolute;
-  top: 12 + 43 * 11px;
+  margin-top: 12 + 10 * 41 + 12 + 22 + 5px;
+  margin-left: 12 + 2 * 41 - 18px;
 } 
-*/
+
 .title//for class
 {
   overflow: hidden;
