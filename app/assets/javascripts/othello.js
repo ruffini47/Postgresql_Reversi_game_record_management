@@ -42,6 +42,8 @@
   var black_select_yellow_frame_length = 0;
   var white_select_yellow_frame_length = 0;
   var none_select_yellow_frame_length = 0;
+  var stone_black_yellow_frame_length = 0;
+  var stone_white_yellow_frame_length = 0;
 
   var saved_board = [];
   var saved_player_color;
@@ -628,25 +630,25 @@
     
     stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_top_left_corner);
+    //e.appendChild(stone_black_yellow_frame_top_left_corner);
 
     var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
     stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_top_right_corner);
+    //e.appendChild(stone_black_yellow_frame_top_right_corner);
 
     var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
     stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+    //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
 
     var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
     stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+    //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
     
     // show black_next yellow_frame frame
 
@@ -654,28 +656,28 @@
 
     stone_black_yellow_frame_top_side_frame.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_top_side_frame);
+    //e.appendChild(stone_black_yellow_frame_top_side_frame);
 
 
     var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
 
     stone_black_yellow_frame_bottom_side_frame.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+    //e.appendChild(stone_black_yellow_frame_bottom_side_frame);
 
 	      
     var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_black_yellow_frame_left_vertical_frame.style.left = 0 * CELL_WIDTH  + "px";
     stone_black_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+    //e.appendChild(stone_black_yellow_frame_left_vertical_frame);
 
 
     var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_black_yellow_frame_right_vertical_frame.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_black_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+    //e.appendChild(stone_black_yellow_frame_right_vertical_frame);
 /*
     if (edit_flag == true) {
       player_color = BLOCK_KIND.BLACK;
@@ -698,25 +700,25 @@
 
     stone_white_yellow_frame_top_left_corner.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_top_left_corner);
+    //e.appendChild(stone_white_yellow_frame_top_left_corner);
 
     var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
     stone_white_yellow_frame_top_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_top_right_corner);
+    //e.appendChild(stone_white_yellow_frame_top_right_corner);
 
     var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
     stone_white_yellow_frame_bottom_left_corner.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+    //e.appendChild(stone_white_yellow_frame_bottom_left_corner);
 
     var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
     stone_white_yellow_frame_bottom_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+    //e.appendChild(stone_white_yellow_frame_bottom_right_corner);
 
     // show stone_white yellow_frame frame
 
@@ -724,28 +726,28 @@
 
     stone_white_yellow_frame_top_side_frame.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_top_side_frame);
+    //e.appendChild(stone_white_yellow_frame_top_side_frame);
 
 
     var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
 
     stone_white_yellow_frame_bottom_side_frame.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+    //e.appendChild(stone_white_yellow_frame_bottom_side_frame);
 
 
     var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_white_yellow_frame_left_vertical_frame.style.left = 1 * CELL_WIDTH  + "px";
     stone_white_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+    //e.appendChild(stone_white_yellow_frame_left_vertical_frame);
 
 
     var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+    //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 
 
     // show cell
@@ -1037,25 +1039,25 @@
     
     stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_top_left_corner);
+    //e.appendChild(stone_black_yellow_frame_top_left_corner);
 
     var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
     stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_top_right_corner);
+    //e.appendChild(stone_black_yellow_frame_top_right_corner);
 
     var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
     stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+    //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
 
     var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
 
     stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+    //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
     
     // show black_next yellow_frame frame
 
@@ -1063,28 +1065,28 @@
 
     stone_black_yellow_frame_top_side_frame.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_top_side_frame);
+    //e.appendChild(stone_black_yellow_frame_top_side_frame);
 
 
     var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
 
     stone_black_yellow_frame_bottom_side_frame.style.left = 0 * CELL_WIDTH + "px";
     stone_black_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+    //e.appendChild(stone_black_yellow_frame_bottom_side_frame);
 
 	      
     var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_black_yellow_frame_left_vertical_frame.style.left = 0 * CELL_WIDTH  + "px";
     stone_black_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+    //e.appendChild(stone_black_yellow_frame_left_vertical_frame);
 
 
     var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_black_yellow_frame_right_vertical_frame.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_black_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+    //e.appendChild(stone_black_yellow_frame_right_vertical_frame);
 /*
     if (edit_flag == true) {
       player_color = BLOCK_KIND.BLACK;
@@ -1107,25 +1109,25 @@
 
     stone_white_yellow_frame_top_left_corner.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_top_left_corner);
+    //e.appendChild(stone_white_yellow_frame_top_left_corner);
 
     var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
     stone_white_yellow_frame_top_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_top_right_corner);
+    //e.appendChild(stone_white_yellow_frame_top_right_corner);
 
     var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
     stone_white_yellow_frame_bottom_left_corner.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+    //e.appendChild(stone_white_yellow_frame_bottom_left_corner);
 
     var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
 
     stone_white_yellow_frame_bottom_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+    //e.appendChild(stone_white_yellow_frame_bottom_right_corner);
 
     // show stone_white yellow_frame frame
 
@@ -1133,28 +1135,28 @@
 
     stone_white_yellow_frame_top_side_frame.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_top_side_frame);
+    //e.appendChild(stone_white_yellow_frame_top_side_frame);
 
 
     var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
 
     stone_white_yellow_frame_bottom_side_frame.style.left = 1 * CELL_WIDTH + "px";
     stone_white_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+    //e.appendChild(stone_white_yellow_frame_bottom_side_frame);
 
 
     var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_white_yellow_frame_left_vertical_frame.style.left = 1 * CELL_WIDTH  + "px";
     stone_white_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+    //e.appendChild(stone_white_yellow_frame_left_vertical_frame);
 
 
     var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
 
     stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+    //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 
     
     // show cell
@@ -1828,7 +1830,7 @@
     //alert("from_saved = " + from_saved);
     //alert("your_move = " + your_move);
     //alert("vsAI = " + vsAI);
-   
+
     if(your_move == "first") {
       isFirst = true;
     } else if(your_move == "second") {
@@ -1840,12 +1842,9 @@
     } else if (vsAI == false) {
       $("#Computer_checkbox").prop("checked",false);
     }
-    if (your_move == "first") {
-      $("#First_checkbox").prop("checked",true);
-    } else if (your_move == "second") {
-      $("#First_checkbox").prop("checked",false);
-    }
-	  
+
+
+  
     alert("edit_board = " + edit_board);
     
     initBoard();
@@ -1854,6 +1853,155 @@
     //alert("board0(gon.board0) = " + board0);
     player_color0 = gon.player_color0;
     //alert("player_color0 = " + player_color0);
+
+
+    var e = document.getElementById("your_stone_color_frame");
+
+    while(e.firstChild) {
+      e.removeChild(e.firstChild);
+    }
+
+    //  show stone_black yellow_frame corner
+
+    var stone_black_yellow_frame_top_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+   
+    stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
+    stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_top_left_corner);
+
+    var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+    stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_top_right_corner);
+
+    var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+    stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
+    stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+
+    var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+    stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+    
+    // show black_next yellow_frame frame
+
+    var stone_black_yellow_frame_top_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+    stone_black_yellow_frame_top_side_frame.style.left = 0 * CELL_WIDTH + "px";
+    stone_black_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_top_side_frame);
+
+
+    var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+    stone_black_yellow_frame_bottom_side_frame.style.left = 0 * CELL_WIDTH + "px";
+    stone_black_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+
+	      
+    var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+    stone_black_yellow_frame_left_vertical_frame.style.left = 0 * CELL_WIDTH  + "px";
+    stone_black_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+
+
+    var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+    stone_black_yellow_frame_right_vertical_frame.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    stone_black_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+ 
+
+    //  show stone_white yellow_frame corner
+
+    var stone_white_yellow_frame_top_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+    stone_white_yellow_frame_top_left_corner.style.left = 1 * CELL_WIDTH + "px";
+    stone_white_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_top_left_corner);
+
+    var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+    stone_white_yellow_frame_top_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    stone_white_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_top_right_corner);
+
+    var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+    stone_white_yellow_frame_bottom_left_corner.style.left = 1 * CELL_WIDTH + "px";
+    stone_white_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+
+    var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+    stone_white_yellow_frame_bottom_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    stone_white_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+
+    // show stone_white yellow_frame frame
+
+    var stone_white_yellow_frame_top_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+    stone_white_yellow_frame_top_side_frame.style.left = 1 * CELL_WIDTH + "px";
+    stone_white_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_top_side_frame);
+
+
+    var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+    stone_white_yellow_frame_bottom_side_frame.style.left = 1 * CELL_WIDTH + "px";
+    stone_white_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+
+
+    var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+    stone_white_yellow_frame_left_vertical_frame.style.left = 1 * CELL_WIDTH  + "px";
+    stone_white_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+
+
+    var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+    stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+    stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+    //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+
+
+
+
+    if (your_move == "first") {
+      $("#First_checkbox").prop("checked",true);
+      e.appendChild(stone_black_yellow_frame_top_left_corner);
+      e.appendChild(stone_black_yellow_frame_top_right_corner);
+      e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+      e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+      e.appendChild(stone_black_yellow_frame_top_side_frame);
+      e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+      e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+      e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+      stone_black_yellow_frame_length = 1;
+      stone_white_yellow_frame_length = 0;
+   } else if (your_move == "second") {
+      $("#First_checkbox").prop("checked",false);
+      e.appendChild(stone_white_yellow_frame_top_left_corner);
+      e.appendChild(stone_white_yellow_frame_top_right_corner);
+      e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+      e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+      e.appendChild(stone_white_yellow_frame_top_side_frame);
+      e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+      e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+      e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+      stone_white_yellow_frame_length = 1;
+      stone_black_yellow_frame_length = 0;
+   }
+	
+
     if (edit_board == true) {
       edit_flag = true;
       $("#Reset").prop("disabled", true);
@@ -2601,12 +2749,160 @@ document.getElementById("Reset2").onclick = function() {
       } else if (vsAI == false) {
 	$("#Computer_checkbox").prop("checked",false);
       }
+
+      
+      var e = document.getElementById("your_stone_color_frame");
+
+      while(e.firstChild) {
+        e.removeChild(e.firstChild);
+      }
+
+      //  show stone_black yellow_frame corner
+
+      var stone_black_yellow_frame_top_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+   
+      stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_left_corner);
+
+      var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_right_corner);
+
+      var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+
+      var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+    
+      // show black_next yellow_frame frame
+
+      var stone_black_yellow_frame_top_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+      stone_black_yellow_frame_top_side_frame.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_side_frame);
+
+
+      var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_side_frame.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+
+	      
+      var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_black_yellow_frame_left_vertical_frame.style.left = 0 * CELL_WIDTH  + "px";
+      stone_black_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+
+
+      var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_black_yellow_frame_right_vertical_frame.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+ 
+
+      //  show stone_white yellow_frame corner
+
+      var stone_white_yellow_frame_top_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_top_left_corner.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_left_corner);
+
+      var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_top_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_right_corner);
+
+      var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_left_corner.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+
+      var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+
+      // show stone_white yellow_frame frame
+
+      var stone_white_yellow_frame_top_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+      stone_white_yellow_frame_top_side_frame.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_side_frame);
+
+
+      var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_side_frame.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+
+
+      var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_white_yellow_frame_left_vertical_frame.style.left = 1 * CELL_WIDTH  + "px";
+      stone_white_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+
+
+      var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+
+      if (your_move == "first") {
+        $("#First_checkbox").prop("checked",true);
+        e.appendChild(stone_black_yellow_frame_top_left_corner);
+        e.appendChild(stone_black_yellow_frame_top_right_corner);
+        e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+        e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+        e.appendChild(stone_black_yellow_frame_top_side_frame);
+        e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+        e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+        e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+        stone_black_yellow_frame_length = 1;
+        stone_white_yellow_frame_length = 0;
+      } else if (your_move == "second") {
+        $("#First_checkbox").prop("checked",false);
+        e.appendChild(stone_white_yellow_frame_top_left_corner);
+        e.appendChild(stone_white_yellow_frame_top_right_corner);
+        e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+        e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+        e.appendChild(stone_white_yellow_frame_top_side_frame);
+        e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+        e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+        e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+        stone_white_yellow_frame_length = 1;
+        stone_black_yellow_frame_length = 0;
+      }
+	
+
+	    
+/*	    
       if (your_move == "first") {
         $("#First_checkbox").prop("checked",true);
       } else if (your_move == "second") {
 	$("#First_checkbox").prop("checked",false);
       }
-	    
+*/	    
       alert("your_move = " + your_move);
       alert("vsAI = " + vsAI);
       alert("edit_board = " + edit_board);
