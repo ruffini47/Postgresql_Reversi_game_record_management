@@ -1491,10 +1491,10 @@
 
   var enclose_frame = function(i) {
     var pass_or_not;
-    if (temp_hand == 0) {
-      pass_or_not = false;
-    }
-    if(temp_hand >= 1) {
+//    if (temp_hand == 0) {
+//      pass_or_not = false;
+//    }
+    if(temp_hand >= 0) {
       player_color = BLOCK_KIND.MAX - player_color;
       pass_or_not = isPass(i) && !isFinish(i) && !allSameColor(i);
       player_color = BLOCK_KIND.MAX - player_color;
