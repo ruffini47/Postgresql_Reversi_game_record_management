@@ -2432,8 +2432,75 @@
   document.getElementById("Reset2").onclick = function() {
     
     // initialize board
-    initBoard();
+    //initBoard();
 
+    // 0:石無し, 1:黒, 2:白
+    dot =
+      document.getElementById("dot");
+    corner =
+      document.getElementById("corner");
+    side_frame = 
+      document.getElementById("side_frame");
+    vertical_frame =
+      document.getElementById("vertical_frame");
+//    black_stone_next_hand_cell = 
+//      document.getElementById("black");
+//    white_stone_next_hand_cell =
+//      document.getElementById("white");
+//    black_stone_choice_cell =
+//      document.getElementById("black");
+//    white_stone_choice_cell =
+//      document.getElementById("white");
+//    none_stone_choice_cell =
+//      document.getElementById("cell");
+    black_next_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    black_next_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    black_next_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    white_next_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    white_next_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    white_next_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    black_select_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    black_select_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    black_select_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    white_select_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    white_select_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    white_select_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    none_select_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    none_select_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    none_select_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    stone_black_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    stone_black_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    stone_black_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    stone_white_yellow_frame_corner =
+      document.getElementById("yellow_frame_corner");
+    stone_white_yellow_frame_side_frame =
+      document.getElementById("yellow_frame_side_frame");
+    stone_white_yellow_frame_vertical_frame =
+      document.getElementById("yellow_frame_vertical_frame");
+    stone = [
+      document.getElementById("cell"),
+      document.getElementById("black"),
+      document.getElementById("white")
+    ];
+ 
     if(document.form1.Computer.checked) {
       vsAI = true;
     } else {
@@ -2455,28 +2522,48 @@
       isFirst = false;
       your_move = "second";
     }
-
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
+    //$("#a" + temp_hand).unwrap();
     $("#a" + temp_hand).unwrap();
-    last_hand = 0;
-    temp_hand = 0;
-    previous_temp_hand = 0;
+    //last_hand = 0;
+    //temp_hand = 0;
+    //previous_temp_hand = 0;
     wrap_flag = true;
     beginning_flag = false;
     end_flag = false;
     link_flag = false;
     from_saved_first_flag = false;
-    cancel_flag = false;
+    cancel_flag = true;
     hand_flag = true;
-    for_jump_temp_hand = 0;
+    //for_jump_temp_hand = 0;
+
+    //alert("temp_hand = " + temp_hand);
+    //alert("previous_temp_hand = " + previous_temp_hand);
+
+
+//    if (!(beginning_flag == true || end_flag == true || link_flag == true)) {
+//      if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
+//        if (from_saved_first_flag == false) {
+//          if (cancel_flag == false) {
+//            $("#a" + previous_temp_hand).unwrap();
+//          }
+//        }
+//      }
+//    }
+
+
+    //alert("player_color = " + player_color);
+    //alert("your_move = " + your_move);
+    //alert("vsAI = " + vsAI);
+ 
 
     // start game
     //Reset2ボタンを押した場合
-    showBoard(last_hand);
-    if(!isFirst) {
-      doAiPlayer(last_hand);
-    }
+    showBoard(temp_hand);
+    //if(!isFirst) {
+      doAiPlayer(temp_hand);
+    //}
 
   };
 
