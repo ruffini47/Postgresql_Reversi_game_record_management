@@ -921,6 +921,43 @@
             }
           };
 	  
+
+	  your_stone_color_black.onclick = function() {
+            if (stone_black_yellow_frame_length == 0) {
+	      while(e.firstChild) {
+                e.removeChild(e.firstChild);
+              }
+	      stone_white_yellow_frame_length = 0;
+	      e.appendChild(stone_black_yellow_frame_top_left_corner);
+              e.appendChild(stone_black_yellow_frame_top_right_corner);
+              e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+              e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+              e.appendChild(stone_black_yellow_frame_top_side_frame);
+              e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+              e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+              e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+              stone_black_yellow_frame_length = 1;
+	    }
+          };
+        
+	  your_stone_color_white.onclick = function() {
+	    if (stone_white_yellow_frame_length == 0) {
+              while(e.firstChild) {
+              e.removeChild(e.firstChild);
+              }
+              stone_black_yellow_frame_length = 0;
+              e.appendChild(stone_white_yellow_frame_top_left_corner);
+              e.appendChild(stone_white_yellow_frame_top_right_corner);
+              e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+              e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+              e.appendChild(stone_white_yellow_frame_top_side_frame);
+              e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+              e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+              e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+              stone_white_yellow_frame_length = 1;
+            }
+          };
+
 	  
           cell.onclick = function() {
 	    //alert("クリックしました。");
@@ -1201,19 +1238,57 @@
         (function() {
           var _x = x;
           var _y = y;
-          cell.onclick = function() {
+         
+          your_stone_color_black.onclick = function() {
+            if (stone_black_yellow_frame_length == 0) {
+	      while(e.firstChild) {
+                e.removeChild(e.firstChild);
+              }
+	      stone_white_yellow_frame_length = 0;
+	      e.appendChild(stone_black_yellow_frame_top_left_corner);
+              e.appendChild(stone_black_yellow_frame_top_right_corner);
+              e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+              e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+              e.appendChild(stone_black_yellow_frame_top_side_frame);
+              e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+              e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+              e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+              stone_black_yellow_frame_length = 1;
+	    }
+          };
+        
+	  your_stone_color_white.onclick = function() {
+	    if (stone_white_yellow_frame_length == 0) {
+              while(e.firstChild) {
+              e.removeChild(e.firstChild);
+              }
+              stone_black_yellow_frame_length = 0;
+              e.appendChild(stone_white_yellow_frame_top_left_corner);
+              e.appendChild(stone_white_yellow_frame_top_right_corner);
+              e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+              e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+              e.appendChild(stone_white_yellow_frame_top_side_frame);
+              e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+              e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+              e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+              stone_white_yellow_frame_length = 1;
+            }
+          };
+		
+		
+	  cell.onclick = function() {
 	    //alert("クリックしました。");
             for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
 	      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-	          board[i+1][xx][yy] = board[i][xx][yy];
+	        board[i+1][xx][yy] = board[i][xx][yy];
 	      }
 	    }
 	    if (turnOverBlock(i+1, _x, _y, true) > 0) {
 	      board[i+1][_x][_y] = player_color;
 	      //if (isPass(i+1) == false) {
-	      //	player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
+	      //  player_color_array[i+1] = BLOCK_KIND.MAX - player_color;
 	      //} else {
-	      // 	player_color_array[i+1] = player_color;
+	      //  player_color_array[i+1] = player_color;
 	      //}
 	      i++;
 	      previous_temp_hand = temp_hand;
@@ -1224,16 +1299,16 @@
               
 	      var number_str;
               if (temp_hand < 10) {
-		number_str = " " + temp_hand;
+                number_str = " " + temp_hand;
               } else {
-		number_str = temp_hand;
+	        number_str = temp_hand;
 	      }
 	      if (player_color == BLOCK_KIND.BLACK) {
-		kifu = kifu + Alphabet[_x];
+	        kifu = kifu + Alphabet[_x];
 	        display_kifu[temp_hand] = number_str + ": " + Alphabet[_x];
 	      } else if (player_color == BLOCK_KIND.WHITE) {
                 kifu = kifu + alphabet[_x];
-		display_kifu[temp_hand] = number_str + ": " + alphabet[_x];
+                display_kifu[temp_hand] = number_str + ": " + alphabet[_x];
 	      }
               display_kifu[temp_hand] = display_kifu[temp_hand] + (_y + 1).toString(); 
               kifu = kifu + (_y + 1).toString();
@@ -1247,7 +1322,7 @@
 	      //showBoard関数内
 	      showBoard(i);
               if (!changePlayer(i)) {
-		doAiPlayer(i);
+                doAiPlayer(i);
               } 
 	    }
           };
@@ -1546,7 +1621,7 @@
       } else if (player_color == BLOCK_KIND.WHITE) {
         alert("白の置ける場所がありません。続けて黒の番となります。");
       } else {
-        alert("invalid status 1");
+        alert("invalid status 2");
       }
       
       player_color = BLOCK_KIND.MAX - player_color;
@@ -1999,6 +2074,8 @@
       e.appendChild(stone_white_yellow_frame_right_vertical_frame);
       stone_white_yellow_frame_length = 1;
       stone_black_yellow_frame_length = 0;
+   } else {
+      alert("invalid status 1");
    }
 	
 
@@ -2344,7 +2421,7 @@
 
   };
 
-document.getElementById("Reset2").onclick = function() {
+  document.getElementById("Reset2").onclick = function() {
     
     // initialize board
     initBoard();
