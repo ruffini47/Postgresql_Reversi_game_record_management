@@ -2537,7 +2537,7 @@
     link_flag = false;
     from_saved_first_flag = false;
     cancel_flag = true;
-    hand_flag = true;
+    hand_flag = false;
     //for_jump_temp_hand = 0;
 
     //alert("temp_hand = " + temp_hand);
