@@ -2396,6 +2396,14 @@
       isFirst = false;
       your_move = "second";
     }
+
+    if(stone_black_yellow_frame_length == 1) {
+      isFirst = true;
+      your_move = "first";
+    } else if(stone_white_yellow_frame_length == 1) {
+      isFirst = false;
+      your_move = "second";
+    }
        
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
@@ -2439,7 +2447,15 @@
       isFirst = false;
       your_move = "second";
     }
-       
+
+    if(stone_black_yellow_frame_length == 1) {
+      isFirst = true;
+      your_move = "first";
+    } else if(stone_white_yellow_frame_length == 1) {
+      isFirst = false;
+      your_move = "second";
+    }
+
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
     $("#a" + temp_hand).unwrap();
