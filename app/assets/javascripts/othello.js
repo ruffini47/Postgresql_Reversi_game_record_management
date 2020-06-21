@@ -2742,7 +2742,14 @@
       your_move = "second";
     }
 
-    
+    if(stone_black_yellow_frame_length == 1) {
+      isFirst = true;
+      your_move = "first";
+    } else if(stone_white_yellow_frame_length == 1) {
+      isFirst = false;
+      your_move = "second";
+    }
+
 
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);
