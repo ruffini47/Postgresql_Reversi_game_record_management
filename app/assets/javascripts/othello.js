@@ -2388,7 +2388,7 @@
     } else {
       vsAI = false;
     }
-    
+/*   
     if(document.form1.First.checked) {
       isFirst = true;
       your_move = "first";
@@ -2396,7 +2396,7 @@
       isFirst = false;
       your_move = "second";
     }
-
+*/
     if(stone_black_yellow_frame_length == 1) {
       isFirst = true;
       your_move = "first";
@@ -2439,7 +2439,7 @@
     } else {
       vsAI = false;
     }
-    
+/*    
     if(document.form1.First.checked) {
       isFirst = true;
       your_move = "first";
@@ -2447,7 +2447,7 @@
       isFirst = false;
       your_move = "second";
     }
-
+*/
     if(stone_black_yellow_frame_length == 1) {
       isFirst = true;
       your_move = "first";
@@ -2733,7 +2733,7 @@
       vsAI = false;
     }
     
-
+/*
     if(document.form1.First.checked) {
       isFirst = true;
       your_move = "first";
@@ -2741,7 +2741,7 @@
       isFirst = false;
       your_move = "second";
     }
-
+*/
     if(stone_black_yellow_frame_length == 1) {
       isFirst = true;
       your_move = "first";
