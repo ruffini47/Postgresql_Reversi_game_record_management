@@ -2434,6 +2434,8 @@
     // initialize board
     //initBoard();
 
+    kifu = kifu.slice(0, temp_hand * 2);
+
     // 0:石無し, 1:黒, 2:白
     dot =
       document.getElementById("dot");
