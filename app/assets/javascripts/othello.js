@@ -67,6 +67,8 @@
   var display_kifu = [];
   var alphabet ="abcdefgh";
   var Alphabet ="ABCDEFGH";
+  var normalized_kifu_x = [];
+  var normalized_kifu_y = [];
 
   var last_hand;
   var temp_hand;
@@ -3384,23 +3386,30 @@
   $("#Transform").click(function() {
 
     Normalize(kifu);   
+
+    Sigma(normalized_kifu_x, normalized_kifu_y);
   
+    //for(var j = 0; j < normalized_kifu_x.length; j++) {
+    //  alert("normalized_kifu_x[" + j + "] = " + normalized_kifu_x[j]);
+    //}
   
-  
-  
-  
-  
-  
-  
-  
+    //for(var k = 0; k < normalized_kifu_y.length; k++) {
+    //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
+    //}
+
+   UnNormalize(normalized_kifu_x, normalized_kifu_y);
+
   
   });
 
   var Normalize = function(kifu) {
 
     alert("kifu = " + kifu);
+    var n;
     var ii;
-
+    var _x;
+    var _y;
+    var invalid_flag = false;
     if (kifu.length == 0) {
         
 
@@ -3446,7 +3455,7 @@
 	if (n == 8) {
 	  invalid_flag = true;
 	  //alert("i = " + i);
-	   if (i == 0) {
+	  if (i == 0) {
             ii = -1;
 	  }   
 	  break;
@@ -3456,19 +3465,81 @@
 	if (!is07Number(_y)) {
 	  invalid_flag = true;
 	  //alert("i = " + i);
-	   if (i == 0) {
+	  if (i == 0) {
             ii = -1;
 	  } 
 	  break;
         }
-	alert("x = " + _x);
-	alert("y = " + _y);
+	_x = _x * 10 - 35;
+	_y = _y * 10 - 35;
+	normalized_kifu_x.push(_x);
+	normalized_kifu_y.push(_y);
+	//for(var j1 = 0; j1 < normalized_kifu_x.length; j1++) {
+        //  alert("normalized_kifu_x[" + j1 + "] = " + normalized_kifu_x[j1]);
+        //}
+        //for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+        //  alert("normalized_kifu_y[" + j2 + "] = " + normalized_kifu_y[j2]);
+        //}
+
+	//alert("x = " + _x);
+	//alert("y = " + _y);
 	ii = i / 2;
+	//alert("ii = " + ii); 
       }  
       if (invalid_flag == true ) {
         alert((ii + 2) +  "手目が不正です。switch");
-      }	  
+      }
+      //alert("for文終わりました。");
     }
+    //alert("if文が終わりました。");
+  };
+
+  var Sigma = function(normalized_kifu_x, normalized_kifu_y) {
+
+    var normalized_kifu_xd = [];
+    var normalized_kifu_yd = [];
+
+    for(var j1 = 0; j1 < normalized_kifu_x.length; j1++) {
+      normalized_kifu_xd[j1] = normalized_kifu_x[j1];
+      //alert(normalized_kifu_xd[j1]);
+    }
+
+    for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+      normalized_kifu_x[j2] = normalized_kifu_y[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_xd.length; j3++) {
+      normalized_kifu_y[j3] = -normalized_kifu_xd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+  };
+
+  var UnNormalize = function(normalized_kifu_x, normalized_kifu_y) {
+
+    for(var j1 = 0; j1 < normalized_kifu_x.length; j1++) {
+      normalized_kifu_x[j1] = (normalized_kifu_x[j1] + 35) / 10;
+      //alert(normalized_kifu_x[j1]);
+    }
+    for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+      normalized_kifu_y[j2] = (normalized_kifu_y[j2] + 35) / 10;
+      //alert(normalized_kifu_y[j2]);
+    }
+    
+    kifu = "";
+
+    //alert("transformed kifu 0 = " + kifu);
+    
+    for(var j3 = 0; j3 < normalized_kifu_x.length; j3++) {
+      //alert(Alphabet[normalized_kifu_x[j3]]);
+      kifu = kifu +  Alphabet[normalized_kifu_x[j3]];
+      //alert((normalized_kifu_y[j3] + 1).toString());
+      kifu = kifu + (normalized_kifu_y[j3] + 1).toString();
+    }
+ 
+    alert("transformed kifu = " + kifu);
+   
   };
 
 
