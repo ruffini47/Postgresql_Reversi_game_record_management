@@ -2209,12 +2209,66 @@
             }
 	    if (n == 8) {
 	      invalid_flag = true;
+	      //alert("i = " + i);
+	      if (i == 0) {
+		temp_handd = 0;
+	        //initBoard();
+                //initRecord();
+
+                //vsAI = false;
+
+                //isFirst = true;
+
+                //$("#a" + temp_hand).unwrap();
+                last_hand = 0;
+                temp_hand = 0;
+                previous_temp_hand = 0;
+                wrap_flag = true;
+                beginning_flag = false;
+                end_flag = false;
+                link_flag = false;
+                from_saved_first_flag = false;
+                cancel_flag = false;
+                hand_flag = false;
+                for_jump_temp_hand = 0;
+
+                // start game
+                // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが１手目で不正だった場合 
+                showBoard(last_hand);
+	      }
 	      break;
             }
             _x = n;
             _y = kifu.charAt(i + 1) - 1;
 	    if (!is07Number(_y)) {
 	      invalid_flag = true;
+	      //alert("i = " + i);
+              if (i == 0) {
+		temp_handd = 0;
+                //initBoard();
+                //initRecord();
+
+                //vsAI = false;
+
+                //isFirst = true;
+
+                //$("#a" + temp_hand).unwrap();
+                last_hand = 0;
+                temp_hand = 0;
+                previous_temp_hand = 0;
+                wrap_flag = true;
+                beginning_flag = false;
+                end_flag = false;
+                link_flag = false;
+                from_saved_first_flag = false;
+                cancel_flag = false;
+                hand_flag = false;
+                for_jump_temp_hand = 0;
+
+                // start game
+                // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが１手目で不正だった場合
+                showBoard(last_hand);
+	      }
 	      break;
             }
 	    //alert("x = " + _x);
@@ -3326,6 +3380,96 @@
       $('#delete_comment').hide();
     };
   });
+
+  $("#Transform").click(function() {
+
+    Normalize(kifu);   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  });
+
+  var Normalize = function(kifu) {
+
+    alert("kifu = " + kifu);
+    var ii;
+
+    if (kifu.length == 0) {
+        
+
+    } else {	      
+      for (var i = 0; i < kifu.length; i += 2) { 
+        switch(kifu.charAt(i)){
+          case 'a':
+	  case 'A':
+            n = 0;
+            break;
+          case 'b':
+	  case 'B':
+            n = 1;
+            break;
+          case 'c':
+	  case 'C':
+            n = 2;
+            break;
+          case 'd':
+	  case 'D':
+            n = 3;
+            break;
+          case 'e':
+	  case 'E':
+            n = 4;
+            break;
+          case 'f':
+	  case 'F':
+            n = 5;
+            break;
+          case 'g':
+	  case 'G':
+            n = 6;
+            break;
+          case 'h':
+	  case 'H':
+            n = 7;
+            break;
+	  default:
+	    n = 8;
+	    break;
+        }
+	if (n == 8) {
+	  invalid_flag = true;
+	  //alert("i = " + i);
+	   if (i == 0) {
+            ii = -1;
+	  }   
+	  break;
+        }
+        _x = n;
+        _y = kifu.charAt(i + 1) - 1;
+	if (!is07Number(_y)) {
+	  invalid_flag = true;
+	  //alert("i = " + i);
+	   if (i == 0) {
+            ii = -1;
+	  } 
+	  break;
+        }
+	alert("x = " + _x);
+	alert("y = " + _y);
+	ii = i / 2;
+      }  
+      if (invalid_flag == true ) {
+        alert((ii + 2) +  "手目が不正です。switch");
+      }	  
+    }
+  };
 
 
 })();
