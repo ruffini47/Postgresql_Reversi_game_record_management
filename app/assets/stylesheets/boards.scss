@@ -376,12 +376,90 @@
   margin-left: 930px; 
 }
 
+.modal{//for class
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.modal__bg{//for class
+  background: rgba(0,0,0,0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+
+.modal__content{//for class
+  background: #fff;
+  left: 50%;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+
 #Transform//for id
 {
   position: absolute;
   margin-top: 43 * 3px;
   width: 260px;
   margin-left: 930px;
+}
+
+.button-area//for class
+{
+  width: 520px;
+}
+
+#Transform1{//for id
+  width: 260px;
+  margin: 0 auto;
+}
+
+#Transform2{//for id
+  width: 260px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#Transform3{//for id
+  width: 260px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#Transform4{//for id
+  width: 260px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#Transform5{//for id
+  width: 260px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#Transform6{//for id
+  width: 260px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#Transform7{//for id
+  width: 260px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#CloseTransform{//for id
+  width: 260px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 #open//for id
