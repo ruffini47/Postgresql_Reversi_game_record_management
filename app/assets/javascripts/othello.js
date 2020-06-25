@@ -3554,6 +3554,10 @@
  
     alert("transformed kifu = " + kifu);
    
+    normalized_kifu_x = [];
+    normalized_kifu_y = [];
+
+
   };
 
   var Board0Normalize = function() {
