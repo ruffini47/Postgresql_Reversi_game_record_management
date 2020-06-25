@@ -70,7 +70,7 @@
   var normalized_kifu_x = [];
   var normalized_kifu_y = [];
   var normalized_board0 = [];
-
+  var transform_saved_temp_hand;
 
   var last_hand;
   var temp_hand;
@@ -2136,8 +2136,6 @@
       player_color_array[0] = player_color0;
       if (from_saved == true ) {
         kifu = gon.kifu;
-        ReadAndPlay();
-	/*
 	alert("kifu = " + kifu);
         var n;
         var _x;
@@ -2407,7 +2405,7 @@
           $('#text62').val(gon.comment62);
           $('#text63').val(gon.comment63);
           $('#text64').val(gon.comment64);
-        } */
+        } 
       } else if (from_saved == false) {
                
         last_hand = 0;
@@ -3389,8 +3387,8 @@
 
   $("#Transform").click(function() {
 
-
     alert("player_color = " + player_color_array[0]);
+    
 
     KifuNormalize();   
 
@@ -3616,6 +3614,8 @@
       //player_color = player_color0;
       //player_color_array[0] = player_color0;
  
+     transform_saved_temp_hand = temp_hand;
+
      player_color = player_color_array[0];
      //player_color_array[0] = 1;
 
@@ -3888,8 +3888,30 @@
           $('#text62').val(gon.comment62);
           $('#text63').val(gon.comment63);
           $('#text64').val(gon.comment64);*/
+
+
+//    if (!(beginning_flag == true || end_flag == true || link_flag == true)) {
+//      if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
+//        if (from_saved_first_flag == false) {
+//          if (cancel_flag == false) {
+//            $("#a" + previous_temp_hand).unwrap();
+//          }
+//        }
+//      }
+//    }
+          cancel_flag = true;
+          //alert("temp_hand = " + temp_hand);
+          //alert("previous_temp_hand = " + previous_temp_hand);
+	  //alert("from_saved_first_flag = " + from_saved_first_flag);
+          //alert("cancel_flag = " + cancel_flag);
+          
+          $("#a" + last_hand).unwrap();   
+	  
+	  temp_hand = transform_saved_temp_hand;
+          $("#a" + temp_hand).unwrap();   
+          player_color = player_color_array[temp_hand];  
+	  showBoard(temp_hand); 
         } 
- 
 
   };	  
 
