@@ -2137,276 +2137,6 @@
       if (from_saved == true ) {
 	kifu = gon.kifu;
 	ReadAndPlay1();
-/*	alert("kifu = " + kifu);
-        var n;
-        var _x;
-        var _y;
-        var ii;
-        var temp_handd;
-        var number_str;
-        var invalid_flag = false;
-        //alert("kifu = " + kifu);
-        if (kifu.length == 0) {
-        
-	  //initBoard();
-          //initRecord();
-
-          //vsAI = false;
-    
-          //isFirst = true;
-       
-          //$("#a" + temp_hand).unwrap();
-          last_hand = 0;
-          temp_hand = 0;
-          previous_temp_hand = 0;
-          wrap_flag = true;
-          beginning_flag = false;
-          end_flag = false;
-          link_flag = false;
-          from_saved_first_flag = false;
-	  cancel_flag = false;
-	  hand_flag = false;
-          for_jump_temp_hand = 0;
-
-          // start game
-	  // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空の場合
-          showBoard(last_hand);
-
-        } else {	      
-          i_loop:
-	  for (var i = 0; i < kifu.length; i += 2) { 
-            switch(kifu.charAt(i)){
-              case 'a':
-	      case 'A':
-                n = 0;
-                break;
-              case 'b':
-	      case 'B':
-                n = 1;
-                break;
-              case 'c':
-	      case 'C':
-                n = 2;
-                break;
-              case 'd':
-	      case 'D':
-                n = 3;
-                break;
-              case 'e':
-	      case 'E':
-                n = 4;
-                break;
-              case 'f':
-	      case 'F':
-                n = 5;
-                break;
-              case 'g':
-	      case 'G':
-                n = 6;
-                break;
-              case 'h':
-	      case 'H':
-                n = 7;
-                break;
-	      default:
-	        n = 8;
-	        break;
-            }
-	    if (n == 8) {
-	      invalid_flag = true;
-	      //alert("i = " + i);
-	      if (i == 0) {
-		temp_handd = 0;
-	        //initBoard();
-                //initRecord();
-
-                //vsAI = false;
-
-                //isFirst = true;
-
-                //$("#a" + temp_hand).unwrap();
-                last_hand = 0;
-                temp_hand = 0;
-                previous_temp_hand = 0;
-                wrap_flag = true;
-                beginning_flag = false;
-                end_flag = false;
-                link_flag = false;
-                from_saved_first_flag = false;
-                cancel_flag = false;
-                hand_flag = false;
-                for_jump_temp_hand = 0;
-
-                // start game
-                // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが１手目で不正だった場合 
-                showBoard(last_hand);
-	      }
-	      break;
-            }
-            _x = n;
-            _y = kifu.charAt(i + 1) - 1;
-	    if (!is07Number(_y)) {
-	      invalid_flag = true;
-	      //alert("i = " + i);
-              if (i == 0) {
-		temp_handd = 0;
-                //initBoard();
-                //initRecord();
-
-                //vsAI = false;
-
-                //isFirst = true;
-
-                //$("#a" + temp_hand).unwrap();
-                last_hand = 0;
-                temp_hand = 0;
-                previous_temp_hand = 0;
-                wrap_flag = true;
-                beginning_flag = false;
-                end_flag = false;
-                link_flag = false;
-                from_saved_first_flag = false;
-                cancel_flag = false;
-                hand_flag = false;
-                for_jump_temp_hand = 0;
-
-                // start game
-                // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが１手目で不正だった場合
-                showBoard(last_hand);
-	      }
-	      break;
-            }
-	    //alert("x = " + _x);
-	    //alert("y = " + _y);
-	    ii = i / 2;
-	    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
-              for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
-                board[ii + 1][xx][yy] = board[ii][xx][yy];
-              }
-            }
-            if (turnOverBlock(ii + 1, _x, _y, true) > 0) {
-              board[ii + 1][_x][_y] = player_color;
-              //if (isPass(ii + 1) == false) {
-              //  player_color_array[ii + 1] = BLOCK_KIND.MAX - player_color;
-              //} else {
-              //  player_color_array[ii + 1] = player_color;
-              //}
-	      previous_temp_hand = ii;
-	      ii++;
-                
-              temp_handd = ii;
-	      last_hand = temp_handd;
-	
-              if (temp_handd < 10) {
-	        number_str = " " + temp_handd;
-              } else {
-	        number_str = temp_handd;
-	      }
-	      if (player_color == BLOCK_KIND.BLACK) {
-	        display_kifu[temp_handd] = number_str + ": " + Alphabet[_x];
-	      } else if (player_color == BLOCK_KIND.WHITE) {
-	        display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
-	      }
-              display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
-
-	      changePlayer(ii);
-
-      
-              temp_hand = last_hand;
-	      for_jump_temp_hand = 0;
-              wrap_flag = true;
-	      beginning_flag = false;
-	      end_flag = false;
-	      link_flag = false;
-              if (temp_hand == 1) {
-	        from_saved_first_flag = true;
-              } else {
-	        from_saved_first_flag = false;
-	      }
-	      cancel_flag = false;
-	      hand_flag = false;
-	　　　
-              
-              //start game
-              //トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空でない場合
-	      showBoard(last_hand);
-
-
-	    } else {
-	      //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
-              invalid_flag = true;
-	      break i_loop;
-	    }	 
-          }
-          if (invalid_flag == true ) {
-            alert((temp_handd + 1) +  "手目が不正です。switch");
-          }	  
-          $('#text0').val(gon.comment0);
-	  $('#text1').val(gon.comment1);
-	  $('#text2').val(gon.comment2);
-          $('#text3').val(gon.comment3);
-          $('#text4').val(gon.comment4);
-          $('#text5').val(gon.comment5);
-          $('#text6').val(gon.comment6);
-          $('#text7').val(gon.comment7);
-	  $('#text8').val(gon.comment8);
-          $('#text9').val(gon.comment9);
-          $('#text10').val(gon.comment10);
-          $('#text11').val(gon.comment11);
-          $('#text12').val(gon.comment12);
-          $('#text13').val(gon.comment13);
-          $('#text14').val(gon.comment14);
-          $('#text15').val(gon.comment15);
-          $('#text16').val(gon.comment16);
-          $('#text17').val(gon.comment17);
-          $('#text18').val(gon.comment18);
-          $('#text19').val(gon.comment19);
-	  $('#text20').val(gon.comment20);
-          $('#text21').val(gon.comment21);
-          $('#text22').val(gon.comment22);
-          $('#text23').val(gon.comment23);
-          $('#text24').val(gon.comment24);
-          $('#text25').val(gon.comment25);
-          $('#text26').val(gon.comment26);
-          $('#text27').val(gon.comment27);
-          $('#text28').val(gon.comment28);
-          $('#text29').val(gon.comment29);
-	  $('#text30').val(gon.comment30);
-          $('#text31').val(gon.comment31);
-          $('#text32').val(gon.comment32);
-          $('#text33').val(gon.comment33);
-          $('#text34').val(gon.comment34);
-          $('#text35').val(gon.comment35);
-          $('#text36').val(gon.comment36);
-          $('#text37').val(gon.comment37);
-          $('#text38').val(gon.comment38);
-          $('#text39').val(gon.comment39);
-	  $('#text40').val(gon.comment40);
-          $('#text41').val(gon.comment41);
-          $('#text42').val(gon.comment42);
-          $('#text43').val(gon.comment43);
-          $('#text44').val(gon.comment44);
-          $('#text45').val(gon.comment45);
-          $('#text46').val(gon.comment46);
-          $('#text47').val(gon.comment47);
-          $('#text48').val(gon.comment48);
-          $('#text49').val(gon.comment49);
-	  $('#text50').val(gon.comment50);
-          $('#text51').val(gon.comment51);
-          $('#text52').val(gon.comment52);
-          $('#text53').val(gon.comment53);
-          $('#text54').val(gon.comment54);
-          $('#text55').val(gon.comment55);
-          $('#text56').val(gon.comment56);
-          $('#text57').val(gon.comment57);
-          $('#text58').val(gon.comment58);
-          $('#text59').val(gon.comment59);
-	  $('#text60').val(gon.comment60);
-          $('#text61').val(gon.comment61);
-          $('#text62').val(gon.comment62);
-          $('#text63').val(gon.comment63);
-          $('#text64').val(gon.comment64);
-        } */
       } else if (from_saved == false) {
                
         last_hand = 0;
@@ -3638,9 +3368,9 @@
     
           //isFirst = true;
        
-          //$("#a" + temp_hand).unwrap();
           last_hand = 0;
           temp_hand = 0;
+          $("#a" + temp_hand).unwrap();
           previous_temp_hand = 0;
           wrap_flag = true;
           beginning_flag = false;
@@ -3650,6 +3380,18 @@
 	  cancel_flag = false;
 	  hand_flag = false;
           for_jump_temp_hand = 0;
+
+
+//    if (!(beginning_flag == true || end_flag == true || link_flag == true)) {
+//      if (temp_hand == previous_temp_hand + 1 || temp_hand == previous_temp_hand - 1) {
+//        if (from_saved_first_flag == false) {
+//          if (cancel_flag == false) {
+//            $("#a" + previous_temp_hand).unwrap();
+//          }
+//        }
+//      }
+//    }
+
 
           // start game
 	  // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが空の場合
@@ -3905,7 +3647,9 @@
           //alert("previous_temp_hand = " + previous_temp_hand);
 	  //alert("from_saved_first_flag = " + from_saved_first_flag);
           //alert("cancel_flag = " + cancel_flag);
-          
+      
+
+
           $("#a" + last_hand).unwrap();   
 	  
 	  temp_hand = transform_saved_temp_hand;
