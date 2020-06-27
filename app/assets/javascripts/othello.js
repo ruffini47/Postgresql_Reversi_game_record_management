@@ -3116,9 +3116,10 @@
     };
   });
 
-  $("#Transform1").click(function() {
 
-    alert("player_color = " + player_color_array[0]);
+  $("#Sigma").click(function() {
+
+    //alert("player_color = " + player_color_array[0]);
     
 
     KifuNormalize();   
@@ -3142,6 +3143,173 @@
    ReadAndPlay2();
 
   });
+ 
+
+  $("#Sigma2").click(function() {
+
+    //alert("player_color = " + player_color_array[0]);
+    
+
+    KifuNormalize();   
+
+    KifuSigma2();
+  
+    //for(var j = 0; j < normalized_kifu_x.length; j++) {
+    //  alert("normalized_kifu_x[" + j + "] = " + normalized_kifu_x[j]);
+    //}
+  
+    //for(var k = 0; k < normalized_kifu_y.length; k++) {
+    //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
+    //}
+
+   KifuUnNormalize();
+
+   Board0Normalize();
+
+   Board0Sigma2AndUnNormalize();
+     
+   ReadAndPlay2();
+
+  });
+
+
+  $("#Sigma3").click(function() {
+
+    //alert("player_color = " + player_color_array[0]);
+    
+
+    KifuNormalize();   
+
+    KifuSigma3();
+  
+    //for(var j = 0; j < normalized_kifu_x.length; j++) {
+    //  alert("normalized_kifu_x[" + j + "] = " + normalized_kifu_x[j]);
+    //}
+  
+    //for(var k = 0; k < normalized_kifu_y.length; k++) {
+    //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
+    //}
+
+   KifuUnNormalize();
+
+   Board0Normalize();
+
+   Board0Sigma3AndUnNormalize();
+     
+   ReadAndPlay2();
+
+  });
+
+
+  $("#Tau").click(function() {
+
+    //alert("player_color = " + player_color_array[0]);
+    
+
+    KifuNormalize();   
+
+    KifuTau();
+  
+    //for(var j = 0; j < normalized_kifu_x.length; j++) {
+    //  alert("normalized_kifu_x[" + j + "] = " + normalized_kifu_x[j]);
+    //}
+  
+    //for(var k = 0; k < normalized_kifu_y.length; k++) {
+    //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
+    //}
+
+   KifuUnNormalize();
+
+   Board0Normalize();
+
+   Board0TauAndUnNormalize();
+     
+   ReadAndPlay2();
+
+  });
+ 
+
+  $("#SigmaTau").click(function() {
+
+    //alert("player_color = " + player_color_array[0]);
+    
+
+    KifuNormalize();   
+
+    KifuSigmaTau();
+  
+    //for(var j = 0; j < normalized_kifu_x.length; j++) {
+    //  alert("normalized_kifu_x[" + j + "] = " + normalized_kifu_x[j]);
+    //}
+  
+    //for(var k = 0; k < normalized_kifu_y.length; k++) {
+    //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
+    //}
+
+   KifuUnNormalize();
+
+   Board0Normalize();
+
+   Board0SigmaTauAndUnNormalize();
+     
+   ReadAndPlay2();
+
+  });
+ 
+  $("#Sigma2Tau").click(function() {
+
+    //alert("player_color = " + player_color_array[0]);
+    
+
+    KifuNormalize();   
+
+    KifuSigma2Tau();
+  
+    //for(var j = 0; j < normalized_kifu_x.length; j++) {
+    //  alert("normalized_kifu_x[" + j + "] = " + normalized_kifu_x[j]);
+    //}
+  
+    //for(var k = 0; k < normalized_kifu_y.length; k++) {
+    //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
+    //}
+
+   KifuUnNormalize();
+
+   Board0Normalize();
+
+   Board0Sigma2TauAndUnNormalize();
+     
+   ReadAndPlay2();
+
+  });
+ 
+  $("#Sigma3Tau").click(function() {
+
+    //alert("player_color = " + player_color_array[0]);
+    
+
+    KifuNormalize();   
+
+    KifuSigma3Tau();
+  
+    //for(var j = 0; j < normalized_kifu_x.length; j++) {
+    //  alert("normalized_kifu_x[" + j + "] = " + normalized_kifu_x[j]);
+    //}
+  
+    //for(var k = 0; k < normalized_kifu_y.length; k++) {
+    //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
+    //}
+
+   KifuUnNormalize();
+
+   Board0Normalize();
+
+   Board0Sigma3TauAndUnNormalize();
+     
+   ReadAndPlay2();
+
+  });
+ 
 
   var KifuNormalize = function() {
 
@@ -3235,6 +3403,7 @@
     //alert("if文が終わりました。");
   };
 
+
   var KifuSigma = function() {
 
     var normalized_kifu_xd = [];
@@ -3256,6 +3425,159 @@
     }
 
   };
+
+
+  var KifuSigma2 = function() {
+
+    var normalized_kifu_xd = [];
+    var normalized_kifu_yd = [];
+
+    for(var j1 = 0; j1 < normalized_kifu_x.length; j1++) {
+      normalized_kifu_xd[j1] = normalized_kifu_x[j1];
+      //alert(normalized_kifu_xd[j1]);
+    }
+
+     for(var j1 = 0; j1 < normalized_kifu_x.length; j1++) {
+      normalized_kifu_yd[j1] = normalized_kifu_y[j1];
+      //alert(normalized_kifu_xd[j1]);
+    }
+    
+
+    for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+      normalized_kifu_x[j2] = -normalized_kifu_xd[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_xd.length; j3++) {
+      normalized_kifu_y[j3] = -normalized_kifu_yd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+  };
+
+
+  var KifuSigma3 = function() {
+
+    var normalized_kifu_xd = [];
+    var normalized_kifu_yd = [];
+
+    for(var j1 = 0; j1 < normalized_kifu_x.length; j1++) {
+      normalized_kifu_xd[j1] = normalized_kifu_x[j1];
+      //alert(normalized_kifu_xd[j1]);
+    }
+
+     for(var j1 = 0; j1 < normalized_kifu_x.length; j1++) {
+      normalized_kifu_yd[j1] = normalized_kifu_y[j1];
+      //alert(normalized_kifu_xd[j1]);
+    }
+    
+
+    for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+      normalized_kifu_x[j2] = normalized_kifu_yd[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_xd.length; j3++) {
+      normalized_kifu_y[j3] = -normalized_kifu_xd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+  };
+
+
+  var KifuTau = function() {
+
+    var normalized_kifu_xd = [];
+    var normalized_kifu_yd = [];
+
+    for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+      normalized_kifu_yd[j2] = normalized_kifu_y[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_yd.length; j3++) {
+      normalized_kifu_y[j3] = -normalized_kifu_yd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+  };
+
+
+  var KifuSigmaTau = function() {
+
+    var normalized_kifu_xd = [];
+    var normalized_kifu_yd = [];
+
+    for(var j2 = 0; j2 < normalized_kifu_x.length; j2++) {
+      normalized_kifu_xd[j2] = normalized_kifu_x[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+      normalized_kifu_yd[j2] = normalized_kifu_y[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_yd.length; j3++) {
+      normalized_kifu_x[j3] = -normalized_kifu_yd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_xd.length; j3++) {
+      normalized_kifu_y[j3] = -normalized_kifu_xd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+  };
+
+
+  var KifuSigma2Tau = function() {
+
+    var normalized_kifu_xd = [];
+    var normalized_kifu_yd = [];
+
+    for(var j2 = 0; j2 < normalized_kifu_x.length; j2++) {
+      normalized_kifu_xd[j2] = normalized_kifu_x[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_xd.length; j3++) {
+      normalized_kifu_x[j3] = -normalized_kifu_xd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+  };
+
+
+  var KifuSigma3Tau = function() {
+
+    var normalized_kifu_xd = [];
+    var normalized_kifu_yd = [];
+
+    for(var j2 = 0; j2 < normalized_kifu_x.length; j2++) {
+      normalized_kifu_xd[j2] = normalized_kifu_x[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+    for(var j2 = 0; j2 < normalized_kifu_y.length; j2++) {
+      normalized_kifu_yd[j2] = normalized_kifu_y[j2];
+      //alert(normalized_kifu_x[j2]);
+    }
+
+
+    for(var j3 = 0; j3 < normalized_kifu_yd.length; j3++) {
+      normalized_kifu_x[j3] = normalized_kifu_yd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+    for(var j3 = 0; j3 < normalized_kifu_xd.length; j3++) {
+      normalized_kifu_y[j3] = normalized_kifu_xd[j3];
+      //alert(normalized_kifu_y[j3]);
+    }
+
+  };
+
+
 
   var KifuUnNormalize = function() {
 
@@ -3284,8 +3606,8 @@
     normalized_kifu_x = [];
     normalized_kifu_y = [];
 
-
   };
+
 
   var Board0Normalize = function() {
 
@@ -3303,6 +3625,7 @@
     }
 
   };
+
 
   var Board0SigmaAndUnNormalize = function() {
 
@@ -3337,6 +3660,163 @@
     }
 */
   };
+
+
+  var Board0Sigma2AndUnNormalize = function() {
+
+    var x;
+    var y;
+    var _x;
+    var _y;
+    var __x;
+    var __y;
+
+    var board0string = [];
+
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+	x = i * 10 - 35;
+        y = j * 10 - 35;
+	_x = -x;
+	_y = -y;
+	__x = (_x + 35) / 10;
+	__y = (_y + 35) / 10;
+	board[0][__x][__y] = normalized_board0[x][y];
+      }
+    }
+
+  };
+
+
+  var Board0Sigma3AndUnNormalize = function() {
+
+    var x;
+    var y;
+    var _x;
+    var _y;
+    var __x;
+    var __y;
+
+    var board0string = [];
+
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+	x = i * 10 - 35;
+        y = j * 10 - 35;
+	_x = y;
+	_y = -x;
+	__x = (_x + 35) / 10;
+	__y = (_y + 35) / 10;
+	board[0][__x][__y] = normalized_board0[x][y];
+      }
+    }
+
+  };
+
+
+  var Board0TauAndUnNormalize = function() {
+
+    var x;
+    var y;
+    var _x;
+    var _y;
+    var __x;
+    var __y;
+
+    var board0string = [];
+
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+	x = i * 10 - 35;
+        y = j * 10 - 35;
+	_x = x;
+	_y = -y;
+	__x = (_x + 35) / 10;
+	__y = (_y + 35) / 10;
+	board[0][__x][__y] = normalized_board0[x][y];
+      }
+    }
+
+  };
+
+
+  var Board0SigmaTauAndUnNormalize = function() {
+
+    var x;
+    var y;
+    var _x;
+    var _y;
+    var __x;
+    var __y;
+
+    var board0string = [];
+
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+	x = i * 10 - 35;
+        y = j * 10 - 35;
+	_x = -y;
+	_y = -x;
+	__x = (_x + 35) / 10;
+	__y = (_y + 35) / 10;
+	board[0][__x][__y] = normalized_board0[x][y];
+      }
+    }
+
+  };
+
+
+  var Board0Sigma2TauAndUnNormalize = function() {
+
+    var x;
+    var y;
+    var _x;
+    var _y;
+    var __x;
+    var __y;
+
+    var board0string = [];
+
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+	x = i * 10 - 35;
+        y = j * 10 - 35;
+	_x = -x;
+	_y = y;
+	__x = (_x + 35) / 10;
+	__y = (_y + 35) / 10;
+	board[0][__x][__y] = normalized_board0[x][y];
+      }
+    }
+
+  };
+
+
+  var Board0Sigma3TauAndUnNormalize = function() {
+
+    var x;
+    var y;
+    var _x;
+    var _y;
+    var __x;
+    var __y;
+
+    var board0string = [];
+
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+	x = i * 10 - 35;
+        y = j * 10 - 35;
+	_x = y;
+	_y = x;
+	__x = (_x + 35) / 10;
+	__y = (_y + 35) / 10;
+	board[0][__x][__y] = normalized_board0[x][y];
+      }
+    }
+
+  };
+
 
   var ReadAndPlay2 = function() {
 
