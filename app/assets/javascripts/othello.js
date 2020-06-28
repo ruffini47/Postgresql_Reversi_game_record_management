@@ -2101,6 +2101,8 @@
 
     if (edit_board == true) {
       edit_flag = true;
+      $("search_board_ok").hide();
+      $("search_board_cancel").hide();
       $("#Reset").prop("disabled", true);
       $("#Reset2").prop("disabled", true);
       $("#Save").prop("disabled", true);
@@ -2132,6 +2134,8 @@
       //alert("edit_board = " + edit_board);
       $("#edit_board_ok").hide();
       $("#edit_board_cancel").hide();
+      $("#search_board_ok").hide();
+      $("#search_board_cancel").hide();
       $("#next_hand_text").hide();
       $("#stone_selection_text").hide();
       $("#next_hand_frame").hide();
@@ -2604,6 +2608,8 @@
   $("#edit_board_ok").click(function() {
     $("#edit_board_ok").hide();
     $("#edit_board_cancel").hide();
+    $("#search_board_ok").hide();
+    $("#search_board_cancel").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
     $("#msg_kifu").show();
@@ -2613,6 +2619,8 @@
     $("#Save").prop("disabled", false);
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
+    $("#Transform").prop("disabled", false);
+    $("#Search").prop("disabled", false);
     $("#back_to_beginning").show();
     $("#previous_button").show();
     $("#next_button").show();
@@ -2715,6 +2723,8 @@
   $("#edit_board_cancel").click(function() {
     $("#edit_board_ok").hide();
     $("#edit_board_cancel").hide();
+    $("#search_board_ok").hide();
+    $("#search_board_cancel").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
     $("#msg_kifu").show();
@@ -2724,6 +2734,8 @@
     $("#Save").prop("disabled", false);
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
+    $("#Transform").prop("disabled", false);
+    $("#Search").prop("disabled", false);
     $("#back_to_beginning").show();
     $("#previous_button").show();
     $("#next_button").show();
@@ -3009,6 +3021,8 @@
     $("#stone_selection_frame").show();
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
+    $("#search_board_ok").hide();
+    $("#search_board_cancel").hide();
     $("#Reset").prop("disabled", true);
     $("#Reset2").prop("disabled", true);	  
     $("#Save").prop("disabled", true);
@@ -4609,15 +4623,16 @@
   };
 
   $("#Search").click(function() {
-
     $("#next_hand_text").hide();
     $("#stone_selection_text").show();
     $("#next_hand").hide();
     $("#stone_selection").show();
     $("#next_hand_frame").hide();
     $("#stone_selection_frame").show();
-    $("#edit_board_ok").show();
-    $("#edit_board_cancel").show();
+    $("#edit_board_ok").hide();
+    $("#edit_board_cancel").hide();
+    $("#search_board_ok").show();
+    $("#search_board_cancel").show();
     $("#Reset").prop("disabled", true);
     $("#Reset2").prop("disabled", true);	  
     $("#Save").prop("disabled", true);
@@ -4709,20 +4724,20 @@
     }
 
     
-//    var c = document.getElementById("next_hand_frame");
+    var c = document.getElementById("next_hand_frame");
 
-//    while(c.firstChild) {
-//      c.removeChild(c.firstChild);
-//    }
+    while(c.firstChild) {
+      c.removeChild(c.firstChild);
+    }
 
     var d = document.getElementById("stone_selection_frame");
 
 
-//    var c1 = document.getElementById("next_hand");
+    var c1 = document.getElementById("next_hand");
 
-//    while(c1.firstChild) {
-//      c1.removeChild(c1.firstChild);
-//    }
+    while(c1.firstChild) {
+      c1.removeChild(c1.firstChild);
+    }
 
     var d1 = document.getElementById("stone_selection");
 

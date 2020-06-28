@@ -174,7 +174,21 @@
   margin-left: 380px;
 }
 
+#search_board_ok//for id
+{
+  position: absolute;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 24px;
+  margin-left: 380px;
+}
+
 #edit_board_cancel//for id
+{
+  position: absolute;
+  margin-top: 12 + 41 * 8 + 12 + 41 + 24px;
+  margin-left: 430px;
+}
+
+#search_board_cancel//for id
 {
   position: absolute;
   margin-top: 12 + 41 * 8 + 12 + 41 + 24px;
