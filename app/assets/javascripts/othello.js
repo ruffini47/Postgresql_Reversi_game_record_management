@@ -4060,7 +4060,32 @@
 
 
 	    } else {
-	      //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
+	      if (i == 0) {
+		temp_handd = 0;
+                //initBoard();
+                //initRecord();
+
+                //vsAI = false;
+
+                //isFirst = true;
+
+                //$("#a" + temp_hand).unwrap();
+                last_hand = 0;
+                temp_hand = 0;
+                previous_temp_hand = 0;
+                wrap_flag = true;
+                beginning_flag = false;
+                end_flag = false;
+                link_flag = false;
+                from_saved_first_flag = false;
+                cancel_flag = false;
+                hand_flag = false;
+                for_jump_temp_hand = 0;
+
+                // start game
+                // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが１手目で不正だった場合
+                showBoard(last_hand);
+	      }
               invalid_flag = true;
 	      break i_loop;
 	    }	 
@@ -4361,7 +4386,36 @@
 
 	    } else {
 	      //alert((temp_handd + 1) + "手目が不正です。hasamenai ");
-              invalid_flag = true;
+              if (i == 0) {
+		temp_handd = 0;
+                //initBoard();
+                //initRecord();
+
+                //vsAI = false;
+
+                //isFirst = true;
+
+                //$("#a" + temp_hand).unwrap();
+                last_hand = 0;
+                temp_hand = 0;
+                previous_temp_hand = 0;
+                wrap_flag = true;
+                beginning_flag = false;
+                end_flag = false;
+                link_flag = false;
+                from_saved_first_flag = false;
+                cancel_flag = false;
+                hand_flag = false;
+                for_jump_temp_hand = 0;
+
+                // start game
+                // トップページで盤面編集を選ばず、ファイルから開いた場合でkifuが１手目で不正だった場合
+                showBoard(last_hand);
+
+              }
+
+		    
+	      invalid_flag = true;
 	      break i_loop;
 	    }	 
           }
@@ -4508,10 +4562,10 @@
       }
     }
 
-    if (kifu.length == 0) {
-      alert("棋譜がありません");
-    } else  if (same == false) {
-      alert("初期盤面が違います。");
+    if (same == false) {
+      alert("初期盤面が違います");
+    } else  if (kifu.length == 0) {
+      alert("棋譜がありません。");
     } else if ((kifu.charAt(0) == 'F' || kifu.charAt(0) == 'f') && kifu.charAt(1) == '5') {
       alert("初手がF5です。");
     } else if ((kifu.charAt(0) == 'D' || kifu.charAt(0) == 'd') && kifu.charAt(1) == '6') {
@@ -4528,6 +4582,8 @@
       Sigma2Tau();
     } else if ((kifu.charAt(0) == 'E' || kifu.charAt(0) == 'e') && kifu.charAt(1) == '6') {
       Sigma3Tau();
+    } else {
+      alert("不正な棋譜です。");
     }
 
   };
