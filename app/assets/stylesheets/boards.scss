@@ -471,7 +471,7 @@
 #open//for id
 {
   position: absolute;
-  margin-top: 43 * 4px;
+  margin-top: 43 * 5px;
   margin-left: 930px;
  }
 
@@ -482,7 +482,15 @@
 .copy_clipboard//for class
 {
   position: absolute;
-  margin-top: 43 * 5px;
+  margin-top: 43 * 6px;
+  width: 260px;
+  margin-left: 930px;
+}
+
+#Search//for id
+{
+  position: absolute;
+  margin-top: 43 * 4px;
   width: 260px;
   margin-left: 930px;
 }
