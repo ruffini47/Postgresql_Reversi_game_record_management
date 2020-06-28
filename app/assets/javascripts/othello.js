@@ -3119,8 +3119,11 @@
 
   $("#Sigma").click(function() {
 
-    //alert("player_color = " + player_color_array[0]);
-    
+    Sigma();
+
+  });
+
+  var Sigma = function() {
 
     KifuNormalize();   
 
@@ -3142,13 +3145,16 @@
      
    ReadAndPlay2();
 
-  });
+  };
  
 
   $("#Sigma2").click(function() {
 
-    //alert("player_color = " + player_color_array[0]);
-    
+    Sigma2();
+
+  });
+
+  var Sigma2 = function() {
 
     KifuNormalize();   
 
@@ -3170,13 +3176,16 @@
      
    ReadAndPlay2();
 
-  });
+  };
 
 
   $("#Sigma3").click(function() {
 
-    //alert("player_color = " + player_color_array[0]);
+    Sigma3();
     
+  });
+
+  var Sigma3 = function() {
 
     KifuNormalize();   
 
@@ -3190,21 +3199,27 @@
     //  alert("normalized_kifu_y[" + k + "] = " + normalized_kifu_y[k]);
     //}
 
-   KifuUnNormalize();
+    KifuUnNormalize();
 
-   Board0Normalize();
+    Board0Normalize();
 
-   Board0Sigma3AndUnNormalize();
+    Board0Sigma3AndUnNormalize();
      
-   ReadAndPlay2();
+    ReadAndPlay2();
 
-  });
+  };
+ 
+
+
 
 
   $("#Tau").click(function() {
 
-    //alert("player_color = " + player_color_array[0]);
-    
+    Tau();
+
+  });
+
+  var Tau = function() {
 
     KifuNormalize();   
 
@@ -3226,13 +3241,16 @@
      
    ReadAndPlay2();
 
-  });
+  };
  
 
   $("#SigmaTau").click(function() {
 
-    //alert("player_color = " + player_color_array[0]);
-    
+    SigmaTau();
+
+  });
+
+  var SigmaTau = function() {
 
     KifuNormalize();   
 
@@ -3254,12 +3272,15 @@
      
    ReadAndPlay2();
 
-  });
+  };
  
   $("#Sigma2Tau").click(function() {
 
-    //alert("player_color = " + player_color_array[0]);
-    
+    Sigma2Tau();
+
+  });
+
+  var Sigma2Tau = function() {
 
     KifuNormalize();   
 
@@ -3281,12 +3302,15 @@
      
    ReadAndPlay2();
 
-  });
+  };
  
   $("#Sigma3Tau").click(function() {
 
-    //alert("player_color = " + player_color_array[0]);
-    
+    Sigma3Tau();
+
+  });
+
+  var Sigma3Tau = function() {
 
     KifuNormalize();   
 
@@ -3308,7 +3332,7 @@
      
    ReadAndPlay2();
 
-  });
+  };
  
 
   var KifuNormalize = function() {
@@ -4423,6 +4447,94 @@
     $('.js-modal').fadeOut();
     return false;
   });
+
+ 
+  $("#TransformF5").click(function() {
+
+    TransformF5();
+
+  });
+
+
+  var TransformF5 = function() {
+
+    // init zero value
+    var initial_board1 = [];
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      initial_board1[i] = [];
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+        initial_board1[i][j] = BLOCK_KIND.NONE;
+      }
+    }
+
+    // initial position
+      initial_board1[3][4] = BLOCK_KIND.BLACK;
+      initial_board1[4][3] = BLOCK_KIND.BLACK;
+      initial_board1[3][3] = BLOCK_KIND.WHITE;
+      initial_board1[4][4] = BLOCK_KIND.WHITE;
+
+  // init zero value
+    var initial_board2 = [];
+    for (var i = 0; i < BOARD_SIZE.HEIGHT; i++) {
+      initial_board2[i] = [];
+      for (var j = 0; j < BOARD_SIZE.WIDTH; j++) {
+        initial_board2[i][j] = BLOCK_KIND.NONE;
+      }
+    }
+
+    // initial position
+      initial_board2[3][4] = BLOCK_KIND.WHITE;
+      initial_board2[4][3] = BLOCK_KIND.WHITE;
+      initial_board2[3][3] = BLOCK_KIND.BLACK;
+      initial_board2[4][4] = BLOCK_KIND.BLACK;
+
+    var same = true;
+
+    if (board[0][3][4] == BLOCK_KIND.BLACK) {
+      for (var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+        for (var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+          if (board[0][x][y] != initial_board1[x][y]) {
+            same = false;     
+          }
+        }
+      }
+    } else if (board[0][3][4] == BLOCK_KIND.WHITE) {
+      for (var y = 0; y < BOARD_SIZE.HEIGHT; y++) {
+        for (var x = 0; x < BOARD_SIZE.WIDTH; x++) {
+          if (board[0][x][y] != initial_board2[x][y]) {
+            same = false;
+          }
+        }
+      }
+    }
+
+    if (kifu.length == 0) {
+      alert("棋譜がありません");
+    } else  if (same == false) {
+      alert("初期盤面が違います。");
+    } else if ((kifu.charAt(0) == 'F' || kifu.charAt(0) == 'f') && kifu.charAt(1) == '5') {
+      alert("初手がF5です。");
+    } else if ((kifu.charAt(0) == 'D' || kifu.charAt(0) == 'd') && kifu.charAt(1) == '6') {
+      Sigma3();
+    } else if ((kifu.charAt(0) == 'C' || kifu.charAt(0) == 'c') && kifu.charAt(1) == '4') {
+      Sigma2();
+    } else if ((kifu.charAt(0) == 'E' || kifu.charAt(0) == 'e') && kifu.charAt(1) == '3') {
+      Sigma();
+    } else if ((kifu.charAt(0) == 'F' || kifu.charAt(0) == 'f') && kifu.charAt(1) == '4') {
+      Tau();
+    } else if ((kifu.charAt(0) == 'D' || kifu.charAt(0) == 'd') && kifu.charAt(1) == '3') {
+      SigmaTau();
+    } else if ((kifu.charAt(0) == 'C' || kifu.charAt(0) == 'c') && kifu.charAt(1) == '5') {
+      Sigma2Tau();
+    } else if ((kifu.charAt(0) == 'E' || kifu.charAt(0) == 'e') && kifu.charAt(1) == '6') {
+      Sigma3Tau();
+    }
+
+  };
+
+
+
+
 
 })();
 
