@@ -2101,8 +2101,8 @@
 
     if (edit_board == true) {
       edit_flag = true;
-      $("search_board_ok").hide();
-      $("search_board_cancel").hide();
+      $("#search_board_ok").hide();
+      $("#search_board_cancel").hide();
       $("#Reset").prop("disabled", true);
       $("#Reset2").prop("disabled", true);
       $("#Save").prop("disabled", true);
