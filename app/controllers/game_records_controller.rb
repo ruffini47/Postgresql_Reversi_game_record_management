@@ -20,7 +20,7 @@ class GameRecordsController < ApplicationController
 
   def index
     @game_records = GameRecord.all
-    @game_records = @game_records.where(user_id: current_user.id)
+    @game_records = @game_records.where(user_id: current_user.id).order(id: "ASC") 
    end
 
   def edit

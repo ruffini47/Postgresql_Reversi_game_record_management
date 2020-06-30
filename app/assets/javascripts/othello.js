@@ -371,8 +371,6 @@
       c.appendChild(black_next_yellow_frame_left_vertical_frame);
       c.appendChild(black_next_yellow_frame_right_vertical_frame);
       black_next_yellow_frame_length = 1;
-      isFirst = true;
-      your_move = "first";
     }
     
 
@@ -835,8 +833,6 @@
               c.append(black_next_yellow_frame_left_vertical_frame);
               c.append(black_next_yellow_frame_right_vertical_frame);
 	      black_next_yellow_frame_length += 1;
-	      isFirst = true;
-	      your_move = "first";
             }
           };
 
@@ -860,8 +856,6 @@
               c.append(white_next_yellow_frame_left_vertical_frame);
               c.append(white_next_yellow_frame_right_vertical_frame);
 	      white_next_yellow_frame_length += 1;
-	      isFirst = false;
-	      your_move = "second";
             }
 	  };
           
@@ -963,6 +957,8 @@
               e.appendChild(stone_black_yellow_frame_left_vertical_frame);
               e.appendChild(stone_black_yellow_frame_right_vertical_frame);
               stone_black_yellow_frame_length = 1;
+	      isFirst = true;
+	      your_move = "first";
 	    }
           };
         
@@ -981,6 +977,8 @@
               e.appendChild(stone_white_yellow_frame_left_vertical_frame);
               e.appendChild(stone_white_yellow_frame_right_vertical_frame);
               stone_white_yellow_frame_length = 1;
+	      isFirst = true;
+	      your_move = "second";
             }
           };
 
