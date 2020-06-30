@@ -1951,8 +1951,7 @@
     }
 
     if (vsAI == true) {
-      $("#
-	      Computer_checkbox").prop("checked",true);
+      $("#Computer_checkbox").prop("checked",true);
     } else if (vsAI == false) {
       $("#Computer_checkbox").prop("checked",false);
     }
@@ -2090,7 +2089,7 @@
 
 
     if (your_move == "first") {
-      $("#First_checkbox").prop("checked",true);
+      //$("#First_checkbox").prop("checked",true);
       e.appendChild(stone_black_yellow_frame_top_left_corner);
       e.appendChild(stone_black_yellow_frame_top_right_corner);
       e.appendChild(stone_black_yellow_frame_bottom_left_corner);
@@ -2102,7 +2101,7 @@
       stone_black_yellow_frame_length = 1;
       stone_white_yellow_frame_length = 0;
    } else if (your_move == "second") {
-      $("#First_checkbox").prop("checked",false);
+      //$("#First_checkbox").prop("checked",false);
       e.appendChild(stone_white_yellow_frame_top_left_corner);
       e.appendChild(stone_white_yellow_frame_top_right_corner);
       e.appendChild(stone_white_yellow_frame_bottom_left_corner);
