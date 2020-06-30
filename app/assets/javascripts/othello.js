@@ -176,7 +176,7 @@
     return total;
   };
 
-  var doEditBoard = function() {
+  var doEditBoard1 = function() {
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
     /*
@@ -987,7 +987,7 @@
 	    //alert("クリックしました。");
 	    board[0][_x][_y] = choiced_stone_color;
 	    edit_flag = false;
-	    doEditBoard();
+	    doEditBoard1();
           };
         })();
       }
@@ -2117,7 +2117,8 @@
 
     if (edit_board == true) {
       edit_flag = true;
-      $("#search_board_ok").hide();
+      $("#search_board_ok1").hide();
+      $("#search_board_ok2").hide();
       $("#search_board_cancel").hide();
       $("#Reset").prop("disabled", true);
       $("#Reset2").prop("disabled", true);
@@ -2137,7 +2138,7 @@
       $("#cancel_comment").hide();
       $("#delete_comment").hide();
 　　　//トップページで盤面編集を選んだ場合
-      doEditBoard();
+      doEditBoard1();
     }
 
 
@@ -2150,7 +2151,8 @@
       //alert("edit_board = " + edit_board);
       $("#edit_board_ok").hide();
       $("#edit_board_cancel").hide();
-      $("#search_board_ok").hide();
+      $("#search_board_ok1").hide();
+      $("#search_board_ok2").hide();
       $("#search_board_cancel").hide();
       $("#next_hand_text").hide();
       $("#stone_selection_text").hide();
@@ -2624,7 +2626,8 @@
   $("#edit_board_ok").click(function() {
     $("#edit_board_ok").hide();
     $("#edit_board_cancel").hide();
-    $("#search_board_ok").hide();
+    $("#search_board_ok1").hide();
+    $("#search_board_ok2").hide();
     $("#search_board_cancel").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
@@ -2739,7 +2742,8 @@
   $("#edit_board_cancel").click(function() {
     $("#edit_board_ok").hide();
     $("#edit_board_cancel").hide();
-    $("#search_board_ok").hide();
+    $("#search_board_ok1").hide();
+    $("#search_board_ok2").hide();
     $("#search_board_cancel").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
@@ -3188,7 +3192,8 @@
     $("#stone_selection_frame").show();
     $("#edit_board_ok").show();
     $("#edit_board_cancel").show();
-    $("#search_board_ok").hide();
+    $("#search_board_ok1").hide();
+    $("#search_board_ok2").hide();
     $("#search_board_cancel").hide();
     $("#Reset").prop("disabled", true);
     $("#Reset2").prop("disabled", true);	  
@@ -3253,7 +3258,7 @@
     
     edit_board = false;
     edit_flag = true;
-    doEditBoard();
+    doEditBoard1();
   });
 
   $("#save_comment").click(function() {
@@ -4806,7 +4811,8 @@
     $("#stone_selection_frame").show();
     $("#edit_board_ok").hide();
     $("#edit_board_cancel").hide();
-    $("#search_board_ok").show();
+    $("#search_board_ok1").show();
+    $("#search_board_ok2").hide();
     $("#search_board_cancel").show();
     $("#Reset").prop("disabled", true);
     $("#Reset2").prop("disabled", true);	  
@@ -5709,7 +5715,8 @@
   $("#search_board_cancel").click(function() {
     $("#edit_board_ok").hide();
     $("#edit_board_cancel").hide();
-    $("#search_board_ok").hide();
+    $("#search_board_ok1").hide();
+    $("#search_board_ok2").hide();
     $("#search_board_cancel").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
@@ -6004,7 +6011,118 @@
 
   });
 
+  $("#search_board_ok1").click(function() {
+    $("#edit_board_ok").hide();
+    $("#edit_board_cancel").hide();
+    $("#search_board_ok1").hide();
+    $("#search_board_ok2").show();
+    $("#search_board_cancel").hide();
+    $("#next_hand_text").hide();
+    $("#stone_selection_text").hide();
+    $("#your_stone_color_text").hide();
+    $("#your_stone_color").hide();
+    $("#your_stone_color_frame").hide();
+    $("#Computer_checkbox").prop("disabled", true);
+    $("#Computer_text").prop("disabled", true);
+    $("#msg_kifu").show();
+    $("#simple_kifu").show();
+    $("#Reset").prop("disabled", true);
+    $("#Reset2").prop("disabled", true);
+    $("#Save").prop("disabled", true);
+    $("#SaveAs").prop("disabled", true);
+    $("#EditBoard").prop("disabled", true);
+    $("#Transform").prop("disabled", true);
+    $("#Search").prop("disabled", true);
+    $("#back_to_beginning").show();
+    $("#previous_button").show();
+    $("#next_button").show();
+    $("#go_to_end").show();
+    $("#open_button").prop("disabled", true);
+    $("#clipboard_button").prop("disabled", true);
+    $(".comment_textarea").attr("disabled", true);
+	
+   
+    vsAI = false;
+    
 
+    if(stone_black_yellow_frame_length == 1) {
+      isFirst = true;
+      your_move = "first";
+    } else if(stone_white_yellow_frame_length == 1) {
+      isFirst = false;
+      your_move = "second";
+    }
+
+
+    alert("your_move = " + your_move);
+    alert("vsAI = " + vsAI);
+  
+
+    from_saved = false;
+    //alert("temp_hand = " + temp_hand);
+    $("#a" + temp_hand).unwrap();
+    last_hand = 0;
+    temp_hand = 0;
+    previous_temp_hand = 0;
+    wrap_flag = true;
+    beginning_flag = false;
+    end_flag = false;
+    link_flag = false;
+    from_saved_first_flag = false;
+    cancel_flag = false;
+    hand_flag = true;
+    for_jump_temp_hand = 0;
+    edit_board = false;
+    
+    
+
+    $("#next_hand_frame").children().remove();
+    $("#stone_selection_frame").children().remove();
+    $("#next_hand").children().remove();
+    $("#stone_selection").children().remove();
+    $("#your_stone_color_text").children().remove();
+    $("#your_stone_color").children().remove();
+    $("#your_stone_color_frame").children().remove();
+
+    //var black_stone_next_hand = black_stone_next_hand_cell.cloneNode(true);
+    //black_stone_next_hand.style.display="none";	  
+	  
+	  
+    //document.getElementById("next_hand").style.display="none";
+    //$("#next_hand").hide();
+    //$("#next_hand").css('margin-top', '0px');
+
+    //var c1 = document.getElementById("black_cell");
+    //while(c1.firstChild) {
+    //  c1.removeChild(c1.firstChild);
+    //}
+
+    //$("#stone_selection").hide();
+
+   
+
+
+    black_next_yellow_frame_length = 0;
+    white_next_yellow_frame_length = 0;
+    black_select_yellow_frame_length = 0;
+    white_select_yellow_frame_length = 0;
+    none_select_yellow_frame_length = 0;   
+
+	  
+/*
+    var element = document.getElementById("next_hand");
+    element.remove();
+*/
+
+    kifu = "";
+
+    // start game
+    //edit_board_okを選んだ場合
+    showBoard(last_hand);
+    doAiPlayer(last_hand);
+  });
+
+ 
 
 
 })();
