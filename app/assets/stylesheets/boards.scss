@@ -492,18 +492,18 @@
 #open//for id
 {
   position: absolute;
-  margin-top: 43 * 5px;
+  margin-top: 43 * 6px;
   margin-left: 930px;
  }
 
-.w-260px {
+ .w-260px {
   width: 260px !important;
 }
 
 .copy_clipboard//for class
 {
   position: absolute;
-  margin-top: 43 * 6px;
+  margin-top: 43 * 7px;
   width: 260px;
   margin-left: 930px;
 }
@@ -513,6 +513,13 @@
   position: absolute;
   margin-top: 43 * 4px;
   width: 260px;
+  margin-left: 930px;
+}
+
+#searched//for id
+{
+  position: absolute;
+  margin-top: 43 * 5px;
   margin-left: 930px;
 }
 

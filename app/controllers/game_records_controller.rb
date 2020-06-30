@@ -42,6 +42,10 @@ class GameRecordsController < ApplicationController
     redirect_to user_game_records_path(current_user.id)
   end
 
+  def search
+    debugger
+  end
+
   private
 
     def game_records_params

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'save_searched_game_record/update'
   get 'delete_comment/update'
   get 'save_comment/update'
   get 'edit_board/new'
@@ -12,7 +13,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
-    resources :game_records
+    resources :game_records do
+      get :search, on: :collection
+    end
   end
 
   #VS AI Play 設定
@@ -38,6 +41,7 @@ Rails.application.routes.draw do
   # 盤面を編集する
   get 'users/:user_id/edit_board/new', to:'edit_board#new', as: 'new_user_edit_board'
   post 'users/:user_id/edit_board/create', to:'edit_board#create', as: 'create_user_edit_board'
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

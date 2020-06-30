@@ -6122,7 +6122,34 @@
     doAiPlayer(last_hand);
   });
 
- 
+  $("#search_board_ok2").click(function() {
+    game_record_id = gon.game_record_id;
+    alert(game_record_id);
+    if (last_hand == 0) {
+      kifu = "";
+    }
+    $.ajax({
+      url: '/save_searched_game_record/update',
+      type: "GET",
+      dataType: "html",
+      async: true,
+      data: {
+	game_record_id: game_record_id,
+        kifu: kifu,
+	initial_board: board[0],
+	player_color0: player_color_array[0],
+	searched: true,
+      },
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
+    });
+  });
+
+
 
 
 })();
