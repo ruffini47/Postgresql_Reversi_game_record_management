@@ -43,6 +43,8 @@ class GameRecordsController < ApplicationController
   end
 
   def search
+    game_record = GameRecord.where(searched: true).order(updated_at: "ASC").last;
+    @game_records = GameRecord.where(user_id: current_user.id, board0: game_record.board0, player_color0: game_record.player_color0, searched: false).where("kifu LIKE ?", game_record.kifu + "%")
     debugger
   end
 

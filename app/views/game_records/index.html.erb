@@ -13,6 +13,7 @@
 	<td>棋譜</td>
 	<td>AIとの対局</td>
 	<td>あなたの手番</td>
+        <td>searched</td>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -41,6 +42,11 @@
 	  <td>先手</td>
 	<% elsif game_record.your_move == "second" %>
 	  <td>後手</td>
+        <% end %>
+	<% if game_record.searched %>
+	  <td>○</td>
+	<% else %>
+	  <td>×</td>
 	<% end %>
 	<td><%= link_to "編集", edit_user_game_record_path(current_user.id, game_record.id), class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to "削除", user_game_record_path(current_user.id, game_record.id), method: :delete,
