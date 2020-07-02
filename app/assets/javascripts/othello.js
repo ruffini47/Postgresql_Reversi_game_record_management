@@ -4821,6 +4821,7 @@
     $("#EditBoard").prop("disabled", true);
     $("#Transform").prop("disabled", true);
     $("#Search").prop("disabled", true);
+    $("#searched_button").prop("disabled", true);
     $("#back_to_beginning").hide();
     $("#previous_button").hide();
     $("#next_button").hide();
@@ -4831,6 +4832,8 @@
     $("#open_button").prop("disabled", true);
     $("#clipboard_button").prop("disabled", true);
     $(".comment_textarea").attr("disabled", true);	  
+
+    alert("初期盤面と次の手の石の色を指定して下さい。");
 
     for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
       search_saved_board[i] = [];
@@ -6033,6 +6036,7 @@
     $("#EditBoard").prop("disabled", true);
     $("#Transform").prop("disabled", true);
     $("#Search").prop("disabled", true);
+    $("#searched_button").prop("disabled", true);
     $("#back_to_beginning").show();
     $("#previous_button").show();
     $("#next_button").show();
@@ -6041,7 +6045,8 @@
     $("#clipboard_button").prop("disabled", true);
     $(".comment_textarea").attr("disabled", true);
 	
-   
+    alert("棋譜を指定して下さい。");
+
     vsAI = false;
     
 
