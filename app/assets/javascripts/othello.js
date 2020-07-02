@@ -6160,6 +6160,310 @@
         alert("errror");
       }
     });
+
+    $("#edit_board_ok").hide();
+    $("#edit_board_cancel").hide();
+    $("#search_board_ok1").hide();
+    $("#search_board_ok2").hide();
+    $("#search_board_cancel1").hide();
+    $("#search_board_cancel2").hide();
+    $("#next_hand_text").hide();
+    $("#stone_selection_text").hide();
+    alert("kokokiteru ?");
+    $("#your_stone_color_text").show();	  
+    $("#msg_kifu").show();
+    $("#simple_kifu").show();
+    $("#Reset").prop("disabled", false);
+    $("#Reset2").prop("disabled", false);
+    $("#Save").prop("disabled", false);
+    $("#SaveAs").prop("disabled", false);
+    $("#EditBoard").prop("disabled", false);
+    $("#Transform").prop("disabled", false);
+    $("#Search").prop("disabled", false);
+    $("#searched_button").prop("disabled", false);
+    $("#back_to_beginning").show();
+    $("#previous_button").show();
+    $("#next_button").show();
+    $("#go_to_end").show();
+    $("#open_button").prop("disabled", false);
+    $("#clipboard_button").prop("disabled", false);
+    $(".comment_textarea").attr("disabled", false);
+    $("#Computer_checkbox").prop("disabled", false);
+    $("#Computer_text").prop("disabled", false);
+
+    alert("search_board = " + search_board);
+
+    if (search_board == false) {	  
+    
+      player_color = search_saved_player_color;
+ 
+      alert("player_color = " + player_color);
+
+      vsAI = search_saved_vsAI;
+      isFirst = search_saved_isFirst;
+      your_move = search_saved_your_move;
+      
+      alert("your_move = " + your_move);
+      alert("vsAI = " + vsAI);
+      alert("edit_board = " + edit_board);
+
+      if (vsAI == true) {
+        $("#Computer_checkbox").prop("checked",true);
+      } else if (vsAI == false) {
+	$("#Computer_checkbox").prop("checked",false);
+      }
+
+      
+      var e = document.getElementById("your_stone_color_frame");
+
+      while(e.firstChild) {
+        e.removeChild(e.firstChild);
+      }
+
+      //  show stone_black yellow_frame corner
+
+      var stone_black_yellow_frame_top_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+   
+      stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_left_corner);
+
+      var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_right_corner);
+
+      var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+
+      var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+    
+      // show black_next yellow_frame frame
+
+      var stone_black_yellow_frame_top_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+      stone_black_yellow_frame_top_side_frame.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_side_frame);
+
+
+      var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_side_frame.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+
+	      
+      var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_black_yellow_frame_left_vertical_frame.style.left = 0 * CELL_WIDTH  + "px";
+      stone_black_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+
+
+      var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_black_yellow_frame_right_vertical_frame.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+ 
+
+      //  show stone_white yellow_frame corner
+
+      var stone_white_yellow_frame_top_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_top_left_corner.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_left_corner);
+
+      var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_top_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_right_corner);
+
+      var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_left_corner.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+
+      var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+
+      // show stone_white yellow_frame frame
+
+      var stone_white_yellow_frame_top_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+      stone_white_yellow_frame_top_side_frame.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_side_frame);
+
+
+      var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_side_frame.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+
+
+      var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_white_yellow_frame_left_vertical_frame.style.left = 1 * CELL_WIDTH  + "px";
+      stone_white_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+
+
+      var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+
+      if (your_move == "first") {
+        //$("#First_checkbox").prop("checked",true);
+        e.appendChild(stone_black_yellow_frame_top_left_corner);
+        e.appendChild(stone_black_yellow_frame_top_right_corner);
+        e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+        e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+        e.appendChild(stone_black_yellow_frame_top_side_frame);
+        e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+        e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+        e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+        stone_black_yellow_frame_length = 1;
+        stone_white_yellow_frame_length = 0;
+      } else if (your_move == "second") {
+        //$("#First_checkbox").prop("checked",false);
+        e.appendChild(stone_white_yellow_frame_top_left_corner);
+        e.appendChild(stone_white_yellow_frame_top_right_corner);
+        e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+        e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+        e.appendChild(stone_white_yellow_frame_top_side_frame);
+        e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+        e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+        e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+        stone_white_yellow_frame_length = 1;
+        stone_black_yellow_frame_length = 0;
+      }
+	
+
+	    
+/*	    
+      if (your_move == "first") {
+        $("#First_checkbox").prop("checked",true);
+      } else if (your_move == "second") {
+	$("#First_checkbox").prop("checked",false);
+      }
+*/	    
+      from_saved = search_saved_from_saved;
+      from_saved = false;
+      last_hand = search_saved_last_hand;
+      temp_hand = search_saved_temp_hand;
+      alert("temp_hand = " + temp_hand);
+      previous_temp_hand = search_saved_previous_temp_hand;
+      wrap_flag = false;
+      beginning_flag = search_saved_beginning_flag;
+      end_flag = search_saved_end_flag;
+      link_flag = search_saved_link_flag;
+      from_saved_first_flag = search_saved_from_saved_first_flag;
+      for_jump_temp_hand = search_saved_for_jump_temp_hand;
+
+      cancel_flag = true;
+      hand_flag =  false;
+      edit_board = false;
+      search_board = false;
+
+      // initial position
+      for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+        for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+          board[0][i][j] = search_saved_board[i][j];
+        }
+      }
+
+      //alert("koko kitenai");
+
+      $("#next_hand_frame").children().remove();
+      $("#stone_selection_frame").children().remove();
+      $("#next_hand").children().remove();
+      $("#stone_selection").children().remove();
+      
+      //$("#next_hand").hide();
+      //$("#stone_selection").hide();
+      black_next_yellow_frame_length = 0;
+      white_next_yellow_frame_length = 0;
+      black_select_yellow_frame_length = 0;
+      white_select_yellow_frame_length = 0;
+      none_select_yellow_frame_length = 0;     
+
+      // start game
+      //トップページで検索を選ばず、search_board_cancel1を選んだ場合
+      showBoard(temp_hand);
+      //if(!isFirst) {
+        doAiPlayer(temp_hand);
+      //}          
+
+    } else if (search_board == true) {
+      alert("search_board = " + search_board);
+      // initialize board
+      initBoard();
+
+      vsAI = false;
+      isFirst = true;
+      your_move = "first";
+	    
+      from_saved = false;
+      last_hand = 0;
+      temp_hand = 0;
+
+      previous_temp_hand = 0;
+      wrap_flag = true;
+      beginning_flag = false;
+      end_flag = false;
+      link_flag = false;
+      from_saved_first_flag = false;
+      cancel_flag = true;
+      hand_flag = true;
+      for_jump_temp_hand = 0;
+
+      $("#next_hand_frame").children().remove();
+      $("#stone_selection_frame").children().remove();
+      $("#next_hand").children().remove();
+      $("#stone_selection").children().remove();	  
+/*
+      $("#next_hand_frame").hide();
+      $("#stone_selection_frame").hide();
+      $("#next_hand_frame").hide();
+      $("#stone_selection_frame").hide();
+*/
+      black_next_yellow_frame_length = 0;
+      white_next_yellow_frame_length = 0;
+      black_select_yellow_frame_length = 0;
+      white_select_yellow_frame_length = 0;
+      none_select_yellow_frame_length = 0;
+
+
+      // start game
+      //トップページで検索を選んで、search_board_cancel1を選んだ場合
+      showBoard(last_hand);
+      if(!isFirst) {
+        doAiPlayer(last_hand);
+      }
+    }
+
+
+
+
   });
 
   $("#search_board_cancel2").click(function() {
