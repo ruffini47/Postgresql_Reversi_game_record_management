@@ -2119,7 +2119,8 @@
       edit_flag = true;
       $("#search_board_ok1").hide();
       $("#search_board_ok2").hide();
-      $("#search_board_cancel").hide();
+      $("#search_board_cancel1").hide();
+      $("#search_board_cancel2").hide();
       $("#Reset").prop("disabled", true);
       $("#Reset2").prop("disabled", true);
       $("#Save").prop("disabled", true);
@@ -2153,7 +2154,8 @@
       $("#edit_board_cancel").hide();
       $("#search_board_ok1").hide();
       $("#search_board_ok2").hide();
-      $("#search_board_cancel").hide();
+      $("#search_board_cancel1").hide();
+      $("#search_board_cancel2").hide();
       $("#next_hand_text").hide();
       $("#stone_selection_text").hide();
       $("#next_hand_frame").hide();
@@ -2628,7 +2630,8 @@
     $("#edit_board_cancel").hide();
     $("#search_board_ok1").hide();
     $("#search_board_ok2").hide();
-    $("#search_board_cancel").hide();
+    $("#search_board_cancel1").hide();
+    $("#search_board_cancel2").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
     $("#msg_kifu").show();
@@ -2744,7 +2747,8 @@
     $("#edit_board_cancel").hide();
     $("#search_board_ok1").hide();
     $("#search_board_ok2").hide();
-    $("#search_board_cancel").hide();
+    $("#search_board_cancel1").hide();
+    $("#search_board_cancel2").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
     $("#your_stone_color_text").show();
@@ -3194,7 +3198,8 @@
     $("#edit_board_cancel").show();
     $("#search_board_ok1").hide();
     $("#search_board_ok2").hide();
-    $("#search_board_cancel").hide();
+    $("#search_board_cancel1").hide();
+    $("#search_board_cancel2").hide();
     $("#Reset").prop("disabled", true);
     $("#Reset2").prop("disabled", true);	  
     $("#Save").prop("disabled", true);
@@ -4813,7 +4818,8 @@
     $("#edit_board_cancel").hide();
     $("#search_board_ok1").show();
     $("#search_board_ok2").hide();
-    $("#search_board_cancel").show();
+    $("#search_board_cancel1").show();
+    $("#search_board_cancel2").hide();
     $("#Reset").prop("disabled", true);
     $("#Reset2").prop("disabled", true);	  
     $("#Save").prop("disabled", true);
@@ -5715,12 +5721,13 @@
     //showProgress(i);    
   };
 
-  $("#search_board_cancel").click(function() {
+  $("#search_board_cancel1").click(function() {
     $("#edit_board_ok").hide();
     $("#edit_board_cancel").hide();
     $("#search_board_ok1").hide();
     $("#search_board_ok2").hide();
-    $("#search_board_cancel").hide();
+    $("#search_board_cancel1").hide();
+    $("#search_board_cancel2").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
     $("#your_stone_color_text").show();
@@ -5957,7 +5964,7 @@
       none_select_yellow_frame_length = 0;     
 
       // start game
-      //トップページで検索を選ばず、search_board_cancelを選んだ場合
+      //トップページで検索を選ばず、search_board_cancel1を選んだ場合
       showBoard(temp_hand);
       //if(!isFirst) {
         doAiPlayer(temp_hand);
@@ -6004,7 +6011,7 @@
 
 
       // start game
-      //トップページで検索を選んで、search_board_cancelを選んだ場合
+      //トップページで検索を選んで、search_board_cancel1を選んだ場合
       showBoard(last_hand);
       if(!isFirst) {
         doAiPlayer(last_hand);
@@ -6019,7 +6026,8 @@
     $("#edit_board_cancel").hide();
     $("#search_board_ok1").hide();
     $("#search_board_ok2").show();
-    $("#search_board_cancel").hide();
+    $("#search_board_cancel1").hide();
+    $("#search_board_cancel2").show();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
     $("#your_stone_color_text").hide();
@@ -6154,8 +6162,11 @@
     });
   });
 
+  $("#search_board_cancel2").click(function() {
 
 
+
+  });
 
 })();
 
