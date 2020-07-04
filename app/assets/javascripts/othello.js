@@ -6516,6 +6516,7 @@
       from_saved = false;
       temp_hand = last_hand
       alert("temp_hand = " + temp_hand);
+      $("#a" + temp_hand).unwrap();
       previous_temp_hand = 0;
       wrap_flag = true;
       beginning_flag = false;
