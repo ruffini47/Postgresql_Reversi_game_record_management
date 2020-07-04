@@ -6056,22 +6056,169 @@
 	
     alert("棋譜を指定して下さい。");
 
-    vsAI = false;
+      vsAI = false;
+      isFirst = search_saved_isFirst;
+      your_move = search_saved_your_move;
+
+
+    //vsAI = false;
     
 
-    if(stone_black_yellow_frame_length == 1) {
-      isFirst = true;
-      your_move = "first";
-    } else if(stone_white_yellow_frame_length == 1) {
-      isFirst = false;
-      your_move = "second";
-    }
+    //if(stone_black_yellow_frame_length == 1) {
+    //  isFirst = true;
+    //  your_move = "first";
+    //} else if(stone_white_yellow_frame_length == 1) {
+    //  isFirst = false;
+    //  your_move = "second";
+    //}
 
 
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);
   
+    var e = document.getElementById("your_stone_color_frame");
 
+    while(e.firstChild) {
+      e.removeChild(e.firstChild);
+    }
+
+    //  show stone_black yellow_frame corner
+
+    var stone_black_yellow_frame_top_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+   
+    stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_left_corner);
+
+      var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_right_corner);
+
+      var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+
+      var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+    
+      // show black_next yellow_frame frame
+
+      var stone_black_yellow_frame_top_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+      stone_black_yellow_frame_top_side_frame.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_top_side_frame);
+
+
+      var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
+
+      stone_black_yellow_frame_bottom_side_frame.style.left = 0 * CELL_WIDTH + "px";
+      stone_black_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+
+	      
+      var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_black_yellow_frame_left_vertical_frame.style.left = 0 * CELL_WIDTH  + "px";
+      stone_black_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+
+
+      var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_black_yellow_frame_right_vertical_frame.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_black_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+ 
+
+      //  show stone_white yellow_frame corner
+
+      var stone_white_yellow_frame_top_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_top_left_corner.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_left_corner);
+
+      var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_top_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_right_corner);
+
+      var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_left_corner.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+
+      var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+
+      // show stone_white yellow_frame frame
+
+      var stone_white_yellow_frame_top_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+      stone_white_yellow_frame_top_side_frame.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_top_side_frame);
+
+
+      var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
+
+      stone_white_yellow_frame_bottom_side_frame.style.left = 1 * CELL_WIDTH + "px";
+      stone_white_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+
+
+      var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_white_yellow_frame_left_vertical_frame.style.left = 1 * CELL_WIDTH  + "px";
+      stone_white_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+
+
+      var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
+
+      stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
+      stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+      //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+
+      if (your_move == "first") {
+        alert("your_move = " + your_move);
+        e.appendChild(stone_black_yellow_frame_top_left_corner);
+        e.appendChild(stone_black_yellow_frame_top_right_corner);
+        e.appendChild(stone_black_yellow_frame_bottom_left_corner);
+        e.appendChild(stone_black_yellow_frame_bottom_right_corner);
+        e.appendChild(stone_black_yellow_frame_top_side_frame);
+        e.appendChild(stone_black_yellow_frame_bottom_side_frame);
+        e.appendChild(stone_black_yellow_frame_left_vertical_frame);
+        e.appendChild(stone_black_yellow_frame_right_vertical_frame);
+        stone_black_yellow_frame_length = 1;
+        stone_white_yellow_frame_length = 0;
+      } else if (your_move == "second") {
+        alert("your_move = " + your_move);
+        e.appendChild(stone_white_yellow_frame_top_left_corner);
+        e.appendChild(stone_white_yellow_frame_top_right_corner);
+        e.appendChild(stone_white_yellow_frame_bottom_left_corner);
+        e.appendChild(stone_white_yellow_frame_bottom_right_corner);
+        e.appendChild(stone_white_yellow_frame_top_side_frame);
+        e.appendChild(stone_white_yellow_frame_bottom_side_frame);
+        e.appendChild(stone_white_yellow_frame_left_vertical_frame);
+        e.appendChild(stone_white_yellow_frame_right_vertical_frame);
+        stone_white_yellow_frame_length = 1;
+        stone_black_yellow_frame_length = 0;
+      }
+	
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
     $("#a" + temp_hand).unwrap();
