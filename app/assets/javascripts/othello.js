@@ -5744,6 +5744,7 @@
     $("#EditBoard").prop("disabled", false);
     $("#Transform").prop("disabled", false);
     $("#Search").prop("disabled", false);
+    $("#searched_button").prop("disabled", false);   
     $("#back_to_beginning").show();
     $("#previous_button").show();
     $("#next_button").show();
@@ -6030,9 +6031,9 @@
     $("#search_board_cancel2").show();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
-    $("#your_stone_color_text").hide();
-    $("#your_stone_color").hide();
-    $("#your_stone_color_frame").hide();
+    $("#your_stone_color_text").show();
+    $("#your_stone_color").show();
+    $("#your_stone_color_frame").show();
     $("#Computer_checkbox").prop("disabled", true);
     $("#Computer_text").prop("disabled", true);
     $("#msg_kifu").show();
@@ -6093,9 +6094,9 @@
     $("#stone_selection_frame").children().remove();
     $("#next_hand").children().remove();
     $("#stone_selection").children().remove();
-    $("#your_stone_color_text").children().remove();
-    $("#your_stone_color").children().remove();
-    $("#your_stone_color_frame").children().remove();
+    //$("#your_stone_color_text").children().remove();
+    //$("#your_stone_color").children().remove();
+    //$("#your_stone_color_frame").children().remove();
 
     //var black_stone_next_hand = black_stone_next_hand_cell.cloneNode(true);
     //black_stone_next_hand.style.display="none";	  
@@ -6169,8 +6170,7 @@
     $("#search_board_cancel2").hide();
     $("#next_hand_text").hide();
     $("#stone_selection_text").hide();
-    alert("kokokiteru ?");
-    $("#your_stone_color_text").show();	  
+    $("#your_stone_color_text").show();
     $("#msg_kifu").show();
     $("#simple_kifu").show();
     $("#Reset").prop("disabled", false);
@@ -6191,21 +6191,21 @@
     $("#Computer_checkbox").prop("disabled", false);
     $("#Computer_text").prop("disabled", false);
 
-    alert("search_board = " + search_board);
+    //alert("search_board = " + search_board);
 
     if (search_board == false) {	  
     
-      player_color = search_saved_player_color;
+      //player_color = search_saved_player_color;
  
-      alert("player_color = " + player_color);
+      //alert("player_color = " + player_color);
 
       vsAI = search_saved_vsAI;
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
       
-      alert("your_move = " + your_move);
-      alert("vsAI = " + vsAI);
-      alert("edit_board = " + edit_board);
+      //alert("your_move = " + your_move);
+      //alert("vsAI = " + vsAI);
+      //alert("edit_board = " + edit_board);
 
       if (vsAI == true) {
         $("#Computer_checkbox").prop("checked",true);
@@ -6332,7 +6332,7 @@
       //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 
       if (your_move == "first") {
-        //$("#First_checkbox").prop("checked",true);
+        alert("your_move = " + your_move);
         e.appendChild(stone_black_yellow_frame_top_left_corner);
         e.appendChild(stone_black_yellow_frame_top_right_corner);
         e.appendChild(stone_black_yellow_frame_bottom_left_corner);
@@ -6344,7 +6344,7 @@
         stone_black_yellow_frame_length = 1;
         stone_white_yellow_frame_length = 0;
       } else if (your_move == "second") {
-        //$("#First_checkbox").prop("checked",false);
+        alert("your_move = " + your_move);
         e.appendChild(stone_white_yellow_frame_top_left_corner);
         e.appendChild(stone_white_yellow_frame_top_right_corner);
         e.appendChild(stone_white_yellow_frame_bottom_left_corner);
@@ -6366,18 +6366,16 @@
 	$("#First_checkbox").prop("checked",false);
       }
 */	    
-      from_saved = search_saved_from_saved;
       from_saved = false;
-      last_hand = search_saved_last_hand;
-      temp_hand = search_saved_temp_hand;
+      temp_hand = last_hand
       alert("temp_hand = " + temp_hand);
-      previous_temp_hand = search_saved_previous_temp_hand;
-      wrap_flag = false;
-      beginning_flag = search_saved_beginning_flag;
-      end_flag = search_saved_end_flag;
-      link_flag = search_saved_link_flag;
-      from_saved_first_flag = search_saved_from_saved_first_flag;
-      for_jump_temp_hand = search_saved_for_jump_temp_hand;
+      previous_temp_hand = 0;
+      wrap_flag = true;
+      beginning_flag = false;
+      end_flag = false;
+      link_flag = false;
+      from_saved_first_flag = false;
+      for_jump_temp_hand = 0;
 
       cancel_flag = true;
       hand_flag =  false;
@@ -6385,11 +6383,11 @@
       search_board = false;
 
       // initial position
-      for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-        for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-          board[0][i][j] = search_saved_board[i][j];
-        }
-      }
+      //for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+      //  for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+      //    board[0][i][j] = search_saved_board[i][j];
+      //  }
+      //}
 
       //alert("koko kitenai");
 
@@ -6408,9 +6406,9 @@
 
       // start game
       //トップページで検索を選ばず、search_board_cancel1を選んだ場合
-      showBoard(temp_hand);
+      showBoard(last_hand);
       //if(!isFirst) {
-        doAiPlayer(temp_hand);
+        doAiPlayer(last_hand);
       //}          
 
     } else if (search_board == true) {
