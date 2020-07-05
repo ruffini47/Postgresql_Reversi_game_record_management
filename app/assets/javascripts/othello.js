@@ -5504,9 +5504,9 @@
     stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
     //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 */
-    alert("edit_board == " + edit_board);
-    alert("search_board == " + search_board);
-    alert("search_saved_player_color = " + search_saved_player_color);
+    //alert("edit_board == " + edit_board);
+    //alert("search_board == " + search_board);
+    //alert("search_saved_player_color = " + search_saved_player_color);
     if (edit_board == false && search_board == false) {	    
       if (search_saved_player_color == BLOCK_KIND.BLACK) {
         if (white_next_yellow_frame_length > 0) {
@@ -5528,7 +5528,6 @@
           black_next_yellow_frame_length += 1;	    
         }
       } else if (search_saved_player_color == BLOCK_KIND.WHITE) {
-	alert("search_saved_player_color2 = " + search_saved_player_color);
         if (black_next_yellow_frame_length > 0) {
 	  while(c.firstChild) {
             c.removeChild(c.firstChild);
@@ -5537,8 +5536,6 @@
 	  black_next_yellow_frame_length -= 1;
         }
         if (white_next_yellow_frame_length == 0) {
-	  //alert("white_next_yellow_frame_length  " + white_next_yellow_frame_length);
-	  //alert("c.firstChild = " + c.firstChild);
           c.append(white_next_yellow_frame_top_left_corner);
           c.append(white_next_yellow_frame_top_right_corner);
           c.append(white_next_yellow_frame_bottom_left_corner);
