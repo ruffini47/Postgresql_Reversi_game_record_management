@@ -4868,7 +4868,7 @@
     }
 
     search_saved_player_color = player_color;
-   
+    alert("search_saved_player_color = " + search_saved_player_color);
     from_saved = false;
 
     search_saved_vsAI = vsAI;
@@ -4927,50 +4927,6 @@
 
     
     var c = document.getElementById("next_hand_frame");
-
-    if (search_board == false) {	    
-      if (search_saved_player_color == BLOCK_KIND.BLACK) {
-        if (white_next_yellow_frame_length > 0) {
-          while(c.firstChild) {
-            c.removeChild(c.firstChild);
-          }
-          //white_next_yellow_frame_top_left_corner.remove();
-          white_next_yellow_frame_length -= 1;
-        }
-        if (black_next_yellow_frame_length == 0) {
-          c.append(black_next_yellow_frame_top_left_corner);
-          c.append(black_next_yellow_frame_top_right_corner);
-          c.append(black_next_yellow_frame_bottom_left_corner);
-          c.append(black_next_yellow_frame_bottom_right_corner);
-          c.append(black_next_yellow_frame_top_side_frame);
-          c.append(black_next_yellow_frame_bottom_side_frame);
-          c.append(black_next_yellow_frame_left_vertical_frame);
-          c.append(black_next_yellow_frame_right_vertical_frame);
-          black_next_yellow_frame_length += 1;	    
-        }
-      } else if (search_saved_player_color == BLOCK_KIND.WHITE) {
-        if (black_next_yellow_frame_length > 0) {
-	  while(c.firstChild) {
-            c.removeChild(c.firstChild);
-          }
-	  //black_next_yellow_frame_top_left_corner.remove();
-	  black_next_yellow_frame_length -= 1;
-        }
-        if (white_next_yellow_frame_length == 0) {
-	  alert("white_next_yellow_frame_length  " + white_next_yellow_frame_length);
-	  alert("c.firstChild = " + c.firstChild);/*
-          c.append(white_next_yellow_frame_top_left_corner);
-          c.append(white_next_yellow_frame_top_right_corner);
-          c.append(white_next_yellow_frame_bottom_left_corner);
-          c.append(white_next_yellow_frame_bottom_right_corner);
-          c.append(white_next_yellow_frame_top_side_frame);
-          c.append(white_next_yellow_frame_bottom_side_frame);
-          c.append(white_next_yellow_frame_left_vertical_frame);
-          c.append(white_next_yellow_frame_right_vertical_frame);
-	  white_next_yellow_frame_length += 1;*/
-        }
-      }
-    }
 
 
 //    while(c.firstChild) {
@@ -5548,6 +5504,55 @@
     stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
     //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 */
+    alert("edit_board == " + edit_board);
+    alert("search_board == " + search_board);
+    alert("search_saved_player_color = " + search_saved_player_color);
+    if (edit_board == false && search_board == false) {	    
+      if (search_saved_player_color == BLOCK_KIND.BLACK) {
+        if (white_next_yellow_frame_length > 0) {
+          while(c.firstChild) {
+            c.removeChild(c.firstChild);
+          }
+          //white_next_yellow_frame_top_left_corner.remove();
+          white_next_yellow_frame_length -= 1;
+        }
+        if (black_next_yellow_frame_length == 0) {
+          c.append(black_next_yellow_frame_top_left_corner);
+          c.append(black_next_yellow_frame_top_right_corner);
+          c.append(black_next_yellow_frame_bottom_left_corner);
+          c.append(black_next_yellow_frame_bottom_right_corner);
+          c.append(black_next_yellow_frame_top_side_frame);
+          c.append(black_next_yellow_frame_bottom_side_frame);
+          c.append(black_next_yellow_frame_left_vertical_frame);
+          c.append(black_next_yellow_frame_right_vertical_frame);
+          black_next_yellow_frame_length += 1;	    
+        }
+      } else if (search_saved_player_color == BLOCK_KIND.WHITE) {
+	alert("search_saved_player_color2 = " + search_saved_player_color);
+        if (black_next_yellow_frame_length > 0) {
+	  while(c.firstChild) {
+            c.removeChild(c.firstChild);
+          }
+	  //black_next_yellow_frame_top_left_corner.remove();
+	  black_next_yellow_frame_length -= 1;
+        }
+        if (white_next_yellow_frame_length == 0) {
+	  //alert("white_next_yellow_frame_length  " + white_next_yellow_frame_length);
+	  //alert("c.firstChild = " + c.firstChild);
+          c.append(white_next_yellow_frame_top_left_corner);
+          c.append(white_next_yellow_frame_top_right_corner);
+          c.append(white_next_yellow_frame_bottom_left_corner);
+          c.append(white_next_yellow_frame_bottom_right_corner);
+          c.append(white_next_yellow_frame_top_side_frame);
+          c.append(white_next_yellow_frame_bottom_side_frame);
+          c.append(white_next_yellow_frame_left_vertical_frame);
+          c.append(white_next_yellow_frame_right_vertical_frame);
+	  white_next_yellow_frame_length += 1;
+        }
+      }
+    }
+
+
 
     // show cell
 
@@ -5758,7 +5763,7 @@
             }
           };
 */
-	  
+
           cell.onclick = function() {
 	    //alert("クリックしました。");
 	    board[0][_x][_y] = choiced_stone_color;
@@ -6106,26 +6111,27 @@
 	
     alert("棋譜を指定して下さい。");
 
-      vsAI = false;
-      isFirst = search_saved_isFirst;
-      your_move = search_saved_your_move;
+    vsAI = false;
+    isFirst = search_saved_isFirst;
+    your_move = search_saved_your_move;
 
+    alert("your_move = " + your_move);
+    alert("vsAI = " + vsAI);
+ 
 
     //vsAI = false;
     
 
-    //if(stone_black_yellow_frame_length == 1) {
-    //  isFirst = true;
-    //  your_move = "first";
-    //} else if(stone_white_yellow_frame_length == 1) {
-    //  isFirst = false;
-    //  your_move = "second";
-    //}
+    if(black_next_yellow_frame_length > 0) {
+      player_color = BLOCK_KIND.BLACK;
+      player_color_array[0] = player_color;
+    } else if(white_next_yellow_frame_length > 0) {
+      player_color = BLOCK_KIND.WHITE;
+      player_color_array[0] = player_color;
+    }
 
 
-    alert("your_move = " + your_move);
-    alert("vsAI = " + vsAI);
-  
+ 
     var e = document.getElementById("your_stone_color_frame");
 
     while(e.firstChild) {
