@@ -61,6 +61,7 @@
   var saved_from_saved_first_flag;
   var saved_for_jump_temp_hand;
  
+  var searched = false;	
   var search_board = false;	
   var search_saved_board = [];
   var search_saved_player_color;
@@ -1938,6 +1939,7 @@
     your_move = gon.your_move;
     vsAI = gon.vsAI;
     edit_board = gon.edit_board;
+    searched = gon.searched;
    
     //alert("from_saved = " + from_saved);
     //alert("your_move = " + your_move);
@@ -2143,7 +2145,142 @@
       doEditBoard1();
     }
 
+    if (searched == true) {
+/*      alert("searched = " + searched);
+      from_saved = false;
+      edit_board = false;
+      edit_flag = true;
+      $("#next_hand_text").show();
+      $("#stone_selection_text").show();
+      $("#next_hand").show();
+      $("#stone_selection").show();
+      $("#next_hand_frame").show();
+      $("#stone_selection_frame").show();
+      $("#edit_board_ok").hide();
+      $("#edit_board_cancel").hide();
+      $("#search_board_ok1").show();
+      $("#search_board_ok2").hide();
+      $("#search_board_cancel1").show();
+      $("#search_board_cancel2").hide();
+      $("#Reset").prop("disabled", true);
+      $("#Reset2").prop("disabled", true);	  
+      $("#Save").prop("disabled", true);
+      $("#SaveAs").prop("disabled", true);
+      $("#EditBoard").prop("disabled", true);
+      $("#Transform").prop("disabled", true);
+      $("#Search").prop("disabled", true);
+      $("#searched_button").prop("disabled", true);
+      $("#back_to_beginning").hide();
+      $("#previous_button").hide();
+      $("#next_button").hide();
+      $("#go_to_end").hide();
+      $("#your_stone_color_text").hide();
+      $("#Computer_checkbox").prop("disabled", true);
+      $("#Computer_text").prop("disabled", true);
+      $("#open_button").prop("disabled", true);
+      $("#clipboard_button").prop("disabled", true);
+      $(".comment_textarea").attr("disabled", true);	  
+      //トップページで検索条件を指定するを選んだ場合
+      alert("doEditBoard2前");
+      doEditBoard2();
+*/   
 
+    $("#next_hand_text").show();
+    $("#stone_selection_text").show();
+    $("#next_hand").show();
+    $("#stone_selection").show();
+    $("#next_hand_frame").show();
+    $("#stone_selection_frame").show();
+    $("#edit_board_ok").hide();
+    $("#edit_board_cancel").hide();
+    $("#search_board_ok1").show();
+    $("#search_board_ok2").hide();
+    $("#search_board_cancel1").show();
+    $("#search_board_cancel2").hide();
+    $("#Reset").prop("disabled", true);
+    $("#Reset2").prop("disabled", true);	  
+    $("#Save").prop("disabled", true);
+    $("#SaveAs").prop("disabled", true);
+    $("#EditBoard").prop("disabled", true);
+    $("#Transform").prop("disabled", true);
+    $("#Search").prop("disabled", true);
+    $("#searched_button").prop("disabled", true);
+    $("#back_to_beginning").hide();
+    $("#previous_button").hide();
+    $("#next_button").hide();
+    $("#go_to_end").hide();
+    $("#your_stone_color_text").hide();
+    $("#Computer_checkbox").prop("disabled", true);
+    $("#Computer_text").prop("disabled", true);
+    $("#open_button").prop("disabled", true);
+    $("#clipboard_button").prop("disabled", true);
+    $(".comment_textarea").attr("disabled", true);	  
+
+    alert("初期盤面と次の手の石の色を指定して下さい。");
+    player_color = BLOCK_KIND.BLACK;
+    vsAI = false;
+    isFirst = true;
+    your_move = "first";
+    from_saved = false;
+    temp_hand = 0;
+    last_hand = 0;
+    previous_temp_hand = 0;
+    wrap_flag = false;
+    beginning_flag = false;
+    end_flag = false;
+    link_flag = false;
+    from_saved_first_flag = false;
+    for_jump_temp_hand = 0;
+    for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+      search_saved_board[i] = [];
+      for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+        search_saved_board[i][j] = BLOCK_KIND.NONE;
+      }
+    }
+
+    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+        search_saved_board[xx][yy] = board[0][xx][yy];
+      }
+    }
+	  
+    for (var yy = 0; yy < BOARD_SIZE.HEIGHT; yy++) {
+      for (var xx = 0; xx < BOARD_SIZE.WIDTH; xx++ ) {
+        board[0][xx][yy] = board[temp_hand][xx][yy];
+      }
+    }
+
+    if(document.form1.Computer.checked) {
+      vsAI = true;
+    } else {
+      vsAI = false;
+    }
+
+    search_saved_player_color = player_color;
+    alert("search_saved_player_color = " + search_saved_player_color);
+    from_saved = false;
+
+    search_saved_vsAI = vsAI;
+    search_saved_isFirst = isFirst;
+    search_saved_your_move = your_move;
+    search_saved_from_saved = from_saved;
+
+    search_saved_temp_hand = temp_hand;
+    search_saved_last_hand = last_hand;
+    search_saved_previous_temp_hand = previous_temp_hand;
+    search_saved_wrap_flag = wrap_flag;
+    search_saved_beginning_flag = beginning_flag;
+    search_saved_end_flag = end_flag;
+    search_saved_link_flag = link_flag;
+    search_saved_from_saved_first_flag = from_saved_first_flag;
+    search_saved_for_jump_temp_hand = for_jump_temp_hand;
+
+    from_saved = false;
+    
+    edit_board = false;
+    edit_flag = true;
+    doEditBoard2();
+  }
    
     //alert(isFirst);
 
@@ -4899,9 +5036,10 @@
   var doEditBoard2 = function() {
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
-
-    search_board_ok1_saved_player_color = search_saved_player_color;     
-
+    alert("doEditBoard2内1");
+    if (searched == false) {
+      search_board_ok1_saved_player_color = search_saved_player_color;     
+    }
     /*
     if (edit_board == false) {
       saved_vsAI = vsAI;
@@ -4919,6 +5057,7 @@
       saved_for_jump_temp_hand = for_jump_temp_hand;
     }
     */
+    alert("doEditBoard2内2");
     var b = document.getElementById("board");
 	  
     while(b.firstChild) {
@@ -5093,6 +5232,7 @@
     black_next_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     black_next_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
     //b.appendChild(black_next_yellow_frame_right_vertical_frame);
+    alert("doEditBoard2内3");
 
     if (edit_flag == true) {
       player_color = BLOCK_KIND.BLACK;
@@ -5505,9 +5645,12 @@
     //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 */
     //alert("edit_board == " + edit_board);
-    //alert("search_board == " + search_board);
+    //alert("searched == " + searched);
     //alert("search_saved_player_color = " + search_saved_player_color);
-    if (edit_board == false && search_board == false) {	    
+    alert("doEditBoard2内4");
+    alert("edit_board = " + edit_board);
+    alert("searched = " + searched);
+    if (edit_board == false && searched == false) {	    
       if (search_saved_player_color == BLOCK_KIND.BLACK) {
         if (white_next_yellow_frame_length > 0) {
           while(c.firstChild) {
@@ -5549,6 +5692,7 @@
       }
     }
 
+    alert("doEditBoard2内5");
 
 
     // show cell
@@ -5589,6 +5733,7 @@
           b.appendChild(bottom_right_dot);    
 
         }
+	
 	(function() {
           var _x = x;
           var _y = y;
@@ -5597,6 +5742,7 @@
 	    player_color = BLOCK_KIND.BLACK;
 	    player_color_array[0] = BLOCK_KIND.BLACK;
 	    search_board_ok1_saved_player_color = player_color;
+
 	    if (white_next_yellow_frame_length > 0) {
               while(c.firstChild) {
                 c.removeChild(c.firstChild);
@@ -5762,7 +5908,7 @@
 */
 
           cell.onclick = function() {
-	    //alert("クリックしました。");
+	    alert("クリックしました。");
 	    board[0][_x][_y] = choiced_stone_color;
 	    edit_flag = false;
 	    doEditBoard2();
@@ -5805,7 +5951,7 @@
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
 
-    if (search_board == false) {	  
+    if (searched == false) {	  
     
       player_color = search_saved_player_color;
  	    
@@ -5992,7 +6138,7 @@
       cancel_flag = true;
       hand_flag =  false;
       edit_board = false;
-      search_board = false;
+      searched = false;
 
       // initial position
       for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
@@ -6023,8 +6169,8 @@
         doAiPlayer(temp_hand);
       //}          
 
-    } else if (search_board == true) {
-      alert("search_board = " + search_board);
+    } else if (searched == true) {
+      alert("searched = " + searched);
       // initialize board
       initBoard();
 
@@ -6391,9 +6537,9 @@
     $("#Computer_checkbox").prop("disabled", false);
     $("#Computer_text").prop("disabled", false);
 
-    //alert("search_board = " + search_board);
+    //alert("searched = " + searched);
 
-    if (search_board == false) {	  
+    if (searched == false) {	  
     
       //player_color = search_saved_player_color;
  
@@ -6581,7 +6727,7 @@
       cancel_flag = true;
       hand_flag =  false;
       edit_board = false;
-      search_board = false;
+      searched = false;
 
       // initial position
       //for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
@@ -6612,8 +6758,8 @@
         doAiPlayer(last_hand);
       //}          
 
-    } else if (search_board == true) {
-      alert("search_board = " + search_board);
+    } else if (searched == true) {
+      alert("searched = " + searched);
       // initialize board
       initBoard();
 
@@ -6697,7 +6843,7 @@
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
 
-    if (search_board == false) {	  
+    if (searched == false) {	  
     
       player_color = search_board_ok1_saved_player_color;
       player_color_array[0] = player_color;
@@ -6892,7 +7038,7 @@
       cancel_flag = true;
       hand_flag =  false;
       edit_board = false;
-      search_board = false;
+      searched = false;
 
       // initial position
       //for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
@@ -6923,8 +7069,8 @@
         doAiPlayer(last_hand);
       //}          
 
-    } else if (search_board == true) {
-      alert("search_board = " + search_board);
+    } else if (searched == true) {
+      alert("searched = " + searched);
       // initialize board
       initBoard();
 
