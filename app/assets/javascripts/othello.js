@@ -2146,7 +2146,7 @@
     }
 
     if (searched == true) {
-/*      alert("searched = " + searched);
+      alert("searched = " + searched);
       from_saved = false;
       edit_board = false;
       edit_flag = true;
@@ -2181,10 +2181,9 @@
       $("#clipboard_button").prop("disabled", true);
       $(".comment_textarea").attr("disabled", true);	  
       //トップページで検索条件を指定するを選んだ場合
-      alert("doEditBoard2前");
       doEditBoard2();
-*/   
-
+    }   
+/*
     $("#next_hand_text").show();
     $("#stone_selection_text").show();
     $("#next_hand").show();
@@ -2280,13 +2279,14 @@
     edit_board = false;
     edit_flag = true;
     doEditBoard2();
+
   }
-   
+*/   
     //alert(isFirst);
 
-    alert("from_saved = " + from_saved);
+//    alert("from_saved = " + from_saved);
 
-    if (edit_board == false) {
+    if (searched == false && edit_board == false) {
       //alert("edit_board = " + edit_board);
       $("#edit_board_ok").hide();
       $("#edit_board_cancel").hide();
@@ -5036,28 +5036,9 @@
   var doEditBoard2 = function() {
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
-    alert("doEditBoard2内1");
     if (searched == false) {
       search_board_ok1_saved_player_color = search_saved_player_color;     
     }
-    /*
-    if (edit_board == false) {
-      saved_vsAI = vsAI;
-      saved_isFirst = isFirst;
-      saved_your_move = your_move;
-      saved_from_saved = from_saved;
-
-      saved_last_hand = last_hand;
-      saved_temp_hand = temp_hand;
-      saved_previous_temp_hand = previous_temp_hand;
-      saved_beginning_flag = beginning_flag;
-      saved_end_flag = end_flag;
-      saved_link_flag = link_flag;
-      saved_from_saved_first_flag = from_saved_first_flag;
-      saved_for_jump_temp_hand = for_jump_temp_hand;
-    }
-    */
-    alert("doEditBoard2内2");
     var b = document.getElementById("board");
 	  
     while(b.firstChild) {
@@ -5232,7 +5213,6 @@
     black_next_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     black_next_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
     //b.appendChild(black_next_yellow_frame_right_vertical_frame);
-    alert("doEditBoard2内3");
 
     if (edit_flag == true) {
       player_color = BLOCK_KIND.BLACK;
@@ -5502,155 +5482,12 @@
 
     none_select_yellow_frame_right_vertical_frame.style.left = 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
     none_select_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
+
     //b.appendChild(none_select_yellow_frame_right_vertical_frame);
-/* 
-    //show your stone color
-
-    var your_stone_color_black = stone[BLOCK_KIND.BLACK].cloneNode(true);
-
-    your_stone_color_black.style.left = FRAME_WIDTH + 2 * CELL_WIDTH - 12 * 1.5 + "px";
-    your_stone_color_black.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + FRAME_WIDTH + 22 + "px";
-    b.appendChild(your_stone_color_black);
-
-    var your_stone_color_white = stone[BLOCK_KIND.WHITE].cloneNode(true);
-
-    your_stone_color_white.style.left = FRAME_WIDTH + 3 * CELL_WIDTH - 12 * 1.5 + "px";
-    your_stone_color_white.style.top = FRAME_WIDTH + 10 * CELL_WIDTH + FRAME_WIDTH + 22 + "px";
-    b.appendChild(your_stone_color_white);
-
-
-    //  show stone_black yellow_frame corner
-
-    var stone_black_yellow_frame_top_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
-    
-    stone_black_yellow_frame_top_left_corner.style.left = 0 * CELL_WIDTH + "px";
-    stone_black_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_top_left_corner);
-
-    var stone_black_yellow_frame_top_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
-
-    stone_black_yellow_frame_top_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    stone_black_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_top_right_corner);
-
-    var stone_black_yellow_frame_bottom_left_corner = stone_black_yellow_frame_corner.cloneNode(true);
-
-    stone_black_yellow_frame_bottom_left_corner.style.left = 0 * CELL_WIDTH + "px";
-    stone_black_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_bottom_left_corner);
-
-    var stone_black_yellow_frame_bottom_right_corner = stone_black_yellow_frame_corner.cloneNode(true);
-
-    stone_black_yellow_frame_bottom_right_corner.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    stone_black_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_bottom_right_corner);
-    
-    // show black_next yellow_frame frame
-
-    var stone_black_yellow_frame_top_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
-
-    stone_black_yellow_frame_top_side_frame.style.left = 0 * CELL_WIDTH + "px";
-    stone_black_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_top_side_frame);
-
-
-    var stone_black_yellow_frame_bottom_side_frame = stone_black_yellow_frame_side_frame.cloneNode(true);
-
-    stone_black_yellow_frame_bottom_side_frame.style.left = 0 * CELL_WIDTH + "px";
-    stone_black_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_bottom_side_frame);
-
-	      
-    var stone_black_yellow_frame_left_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
-
-    stone_black_yellow_frame_left_vertical_frame.style.left = 0 * CELL_WIDTH  + "px";
-    stone_black_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_left_vertical_frame);
-
-
-    var stone_black_yellow_frame_right_vertical_frame = stone_black_yellow_frame_vertical_frame.cloneNode(true);
-
-    stone_black_yellow_frame_right_vertical_frame.style.left = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    stone_black_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_black_yellow_frame_right_vertical_frame);
-
-    if (edit_flag == true) {
-      player_color = BLOCK_KIND.BLACK;
-      player_color_array[0] = BLOCK_KIND.BLACK;
-      c.appendChild(black_next_yellow_frame_top_left_corner);
-      c.appendChild(black_next_yellow_frame_top_right_corner);
-      c.appendChild(black_next_yellow_frame_bottom_left_corner);
-      c.appendChild(black_next_yellow_frame_bottom_right_corner);
-      c.appendChild(black_next_yellow_frame_top_side_frame);
-      c.appendChild(black_next_yellow_frame_bottom_side_frame);
-      c.appendChild(black_next_yellow_frame_left_vertical_frame);
-      c.appendChild(black_next_yellow_frame_right_vertical_frame);
-      black_next_yellow_frame_length = 1;
-    }
-    
-
-    //  show stone_white yellow_frame corner
-
-    var stone_white_yellow_frame_top_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
-
-    stone_white_yellow_frame_top_left_corner.style.left = 1 * CELL_WIDTH + "px";
-    stone_white_yellow_frame_top_left_corner.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_top_left_corner);
-
-    var stone_white_yellow_frame_top_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
-
-    stone_white_yellow_frame_top_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    stone_white_yellow_frame_top_right_corner.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_top_right_corner);
-
-    var stone_white_yellow_frame_bottom_left_corner = stone_white_yellow_frame_corner.cloneNode(true);
-
-    stone_white_yellow_frame_bottom_left_corner.style.left = 1 * CELL_WIDTH + "px";
-    stone_white_yellow_frame_bottom_left_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_bottom_left_corner);
-
-    var stone_white_yellow_frame_bottom_right_corner = stone_white_yellow_frame_corner.cloneNode(true);
-
-    stone_white_yellow_frame_bottom_right_corner.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    stone_white_yellow_frame_bottom_right_corner.style.top = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_bottom_right_corner);
-
-    // show stone_white yellow_frame frame
-
-    var stone_white_yellow_frame_top_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
-
-    stone_white_yellow_frame_top_side_frame.style.left = 1 * CELL_WIDTH + "px";
-    stone_white_yellow_frame_top_side_frame.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_top_side_frame);
-
-
-    var stone_white_yellow_frame_bottom_side_frame = stone_white_yellow_frame_side_frame.cloneNode(true);
-
-    stone_white_yellow_frame_bottom_side_frame.style.left = 1 * CELL_WIDTH + "px";
-    stone_white_yellow_frame_bottom_side_frame.style.top  = 1 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_bottom_side_frame);
-
-
-    var stone_white_yellow_frame_left_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
-
-    stone_white_yellow_frame_left_vertical_frame.style.left = 1 * CELL_WIDTH  + "px";
-    stone_white_yellow_frame_left_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_left_vertical_frame);
-
-
-    var stone_white_yellow_frame_right_vertical_frame = stone_white_yellow_frame_vertical_frame.cloneNode(true);
-
-    stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
-    stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
-    //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
-*/
     //alert("edit_board == " + edit_board);
     //alert("searched == " + searched);
     //alert("search_saved_player_color = " + search_saved_player_color);
-    alert("doEditBoard2内4");
-    alert("edit_board = " + edit_board);
-    alert("searched = " + searched);
-    if (edit_board == false && searched == false) {	    
+    if (edit_flag == true && searched == false) {	    
       if (search_saved_player_color == BLOCK_KIND.BLACK) {
         if (white_next_yellow_frame_length > 0) {
           while(c.firstChild) {
@@ -5691,8 +5528,6 @@
         }
       }
     }
-
-    alert("doEditBoard2内5");
 
 
     // show cell
@@ -5869,46 +5704,8 @@
             }
           };
 	  
-/*
-	  your_stone_color_black.onclick = function() {
-            if (stone_black_yellow_frame_length == 0) {
-	      while(e.firstChild) {
-                e.removeChild(e.firstChild);
-              }
-	      stone_white_yellow_frame_length = 0;
-	      e.appendChild(stone_black_yellow_frame_top_left_corner);
-              e.appendChild(stone_black_yellow_frame_top_right_corner);
-              e.appendChild(stone_black_yellow_frame_bottom_left_corner);
-              e.appendChild(stone_black_yellow_frame_bottom_right_corner);
-              e.appendChild(stone_black_yellow_frame_top_side_frame);
-              e.appendChild(stone_black_yellow_frame_bottom_side_frame);
-              e.appendChild(stone_black_yellow_frame_left_vertical_frame);
-              e.appendChild(stone_black_yellow_frame_right_vertical_frame);
-              stone_black_yellow_frame_length = 1;
-	    }
-          };
-        
-	  your_stone_color_white.onclick = function() {
-	    if (stone_white_yellow_frame_length == 0) {
-              while(e.firstChild) {
-              e.removeChild(e.firstChild);
-              }
-              stone_black_yellow_frame_length = 0;
-              e.appendChild(stone_white_yellow_frame_top_left_corner);
-              e.appendChild(stone_white_yellow_frame_top_right_corner);
-              e.appendChild(stone_white_yellow_frame_bottom_left_corner);
-              e.appendChild(stone_white_yellow_frame_bottom_right_corner);
-              e.appendChild(stone_white_yellow_frame_top_side_frame);
-              e.appendChild(stone_white_yellow_frame_bottom_side_frame);
-              e.appendChild(stone_white_yellow_frame_left_vertical_frame);
-              e.appendChild(stone_white_yellow_frame_right_vertical_frame);
-              stone_white_yellow_frame_length = 1;
-            }
-          };
-*/
-
           cell.onclick = function() {
-	    alert("クリックしました。");
+	    //alert("クリックしました。");
 	    board[0][_x][_y] = choiced_stone_color;
 	    edit_flag = false;
 	    doEditBoard2();
@@ -5959,17 +5756,27 @@
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
       
-      alert("your_move = " + your_move);
-      alert("vsAI = " + vsAI);
-      alert("edit_board = " + edit_board);
+    } else if (searched == true) {
 
-      if (vsAI == true) {
-        $("#Computer_checkbox").prop("checked",true);
-      } else if (vsAI == false) {
-	$("#Computer_checkbox").prop("checked",false);
-      }
+      player_color = BLOCK_KIND.BLACK;
 
-      
+      vsAI = false;
+      isFirst = true;
+      your_move = "first";
+    }
+
+    alert("your_move = " + your_move);
+    alert("vsAI = " + vsAI);
+    alert("edit_board = " + edit_board);
+
+    if (vsAI == true) {
+      $("#Computer_checkbox").prop("checked",true);
+    } else if (vsAI == false) {
+      $("#Computer_checkbox").prop("checked",false);
+    }
+
+
+
       var e = document.getElementById("your_stone_color_frame");
 
       while(e.firstChild) {
@@ -6114,38 +5921,50 @@
       }
 	
 
-	    
-/*	    
-      if (your_move == "first") {
-        $("#First_checkbox").prop("checked",true);
-      } else if (your_move == "second") {
-	$("#First_checkbox").prop("checked",false);
+      if (searched == false) {	    
+        from_saved = search_saved_from_saved;
+        from_saved = false;
+        last_hand = search_saved_last_hand;
+        temp_hand = search_saved_temp_hand;
+        alert("temp_hand = " + temp_hand);
+        previous_temp_hand = search_saved_previous_temp_hand;
+        wrap_flag = false;
+        beginning_flag = search_saved_beginning_flag;
+        end_flag = search_saved_end_flag;
+        link_flag = search_saved_link_flag;
+        from_saved_first_flag = search_saved_from_saved_first_flag;
+        for_jump_temp_hand = search_saved_for_jump_temp_hand;
+      } else if (searched == true) {
+        from_saved = false;
+	last_hand = 0;
+	temp_hand = 0;
+	previous_temp_hand = 0;
+	wrap_flag = true;
+	beginning_flag = false;
+	end_flag = false;
+	link_flag = false;
+	from_saved_first_flag = false;
+        for_jump_temp_hand = 0;
       }
-*/	    
-      from_saved = search_saved_from_saved;
-      from_saved = false;
-      last_hand = search_saved_last_hand;
-      temp_hand = search_saved_temp_hand;
-      alert("temp_hand = " + temp_hand);
-      previous_temp_hand = search_saved_previous_temp_hand;
-      wrap_flag = false;
-      beginning_flag = search_saved_beginning_flag;
-      end_flag = search_saved_end_flag;
-      link_flag = search_saved_link_flag;
-      from_saved_first_flag = search_saved_from_saved_first_flag;
-      for_jump_temp_hand = search_saved_for_jump_temp_hand;
+
+
+
 
       cancel_flag = true;
       hand_flag =  false;
       edit_board = false;
-      searched = false;
 
-      // initial position
-      for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-        for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-          board[0][i][j] = search_saved_board[i][j];
+      if (searched == false) {
+        // initial position
+        for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+          for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+            board[0][i][j] = search_saved_board[i][j];
+          }
         }
+      } else if (searched == true) {
+        initBoard();
       }
+
 
       //alert("koko kitenai");
 
@@ -6169,7 +5988,9 @@
         doAiPlayer(temp_hand);
       //}          
 
-    } else if (searched == true) {
+	  
+	  
+    /* else if (searched == true) {
       alert("searched = " + searched);
       // initialize board
       initBoard();
@@ -6196,12 +6017,6 @@
       $("#stone_selection_frame").children().remove();
       $("#next_hand").children().remove();
       $("#stone_selection").children().remove();	  
-/*
-      $("#next_hand_frame").hide();
-      $("#stone_selection_frame").hide();
-      $("#next_hand_frame").hide();
-      $("#stone_selection_frame").hide();
-*/
       black_next_yellow_frame_length = 0;
       white_next_yellow_frame_length = 0;
       black_select_yellow_frame_length = 0;
@@ -6216,7 +6031,7 @@
         doAiPlayer(last_hand);
       }
     }
-
+*/
 
   });
 
@@ -6255,8 +6070,13 @@
     alert("棋譜を指定して下さい。");
 
     vsAI = false;
-    isFirst = search_saved_isFirst;
-    your_move = search_saved_your_move;
+    if (searched == false) {
+      isFirst = search_saved_isFirst;
+      your_move = search_saved_your_move;
+    } else if (searched == true) {
+      isFirst = true;
+      your_move = "first";
+    }
 
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);

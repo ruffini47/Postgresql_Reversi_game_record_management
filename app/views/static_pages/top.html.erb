@@ -28,7 +28,9 @@
     <% end %>
   </div>
   <div class="link">
-    <%= link_to "検索条件を指定する", new_user_search_path(current_user.id), class: "btn btn-primary" %>
+    <% if logged_in? %>	  
+      <%= link_to "検索条件を指定する", new_user_search_path(current_user.id), class: "btn btn-primary" %>
+    <% end %>
   </div>
   <div class="link">
     <% unless logged_in? %> 
