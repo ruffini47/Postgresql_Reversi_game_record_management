@@ -5038,6 +5038,8 @@
     $("#simple_kifu").hide();
     if (searched == false) {
       search_board_ok1_saved_player_color = search_saved_player_color;     
+    } else if (searched == true) {
+      search_board_ok1_saved_player_color = BLOCK_KIND.BLACK;
     }
     var b = document.getElementById("board");
 	  
@@ -6646,17 +6648,21 @@
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
 
-    if (searched == false) {	  
     
       player_color = search_board_ok1_saved_player_color;
       player_color_array[0] = player_color;
  
       alert("player_color = " + player_color);
 
+    if (searched == false) {	  
       vsAI = search_saved_vsAI;
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
-      
+    } else if (searched == true) {
+      vsAI = false;
+      isFirst = true;
+      your_move = "first";
+    }
            
 
       //alert("your_move = " + your_move);
@@ -6813,15 +6819,6 @@
         stone_black_yellow_frame_length = 0;
       }
 	
-
-	    
-/*	    
-      if (your_move == "first") {
-        $("#First_checkbox").prop("checked",true);
-      } else if (your_move == "second") {
-	$("#First_checkbox").prop("checked",false);
-      }
-*/	    
       from_saved = false;
       $("#a" + temp_hand).unwrap();
       temp_hand = 0;
@@ -6841,16 +6838,6 @@
       cancel_flag = true;
       hand_flag =  false;
       edit_board = false;
-      searched = false;
-
-      // initial position
-      //for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-      //  for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-      //    board[0][i][j] = search_saved_board[i][j];
-      //  }
-      //}
-
-      //alert("koko kitenai");
 
       $("#next_hand_frame").children().remove();
       $("#stone_selection_frame").children().remove();
@@ -6872,7 +6859,7 @@
         doAiPlayer(last_hand);
       //}          
 
-    } else if (searched == true) {
+/*   } else if (searched == true) {
       alert("searched = " + searched);
       // initialize board
       initBoard();
@@ -6899,12 +6886,7 @@
       $("#stone_selection_frame").children().remove();
       $("#next_hand").children().remove();
       $("#stone_selection").children().remove();	  
-/*
-      $("#next_hand_frame").hide();
-      $("#stone_selection_frame").hide();
-      $("#next_hand_frame").hide();
-      $("#stone_selection_frame").hide();
-*/
+
       black_next_yellow_frame_length = 0;
       white_next_yellow_frame_length = 0;
       black_select_yellow_frame_length = 0;
@@ -6919,7 +6901,7 @@
         doAiPlayer(last_hand);
       }
     }
-
+*/
 
 
 
