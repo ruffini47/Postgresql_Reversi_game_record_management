@@ -5947,9 +5947,6 @@
         for_jump_temp_hand = 0;
       }
 
-
-
-
       cancel_flag = true;
       hand_flag =  false;
       edit_board = false;
@@ -6368,7 +6365,13 @@
       vsAI = search_saved_vsAI;
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
-      
+    } else if (searched == true) {
+      vsAI = false;
+      isFirst = true;
+      your_move = "first";
+    }
+
+
       //alert("your_move = " + your_move);
       //alert("vsAI = " + vsAI);
       //alert("edit_board = " + edit_board);
@@ -6498,7 +6501,7 @@
       //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 
       if (your_move == "first") {
-        alert("your_move = " + your_move);
+        //alert("your_move = " + your_move);
         e.appendChild(stone_black_yellow_frame_top_left_corner);
         e.appendChild(stone_black_yellow_frame_top_right_corner);
         e.appendChild(stone_black_yellow_frame_bottom_left_corner);
@@ -6510,7 +6513,7 @@
         stone_black_yellow_frame_length = 1;
         stone_white_yellow_frame_length = 0;
       } else if (your_move == "second") {
-        alert("your_move = " + your_move);
+        //alert("your_move = " + your_move);
         e.appendChild(stone_white_yellow_frame_top_left_corner);
         e.appendChild(stone_white_yellow_frame_top_right_corner);
         e.appendChild(stone_white_yellow_frame_bottom_left_corner);
@@ -6525,13 +6528,6 @@
 	
 
 	    
-/*	    
-      if (your_move == "first") {
-        $("#First_checkbox").prop("checked",true);
-      } else if (your_move == "second") {
-	$("#First_checkbox").prop("checked",false);
-      }
-*/	    
       from_saved = false;
       temp_hand = last_hand;
       alert("temp_hand = " + temp_hand);
@@ -6547,14 +6543,7 @@
       cancel_flag = true;
       hand_flag =  false;
       edit_board = false;
-      searched = false;
 
-      // initial position
-      //for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-      //  for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-      //    board[0][i][j] = search_saved_board[i][j];
-      //  }
-      //}
 
       //alert("koko kitenai");
 
@@ -6577,7 +6566,7 @@
       //if(!isFirst) {
         doAiPlayer(last_hand);
       //}          
-
+/*
     } else if (searched == true) {
       alert("searched = " + searched);
       // initialize board
@@ -6605,12 +6594,6 @@
       $("#stone_selection_frame").children().remove();
       $("#next_hand").children().remove();
       $("#stone_selection").children().remove();	  
-/*
-      $("#next_hand_frame").hide();
-      $("#stone_selection_frame").hide();
-      $("#next_hand_frame").hide();
-      $("#stone_selection_frame").hide();
-*/
       black_next_yellow_frame_length = 0;
       white_next_yellow_frame_length = 0;
       black_select_yellow_frame_length = 0;
@@ -6625,7 +6608,7 @@
         doAiPlayer(last_hand);
       }
     }
-
+*/
 
 
 
