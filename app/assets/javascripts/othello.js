@@ -4325,6 +4325,7 @@
 
      player_color = player_color_array[0];
      //player_color_array[0] = 1;
+     var kifu_d = "";
 
      alert("kifu = " + kifu);
         var n;
@@ -4504,12 +4505,14 @@
 	        number_str = temp_handd;
 	      }
 	      if (player_color == BLOCK_KIND.BLACK) {
-	        display_kifu[temp_handd] = number_str + ": " + Alphabet[_x];
+	        display_kifu[temp_handd] = number_str + ": " + Alphabet[_x]
+		kifu_d = kifu_d + Alphabet[_x];
 	      } else if (player_color == BLOCK_KIND.WHITE) {
 	        display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
+		kifu_d = kifu_d + alphabet[_x];
 	      }
               display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
-
+              kifu_d = kifu_d + (_y + 1).toString();
 	      changePlayer(ii);
 
       
@@ -4566,7 +4569,7 @@
           }
           if (invalid_flag == true ) {
             alert((temp_handd + 1) +  "手目が不正です。switch");
-          }	  
+          }
 /*          $('#text0').val(gon.comment0);
 	  $('#text1').val(gon.comment1);
 	  $('#text2').val(gon.comment2);
@@ -4655,7 +4658,8 @@
 	  
 	  temp_hand = transform_saved_temp_hand;
           $("#a" + temp_hand).unwrap();   
-          player_color = player_color_array[temp_hand];  
+          player_color = player_color_array[temp_hand];
+          kifu = kifu_d;
 	  showBoard(temp_hand); 
         } 
 
@@ -4833,7 +4837,7 @@
 	      } else if (player_color == BLOCK_KIND.WHITE) {
 	        display_kifu[temp_handd] = number_str + ": " + alphabet[_x];
 	      }
-              display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString(); 
+              display_kifu[temp_handd] = display_kifu[temp_handd] + (_y + 1).toString();
 
 	      changePlayer(ii);
 
@@ -4895,7 +4899,7 @@
           }
           if (invalid_flag == true ) {
             alert((temp_handd + 1) +  "手目が不正です。switch");
-          }	  
+          }
           $('#text0').val(gon.comment0);
 	  $('#text1').val(gon.comment1);
 	  $('#text2').val(gon.comment2);
