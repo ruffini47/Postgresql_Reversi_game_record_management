@@ -1939,7 +1939,7 @@
     your_move = gon.your_move;
     vsAI = gon.vsAI;
     edit_board = gon.edit_board;
-    searched = gon.searched;
+    search_board = gon.search_board;
    
     //alert("from_saved = " + from_saved);
     //alert("your_move = " + your_move);
@@ -2145,8 +2145,8 @@
       doEditBoard1();
     }
 
-    if (searched == true) {
-      alert("searched = " + searched);
+    if (search_board == true) {
+      alert("search_board = " + search_board);
       from_saved = false;
       edit_board = false;
       edit_flag = true;
@@ -2286,7 +2286,7 @@
 
 //    alert("from_saved = " + from_saved);
 
-    if (searched == false && edit_board == false) {
+    if (search_board == false && edit_board == false) {
       //alert("edit_board = " + edit_board);
       $("#edit_board_ok").hide();
       $("#edit_board_cancel").hide();
@@ -5036,9 +5036,9 @@
   var doEditBoard2 = function() {
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
-    if (searched == false) {
+    if (search_board == false) {
       search_board_ok1_saved_player_color = search_saved_player_color;     
-    } else if (searched == true) {
+    } else if (search_board == true) {
       search_board_ok1_saved_player_color = BLOCK_KIND.BLACK;
     }
     var b = document.getElementById("board");
@@ -5487,9 +5487,9 @@
 
     //b.appendChild(none_select_yellow_frame_right_vertical_frame);
     //alert("edit_board == " + edit_board);
-    //alert("searched == " + searched);
+    //alert("search_board == " + search_board);
     //alert("search_saved_player_color = " + search_saved_player_color);
-    if (edit_flag == true && searched == false) {	    
+    if (edit_flag == true && search_board == false) {	    
       if (search_saved_player_color == BLOCK_KIND.BLACK) {
         if (white_next_yellow_frame_length > 0) {
           while(c.firstChild) {
@@ -5750,7 +5750,7 @@
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
 
-    if (searched == false) {	  
+    if (search_board == false) {	  
     
       player_color = search_saved_player_color;
  	    
@@ -5758,7 +5758,7 @@
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
       
-    } else if (searched == true) {
+    } else if (search_board == true) {
 
       player_color = BLOCK_KIND.BLACK;
 
@@ -5923,7 +5923,7 @@
       }
 	
 
-      if (searched == false) {	    
+      if (search_board == false) {	    
         from_saved = search_saved_from_saved;
         from_saved = false;
         last_hand = search_saved_last_hand;
@@ -5936,7 +5936,7 @@
         link_flag = search_saved_link_flag;
         from_saved_first_flag = search_saved_from_saved_first_flag;
         for_jump_temp_hand = search_saved_for_jump_temp_hand;
-      } else if (searched == true) {
+      } else if (search_board == true) {
         from_saved = false;
 	last_hand = 0;
 	temp_hand = 0;
@@ -5953,14 +5953,14 @@
       hand_flag =  false;
       edit_board = false;
 
-      if (searched == false) {
+      if (search_board == false) {
         // initial position
         for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
           for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
             board[0][i][j] = search_saved_board[i][j];
           }
         }
-      } else if (searched == true) {
+      } else if (search_board == true) {
         initBoard();
       }
 
@@ -5989,8 +5989,8 @@
 
 	  
 	  
-    /* else if (searched == true) {
-      alert("searched = " + searched);
+    /* else if (search_board == true) {
+      alert("search_board = " + search_board);
       // initialize board
       initBoard();
 
@@ -6069,10 +6069,10 @@
     alert("棋譜を指定して下さい。");
 
     vsAI = false;
-    if (searched == false) {
+    if (search_board == false) {
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
-    } else if (searched == true) {
+    } else if (search_board == true) {
       isFirst = true;
       your_move = "first";
     }
@@ -6356,9 +6356,9 @@
     $("#Computer_checkbox").prop("disabled", false);
     $("#Computer_text").prop("disabled", false);
 
-    //alert("searched = " + searched);
+    //alert("search_board = " + search_board);
 
-    if (searched == false) {	  
+    if (search_board == false) {	  
     
       //player_color = search_saved_player_color;
  
@@ -6367,7 +6367,7 @@
       vsAI = search_saved_vsAI;
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
-    } else if (searched == true) {
+    } else if (search_board == true) {
       vsAI = false;
       isFirst = true;
       your_move = "first";
@@ -6569,8 +6569,8 @@
         doAiPlayer(last_hand);
       //}          
 /*
-    } else if (searched == true) {
-      alert("searched = " + searched);
+    } else if (search_board == true) {
+      alert("search_board = " + search_board);
       // initialize board
       initBoard();
 
@@ -6654,11 +6654,11 @@
  
       alert("player_color = " + player_color);
 
-    if (searched == false) {	  
+    if (search_board == false) {	  
       vsAI = search_saved_vsAI;
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
-    } else if (searched == true) {
+    } else if (search_board == true) {
       vsAI = false;
       isFirst = true;
       your_move = "first";
@@ -6859,8 +6859,8 @@
         doAiPlayer(last_hand);
       //}          
 
-/*   } else if (searched == true) {
-      alert("searched = " + searched);
+/*   } else if (search_board == true) {
+      alert("search_board = " + search_board);
       // initialize board
       initBoard();
 

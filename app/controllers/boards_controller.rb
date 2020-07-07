@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
     gon.your_move = @game_record.your_move
     gon.vsAI = @game_record.vsAI
     gon.edit_board = @game_record.edit_board
-    gon.searched = @game_record.searched
+    gon.search_board = @game_record.search_board
     gon.board0 = @game_record.board0
     gon.player_color0 = @game_record.player_color0
     gon.comment0 = @game_record.comment0
