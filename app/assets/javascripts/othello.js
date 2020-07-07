@@ -2227,7 +2227,16 @@
       $("#save_comment").hide();
       $("#cancel_comment").hide();
       $("#delete_comment").hide();
-　　　//トップページで盤面編集を選んだ場合
+      $("#black_player_name").css({
+        backgroundColor: "gainsboro",
+        border: "3px solid",
+        borderColor: "yellow"
+      });
+      $("#white_player_name").css({
+        backgroundColor: "white",
+	border: "none"
+      });
+      //トップページで盤面編集を選んだ場合
       doEditBoard1();
     }
 
@@ -2266,6 +2275,15 @@
       $("#open_button").prop("disabled", true);
       $("#clipboard_button").prop("disabled", true);
       $(".comment_textarea").attr("disabled", true);	  
+      $("#black_player_name").css({
+        backgroundColor: "gainsboro",
+        border: "3px solid",
+        borderColor: "yellow"
+      });
+      $("#white_player_name").css({
+        backgroundColor: "white",
+	border: "none"
+      });
       //トップページで検索条件を指定するを選んだ場合
       doEditBoard2();
     }   
