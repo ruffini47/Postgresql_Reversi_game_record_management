@@ -770,7 +770,32 @@
     stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
     //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
-
+	  
+    if(edit_flag == false) {
+      if(black_next_yellow_frame_length > 0) {
+        $("#black_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+        $("#white_player_name").css({
+          backgroundColor: "white",
+	  border: "none"
+        });
+      } else if (white_next_yellow_frame_length > 0) {
+        $("#white_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+        $("#black_player_name").css({
+          backgroundColor: "white",
+          border: "none"
+        });
+      }
+    }
+	  
+	  
     if (edit_flag == true && edit_board == false) {	    
       if (saved_player_color == BLOCK_KIND.BLACK) {
         if (white_next_yellow_frame_length > 0) {
