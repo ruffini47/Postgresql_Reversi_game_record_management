@@ -770,7 +770,7 @@
     stone_white_yellow_frame_right_vertical_frame.style.left = 2 * CELL_WIDTH - YELLOW_WIDTH + "px";
     stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
     //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
-	  
+/*	  
     if(edit_flag == false) {
       if(black_next_yellow_frame_length > 0) {
         $("#black_player_name").css({
@@ -783,7 +783,7 @@
 	  border: "none"
         });
       } else if (white_next_yellow_frame_length > 0) {
-        $("#white_player_name").css({
+         $("#white_player_name").css({
           backgroundColor: "gainsboro",
           border: "3px solid",
           borderColor: "yellow"
@@ -794,7 +794,7 @@
         });
       }
     }
-	  
+*/	  
 	  
     if (edit_flag == true && edit_board == false) {	    
       if (saved_player_color == BLOCK_KIND.BLACK) {
@@ -902,6 +902,15 @@
               c.append(black_next_yellow_frame_left_vertical_frame);
               c.append(black_next_yellow_frame_right_vertical_frame);
 	      black_next_yellow_frame_length += 1;
+              $("#black_player_name").css({
+                backgroundColor: "gainsboro",
+                border: "3px solid",
+                borderColor: "yellow"
+              });
+              $("#white_player_name").css({
+                backgroundColor: "white",
+	        border: "none"
+              });
             }
           };
 
@@ -925,6 +934,15 @@
               c.append(white_next_yellow_frame_left_vertical_frame);
               c.append(white_next_yellow_frame_right_vertical_frame);
 	      white_next_yellow_frame_length += 1;
+              $("#white_player_name").css({
+                backgroundColor: "gainsboro",
+                border: "3px solid",
+                borderColor: "yellow"
+              });
+              $("#black_player_name").css({
+                backgroundColor: "white",
+                border: "none"
+              });
             }
 	  };
           
@@ -5566,7 +5584,7 @@
     none_select_yellow_frame_right_vertical_frame.style.left = 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
     none_select_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
 
-
+/*
     if(edit_flag == false) {
       if(black_next_yellow_frame_length > 0) {
         $("#black_player_name").css({
@@ -5590,7 +5608,7 @@
         });
       }
     }
-	
+*/	
     if (edit_flag == true && search_board == false) {	    
       if (search_saved_player_color == BLOCK_KIND.BLACK) {
         if (white_next_yellow_frame_length > 0) {
@@ -5698,7 +5716,16 @@
               c.append(black_next_yellow_frame_bottom_side_frame);
               c.append(black_next_yellow_frame_left_vertical_frame);
               c.append(black_next_yellow_frame_right_vertical_frame);
-	      black_next_yellow_frame_length += 1;	    
+	      black_next_yellow_frame_length += 1;
+	      $("#black_player_name").css({
+                backgroundColor: "gainsboro",
+                border: "3px solid",
+                borderColor: "yellow"
+              });
+              $("#white_player_name").css({
+                backgroundColor: "white",
+	        border: "none"
+              });
             }
           };
 
@@ -5723,6 +5750,15 @@
               c.append(white_next_yellow_frame_left_vertical_frame);
               c.append(white_next_yellow_frame_right_vertical_frame);
 	      white_next_yellow_frame_length += 1;
+              $("#white_player_name").css({
+                backgroundColor: "gainsboro",
+                border: "3px solid",
+                borderColor: "yellow"
+              });
+              $("#black_player_name").css({
+                backgroundColor: "white",
+                border: "none"
+              });
             }
 	  };
           
