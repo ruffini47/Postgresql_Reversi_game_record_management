@@ -5566,10 +5566,31 @@
     none_select_yellow_frame_right_vertical_frame.style.left = 3 * CELL_WIDTH - YELLOW_WIDTH + "px";
     none_select_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
 
-    //b.appendChild(none_select_yellow_frame_right_vertical_frame);
-    //alert("edit_board == " + edit_board);
-    //alert("search_board == " + search_board);
-    //alert("search_saved_player_color = " + search_saved_player_color);
+
+    if(edit_flag == false) {
+      if(black_next_yellow_frame_length > 0) {
+        $("#black_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+        $("#white_player_name").css({
+          backgroundColor: "white",
+	  border: "none"
+        });
+      } else if (white_next_yellow_frame_length > 0) {
+        $("#white_player_name").css({
+          backgroundColor: "gainsboro",
+          border: "3px solid",
+          borderColor: "yellow"
+        });
+        $("#black_player_name").css({
+          backgroundColor: "white",
+          border: "none"
+        });
+      }
+    }
+	
     if (edit_flag == true && search_board == false) {	    
       if (search_saved_player_color == BLOCK_KIND.BLACK) {
         if (white_next_yellow_frame_length > 0) {
