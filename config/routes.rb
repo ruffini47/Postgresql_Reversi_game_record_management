@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  #get 'searchs/new'
+  get 'searchs/new'
   get 'save_searched_game_record/update'
   get 'delete_comment/update'
   get 'save_comment/update'
-  #get 'edit_board/new'
+  get 'edit_board/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
