@@ -2603,6 +2603,7 @@
 	vsAI: vsAI,
 	initial_board: board[0],
 	player_color0: player_color_array[0],
+	edit_board: false,
       },
       success: function(data) {
         alert("success");
@@ -2699,6 +2700,7 @@
         comment62: $('#text62').val(),
         comment63: $('#text63').val(),
         comment64: $('#text64').val(),
+	edit_board: false,
       },
       success: function(data) {
         alert("success");
@@ -6372,6 +6374,7 @@
 	initial_board: board[0],
 	player_color0: player_color_array[0],
 	searched: true,
+	search_board: false,
       },
       success: function(data) {
         alert("success");

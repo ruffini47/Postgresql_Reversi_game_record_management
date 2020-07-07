@@ -6,6 +6,7 @@ class SaveGameRecordController < ApplicationController
     vsAI = params[:vsAI]
     initial_board = params[:initial_board]
     player_color0 = params[:player_color0]
+    edit_board = params[:edit_board]
     @game_record = GameRecord.find(game_record_id)
     @game_record.kifu = kifu
     @game_record.from_saved = true
@@ -13,6 +14,7 @@ class SaveGameRecordController < ApplicationController
     @game_record.vsAI = vsAI
     @game_record.edit_board = false
     @game_record.player_color0 = player_color0
+    @game_record.edit_board = edit_board
     if vsAI == "true"
       if your_move == "first"
 	@game_record.white_player = "AI プレイヤー"

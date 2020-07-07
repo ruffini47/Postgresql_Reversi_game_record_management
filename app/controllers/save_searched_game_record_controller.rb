@@ -5,6 +5,7 @@ class SaveSearchedGameRecordController < ApplicationController
     initial_board = params[:initial_board]
     player_color0 = params[:player_color0]
     searched = params[:searched]
+    search_board = params[:search_board]
     @game_record = GameRecord.find(game_record_id)
     @game_record.kifu = kifu
     @game_record.from_saved = true
@@ -13,6 +14,7 @@ class SaveSearchedGameRecordController < ApplicationController
     @game_record.edit_board = false
     @game_record.player_color0 = player_color0
     @game_record.searched = searched
+    @game_record.search_board = search_board
     
     board0 = ""
     i = []

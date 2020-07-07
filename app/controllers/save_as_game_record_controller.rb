@@ -5,6 +5,7 @@ class SaveAsGameRecordController < ApplicationController
     vsAI = params[:vsAI]
     initial_board = params[:initial_board]
     player_color0 = params[:player_color0]
+    edit_board = params[:edit_board]
     @game_record = GameRecord.new
     @game_record.title = params[:title]
     @game_record.black_player = params[:black_player]
@@ -84,6 +85,7 @@ class SaveAsGameRecordController < ApplicationController
     @game_record.comment62 = params[:comment62]
     @game_record.comment63 = params[:comment63]
     @game_record.comment64 = params[:comment64]
+    @game_record.edit_board = edit_board
 
     if vsAI == "true"
       if your_move == "first"
