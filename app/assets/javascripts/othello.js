@@ -2900,6 +2900,7 @@
     $("#EditBoard").prop("disabled", false);
     $("#Transform").prop("disabled", false);
     $("#Search").prop("disabled", false);
+    $("#searched_button").prop("disabled", false);
     $("#back_to_beginning").show();
     $("#previous_button").show();
     $("#next_button").show();
