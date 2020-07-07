@@ -2131,6 +2131,7 @@
       $("#EditBoard").prop("disabled", true);
       $("#Transform").prop("disabled", true);
       $("#Search").prop("disabled", true);
+      $("#searched_button").prop("disabled", true);
       $("#back_to_beginning").hide();
       $("#previous_button").hide();
       $("#next_button").hide();
