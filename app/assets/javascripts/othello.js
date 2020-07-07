@@ -5088,6 +5088,12 @@
     $("#next_button").hide();
     $("#go_to_end").hide();
     $("#your_stone_color_text").hide();
+    if(document.form1.Computer.checked) {
+      vsAI = true;
+    } else {
+      vsAI = false;
+    }
+    $("#Computer_checkbox").prop("checked",false);
     $("#Computer_checkbox").prop("disabled", true);
     $("#Computer_text").prop("disabled", true);
     $("#open_button").prop("disabled", true);
@@ -5115,12 +5121,14 @@
       }
     }
 
+//    vsAI = false;	  
+/*
     if(document.form1.Computer.checked) {
       vsAI = true;
     } else {
       vsAI = false;
     }
-
+*/
     search_saved_player_color = player_color;
     alert("search_saved_player_color = " + search_saved_player_color);
     from_saved = false;
@@ -6224,7 +6232,7 @@
 	
     alert("棋譜を指定して下さい。");
 
-    vsAI = false;
+    //vsAI = false;
     if (search_board == false) {
       isFirst = search_saved_isFirst;
       your_move = search_saved_your_move;
