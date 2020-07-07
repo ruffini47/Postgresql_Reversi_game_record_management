@@ -771,6 +771,48 @@
     stone_white_yellow_frame_right_vertical_frame.style.top = 0 * CELL_WIDTH + "px";
     //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 
+    if (edit_flag == true && edit_board == false) {	    
+      if (saved_player_color == BLOCK_KIND.BLACK) {
+        if (white_next_yellow_frame_length > 0) {
+          while(c.firstChild) {
+            c.removeChild(c.firstChild);
+          }
+          //white_next_yellow_frame_top_left_corner.remove();
+          white_next_yellow_frame_length -= 1;
+        }
+        if (black_next_yellow_frame_length == 0) {
+          c.append(black_next_yellow_frame_top_left_corner);
+          c.append(black_next_yellow_frame_top_right_corner);
+          c.append(black_next_yellow_frame_bottom_left_corner);
+          c.append(black_next_yellow_frame_bottom_right_corner);
+          c.append(black_next_yellow_frame_top_side_frame);
+          c.append(black_next_yellow_frame_bottom_side_frame);
+          c.append(black_next_yellow_frame_left_vertical_frame);
+          c.append(black_next_yellow_frame_right_vertical_frame);
+          black_next_yellow_frame_length += 1;	    
+        }
+      } else if (saved_player_color == BLOCK_KIND.WHITE) {
+        if (black_next_yellow_frame_length > 0) {
+	  while(c.firstChild) {
+            c.removeChild(c.firstChild);
+          }
+	  //black_next_yellow_frame_top_left_corner.remove();
+	  black_next_yellow_frame_length -= 1;
+        }
+        if (white_next_yellow_frame_length == 0) {
+          c.append(white_next_yellow_frame_top_left_corner);
+          c.append(white_next_yellow_frame_top_right_corner);
+          c.append(white_next_yellow_frame_bottom_left_corner);
+          c.append(white_next_yellow_frame_bottom_right_corner);
+          c.append(white_next_yellow_frame_top_side_frame);
+          c.append(white_next_yellow_frame_bottom_side_frame);
+          c.append(white_next_yellow_frame_left_vertical_frame);
+          c.append(white_next_yellow_frame_right_vertical_frame);
+	  white_next_yellow_frame_length += 1;
+        }
+      }
+    }
+
 
     // show cell
 
@@ -2131,7 +2173,7 @@
       $("#EditBoard").prop("disabled", true);
       $("#Transform").prop("disabled", true);
       $("#Search").prop("disabled", true);
-      $("#searched_button").prop("disabled", true);
+      $("#searched_button").prop("disabled", true)
       $("#back_to_beginning").hide();
       $("#previous_button").hide();
       $("#next_button").hide();
@@ -2820,7 +2862,15 @@
     alert("your_move = " + your_move);
     alert("vsAI = " + vsAI);
   
-    
+    if(black_next_yellow_frame_length > 0) {
+      player_color = BLOCK_KIND.BLACK;
+      player_color_array[0] = player_color;
+    } else if(white_next_yellow_frame_length > 0) {
+      player_color = BLOCK_KIND.WHITE;
+      player_color_array[0] = player_color;
+    }
+
+   
 
     from_saved = false;
     //alert("temp_hand = " + temp_hand);
