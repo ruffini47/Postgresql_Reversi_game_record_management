@@ -1,0 +1,7 @@
+<% provide(:title, 'Category index') %>
+<h1>棋譜カテゴリー別</h1>
+<div>
+  <% @parents.each do |parent| %>
+    <%= parent.name %>
+  <% end %>
+</div>

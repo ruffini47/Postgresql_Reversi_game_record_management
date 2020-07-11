@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_040115) do
+ActiveRecord::Schema.define(version: 2020_07_11_132822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
 
   create_table "game_records", force: :cascade do |t|
     t.string "title", default: "タイトル未設定"
     t.string "black_player", default: "プレイヤー1"
     t.string "white_player", default: "プレイヤー2"
-    t.datetime "date_played", default: "2020-07-06 12:00:35"
+    t.datetime "date_played", default: "2020-07-11 13:30:39"
     t.string "place_played", default: "場所未入力"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

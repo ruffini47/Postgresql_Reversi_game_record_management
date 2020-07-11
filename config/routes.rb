@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
+    resources :categories, only: :index;
     resources :searchs, only: [:new, :create]
     resources :game_records do
       get :search, on: :collection

@@ -17,6 +17,8 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # railsのデータをjavascriptで読むためのgem
 gem 'gon'
+# 多階層カテゴリを使うためのgem
+gem 'ancestry'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

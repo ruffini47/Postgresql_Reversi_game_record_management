@@ -20,3 +20,18 @@ User.create!(name: "Sample User",
                password: password,
                password_confirmation: password)
 end
+
+mouse = Category.create(:name=>"鼠定石")
+cow = Category.create(:name=>"牛定石")
+tiger = Category.create(:name=>"虎定石")
+rabbit = Category.create(:name=>"兎定石")
+others = Category.create(:name=>"その他")
+cow_basis = cow.children.create(:name=>"牛本定石")
+bullfight = cow.children.create(:name=>"闘牛定石")
+snake = cow.children.create(:name=>"蛇定石")
+buffalo = cow.children.create(:name=>"バッファロー定石")
+tiger_basis = tiger.children.create(:name=>"虎本定石")
+stephenson = tiger.children.create(:name=>"Stephenson")
+rabbit_basis = rabbit.children.create(:name=>"兎本定石")
+
+

@@ -38,6 +38,11 @@
     <% end %>
   </div>
   <div class="link">
+    <% if logged_in? %>
+      <%= link_to "カテゴリー検索", user_categories_path(current_user.id), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="link">
     <% unless logged_in? %> 
       <%= link_to "ログイン", login_path, class: "btn btn-primary" %>
     <% end %>
