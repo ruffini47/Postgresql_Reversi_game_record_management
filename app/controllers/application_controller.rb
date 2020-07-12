@@ -11,5 +11,10 @@ class ApplicationController < ActionController::Base
   def set_game_record
     @game_record = GameRecord.find(params[:id])
   end
+  
+  def set_parents
+    @parents = Category.where(ancestry: nil)
+  end
+
 
 end

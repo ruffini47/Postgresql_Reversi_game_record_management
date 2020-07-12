@@ -8,9 +8,9 @@
   <body>
     <h1>棋譜カテゴリー別</h1>
     <div class="category_list">
-      <div class= "parents_list box" >	  
+      <div class= "parents_list box" >
         <% @parents.each do |parent| %>
-          <%= link_to "#{parent.name}", category_path(parent), class: "parent_category",id: "#{parent.id}" %><br>
+          <%= link_to "#{parent.name}", category_path(current_user.id, parent), class: "parent_category",id: "#{parent.id}" %><br>
         <% end %>
       </div>
       <div class="children_list box">
@@ -18,6 +18,8 @@
       <div class="grand_children_list box">
       </div>
     </div>
+    <div class="now-selected-red"></div>
+    <div class="now-selected-gray"></div>
   </body>
   <%= javascript_include_tag 'search.js'%>
 </html>

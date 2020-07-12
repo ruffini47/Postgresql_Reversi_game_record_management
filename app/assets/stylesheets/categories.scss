@@ -1,3 +1,50 @@
 // Place all the styles related to the Categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.category_list
+{
+  display: flex;
+  margin-left: 100px;
+}
+
+.box
+{
+  width: 200px;
+  height: 150px;
+  border: 1px solid #fff;
+  text-align: left;
+  line-height: 150px;
+}
+
+.parents_list//for class
+{
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.parent_category//for class
+{ 
+  text-decoration: none;
+  color: black;
+}
+
+.children_list//for class
+{
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.grand_children_list//for class
+{
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.now-selected-red//for class
+{
+}
+
+.now-selected-gray//for class
+{
+}
