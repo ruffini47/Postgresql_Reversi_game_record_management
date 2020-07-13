@@ -34,7 +34,11 @@ buffalo = cow.children.create(:name=>"バッファロー定石")
 tiger_basis = tiger.children.create(:name=>"虎本定石")
 stephenson = tiger.children.create(:name=>"Stephenson")
 sharp_rose = rabbit.children.create(:name=>"シャープローズ")
+flat_rose = rabbit.children.create(:name=>"フラットローズ")
+tezuka_system = rabbit.children.create(:name=>"手塚システム")
 sharp_rose_basis = sharp_rose.children.create(:name=>"シャープローズ・基本形")
 sharp_rose_best = sharp_rose.children.create(:name=>"シャープローズ・最善形（＝為則ローズ）")
-
+flat_rose_basis = flat_rose.children.create(:name=>"フラットローズ・基本形")
+flat_rose_13_g5_rotation = flat_rose.children.create(:name=>"フラットローズ・13-g5 ローテーション型")
+flat_rose_13_g5_rotation_19_e2_change = flat_rose.children.create(:name=>"フラットローズ・13-g5 ローテーション型 19-e2変化");
 
