@@ -33,6 +33,8 @@ snake = cow.children.create(:name=>"蛇定石")
 buffalo = cow.children.create(:name=>"バッファロー定石")
 tiger_basis = tiger.children.create(:name=>"虎本定石")
 stephenson = tiger.children.create(:name=>"Stephenson")
-rabbit_basis = rabbit.children.create(:name=>"兎本定石")
+sharp_rose = rabbit.children.create(:name=>"シャープローズ")
+sharp_rose_basis = sharp_rose.children.create(:name=>"シャープローズ・基本形")
+sharp_rose_best = sharp_rose.children.create(:name=>"シャープローズ・最善形（＝為則ローズ）")
 
 

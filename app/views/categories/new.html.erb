@@ -9,8 +9,10 @@
     <h1>棋譜カテゴリー別</h1>
     <div class="category_list">
       <div class= "parents_list box" >
-        <% @parents.each do |parent| %>
-          <%= link_to "#{parent.name}", category_path(current_user.id, parent), class: "parent_category",id: "#{parent.id}" %><br>
+	 <% @parents.each do |parent| %>
+           <div>
+	     <%= link_to "#{parent.name}", category_path(current_user.id, parent.id), class: "parent_category",id: "#{parent.id}" %>
+	   </div>
         <% end %>
       </div>
       <div class="children_list box">
