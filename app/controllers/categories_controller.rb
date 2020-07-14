@@ -9,5 +9,6 @@ class CategoriesController < ApplicationController
       format.html
       format.json
     end
+
   end
 end

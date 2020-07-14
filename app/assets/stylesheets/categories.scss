@@ -29,6 +29,12 @@
   color: black;
 }
 
+.parent_category:hover
+{
+  text-decoration: none;
+}
+
+
 .children_list//for class
 {
   font-size: 1.3em;
@@ -43,10 +49,12 @@
 
 .now-selected-red//for class
 {
-  background-color: red;
+  //background-color: red;
+  text-decoration: none;
 }
 
 .now-selected-gray//for class
 {
-  background-color: gray;
+  //background-color: gray;
+  text-decoration: none;
 }

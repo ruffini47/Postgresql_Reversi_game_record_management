@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'save_category_searched_game_record/update'
-  get 'save_category_searched_game_record/update' 	
+  	
   get 'searchs/new'
   get 'save_searched_game_record/update'
   get 'delete_comment/update'
@@ -15,17 +14,12 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
+    #resources :categories, only: :index;
     resources :searchs, only: [:new, :create]
     resources :game_records do
       get :search, on: :collection
     end
   end
-
-#  resources :users, only: [:new] do
-#    resources :categories, only: [:new] do
-#      get :new
-#    end
-#  end
 
   #VS AI Play 設定
   get '/vs_ai_configration/new', to: 'vs_ai_configration#new', as: 'vs_ai_configration'

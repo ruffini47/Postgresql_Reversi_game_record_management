@@ -2,16 +2,20 @@ $(function() {
   var user_id = gon.user_id;
 // 子カテゴリーを追加するための処理です。
   function buildChildHTML(child){
-    var html =`<div><a class="child_category" id="${child.id}" 
-                href="/users/${user_id}/category/${child.id}">${child.name}</a></div>`;
+
+    var html =`<div><a class="child_category" id="${child.id}"
+               href="/users/${user_id}/category/${child.id}">${child.name}</a></div>`;
+
+    //var html =`<div><%= link_to "${child.name}", caterogy_path(current_user.id, child.id), {method: :get, id: "${child.id}", class: "child_category"}%></div>`;
+
     return html;
   }
 
   $(".parent_category").on("mouseover", function() {
-    var id = this.id//どのリンクにマウスが乗ってるのか取得します
+    var id = this.id;//どのリンクにマウスが乗ってるのか取得します
     //alert("user_id = " + user_id);
-    $(".now-selected-red").removeClass("now-selected-red")//赤色のcssのためです
-    $('#' + id).addClass("now-selected-red");//赤色のcssのためです
+    //$(".now-selected-red").removeClass("now-selected-red")//赤色のcssのためです
+    //$('#' + id).addClass("now-selected-red");//赤色のcssのためです
     $(".child_category").remove();//一旦出ている子カテゴリ消します！
     $(".grand_child_category").remove();//孫、てめえもだ！
     $.ajax({
@@ -35,9 +39,10 @@ $(function() {
   }
 
   $(document).on("mouseover", ".child_category", function () {//子カテゴリーのリストは動的に追加されたHTMLのため
-    var id = this.id
-    $(".now-selected-gray").removeClass("now-selected-gray");//灰色のcssのため
-    $('#' + id).addClass("now-selected-gray");//灰色のcssのため
+    var id = this.id;
+    //$(".now-selected-gray").removeClass("now-selected-gray");//灰色のcssのため
+    //$('#' + id).addClass("now-selected-gray");//灰色のcssのため	  
+    $(".grand_child_category").remove();
     $.ajax({
       type: 'GET',
       url: `/users/${user_id}/category/${id}`,
@@ -52,5 +57,29 @@ $(function() {
         $(".grand_child_category").remove();
       });
     });
-  });  
+  });
+
+  $(document).on("mouseover", ".grand_child_category", function() {
+    var grand_child_id = this.id;
+    alert("grand_child_id = " + grand_child_id);
+    $.ajax({
+      url: '/save_category_searched_game_record/update',
+      type: "GET",
+      dataType: "html",
+      async: true,
+      data: {
+        grand_child_id: grand_child_id,
+      },
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
+    });
+
+
+
+  });
+
 });

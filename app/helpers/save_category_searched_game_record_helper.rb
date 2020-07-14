@@ -1,0 +1,2 @@
+module SaveCategorySearchedGameRecordHelper
+end
