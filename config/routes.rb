@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'save_category_searched_game_record/update'
   get 'save_category_searched_game_record/update' 	
   get 'searchs/new'
   get 'save_searched_game_record/update'
