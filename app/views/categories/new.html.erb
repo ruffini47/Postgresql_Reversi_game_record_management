@@ -9,16 +9,14 @@
     <h1>棋譜カテゴリー別</h1>
       <%= form_with(local: true) do |f| %>
         <div id="parent_box">
-	  <%= f.select :category_id, options_for_select(@cagegory_parent_array.map{|c| [c[:name], c[:id]]}), {include_blank: "選択してください"}, {class: "parent_caterogy_box", id: "parent_category"} %>
-        </div>
+	  <%= f.select :category_id, options_for_select(@category_parent_array.map{|c| [c[:name], c[:id]]}), {include_blank: "選択してください"}, {class: "parent_caterogy_box", id: "parent_category"} %>
+	</div>
       <% end %>
       <div class="item_input__body__category__children" id="children_box">
       </div>
       <div class="item_input__body__category__grandchildren" id="grandchildren_box">
       </div>
     </div>
-    <div class="now-selected-red"></div>
-    <div class="now-selected-gray"></div>
   </body>
-  <%= javascript_include_tag 'search2.js'%>
+  <%= javascript_include_tag 'search.js'%>
 </html>

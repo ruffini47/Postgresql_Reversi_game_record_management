@@ -40,6 +40,22 @@ class CategoriesController < ApplicationController
     @category_grandchildren = @item.category.parent.children
   end
 
+  def new
+    #gon.user_id = current_user.id
+    @category_parent_array = Category.where(ancestry: nil)
+    if params[:generation].to_i == 1
+      @category_children = Category.find(params[:parent_name]).children
+    elsif params[:generation].to_i == 2
+      @category_grandchildren = Category.find("#{params[:child_id]}").children
+    end
+    #@children = Category.find(params[:parent_id]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+
   private
   #親カテゴリー
   def set_category  

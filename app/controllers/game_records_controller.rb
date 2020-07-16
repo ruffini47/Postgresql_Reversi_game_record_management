@@ -53,6 +53,17 @@ class GameRecordsController < ApplicationController
     @game_records = GameRecord.where(user_id: current_user.id, board0: game_record.board0, player_color0: game_record.player_color0, searched: false).where("kifu LIKE ?", game_record.kifu + "%")
   end
 
+  #jsonで親の名前で検索し、紐づく小カテゴリーの配列を取得
+  def get_category_children
+    @category_children = Category.find(params[:parent_name]).children
+  end
+
+  #jsonで子カテゴリーに紐づく孫カテゴリーの配列を取得
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+
   private
 
     def game_records_params

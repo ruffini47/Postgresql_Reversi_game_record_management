@@ -26,6 +26,20 @@ Rails.application.routes.draw do
 #    end
 #  end
 
+  resources :users do
+    resources :game_records do
+      collection do
+        get 'get_category_children', defaults: { format: 'json' }
+        get 'get_category_grandchildren', defaults: { format: 'json' }
+      end
+      member do
+        get 'get_category_children', defaults: { format: 'json' }
+        get 'get_category_grandchildren', defaults: { format: 'json' }
+      end
+    end
+  end
+
+
   #VS AI Play 設定
   get '/vs_ai_configration/new', to: 'vs_ai_configration#new', as: 'vs_ai_configration'
 

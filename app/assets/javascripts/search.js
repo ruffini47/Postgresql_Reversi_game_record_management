@@ -1,85 +1,113 @@
-$(function() {
-  var user_id = gon.user_id;
-// 子カテゴリーを追加するための処理です。
-  function buildChildHTML(child){
+function appendOption(category) {
+  let html = 
+    `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+  return html;
+}
 
-    var html =`<div><a class="child_category" id="${child.id}"
-               href="/users/${user_id}/category/${child.id}">${child.name}</a></div>`;
+//子カテゴリーのHTML
+function appendChildrenBox(insertHTML) {
+  let childSelectHtml = '';
+  childSelectHtml =
+    `<select class="item_input__body__category__children--select" id="children_category">
+       <option value="" data-category="" >選択してください</option>
+       ${insertHTML}</select>`;
+  $('#children_box').append(childSelectHtml);
+}
 
-    //var html =`<div><%= link_to "${child.name}", caterogy_path(current_user.id, child.id), {method: :get, id: "${child.id}", class: "child_category"}%></div>`;
+//孫カテゴリーのHTML
+function appendGrandchildrenBox(insertHTML) {
+  let grandchildSelectHtml = '';
+  grandchildSelectHtml =
+    `<select class="item_input__body__category__grandchildren--select" id="grandchildren_category" name="item[category_id]">
+       <option value="" data-category="" >選択してください</option>
+       ${insertHTML}</select>`;
+  $('#grandchildren_box').append(grandchildSelectHtml);
+}
 
-    return html;
-  }
-
-  $(".parent_category").on("mouseover", function() {
-    var id = this.id;//どのリンクにマウスが乗ってるのか取得します
-    //alert("user_id = " + user_id);
-    //$(".now-selected-red").removeClass("now-selected-red")//赤色のcssのためです
-    //$('#' + id).addClass("now-selected-red");//赤色のcssのためです
-    $(".child_category").remove();//一旦出ている子カテゴリ消します！
-    $(".grand_child_category").remove();//孫、てめえもだ！
-    $.ajax({
+//親カテゴリー選択によるイベント
+$(document).on("change","#parent_category", function() {
+  //選択された親カテゴリーの名前取得 → コントローラーに送る
+  let parentCategory =  $("#parent_category").val();
+  if (parentCategory != "") {
+    $.ajax( {
       type: 'GET',
-      url: `/users/${user_id}/category/${id}`,//とりあえずここでは、newアクションに飛ばしてます
-      data: {parent_id: id},//どの親の要素かを送ります　params[:parent_id]で送られる
-      dataType: 'json'
-    }).done(function(children) {
-      children.forEach(function (child) {//帰ってきた子カテゴリー（配列）
-        var html = buildChildHTML(child);//HTMLにして
-        $(".children_list").append(html);//リストに追加します
-      })
-    });
-  });
-
-  // 孫カテゴリを追加する処理です　基本的に子要素と同じです！
-  function buildGrandChildHTML(child){
-    var html =`<div><a class="grand_child_category" id="${child.id}"
-               href="/users/${user_id}/category/${child.id}">${child.name}</a></div>`;
-    return html;
-  }
-
-  $(document).on("mouseover", ".child_category", function () {//子カテゴリーのリストは動的に追加されたHTMLのため
-    var id = this.id;
-    //$(".now-selected-gray").removeClass("now-selected-gray");//灰色のcssのため
-    //$('#' + id).addClass("now-selected-gray");//灰色のcssのため	  
-    $(".grand_child_category").remove();
-    $.ajax({
-      type: 'GET',
-      url: `/users/${user_id}/category/${id}`,
-      data: {parent_id: id},
-      dataType: 'json'
-    }).done(function(children) {
-      children.forEach(function (child) {
-        var html = buildGrandChildHTML(child);
-        $(".grand_children_list").append(html);
-      })
-      $(document).on("mouseover", ".child_category", function () {
-        $(".grand_child_category").remove();
-      });
-    });
-  });
-
-  $(document).on("mouseover", ".grand_child_category", function() {
-    var grand_child_id = this.id;
-    alert("grand_child_id = " + grand_child_id);
-    $.ajax({
-      url: '/save_category_searched_game_record/update',
-      type: "GET",
-      dataType: "html",
-      async: true,
-      data: {
-        grand_child_id: grand_child_id,
-      },
+      url: `/users/1/category/${parentCategory}`,
+      data: { generation: 1,
+	      parent_name: parentCategory },
+      dataType: 'json',
       success: function(data) {
         alert("success");
       },
       error: function(data) {
         alert("errror");
       }
-    });
-
-
-
-  });
-
+    })
+    .done(function(children) {
+      alert("done");
+      //親カテゴリーが変更されたら、子/孫カテゴリー、サイズを削除し、初期値にする
+      $("#children_box").empty();
+      $("#grandchildren_box").empty();
+      let insertHTML = '';
+      alert("insertHTML = " + insertHTML);
+      alert("children = " + children);
+      alert("children.length = " + children.length);
+      children.forEach(function(child) {
+        insertHTML += appendOption(child);
+      });
+      alert("insertHTML = " + insertHTML);
+      appendChildrenBox(insertHTML);
+    })
+    .fail(function() {
+      alert('error：子カテゴリーの取得に失敗');
+    })
+  }else{
+    $("#children_box").empty();
+    $("#grandchildren_box").empty();
+  }
 });
+
+//子カテゴリー選択によるイベント発火
+$(document).on('change', '#children_box', function() {
+  //選択された子カテゴリーidを取得
+  let childId = $('#children_category option:selected').data('category');
+  //子カテゴリーが初期値でない場合
+  if (childId != ""){
+    $.ajax({
+      url: `/users/1/category/${childId}`,
+      type: 'GET',
+      data: { generation: 2,
+	      child_id: childId, },
+      datatype: 'json',
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
+    })
+    .done(function(grandchildren) {
+      if (grandchildren.length != 0) {
+        $("#grandchildren_box").empty();
+        let insertHTML = '';
+        grandchildren.forEach(function(grandchild) {
+          insertHTML += appendOption(grandchild);
+        });
+        appendGrandchildrenBox(insertHTML);
+      }
+    })
+    .fail(function() {
+      alert('error:孫カテゴリーの取得に失敗');
+    })
+  }else{
+    $("#grandchildren_box").empty();
+  }
+});
+
+//孫カテゴリー選択によるイベント発火
+$(document).on('change', '#grandchildren_box', function() {
+  let grandchildId = $('#grandchildren_category option:selected').data('category');
+  if (grandchildId != "") {
+  } else {
+  }
+});
+
