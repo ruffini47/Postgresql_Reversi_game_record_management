@@ -28,10 +28,11 @@ function appendGrandchildrenBox(insertHTML) {
 $(document).on("change","#parent_category", function() {
   //選択された親カテゴリーの名前取得 → コントローラーに送る
   let parentCategory =  $("#parent_category").val();
+  alert("parentCategory = " + parentCategory);
   if (parentCategory != "") {
     $.ajax( {
       type: 'GET',
-      url: `/users/1/category/${parentCategory}`,
+      url: `/users/1/game_records/${parentCategory}/get_category_children`,
       data: { generation: 1,
 	      parent_name: parentCategory },
       dataType: 'json',
@@ -43,18 +44,13 @@ $(document).on("change","#parent_category", function() {
       }
     })
     .done(function(children) {
-      alert("done");
       //親カテゴリーが変更されたら、子/孫カテゴリー、サイズを削除し、初期値にする
       $("#children_box").empty();
       $("#grandchildren_box").empty();
       let insertHTML = '';
-      alert("insertHTML = " + insertHTML);
-      alert("children = " + children);
-      alert("children.length = " + children.length);
       children.forEach(function(child) {
         insertHTML += appendOption(child);
       });
-      alert("insertHTML = " + insertHTML);
       appendChildrenBox(insertHTML);
     })
     .fail(function() {
@@ -70,10 +66,11 @@ $(document).on("change","#parent_category", function() {
 $(document).on('change', '#children_box', function() {
   //選択された子カテゴリーidを取得
   let childId = $('#children_category option:selected').data('category');
+  alert("childId = " + childId);
   //子カテゴリーが初期値でない場合
   if (childId != ""){
     $.ajax({
-      url: `/users/1/category/${childId}`,
+      url: `/users/1/game_records/${childId}/get_category_grandchildren`,
       type: 'GET',
       data: { generation: 2,
 	      child_id: childId, },

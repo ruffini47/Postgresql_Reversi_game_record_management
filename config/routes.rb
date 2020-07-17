@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 #    end
 #  end
 
+
+  # カテゴリ検索する
   resources :users do
     resources :game_records do
       collection do
