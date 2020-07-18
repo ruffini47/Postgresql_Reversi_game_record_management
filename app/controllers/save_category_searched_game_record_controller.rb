@@ -7,7 +7,6 @@ class SaveCategorySearchedGameRecordController < ApplicationController
     end
     initial_board = ""
     player_color0 = 1;
-    debugger
     #@game_records = GameRecord.where(user_id: current_user.id, board0: initial_borad, player_color0: player_color0).where("kifu LIKE ?", kifu + "%")
   end
 end
