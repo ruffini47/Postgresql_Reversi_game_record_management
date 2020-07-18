@@ -32,9 +32,8 @@ $(document).on("change","#parent_category", function() {
   if (parentCategory != "") {
     $.ajax( {
       type: 'GET',
-      url: `/users/1/game_records/${parentCategory}/get_category_children`,
-      data: { generation: 1,
-	      parent_name: parentCategory },
+      url: `/users/1/books/${parentCategory}/get_category_children`,
+      data: { parent_name: parentCategory },
       dataType: 'json',
       success: function(data) {
         alert("success");
@@ -70,10 +69,9 @@ $(document).on('change', '#children_box', function() {
   //子カテゴリーが初期値でない場合
   if (childId != ""){
     $.ajax({
-      url: `/users/1/game_records/${childId}/get_category_grandchildren`,
+      url: `/users/1/books/${childId}/get_category_grandchildren`,
       type: 'GET',
-      data: { generation: 2,
-	      child_id: childId, },
+      data: { child_id: childId },
       datatype: 'json',
       success: function(data) {
         alert("success");
@@ -104,7 +102,22 @@ $(document).on('change', '#children_box', function() {
 $(document).on('change', '#grandchildren_box', function() {
   let grandchildId = $('#grandchildren_category option:selected').data('category');
   if (grandchildId != "") {
-  } else {
+    alert("grand_child_id = " + grandchildId);
+    $.ajax({
+      url: '/save_category_searched_game_record/update',
+      type: "GET",
+      dataType: "html",
+      async: true,
+      data: {
+        grand_child_id: grandchildId,
+      },
+      success: function(data) {
+        alert("success");
+      },
+      error: function(data) {
+        alert("errror");
+      }
+    });
   }
 });
 

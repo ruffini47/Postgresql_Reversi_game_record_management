@@ -28,18 +28,18 @@ Rails.application.routes.draw do
 
 
   # カテゴリ検索する
-  resources :users do
-    resources :game_records do
-      collection do
-        get 'get_category_children', defaults: { format: 'json' }
-        get 'get_category_grandchildren', defaults: { format: 'json' }
-      end
-      member do
-        get 'get_category_children', defaults: { format: 'json' }
-        get 'get_category_grandchildren', defaults: { format: 'json' }
-      end
-    end
-  end
+#  resources :users do
+#    resources :books do
+#      collection do
+#        get 'get_category_children', defaults: { format: 'json' }
+#        get 'get_category_grandchildren', defaults: { format: 'json' }
+#      end
+#      member do
+#        get 'get_category_children', defaults: { format: 'json' }
+#        get 'get_category_grandchildren', defaults: { format: 'json' }
+#      end
+#    end
+#  end
 
 
   #VS AI Play 設定
@@ -68,6 +68,9 @@ Rails.application.routes.draw do
 
   # カテゴリ検索する
   get '/users/:user_id/category/:parent_id' , to:'categories#new', as: 'category'
+
+  get '/users/:user_id/books/:id/get_category_children', to: 'books#get_category_children', as: 'get_category_children_user_book', defaults: { format: 'json' }
+  get '/users/:user_id/books/:id/get_category_grandchildren', to: 'books#get_category_grandchildren', as: 'get_category_grandchildren_user_book', defaults: { format: 'json' }
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

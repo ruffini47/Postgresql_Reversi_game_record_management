@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_many :game_records
+  has_many :books
   has_ancestry
 end
