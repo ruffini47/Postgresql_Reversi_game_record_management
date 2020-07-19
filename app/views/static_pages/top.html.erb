@@ -39,7 +39,12 @@
   </div>
   <div class="link">
     <% if logged_in? %>
-      <%= link_to "カテゴリー検索", category_path(current_user.id, 1), class: "btn btn-primary" %>
+      <%= link_to "カテゴリー検索する", category_path(current_user.id), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div class="link">
+    <% if logged_in? %>
+      <%= link_to "カテゴリー検索結果を表示する", "#", class: "btn btn-primary" %>
     <% end %>
   </div>
   <div class="link">

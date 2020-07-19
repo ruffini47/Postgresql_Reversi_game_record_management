@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
 #  end
 
   def new
-    #gon.user_id = current_user.id
+    gon.user_id = current_user.id
     @category_parent_array = Category.where(ancestry: nil)
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_18_104333) do
+ActiveRecord::Schema.define(version: 2020_07_19_081459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_07_18_104333) do
     t.string "title", default: "タイトル未設定"
     t.string "black_player", default: "プレイヤー1"
     t.string "white_player", default: "プレイヤー2"
-    t.datetime "date_played", default: "2020-07-18 10:47:26"
+    t.datetime "date_played", default: "2020-07-19 06:07:08"
     t.string "place_played", default: "場所未入力"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_07_18_104333) do
     t.text "comment64"
     t.boolean "searched", default: false
     t.boolean "search_board", default: false
+    t.boolean "category_searched", default: false
     t.index ["user_id"], name: "index_game_records_on_user_id"
   end
 

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   get 'save_category_searched_game_record/update' 	
-  get 'searchs/new'
+  #get 'searchs/new'
   get 'save_searched_game_record/update'
   get 'delete_comment/update'
   get 'save_comment/update'
-  get 'edit_board/new'
+  #get 'edit_board/new'
   root 'static_pages#top'
   get '/signup', to: 'users#new'
 
@@ -67,8 +67,7 @@ Rails.application.routes.draw do
   post 'users/:user_id/edit_board/create', to:'edit_board#create', as: 'create_user_edit_board'
 
   # カテゴリ検索する
-  get '/users/:user_id/category/:parent_id' , to:'categories#new', as: 'category'
-
+  get '/users/:user_id/category/' , to:'categories#new', as: 'category'
   get '/users/:user_id/books/:id/get_category_children', to: 'books#get_category_children', as: 'get_category_children_user_book', defaults: { format: 'json' }
   get '/users/:user_id/books/:id/get_category_grandchildren', to: 'books#get_category_grandchildren', as: 'get_category_grandchildren_user_book', defaults: { format: 'json' }
 
