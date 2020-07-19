@@ -7,6 +7,7 @@
 
   <body>
     <h1>棋譜カテゴリー別</h1>
+    <div class="center2">
       <%= form_with(local: true) do |f| %>
         <div id="parent_box">
 	  <%= f.select :category_id, options_for_select(@category_parent_array.map{|c| [c[:name], c[:id]]}), {include_blank: "選択してください"}, {class: "parent_caterogy_box", id: "parent_category"} %>
@@ -16,6 +17,11 @@
       </div>
       <div class="item_input__body__category__grandchildren" id="grandchildren_box">
       </div>
+    </div>
+    <div class="link" id="result">
+      <% if logged_in? %>
+	<%= link_to "カテゴリー検索結果を表示する", "#", class: "btn btn-primary btn-lg" %>
+      <% end %>
     </div>
   </body>
   <%= javascript_include_tag 'search.js'%>

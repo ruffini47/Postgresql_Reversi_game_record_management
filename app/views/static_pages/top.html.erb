@@ -6,12 +6,12 @@
     <% if logged_in? %>	  
     	<%= link_to "ふたりで遊ぶ", new_user_game_record_path(current_user.id), class: "btn btn-primary" %>
     <% end %>
-  </div class="link">
+  </div>
   <div class="link">
     <% if logged_in? %>	  
     	<%= link_to "AIと対戦する", vs_ai_configration_path, class: "btn btn-primary" %>
     <% end %>
-  </div class="link">
+  </div>
   <div class="link">
     <% if logged_in? %>
       <%= link_to "盤面を編集する", new_user_edit_board_path(current_user.id), class: "btn btn-primary" %>
@@ -40,11 +40,6 @@
   <div class="link">
     <% if logged_in? %>
       <%= link_to "カテゴリー検索する", category_path(current_user.id), class: "btn btn-primary" %>
-    <% end %>
-  </div>
-  <div class="link">
-    <% if logged_in? %>
-      <%= link_to "カテゴリー検索結果を表示する", "#", class: "btn btn-primary" %>
     <% end %>
   </div>
   <div class="link">

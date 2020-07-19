@@ -2,59 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.category_list
+.center2
 {
+  margin-top: 80px;
   display: flex;
-  margin-left: 100px;
 }
 
-//.box
-//{
-//  width: 200px;
-//  height: 150px;
-//  border: 1px solid #fff;
-//  text-align: left;
-//  line-height: 150px;
-//}
-
-.parents_list//for class
+#parent_box//for id
 {
-  font-size: 1.3em;
-  line-height: 1.5em;
+  margin-left: 250px;
 }
 
-.parent_category//for class
-{ 
-  text-decoration: none;
-  color: black;
-}
-
-.parent_category:hover
+#children_box//for id
 {
-  text-decoration: none;
+  margin-left: 50px;
 }
 
-
-.children_list//for class
+#grandchildren_box//for id
 {
-  font-size: 1.3em;
-  line-height: 1.5em;
+  margin-left: 50px;
 }
 
-.grand_children_list//for class
+#parent_category
 {
-  font-size: 1.3em;
-  line-height: 1.5em;
+  //height: 30px;
+  font-size: 20px;
+  //border:1px;
 }
 
-.now-selected-red//for class
+#children_category
 {
-  //background-color: red;
-  text-decoration: none;
+  //height: 30px;
+  font-size: 20px;
+  //border:1px;
 }
 
-.now-selected-gray//for class
+#grandchildren_category
 {
-  //background-color: gray;
-  text-decoration: none;
+  //height: 30px;
+  font-size: 20px;
+  //border:1px;
 }
+
+
+
+#result//for id
+{
+  margin-top: 100px;
+  text-align: center;
+}
+
+.h-40px {
+  height: 40px !important;
+}
+
+.btn {
+  font-size: 40px;
+}
+
