@@ -20,7 +20,7 @@
     </div>
     <div class="link" id="result">
       <% if logged_in? %>
-	<%= link_to "カテゴリー検索結果を表示する", "#", class: "btn btn-primary btn-lg" %>
+	<%= link_to "カテゴリー検索結果を表示する", category_search_user_game_records_path(current_user.id), class: "btn btn-primary btn-lg" %>
       <% end %>
     </div>
   </body>

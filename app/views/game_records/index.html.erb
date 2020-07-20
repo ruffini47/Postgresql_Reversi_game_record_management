@@ -14,6 +14,7 @@
 	<td>AIとの対局</td>
 	<td>あなたの手番</td>
         <td>searched</td>
+	<td>category_searched<td>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -47,7 +48,12 @@
 	  <td>○</td>
 	<% else %>
 	  <td>×</td>
-	<% end %>
+        <% end %>
+	<% if game_record.category_searched %>
+	  <td>○</td>
+        <% else %>
+          <td>×</td>
+        <% end %>
 	<td><%= link_to "編集", edit_user_game_record_path(current_user.id, game_record.id), class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to "削除", user_game_record_path(current_user.id, game_record.id), method: :delete,
               data: { confirm: "「#{game_record.title}」を削除してよろしいですか？" }, class: "btn btn-primary btn-sm" %></td>

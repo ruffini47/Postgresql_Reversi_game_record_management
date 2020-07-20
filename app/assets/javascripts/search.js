@@ -67,7 +67,7 @@
         type: 'GET',
         url: `/users/{user_id}/books/${parentCategory}/get_category_children`,
         data: { parent_name: parentCategory,
-	        initial_board: board0, },
+	        initial_board: board0},
         dataType: 'json',
         success: function(data) {
           alert("success");
@@ -106,7 +106,7 @@
         url: `/users/${user_id}/books/${childId}/get_category_grandchildren`,
         type: 'GET',
         data: { child_id: childId,
-	        initial_board: board0, },
+	        initial_board: board0},
         datatype: 'json',
         success: function(data) {
           alert("success");
@@ -145,8 +145,7 @@
         async: true,
         data: {
           grand_child_id: grandchildId,
-          initial_board: board0,
-        },
+          initial_board: board0},
         success: function(data) {
           alert("success");
         },

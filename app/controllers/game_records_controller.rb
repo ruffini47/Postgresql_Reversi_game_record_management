@@ -53,6 +53,11 @@ class GameRecordsController < ApplicationController
     @game_records = GameRecord.where(user_id: current_user.id, board0: game_record.board0, player_color0: game_record.player_color0, searched: false).where("kifu LIKE ?", game_record.kifu + "%")
   end
 
+  def category_search
+    @game_records = GameRecord.where(user_id: current_user.id, category_searched: true)
+  end
+
+
   private
 
     def game_records_params

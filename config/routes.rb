@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   resources :users do
     resources :searchs, only: [:new, :create]
     resources :game_records do
+      # 検索結果を表示する
       get :search, on: :collection
+      # カテゴリ検索結果を表示する
+      get :category_search, on: :collection
     end
   end
 
