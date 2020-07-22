@@ -2,33 +2,33 @@
 
   var user_id = gon.user_id;
 
-  var BOARD_SIZE = {
-    'WIDTH' :8,
-    'HEIGHT' :8,
-  };
+//  var BOARD_SIZE = {
+//   'WIDTH' :8,
+//    'HEIGHT' :8,
+//  };
 
-  var BLOCK_KIND = {
-    'NONE' : 0,
-    'BLACK' : 1,
-    'WHITE' : 2,
-    'MAX' : 3,
-  };
+//  var BLOCK_KIND = {
+//    'NONE' : 0,
+//    'BLACK' : 1,
+//    'WHITE' : 2,
+//    'MAX' : 3,
+//  };
 
-  var board0 = [];
+//  var board0 = [];
 
   // init zero value
-  for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-    board0[i] = [];
-    for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-      board0[i][j] = BLOCK_KIND.NONE;
-    }
-  }
+//  for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
+//    board0[i] = [];
+//    for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
+//      board0[i][j] = BLOCK_KIND.NONE;
+//    }
+//  }
 
   // initial position
-  board0[3][4] = BLOCK_KIND.BLACK;
-  board0[4][3] = BLOCK_KIND.BLACK;
-  board0[3][3] = BLOCK_KIND.WHITE;
-  board0[4][4] = BLOCK_KIND.WHITE;
+//  board0[3][4] = BLOCK_KIND.BLACK;
+//  board0[4][3] = BLOCK_KIND.BLACK;
+//  board0[3][3] = BLOCK_KIND.WHITE;
+//  board0[4][4] = BLOCK_KIND.WHITE;
 
 
   function appendOption(category) {
@@ -66,14 +66,13 @@
       $.ajax( {
         type: 'GET',
         url: `/users/{user_id}/books/${parentCategory}/get_category_children`,
-        data: { parent_name: parentCategory,
-	        initial_board: board0},
+        data: {parent_name: parentCategory},
         dataType: 'json',
         success: function(data) {
-          alert("success");
+          alert("success1");
         },
         error: function(data) {
-          alert("errror");
+          alert("errror1");
         }
       })
       .done(function(children) {
@@ -89,6 +88,19 @@
       .fail(function() {
         alert('error：子カテゴリーの取得に失敗');
       })
+      $.ajax({
+        url: '/save_category_searched_game_record/update',
+        type: "GET",
+        dataType: "html",
+        async: true,
+        data: {id: parentCategory},
+        success: function(data) {
+          alert("success2");
+        },
+        error: function(data) {
+          alert("errror2");
+        }
+      });
     }else{
       $("#children_box").empty();
       $("#grandchildren_box").empty();
@@ -98,21 +110,20 @@
   //子カテゴリー選択によるイベント発火
   $(document).on('change', '#children_box', function() {
     //選択された子カテゴリーidを取得
-    let childId = $('#children_category option:selected').data('category');
-    alert("childId = " + childId);
+    let child_id = $('#children_category option:selected').data('category');
+    alert("childId = " + child_id);
     //子カテゴリーが初期値でない場合
-    if (childId != ""){
+    if (child_id != ""){
       $.ajax({
-        url: `/users/${user_id}/books/${childId}/get_category_grandchildren`,
+        url: `/users/${user_id}/books/${child_id}/get_category_grandchildren`,
         type: 'GET',
-        data: { child_id: childId,
-	        initial_board: board0},
+        data: {child_id: child_id},
         datatype: 'json',
         success: function(data) {
-          alert("success");
+          alert("success3");
         },
         error: function(data) {
-          alert("errror");
+          alert("errror3");
         }
       })
       .done(function(grandchildren) {
@@ -128,6 +139,19 @@
       .fail(function() {
         alert('error:孫カテゴリーの取得に失敗');
       })
+    $.ajax({
+        url: '/save_category_searched_game_record/update',
+        type: "GET",
+        dataType: "html",
+        async: true,
+        data: {id: child_id},
+        success: function(data) {
+          alert("success4");
+        },
+        error: function(data) {
+          alert("errror4");
+        }
+      });
     }else{
       $("#grandchildren_box").empty();
     }
@@ -143,17 +167,14 @@
         type: "GET",
         dataType: "html",
         async: true,
-        data: {
-          grand_child_id: grandchildId,
-          initial_board: board0},
+        data: {id: grandchildId},
         success: function(data) {
-          alert("success");
+          alert("success5");
         },
         error: function(data) {
-          alert("errror");
+          alert("errror5");
         }
       });
     }
   });
-
 })();

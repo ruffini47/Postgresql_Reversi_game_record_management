@@ -1,9 +1,24 @@
 class SaveCategorySearchedGameRecordController < ApplicationController
   def update
-    id = params[:grand_child_id].to_i
-    initial_board = params[:initial_board]
+    id = params[:id].to_i
     player_color0 = 1
     case id
+    when 1
+      kifu = "f5d6c4d3c5"
+    when 2
+      kifu = "f5f6e6f4"
+    when 3
+      kifu = "f5d6c3"
+    when 4
+      kifu = "f5d6c5f4e3"
+    when 5
+      kifu = "f5d6c4d3c5"
+    when 6
+      kifu = "F5f4E3f6D3"
+    when 7
+      kifu = "F5f6E6f4E3"
+    when 8
+      kifu = "F5f6E6f4G5"
     when 16
       kifu = "F5f4E3f6D3e2F2c5F1c4E6f3C3d7"
     when 17
@@ -53,20 +68,8 @@ class SaveCategorySearchedGameRecordController < ApplicationController
     else
       kifu =""
     end
-    board0 = ""
-    i = []
-
-    8.times do |ii|
-      i.push(ii.to_s)
-    end
-
-    #i = ["0","1","2","3","4","5","6","7"]
-
-    8.times do |k|
-      8.times do |j|
-        board0 << initial_board[i[k]][j]
-      end
-    end
+    
+    board0 ="0000000000000000000000000002100000012000000000000000000000000000"
 
     past_game_records = GameRecord.where(user_id: current_user.id, category_searched: true);
     past_game_records.each do |past_game_record|
