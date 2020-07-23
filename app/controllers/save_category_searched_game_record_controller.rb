@@ -4,7 +4,7 @@ class SaveCategorySearchedGameRecordController < ApplicationController
     player_color0 = 1
     case id
     when 1
-      kifu = "f5d6c4d3c5"
+      kifu = "f5f4e3f6d3"
     when 2
       kifu = "f5f6e6f4"
     when 3
@@ -19,6 +19,20 @@ class SaveCategorySearchedGameRecordController < ApplicationController
       kifu = "F5f6E6f4E3"
     when 8
       kifu = "F5f6E6f4G5"
+    when 9
+      kifu = "f5f6e6f4c3"
+    when 10
+      kifu = "f5f6e6f4g6"
+    when 11
+      kifu = "f5d6c3d3c4f4c5"
+    when 12
+      kifu = "f5d6c3d3c4f4f6"
+    when 13
+      kifu = "f5d6c5f4e3c6d3f6e6d7g3"
+    when 14
+      kifu = "f5d6c5f4e3c6d3f6e6d7g4"
+    when 15
+      kifu = "f5d6c5f4e3c6d3f6e6d7e7"
     when 16
       kifu = "F5f4E3f6D3e2F2c5F1c4E6f3C3d7"
     when 17
@@ -68,6 +82,7 @@ class SaveCategorySearchedGameRecordController < ApplicationController
     else
       kifu =""
     end
+    kifu = kifu.downcase
     
     board0 ="0000000000000000000000000002100000012000000000000000000000000000"
 
@@ -77,7 +92,7 @@ class SaveCategorySearchedGameRecordController < ApplicationController
       past_game_record.save
     end
     
-    @game_records = GameRecord.where(user_id: current_user.id, board0: board0, player_color0: player_color0).where("kifu LIKE ?", kifu + "%")
+    @game_records = GameRecord.where(user_id: current_user.id, board0: board0, player_color0: player_color0).where("lower(kifu) LIKE ?", kifu + "%")
     @game_records.each do |game_record|
       game_record.category_searched = true
       game_record.save
