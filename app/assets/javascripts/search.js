@@ -1,36 +1,18 @@
 (function() {
 
   var user_id = gon.user_id;
+ 
+  onload = function() {
 
-//  var BOARD_SIZE = {
-//   'WIDTH' :8,
-//    'HEIGHT' :8,
-//  };
+    //alert("onload");
 
-//  var BLOCK_KIND = {
-//    'NONE' : 0,
-//    'BLACK' : 1,
-//    'WHITE' : 2,
-//    'MAX' : 3,
-//  };
+    $("#result_button").hide();
 
-//  var board0 = [];
-
-  // init zero value
-//  for (var i = 0; i < BOARD_SIZE.HEIGHT+1; i++) {
-//    board0[i] = [];
-//    for (var j = 0; j < BOARD_SIZE.WIDTH+1; j++) {
-//      board0[i][j] = BLOCK_KIND.NONE;
-//    }
-//  }
-
-  // initial position
-//  board0[3][4] = BLOCK_KIND.BLACK;
-//  board0[4][3] = BLOCK_KIND.BLACK;
-//  board0[3][3] = BLOCK_KIND.WHITE;
-//  board0[4][4] = BLOCK_KIND.WHITE;
-
-
+  }
+  
+  
+	
+	
   function appendOption(category) {
     let html = 
       `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -59,6 +41,7 @@
 
   //親カテゴリー選択によるイベント
   $(document).on("change","#parent_category", function() {
+    $("#result_button").show();
     //選択された親カテゴリーの名前取得 → コントローラーに送る
     let parentCategory =  $("#parent_category").val();
     alert("parentCategory = " + parentCategory);
@@ -104,6 +87,7 @@
     }else{
       $("#children_box").empty();
       $("#grandchildren_box").empty();
+      $("#result_button").hide();
     }
   });
 

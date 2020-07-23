@@ -39,7 +39,7 @@
   </div>
   <div class="link">
     <% if logged_in? %>
-      <%= link_to "カテゴリー検索する", category_path(current_user.id), class: "btn btn-primary" %>
+      <%= link_to "カテゴリー検索する", category_path(current_user.id), data: {"turbolinks" => false}, class: "btn btn-primary" %>
     <% end %>
   </div>
   <div class="link">
