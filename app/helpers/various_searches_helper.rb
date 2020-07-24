@@ -1,0 +1,2 @@
+module VariousSearchesHelper
+end

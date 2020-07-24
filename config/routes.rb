@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'various_searches/new'
   get 'save_category_searched_game_record/update' 	
   #get 'searchs/new'
   get 'save_searched_game_record/update'
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
+    resources :various_searches, only: [:new]
+    #棋譜検索盤面を開く
     resources :searchs, only: [:new, :create]
     resources :game_records do
       # 検索結果を表示する
