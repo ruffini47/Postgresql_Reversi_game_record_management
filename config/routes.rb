@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'rails/g'
+  get 'rails/controller'
+  get 'rails/Various_search'
+  get 'rails/new'
   get 'save_category_searched_game_record/update' 	
   #get 'searchs/new'
   get 'save_searched_game_record/update'
@@ -14,35 +18,16 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
+    resources :various_search, only: [:new]
+    #棋譜検索盤面を開く
     resources :searchs, only: [:new, :create]
     resources :game_records do
-      # 検索結果を表示する
+      # 棋譜検索結果を表示する
       get :search, on: :collection
       # カテゴリ検索結果を表示する
       get :category_search, on: :collection
     end
   end
-
-#  resources :users, only: [:new] do
-#    resources :categories, only: [:new] do
-#      get :new
-#    end
-#  end
-
-
-  # カテゴリ検索する
-#  resources :users do
-#    resources :books do
-#      collection do
-#        get 'get_category_children', defaults: { format: 'json' }
-#        get 'get_category_grandchildren', defaults: { format: 'json' }
-#      end
-#      member do
-#        get 'get_category_children', defaults: { format: 'json' }
-#        get 'get_category_grandchildren', defaults: { format: 'json' }
-#      end
-#    end
-#  end
 
 
   #VS AI Play 設定
