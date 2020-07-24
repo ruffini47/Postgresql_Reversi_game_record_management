@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do
+    resources :various_search, only: [:new]
+    #棋譜検索盤面を開く    
     resources :searchs, only: [:new, :create]
     resources :game_records do
       # 検索結果を表示する
