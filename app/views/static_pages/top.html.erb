@@ -29,20 +29,14 @@
   </div>
   <div class="link">
     <% if logged_in? %>	  
-      <%= link_to "検索条件を指定する（棋譜）", new_user_search_path(current_user.id), class: "btn btn-primary" %>
+      <%= link_to "検索条件を指定する", new_user_search_path(current_user.id), class: "btn btn-primary" %>
     <% end %>
   </div>
   <div class="link">
     <% if logged_in? %>	  
-      <%= link_to "検索結果を表示する（棋譜）", search_user_game_records_path(current_user.id), class: "btn btn-primary" %>
+      <%= link_to "検索結果を表示する", search_user_game_records_path(current_user.id), class: "btn btn-primary" %>
     <% end %>
   </div>
-  <div class="link">
-    <% if logged_in? %>	  
-      <%= link_to "検索する", new_user_various_search_path(current_user.id), class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
   <div class="link">
     <% if logged_in? %>
       <%= link_to "カテゴリー検索する", category_path(current_user.id), data: {"turbolinks" => false}, class: "btn btn-primary" %>
