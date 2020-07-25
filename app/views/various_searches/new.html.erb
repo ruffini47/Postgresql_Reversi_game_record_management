@@ -3,7 +3,7 @@
 <% provide(:button_text, '検索') %>
 <h1>検索</h1>
 <div class="row">
-    <%= form_with(model: @game_record, url: "#", local: true) do |f| %>
+    <%= form_with(model: @game_record, url: user_various_searches_path(current_user.id), local: true) do |f| %>
       <%= render 'shared/error_messages_game_record', object: @game_record %>
       <div class="col-md-2">
 	<div class="various_search_box">    
@@ -23,10 +23,10 @@
           <%= f.text_field :white_player, class: "form-control" %>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
 	<div class="various_search_box"> 
           <%= f.label :date_played, class: "label-#{yield(:class_text)}" %>
-          <%= f.datetime_field :date_played, class: "form-control" %>
+	  <%= f.date_field :date_played, class: "form-control" %>
         </div>
       </div>
       <div class="col-md-2">
@@ -35,7 +35,7 @@
           <%= f.text_field :place_played, class: "form-control" %>
         </div>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
 	<div class="various_search_box"> 
 	  <%= f.label :kifu, class: "label-#{yield(:class_text)}" %>
 	  <%= f.text_field :kifu, class: "form-control" %>

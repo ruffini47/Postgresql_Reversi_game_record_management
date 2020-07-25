@@ -1,0 +1,51 @@
+<div>
+  <table class="table table-bordered table-condensed table-striped table-hover bases-table">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>タイトル</td>
+        <td>黒プレイヤー</td>
+        <td>白プレイヤー</td>
+        <td>対局日</td>
+        <td>対局場所</td>
+        <td>棋譜</td>
+        <td>AIとの対局</td>
+        <td>あなたの手番</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </thead>
+      <tbody>
+      <% @game_records.each do |game_record| %>
+      <tr>
+        <td><%= game_record.id %></td>
+        <td><%= game_record.title %></td>
+        <td><%= game_record.black_player %></td>
+        <td><%= game_record.white_player %></td>
+        <td><%= game_record.date_played %></td>
+        <td><%= game_record.place_played %></td>
+        <td>
+          <div style="height: 50px; width: 100px; overflow-x:scroll;">
+            <%= game_record.kifu %>
+          </div>
+        </td>
+        <% if game_record.vsAI == true %>
+          <td>AIとの対戦</td>
+        <% else %>
+          <td>人間同士の対戦</td>
+        <% end %>
+        <% if game_record.your_move == "first" %>
+          <td>先手</td>
+        <% elsif game_record.your_move == "second" %>
+          <td>後手</td>
+        <% end %>
+        <td><%= link_to "編集", edit_user_game_record_path(current_user.id, game_record.id), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to "削除", user_game_record_path(current_user.id, game_record.id), method: :delete,
+              data: { confirm: "「#{game_record.title}」を削除してよろしいですか？" }, class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to "開く", show_board_path(game_record.id), data: {"turbolinks" => false}, class: "btn btn-primary btn-sm" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
