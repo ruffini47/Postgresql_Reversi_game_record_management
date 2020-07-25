@@ -13,11 +13,9 @@ class VariousSearchesController < ApplicationController
     place_played = @game_record.place_played
     kifu = @game_record.kifu
     kifu = kifu.downcase
-    board0 ="0000000000000000000000000002100000012000000000000000000000000000"
-    player_color0 = 1
 
     @game_records = GameRecord.where(user_id: user_id, title: title, black_player: black_player, white_player: white_player,
-				     date_played: date_played.beginning_of_day..date_played.end_of_day, place_played: place_played, board0: board0, player_color0: player_color0).where("lower(kifu) LIKE ?", kifu + "%")   
+				     date_played: date_played.beginning_of_day..date_played.end_of_day, place_played: place_played).where("lower(kifu) LIKE ?", kifu + "%")   
   end
 
   private 
