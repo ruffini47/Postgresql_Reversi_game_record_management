@@ -14,8 +14,7 @@ class VariousSearchesController < ApplicationController
     kifu = @game_record.kifu
     kifu = kifu.downcase
 
-    @game_records = GameRecord.where(user_id: user_id, title: title, black_player: black_player, white_player: white_player,
-				     date_played: date_played.beginning_of_day..date_played.end_of_day, place_played: place_played).where("lower(kifu) LIKE ?", kifu + "%")   
+    @game_records = GameRecord.various_search(user_id, title, black_player, white_player, date_played, place_played, kifu)
   end
 
   private 
