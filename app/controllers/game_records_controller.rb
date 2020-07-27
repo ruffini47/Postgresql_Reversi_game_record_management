@@ -43,18 +43,18 @@ class GameRecordsController < ApplicationController
   end
 
   def search
-    game_records = GameRecord.where(user_id: current_user.id, searched: true)
-    game_record = GameRecord.where(user_id: current_user.id, searched: true).order(updated_at: "ASC").last;
+    game_records = GameRecord.search(current_user.id)
+    game_record = GameRecord.latest_search(current_user.id);
     game_records.each {|game_record2|
       if game_record2.id != game_record.id
         game_record2.destroy
       end
     }
-    @game_records = GameRecord.where(user_id: current_user.id, board0: game_record.board0, player_color0: game_record.player_color0, searched: false).where("kifu LIKE ?", game_record.kifu + "%")
+    @game_records = GameRecord.board_search(current_user.id, game_record.board0, game_record.player_color0, game_record.kifu.downcase)
   end
 
   def category_search
-    @game_records = GameRecord.where(user_id: current_user.id, category_searched: true)
+    @game_records = GameRecord.category_search(current_user.id)
   end
 
 
