@@ -42,7 +42,6 @@
 */
 .top-main
 {
-
   background-image: url("/othello-phto-1920x1280.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -52,6 +51,23 @@
   width: 1920px;
   height: 1280px;
   color: white; 
+  background-color: #3ecd85;
+  margin-left: -400px;
+}
+
+.top-main-transparent
+{
+  background-image: url("/othello-phto-1920x1280.jpg");
+  background-color:rgba(255,255,255,0.8);
+  background-blend-mode:lighten;
+  background-position: center center;
+  background-repeat: no-repeat;
+  //background-attachment: fixed;
+  background-size: cover;
+  //text-align: center;
+  width: 1920px;
+  height: 1280px;
+  color: white;
   background-color: #3ecd85;
   margin-left: -400px;
 }
