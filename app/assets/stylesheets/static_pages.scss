@@ -58,8 +58,8 @@
 .top-main-transparent
 {
   background-image: url("/othello-phto-1920x1280.jpg");
-  background-color:rgba(255,255,255,0.8);
-  background-blend-mode:lighten;
+//  background-color:rgba(255,255,255,0.8);
+//  background-blend-mode:lighten;
   background-position: center center;
   background-repeat: no-repeat;
   //background-attachment: fixed;
@@ -68,7 +68,16 @@
   width: 1920px;
   height: 1280px;
   color: white;
-  background-color: #3ecd85;
+  //background-color: #3ecd85;
   margin-left: -400px;
+
+
 }
+
+.bg-mask
+{
+  height: 1280px;
+  background: rgba(255,255,255,0.5);
+}
+ 
 
