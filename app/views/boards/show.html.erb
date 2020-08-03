@@ -168,7 +168,7 @@
     <p>◯ <span id="white_count"></span> <span id="white_player_name"><%= @game_record.white_player %></span></p>
     </div>
     <div id = "open">
-      <%= button_to "パーソナル棋譜を開く", user_game_records_path(current_user.id), {method: :get, id: "open_button", class: "btn btn-primary w-260px"}%>
+      <%= button_to "棋譜一覧を開く", user_game_records_path(current_user.id), {method: :get, id: "open_button", class: "btn btn-primary w-260px"}%>
     </div>
     <div id="searched">
     <%= button_to "検索結果を表示する", search_user_game_records_path(current_user.id), {method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>

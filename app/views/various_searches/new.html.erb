@@ -1,46 +1,50 @@
 <% provide(:title, 'VariousSearches New') %>
 <% provide(:class_text, 'various_searches--new') %>
 <% provide(:button_text, '検索') %>
-<h1>検索</h1>
-<div class="row">
-    <%= form_with(model: @game_record, url: user_various_searches_path(current_user.id), local: true) do |f| %>
-      <%= render 'shared/error_messages_game_record', object: @game_record %>
-      <div class="col-md-2">
-	<div class="various_search_box">    
-	  <%= f.label :title, class: "label-#{yield(:class_text)}" %>      
-	  <%= f.text_field :title, class: "form-control" %>
-	</div>
-      </div>
-      <div class="col-md-2">
-	<div class="various_search_box"> 
-          <%= f.label :black_player, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :black_player, class: "form-control" %>
- 	</div>
-      </div>
-      <div class="col-md-2">
-	<div class="various_search_box"> 
-          <%= f.label :white_player, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :white_player, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-md-3">
-	<div class="various_search_box"> 
-          <%= f.label :date_played, class: "label-#{yield(:class_text)}" %>
-	  <%= f.date_field :date_played, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-md-2">
-	<div class="various_search_box"> 
-          <%= f.label :place_played, class: "label-#{yield(:class_text)}" %>
-          <%= f.text_field :place_played, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-md-1">
-	<div class="various_search_box"> 
-	  <%= f.label :kifu, class: "label-#{yield(:class_text)}" %>
-	  <%= f.text_field :kifu, class: "form-control" %>
-        </div>
-      </div>
-      <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:class_text)} various_search"%>
-    <% end %>
+<div class="jumbotron bg-image">
+  <div class="bg-mask">
+    <h1>検索</h1>
+    <div class="row">
+        <%= form_with(model: @game_record, url: user_various_searches_path(current_user.id), local: true) do |f| %>
+          <%= render 'shared/error_messages_game_record', object: @game_record %>
+          <div class="col-md-2">
+	    <div class="various_search_box">    
+	      <%= f.label :title, class: "label-#{yield(:class_text)}" %>      
+	      <%= f.text_field :title, class: "form-control" %>
+	    </div>
+          </div>
+          <div class="col-md-2">
+	    <div class="various_search_box"> 
+              <%= f.label :black_player, class: "label-#{yield(:class_text)}" %>
+              <%= f.text_field :black_player, class: "form-control" %>
+ 	    </div>
+          </div>
+          <div class="col-md-2">
+	    <div class="various_search_box"> 
+              <%= f.label :white_player, class: "label-#{yield(:class_text)}" %>
+              <%= f.text_field :white_player, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-3">
+	    <div class="various_search_box"> 
+              <%= f.label :date_played, class: "label-#{yield(:class_text)}" %>
+	      <%= f.date_field :date_played, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-2">
+	    <div class="various_search_box"> 
+              <%= f.label :place_played, class: "label-#{yield(:class_text)}" %>
+              <%= f.text_field :place_played, class: "form-control" %>
+            </div>
+          </div>
+          <div class="col-md-1">
+	    <div class="various_search_box"> 
+	      <%= f.label :kifu, class: "label-#{yield(:class_text)}" %>
+	      <%= f.text_field :kifu, class: "form-control" %>
+            </div>
+          </div>
+          <%= f.submit yield(:button_text), class: "btn btn-primary btn-#{yield(:class_text)} various_search"%>
+        <% end %>
+    </div>
+  </div>
 </div>
