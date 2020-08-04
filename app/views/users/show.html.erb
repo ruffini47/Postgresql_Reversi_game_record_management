@@ -1,2 +1,29 @@
 <% provide(:title, @user.name) %>
-<h1><%= @user.name %>, <%= @user.email %></h1>
+<div class="jumbotron bg-image">
+  <div class="bg-mask">
+    <h1>ユーザー情報</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <table class="table table-bordered" id="table-user-details">
+            <tbody>
+              <tr>
+                <th class="active col-md-3 center">ID<td><%= @user.id %></td>
+              </tr>
+              <tr>
+                <th class="active center"><%= User.human_attribute_name :name %></th><td><%= @user.name %></td>
+              </tr>
+              <tr>
+                <th class="active center"><%= User.human_attribute_name :email %></th><td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <th class="active center"><%= User.human_attribute_name :created_at %></th><td><%= l(@user.created_at, format: :long) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>    
+      </div>
+    </div>
+  </div>
+</div>
+

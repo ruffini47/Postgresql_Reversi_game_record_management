@@ -40,6 +40,7 @@
   background-color: #464646;
 }
 */
+
 .top-main
 {
   background-image: url("/othello-phto-1920x1280.jpg");
@@ -72,6 +73,23 @@
   margin-left: -400px;
 }
 
+.bg-image-user-index
+{
+  background-image: url("/othello-phto-1920x1280.jpg");
+  //background-color:rgba(255,255,255,0.8);
+  //background-blend-mode:lighten;
+  background-position: center center;
+  background-repeat: no-repeat;
+  //background-attachment: fixed;
+  background-size: cover;
+  //text-align: center;
+  width: 1920px;
+  height: 1800px;
+  //color: white;
+  background-color: #3ecd85;
+  margin-left: -400px;
+}
+
 .bg-mask
 {
   //height: 100%;
@@ -88,7 +106,32 @@
   padding-bottom: 50px;
 }
 
+.bg-mask-user-index
+{
+  //height: 100%;
+  background: rgba(255,255,255,0.3);
+  width: 1920px;
+  height: 1800px;
+  margin-top: -50px;
+  padding-top: 50px;
+  margin-left: -50px;
+  padding-left: 50px;
+  margin-right: -50px;
+  padding-right: 50px;
+  margin-bottom: -50px;
+  padding-bottom: 50px;
+}
+
 .bg-mask h1
 {
   color: white;
+}
+
+.bg-mask-user-index h1
+{
+  color: white;
+}
+.table
+{
+  background-color: white;
 }
