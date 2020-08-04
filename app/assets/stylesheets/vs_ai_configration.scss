@@ -1,3 +1,29 @@
 // Place all the styles related to the VsAiConfigration controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.bg-mask p
+{
+  text-align: center;
+}
+
+.wrap
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.first
+{
+  width: 150px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.last
+{
+  width: 150px;
+  text-align: center;
+  margin-top: 50px
+}

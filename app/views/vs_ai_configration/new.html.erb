@@ -1,9 +1,13 @@
 <div class="jumbotron bg-image">
   <div class="bg-mask">
-    <p>あなたの手番</p>
-    <div class="link">
-      <%= link_to "先手", new_user_vs_ai_game_record_path("first"), class: "btn btn-primary" %>
-      <%= link_to "後手", new_user_vs_ai_game_record_path("second"), class: "btn btn-success" %>
+    <h1>あなたの手番</h1>
+    <div class="wrap">
+      <div class="first">
+        <%= link_to "先手", new_user_vs_ai_game_record_path("first"), class: "btn-lg btn-primary" %>
+      </div>
+      <div class="last">
+        <%= link_to "後手", new_user_vs_ai_game_record_path("second"), class: "btn-lg btn-success" %>
+      </div>
     </div>
   </div>
 </div>
