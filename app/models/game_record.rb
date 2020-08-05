@@ -17,7 +17,68 @@ class GameRecord < ApplicationRecord
   scope :kifu, -> (kifu) { where("lower(kifu) LIKE ?", kifu + "%") }
   scope :various_search, -> (user_id, title, black_player, white_player, date_played, place_played, kifu) { 
 	  user_id(user_id).title(title).black_player(black_player).white_player(white_player).date_played(date_played).place_played(place_played).kifu(kifu) }
-  
+  scope :various_search_without_title, -> (user_id, black_player, white_player, date_played, place_played, kifu) {
+	  user_id(user_id).black_player(black_player).white_player(white_player).date_played(date_played).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_black_player, -> (user_id, title, white_player, date_played, place_played, kifu) { 
+	  user_id(user_id).title(title).white_player(white_player).date_played(date_played).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_white_player, -> (user_id, title, black_player, date_played, place_played, kifu) { 
+	  user_id(user_id).title(title).black_player(black_player).date_played(date_played).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_date_played, -> (user_id, title, black_player, white_player, place_played, kifu) { 
+	  user_id(user_id).title(title).black_player(black_player).white_player(white_player).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_place_played, -> (user_id, title, black_player, white_player, date_played, kifu) { 
+	  user_id(user_id).title(title).black_player(black_player).white_player(white_player).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_title_black_player, -> (user_id, white_player, date_played, place_played, kifu) { 
+	  user_id(user_id).white_player(white_player).date_played(date_played).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_title_white_player, -> (user_id, black_player, date_played, place_played, kifu) { 
+	  user_id(user_id).black_player(black_player).date_played(date_played).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_title_date_played, -> (user_id, black_player, white_player, place_played, kifu) { 
+	  user_id(user_id).black_player(black_player).white_player(white_player).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_title_place_played, -> (user_id, black_player, white_player, date_played, kifu) { 
+	  user_id(user_id).black_player(black_player).white_player(white_player).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_black_player_white_player, -> (user_id, title, date_played, place_played, kifu) { 
+	  user_id(user_id).title(title).date_played(date_played).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_black_player_date_played, -> (user_id, title, white_player, place_played, kifu) { 
+	  user_id(user_id).title(title).white_player(white_player).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_black_player_place_played, -> (user_id, title, white_player, date_played, kifu) { 
+	  user_id(user_id).title(title).white_player(white_player).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_white_player_date_played, -> (user_id, title, black_player, place_played, kifu) { 
+	  user_id(user_id).title(title).black_player(black_player).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_white_player_place_played, -> (user_id, title, black_player, date_played, kifu) { 
+	  user_id(user_id).title(title).black_player(black_player).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_date_played_place_played, -> (user_id, title, black_player, white_player, kifu) { 
+	  user_id(user_id).title(title).black_player(black_player).white_player(white_player).kifu(kifu) }
+  scope :various_search_without_title_black_player_white_player, -> (user_id, date_played, place_played, kifu) { 
+	  user_id(user_id).date_played(date_played).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_title_black_player_date_played, -> (user_id, white_player, place_played, kifu) { 
+	  user_id(user_id).white_player(white_player).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_title_black_player_place_played, -> (user_id, white_player, date_played, kifu) { 
+	  user_id(user_id).white_player(white_player).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_title_white_player_date_played, -> (user_id, black_player, place_played, kifu) { 
+	  user_id(user_id).black_player(black_player).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_title_white_player_place_played, -> (user_id, black_player, date_played, kifu) { 
+	  user_id(user_id).black_player(black_player).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_title_date_played_place_played, -> (user_id, black_player, white_player, kifu) { 
+	  user_id(user_id).black_player(black_player).white_player(white_player).kifu(kifu) }
+  scope :various_search_without_black_player_white_player_date_played, -> (user_id, title, place_played, kifu) { 
+	  user_id(user_id).title(title).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_black_player_white_player_place_played, -> (user_id, title, date_played, kifu) { 
+	  user_id(user_id).title(title).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_white_player_date_played_place_played, -> (user_id, title, black_player, kifu) { 
+	  user_id(user_id).title(title).black_player(black_player).kifu(kifu) }
+  scope :various_search_without_title_black_player_white_player_date_played, -> (user_id, place_played, kifu) { 
+	  user_id(user_id).place_played(place_played).kifu(kifu) }
+  scope :various_search_without_title_black_player_white_player_place_played, -> (user_id, date_played, kifu) { 
+	  user_id(user_id).date_played(date_played).kifu(kifu) }
+  scope :various_search_without_title_black_player_date_played_place_played, -> (user_id, white_player, kifu) { 
+	  user_id(user_id).white_player(white_player).kifu(kifu) }
+  scope :various_search_without_title_white_player_date_played_place_played, -> (user_id, black_player, kifu) { 
+	  user_id(user_id).black_player(black_player).kifu(kifu) }
+  scope :various_search_without_black_player_white_player_date_played_place_played, -> (user_id, title, kifu) { 
+	  user_id(user_id).title(title).kifu(kifu) }
+ 
+ 
+
+
   # category_searchのためのscope
   scope :category_searched, -> { where(category_searched: true) }
   scope :category_search, -> (user_id) { user_id(user_id).category_searched }
