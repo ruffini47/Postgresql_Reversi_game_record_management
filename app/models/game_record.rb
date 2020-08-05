@@ -77,6 +77,8 @@ class GameRecord < ApplicationRecord
 	  user_id(user_id).black_player(black_player).kifu(kifu) }
   scope :various_search_without_black_player_white_player_date_played_place_played, -> (user_id, title, kifu) { 
 	  user_id(user_id).title(title).kifu(kifu) }
+  scope :various_search_without_title_black_player_white_player_date_played_place_played, -> (user_id, kifu) {
+	  user_id(user_id).kifu(kifu) }
  
   # various_search kifu なしの場合
   scope :various_search_kifu, -> (user_id, title, black_player, white_player, date_played, place_played) { 
@@ -139,7 +141,8 @@ class GameRecord < ApplicationRecord
 	  user_id(user_id).black_player(black_player) }
   scope :various_search_without_black_player_white_player_date_played_place_played_kifu, -> (user_id, title) { 
 	  user_id(user_id).title(title) }
- 
+  scope :various_search_without_title_black_player_white_player_date_played_place_played_kifu, -> (user_id) {
+          user_id(user_id) } 
  
 
 

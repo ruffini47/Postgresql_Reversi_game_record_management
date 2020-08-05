@@ -73,7 +73,9 @@ class VariousSearchesController < ApplicationController
       elsif title == "" && black_player != "" && white_player == "" && date_played.nil? && place_played == ""
         @game_records = GameRecord.various_search_without_title_white_player_date_played_place_played_kifu(user_id, black_player)
       elsif title != "" && black_player == "" && white_player == "" && date_played.nil? && place_played == ""
-        @game_records = GameRecord.various_search_without_black_player_white_player_date_played_place_played_kifu(user_id, title) 
+        @game_records = GameRecord.various_search_without_black_player_white_player_date_played_place_played_kifu(user_id, title)
+      elsif title == "" && black_player == "" && white_player == "" && date_played.nil? && place_played == ""
+        @game_records = GameRecord.various_search_without_title_black_player_white_player_date_played_place_played_kifu(user_id)	
       else	    
         @game_records = GameRecord.various_search_kifu(user_id, title, black_player, white_player, date_played, place_played)
       end
@@ -137,6 +139,8 @@ class VariousSearchesController < ApplicationController
         @game_records = GameRecord.various_search_without_title_white_player_date_played_place_played(user_id, black_player, kifu)
       elsif title != "" && black_player == "" && white_player == "" && date_played.nil? && place_played == ""
         @game_records = GameRecord.various_search_without_black_player_white_player_date_played_place_played(user_id, title, kifu) 
+      elsif title == "" && black_player == "" && white_player == "" && date_played.nil? && place_played == ""
+        @game_records = GameRecord.various_search_without_title_black_player_white_player_date_played_place_played(user_id, kifu)      
       else	    
         @game_records = GameRecord.various_search(user_id, title, black_player, white_player, date_played, place_played, kifu)
       end
