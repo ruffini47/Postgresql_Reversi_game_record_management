@@ -135,7 +135,11 @@
 	<input type="button" class="btn btn-primary" id="SaveAs" value ="別名で保存">
 	<input type="button" class="btn btn-primary" id="EditBoard" value="盤面を編集する">
 	<input type="button" class="btn btn-primary js-modal-open" id="Transform" value="棋譜変換">
-	<input type="button" class="btn btn-primary" id="Search" value="検索条件を指定する">
+	<% if logged_in? %>
+	  <input type="button" class="btn btn-primary" id="Search" value="検索条件を指定する">
+	<% else %>
+	  <input type="button" class="btn btn-primary" id="Search" value="検索条件を指定する" disabled="disabled">
+	<% end %>
 	<div class="modal js-modal">
 	  <div class="modal__bg js-modal-close"></div>
 	  <div class="modal__content btn-group-vertical button-area">
@@ -173,6 +177,13 @@
       </div>
       <div id="searched">
         <%= button_to "検索結果を表示する", search_user_game_records_path(current_user.id), {method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
+      </div>
+    <% else %>
+       <div id = "open">
+        <%= button_to "棋譜一覧を開く", "#", {disabled: :true, method: :get, id: "open_button", class: "btn btn-primary w-260px"}%>
+       </div>
+       <div id="searched">
+        <%= button_to "検索結果を表示する", "#", {disabled: :true, method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
       </div>
     <% end %>
     <button id="clipboard_button" class="btn btn-primary copy_clipboard" data-clipboard-action="copy" data-clipboard-target="#simple_kifu"%>棋譜をクリップボードにコピーする</button>

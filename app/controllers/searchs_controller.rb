@@ -9,6 +9,7 @@ class SearchsController < ApplicationController
     @game_record.vsAI = false
     @game_record.edit_board = false
     @game_record.search_board = true
+    @game_record.logged_in = true
     if @game_record.save
       #flash[:success] = "プレイヤー情報を作成しました。"
       redirect_to show_board_url(@game_record.id)

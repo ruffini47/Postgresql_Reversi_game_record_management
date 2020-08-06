@@ -105,6 +105,8 @@
   var game_record_id;
   var comment = [];
 
+  var logged_in;
+
   var getCountIsPossibleToTurnOver = function(i, x, y, dx, dy) {
 
     var count = 0;
@@ -181,6 +183,9 @@
   var doEditBoard1 = function() {
     $("#msg_kifu").hide();
     $("#simple_kifu").hide();
+
+
+
     /*
     if (edit_board == false) {
       saved_vsAI = vsAI;
@@ -2025,6 +2030,7 @@
     vsAI = gon.vsAI;
     edit_board = gon.edit_board;
     search_board = gon.search_board;
+    logged_in = gon.logged_in;
    
     //alert("from_saved = " + from_saved);
     //alert("your_move = " + your_move);
@@ -2886,13 +2892,22 @@
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
     $("#Transform").prop("disabled", false);
-    $("#Search").prop("disabled", false);
-    $("#searched_button").prop("disabled", false);
+    if (logged_in == true) {
+      $("#Search").prop("disabled", false);
+      $("#searched_button").prop("disabled", false);
+    } else {
+      $("#Search").prop("disabled", true);
+      $("#searched_button").prop("disabled", true);
+    }
     $("#back_to_beginning").show();
     $("#previous_button").show();
     $("#next_button").show();
     $("#go_to_end").show();
-    $("#open_button").prop("disabled", false);
+    if (logged_in == true) {
+      $("#open_button").prop("disabled", false);
+    } else {
+      $("#open_button").prop("disabled", true);
+    }
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
 	
@@ -3013,13 +3028,22 @@
     $("#SaveAs").prop("disabled", false);
     $("#EditBoard").prop("disabled", false);
     $("#Transform").prop("disabled", false);
-    $("#Search").prop("disabled", false);
-    $("#searched_button").prop("disabled", false);
+    if (logged_in == true) {
+      $("#Search").prop("disabled", false);
+      $("#searched_button").prop("disabled", false);
+    } else {
+      $("#Search").prop("disabled", true);
+      $("#searched_button").prop("disabled", true);
+    }
     $("#back_to_beginning").show();
     $("#previous_button").show();
     $("#next_button").show();
     $("#go_to_end").show();
-    $("#open_button").prop("disabled", false);
+    if (logged_in == true) {
+      $("#open_button").prop("disabled", false);
+    } else {
+      $("#open_button").prop("disabled", true);  
+    }
     $("#clipboard_button").prop("disabled", false);
     $(".comment_textarea").attr("disabled", false);
 

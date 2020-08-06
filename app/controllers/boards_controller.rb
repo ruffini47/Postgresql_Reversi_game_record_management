@@ -16,6 +16,7 @@ class BoardsController < ApplicationController
     gon.search_board = @game_record.search_board
     gon.board0 = @game_record.board0
     gon.player_color0 = @game_record.player_color0
+    gon.logged_in = @game_record.logged_in
     gon.comment0 = @game_record.comment0
     gon.comment1 = @game_record.comment1
     gon.comment2 = @game_record.comment2

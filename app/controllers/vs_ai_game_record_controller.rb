@@ -13,6 +13,7 @@ class VsAiGameRecordController < ApplicationController
     @game_record.your_move = your_move
     @game_record.vsAI= true
     @game_record.edit_board = false
+    @game_record.logged_in = true  
     if @game_record.save
       #flash[:success] = "プレイヤー情報を作成しました。ai"
       redirect_to show_board_url(@game_record.id)

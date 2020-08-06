@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_081459) do
+ActiveRecord::Schema.define(version: 2020_08_06_070531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_081459) do
     t.boolean "searched", default: false
     t.boolean "search_board", default: false
     t.boolean "category_searched", default: false
+    t.boolean "logged_in", default: true
     t.index ["user_id"], name: "index_game_records_on_user_id"
   end
 

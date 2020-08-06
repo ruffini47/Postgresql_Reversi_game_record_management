@@ -9,8 +9,10 @@ class TrialsController < ApplicationController
     @game_record.kifu = ""
     if logged_in?
       @game_record.user_id = current_user.id
+      @game_record.logged_in = true
     else
       @game_record.user_id = 1
+      @game_record.logged_in = false
     end
     @game_record.vsAI = false
     @game_record.edit_board = false

@@ -9,6 +9,7 @@ class SpecifyKifuAndOpenController < ApplicationController
     @game_record.from_saved = true
     @game_record.your_move = "first"
     @game_record.vsAI = false
+    @game_record.logged_in = true
     if @game_record.save
       #flash[:success] = "プレイヤー情報を作成しました。"
       redirect_to show_board_url(@game_record.id)
