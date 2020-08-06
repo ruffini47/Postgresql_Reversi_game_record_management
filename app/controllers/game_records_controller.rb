@@ -1,5 +1,7 @@
 class GameRecordsController < ApplicationController
   before_action :set_game_record, only: [:edit, :update, :destroy]
+  before_action :set_user_game_record, only:[:index]
+
   def new
     @game_record = GameRecord.new
   end
@@ -21,7 +23,7 @@ class GameRecordsController < ApplicationController
 
   def index
     @game_records = GameRecord.all
-    @game_records = @game_records.where(user_id: current_user.id).order(id: "ASC") 
+    @game_records = @game_records.where(user_id: @user.id).order(id: "ASC") 
    end
 
   def edit
@@ -40,7 +42,7 @@ class GameRecordsController < ApplicationController
   def destroy
     @game_record.destroy
     flash[:success] = "「#{@game_record.title}」のデータを削除しました。"
-    redirect_to user_game_records_path(current_user.id)
+    redirect_to user_game_records_path(@game_record.user_id)
   end
 
   def search
