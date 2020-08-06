@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  # 試し打ちする
+  get 'trials/create'
   #get 'do_various_searches/new'
   #get 'various_searches/new'
   get 'save_category_searched_game_record/update' 	

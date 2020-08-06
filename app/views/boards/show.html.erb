@@ -167,12 +167,14 @@
     <div class = "white_player">
     <p>◯ <span id="white_count"></span> <span id="white_player_name"><%= @game_record.white_player %></span></p>
     </div>
-    <div id = "open">
-      <%= button_to "棋譜一覧を開く", user_game_records_path(current_user.id), {method: :get, id: "open_button", class: "btn btn-primary w-260px"}%>
-    </div>
-    <div id="searched">
-    <%= button_to "検索結果を表示する", search_user_game_records_path(current_user.id), {method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
-    </div>
+    <% if logged_in? %>
+      <div id = "open">
+        <%= button_to "棋譜一覧を開く", user_game_records_path(current_user.id), {method: :get, id: "open_button", class: "btn btn-primary w-260px"}%>
+      </div>
+      <div id="searched">
+        <%= button_to "検索結果を表示する", search_user_game_records_path(current_user.id), {method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
+      </div>
+    <% end %>
     <button id="clipboard_button" class="btn btn-primary copy_clipboard" data-clipboard-action="copy" data-clipboard-target="#simple_kifu"%>棋譜をクリップボードにコピーする</button>
     <textarea name="test0" value="0" id="text0" class="comment_textarea" cols="50" rows=18 placeholder="ここに初期状態のコメントを入力してください。"></textarea><br/>
     <textarea name="test1" value="1" id="text1" class="comment_textarea" cols="50" rows=18 placeholder="ここに1手目のコメントを入力してください。"></textarea><br/>

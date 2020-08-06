@@ -2,6 +2,9 @@
 <div class="center jumbotron top-main">
   <h1>リバーシ棋譜管理プログラム</h1>
   <p>このアプリケーションはリバーシの棋譜情報を検索・閲覧・登録・編集することができます。</p>
+  <div class="link">  
+    <%= link_to "試し打ちする", trials_create_path, data: {"turbolinks" => false}, class: "btn btn-primary" %>
+  </div>
   <div class="link">
     <% if logged_in? %>	  
     	<%= link_to "ふたりで遊ぶ", new_user_game_record_path(current_user.id), class: "btn btn-primary" %>
