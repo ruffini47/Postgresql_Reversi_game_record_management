@@ -1,6 +1,8 @@
 class GameRecordsController < ApplicationController
   before_action :set_game_record, only: [:edit, :update, :destroy]
-  before_action :set_user_game_record, only:[:index]
+  before_action :set_user_id, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :admin_user_or_correct_user, only: [:index, :edit, :update, :destroy]
 
   def new
     @game_record = GameRecord.new
@@ -32,7 +34,7 @@ class GameRecordsController < ApplicationController
   def update
     if @game_record.update_attributes(game_records_params)
       flash[:success] = "プレイヤー情報を更新しました。"
-      redirect_to user_game_records_path(current_user.id)
+      redirect_to user_game_records_path(@game_record.user_id)
     else
       flash[:danger] = "プレイヤー情報の更新に失敗しました。"
       render :edit      
