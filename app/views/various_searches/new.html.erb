@@ -5,7 +5,7 @@
   <div class="bg-mask">
     <h1>検索</h1>
     <div class="row">
-        <%= form_with(model: @game_record, url: user_various_searches_path(current_user.id), local: true) do |f| %>
+        <%= form_with(model: @game_record, url: various_search_user_game_records_path(current_user.id), local: true) do |f| %>
           <%= render 'shared/error_messages_game_record', object: @game_record %>
           <div class="col-md-2">
 	    <div class="various_search_box">    

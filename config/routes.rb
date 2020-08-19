@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :users do
     #様々な検索をする
-    resources :various_searches, only: [:new, :create]
+    resources :various_searches, only: [:new]
     #棋譜検索盤面を開く
     resources :searchs, only: [:new, :create]
     resources :game_records do
@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       get :search, on: :collection
       # カテゴリ検索結果を表示する
       get :category_search, on: :collection
+      #様々な検索結果を表示する
+      post :various_search, on: :collection
     end
   end
 
@@ -79,7 +81,7 @@ Rails.application.routes.draw do
   # カテゴリ検索する
   get '/users/:user_id/category/' , to:'categories#new', as: 'category'
   get '/users/:user_id/books/:id/get_category_children', to: 'books#get_category_children', as: 'get_category_children_user_book', defaults: { format: 'json' }
-  get '/users/:user_id/books/:id/get_category_grandchildren', to: 'books#get_category_grandchildren', as: 'get_category_grandchildren_user_book', defaults: { format: 'json' }
+  get '/users/:user_id/books/:id/get_category_grandchildren', to: 'books#get_category_grandchildren', as: 'get_category_grandchildren_user_book', defaults: { format: 'json' } 
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
