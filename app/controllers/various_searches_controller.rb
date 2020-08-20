@@ -1,18 +1,40 @@
 class VariousSearchesController < ApplicationController
   def new
     @game_record = GameRecord.new
+    $various_searched = true
   end
 
   def create
-    @game_record = GameRecord.new(game_records_params)
-    user_id = params[:user_id]
-    title = @game_record.title
-    black_player = @game_record.black_player
-    white_player = @game_record.white_player
-    date_played = @game_record.date_played
-    place_played = @game_record.place_played
-    kifu = @game_record.kifu
-    kifu = kifu.downcase
+    if $various_searched == true
+      @game_record = GameRecord.new(game_records_params)
+      user_id = params[:user_id].to_i
+      title = @game_record.title
+      black_player = @game_record.black_player
+      white_player = @game_record.white_player
+      date_played = @game_record.date_played
+      place_played = @game_record.place_played
+      kifu = @game_record.kifu
+      kifu = kifu.downcase
+      
+      $various_searched_title = title
+      $various_searched_user_id = user_id
+      $various_searched_black_player = black_player
+      $various_searched_white_player = white_player
+      $various_searched_date_played = date_played
+      $various_searched_place_played = place_played
+      $various_searched_kifu = kifu
+      $various_searched = false
+
+    elsif $various_searched == false
+      user_id = $various_searched_user_id
+      title = $various_searched_title
+      black_player = $various_searched_black_player
+      white_player = $various_searched_white_player
+      date_played = $various_searched_date_played
+      place_played = $various_searched_place_played
+      kifu = $various_searched_kifu
+    end
+
 
     if kifu == ""
 

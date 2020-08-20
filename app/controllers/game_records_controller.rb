@@ -56,7 +56,7 @@ class GameRecordsController < ApplicationController
   def various_search_destroy
     @game_record.destroy
     flash[:success] = "「#{@game_record.title}」のデータを削除しました。"
-    redirect_to user_game_records_path(current_user.id)
+    redirect_to user_various_searches_path(current_user.id)
   end
 
   def category_search_destroy

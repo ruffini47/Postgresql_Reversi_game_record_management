@@ -90,7 +90,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/books/:id/get_category_grandchildren', to: 'books#get_category_grandchildren', as: 'get_category_grandchildren_user_book', defaults: { format: 'json' } 
 
   # 様々な検索削除後再表示用
-  #get '/users/:user_id/various_searches' ,to:'various_searches#create'
+  get '/users/:user_id/various_searches' ,to:'various_searches#create'
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
