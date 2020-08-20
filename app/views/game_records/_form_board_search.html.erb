@@ -39,7 +39,7 @@
         <% elsif game_record.your_move == "second" %>
           <td>後手</td>
         <% end %>
-        <td><%= link_to "削除", various_search_destroy_user_game_record_path(current_user.id, game_record.id), method: :delete,
+        <td><%= link_to "削除", board_search_destroy_user_game_record_path(current_user.id, game_record.id), method: :delete,
               data: { confirm: "「#{game_record.title}」を削除してよろしいですか？" }, class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to "開く", show_board_path(game_record.id), data: {"turbolinks" => false}, class: "btn btn-primary btn-sm" %></td>
       </tr>

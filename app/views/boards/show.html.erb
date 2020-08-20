@@ -177,11 +177,11 @@
       </div>
       <% if searched? %>
         <div class = "searched">
-          <%= button_to "検索結果を表示する", search_user_game_records_path(current_user.id), {method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
+          <%= button_to "検索結果を表示する", board_search_user_game_records_path(current_user.id), {method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
         </div>
       <% else %>
         <div class = "searched">
-          <%= button_to "検索結果を表示する", search_user_game_records_path(current_user.id), {disabled: :true, method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
+          <%= button_to "検索結果を表示する", board_search_user_game_records_path(current_user.id), {disabled: :true, method: :get, id: "searched_button", class: "btn btn-primary w-260px"}%>
 	</div>
       <% end %>
     <% else %>

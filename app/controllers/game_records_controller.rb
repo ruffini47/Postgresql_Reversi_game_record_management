@@ -1,8 +1,8 @@
 class GameRecordsController < ApplicationController
-  before_action :set_game_record, only: [:edit, :update, :destroy]
-  before_action :set_user_id, only: [:index, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :admin_user_or_correct_user, only: [:index, :edit, :update, :destroy]
+  before_action :set_game_record, only: [:edit, :update, :destroy, :board_search_destroy, :category_search_destroy, :various_search_destroy]
+  before_action :set_user_id, only: [:index, :edit, :update, :destroy, :board_search_destroy, :category_search_destroy, :various_search_destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :board_search_destroy, :category_search_destroy, :various_search_destroy, :show]
+  before_action :admin_user_or_correct_user, only: [:index, :edit, :update, :destroy, :board_search_destroy, :category_search_destroy, :various_search_destroy, :show]
 
   def new
     @game_record = GameRecord.new
@@ -44,10 +44,28 @@ class GameRecordsController < ApplicationController
   def destroy
     @game_record.destroy
     flash[:success] = "「#{@game_record.title}」のデータを削除しました。"
-    redirect_to search_user_game_records_path(@game_record.user_id)
+    redirect_to user_game_records_path(@game_record.user_id)
   end
 
-  def search
+  def board_search_destroy
+    @game_record.destroy
+    flash[:success] = "「#{@game_record.title}」のデータを削除しました。"
+    redirect_to board_search_user_game_records_path(@game_record.user_id)
+  end
+
+  def various_search_destroy
+    @game_record.destroy
+    flash[:success] = "「#{@game_record.title}」のデータを削除しました。"
+    redirect_to user_game_records_path(current_user.id)
+  end
+
+  def category_search_destroy
+    @game_record.destroy
+    flash[:success] = "「#{@game_record.title}」のデータを削除しました。"
+    redirect_to category_search_user_game_records_path(@game_record.user_id)
+  end
+
+  def board_search
     game_records = GameRecord.search(current_user.id)
     game_record = GameRecord.latest_search(current_user.id);
     game_records.each {|game_record2|
@@ -205,6 +223,10 @@ class GameRecordsController < ApplicationController
       end
 
     end
+  end
+
+  def show
+
   end
 
   private

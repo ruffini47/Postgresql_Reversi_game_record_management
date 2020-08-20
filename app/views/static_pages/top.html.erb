@@ -37,7 +37,7 @@
   </div>
   <div class="link">
     <% if logged_in? && searched? %>	  
-      <%= link_to "検索結果を表示する（棋譜）", search_user_game_records_path(current_user.id), class: "btn btn-primary" %>
+      <%= link_to "検索結果を表示する（棋譜）", board_search_user_game_records_path(current_user.id), class: "btn btn-primary" %>
     <% elsif logged_in? && !searched? %>
       <%= link_to "検索結果を表示する（棋譜）", "#", class: "btn btn-primary" ,disabled: true %>
     <% end %>
