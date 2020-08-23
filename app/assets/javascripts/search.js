@@ -44,7 +44,7 @@
     $("#result_button").show();
     //選択された親カテゴリーの名前取得 → コントローラーに送る
     let parentCategory =  $("#parent_category").val();
-    alert("parentCategory = " + parentCategory);
+    //alert("parentCategory = " + parentCategory);
     if (parentCategory != "") {
       $.ajax( {
         type: 'GET',
@@ -52,10 +52,10 @@
         data: {parent_name: parentCategory},
         dataType: 'json',
         success: function(data) {
-          alert("success1");
+          //alert("success1");
         },
         error: function(data) {
-          alert("errror1");
+          //alert("errror1");
         }
       })
       .done(function(children) {
@@ -69,7 +69,7 @@
         appendChildrenBox(insertHTML);
       })
       .fail(function() {
-        alert('error：子カテゴリーの取得に失敗');
+        //alert('error：子カテゴリーの取得に失敗');
       })
       $.ajax({
         url: '/save_category_searched_game_record/update',
@@ -78,10 +78,10 @@
         async: true,
         data: {id: parentCategory},
         success: function(data) {
-          alert("success2");
+          //alert("success2");
         },
         error: function(data) {
-          alert("errror2");
+          //alert("errror2");
         }
       });
     }else{
@@ -95,7 +95,7 @@
   $(document).on('change', '#children_box', function() {
     //選択された子カテゴリーidを取得
     let child_id = $('#children_category option:selected').data('category');
-    alert("childId = " + child_id);
+    //alert("childId = " + child_id);
     //子カテゴリーが初期値でない場合
     if (child_id != ""){
       $.ajax({
@@ -104,10 +104,10 @@
         data: {child_id: child_id},
         datatype: 'json',
         success: function(data) {
-          alert("success3");
+          //alert("success3");
         },
         error: function(data) {
-          alert("errror3");
+          //alert("errror3");
         }
       })
       .done(function(grandchildren) {
@@ -121,7 +121,7 @@
         }
       })
       .fail(function() {
-        alert('error:孫カテゴリーの取得に失敗');
+        //alert('error:孫カテゴリーの取得に失敗');
       })
     $.ajax({
         url: '/save_category_searched_game_record/update',
@@ -130,10 +130,10 @@
         async: true,
         data: {id: child_id},
         success: function(data) {
-          alert("success4");
+          //alert("success4");
         },
         error: function(data) {
-          alert("errror4");
+          //alert("errror4");
         }
       });
     }else{
@@ -145,7 +145,7 @@
   $(document).on('change', '#grandchildren_box', function() {
     let grandchildId = $('#grandchildren_category option:selected').data('category');
     if (grandchildId != "") {
-      alert("grand_child_id = " + grandchildId);
+      //alert("grand_child_id = " + grandchildId);
       $.ajax({
         url: '/save_category_searched_game_record/update',
         type: "GET",
@@ -153,10 +153,10 @@
         async: true,
         data: {id: grandchildId},
         success: function(data) {
-          alert("success5");
+          //alert("success5");
         },
         error: function(data) {
-          alert("errror5");
+          //alert("errror5");
         }
       });
     }

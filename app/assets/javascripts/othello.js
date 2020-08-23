@@ -2050,7 +2050,7 @@
 
 
   
-    alert("edit_board = " + edit_board);
+    //alert("edit_board = " + edit_board);
     
     initBoard();
     //alert("board[0](initBoard() = " + board[0]);      
@@ -2247,7 +2247,7 @@
     }
 
     if (search_board == true) {
-      alert("search_board = " + search_board);
+      //alert("search_board = " + search_board);
       from_saved = false;
       edit_board = false;
       edit_flag = true;
@@ -2654,7 +2654,7 @@
     /*$('.title').css('color', 'red');*/
     /*$('#result').load('/save_game_record/update');*/
     game_record_id = gon.game_record_id;
-    alert(game_record_id);
+    //alert(game_record_id);
     if (last_hand == 0) {
       kifu = "";
     }
@@ -2673,10 +2673,10 @@
 	edit_board: false,
       },
       success: function(data) {
-        alert("success");
+        //alert("success");
       },
       error: function(data) {
-        alert("errror");
+        //alert("errror");
       }
     });
   });
@@ -2770,10 +2770,10 @@
 	edit_board: false,
       },
       success: function(data) {
-        alert("success");
+        //alert("success");
       },
       error: function(data) {
-        alert("errror");
+        //alert("errror");
       }
     });
   });
@@ -2937,8 +2937,8 @@
     }
 
 
-    alert("your_move = " + your_move);
-    alert("vsAI = " + vsAI);
+    //alert("your_move = " + your_move);
+    //alert("vsAI = " + vsAI);
   
     if(black_next_yellow_frame_length > 0) {
       player_color = BLOCK_KIND.BLACK;
@@ -3214,14 +3214,14 @@
 	$("#First_checkbox").prop("checked",false);
       }
 */	    
-      alert("your_move = " + your_move);
-      alert("vsAI = " + vsAI);
-      alert("edit_board = " + edit_board);
+      //alert("your_move = " + your_move);
+      //alert("vsAI = " + vsAI);
+      //alert("edit_board = " + edit_board);
       from_saved = saved_from_saved;
       from_saved = false;
       last_hand = saved_last_hand;
       temp_hand = saved_temp_hand;
-      alert("temp_hand = " + temp_hand);
+      //alert("temp_hand = " + temp_hand);
       previous_temp_hand = saved_previous_temp_hand;
       wrap_flag = false;
       beginning_flag = saved_beginning_flag;
@@ -3264,7 +3264,7 @@
       //}          
 
     } else if (edit_board == true) {
-      alert("edit_board = " + edit_board);
+      //alert("edit_board = " + edit_board);
       // initialize board
       initBoard();
 
@@ -3519,7 +3519,7 @@
       vsAI = false;
     }
 
-    alert("vsAI = " + vsAI);
+    //alert("vsAI = " + vsAI);
 
     saved_player_color = player_color;
    
@@ -3547,10 +3547,10 @@
 
   $("#save_comment").click(function() {
     game_record_id = gon.game_record_id;
-    alert(game_record_id);
-    alert("save_comment");
+    //alert(game_record_id);
+    //alert("save_comment");
     var str = $('#text' + temp_hand).val();
-    alert(str);
+    //alert(str);
     $.ajax({
       url: '/save_comment/update',
       type: "GET",
@@ -3562,10 +3562,10 @@
 	comment: str,
       },
       success: function(data) {
-        alert("success");
+        //alert("success");
       },
       error: function(data) {
-        alert("errror");
+        //alert("errror");
       }
     });
 
@@ -3577,8 +3577,8 @@
 
   $("#delete_comment").click(function() {
     game_record_id = gon.game_record_id;
-    alert(game_record_id);
-    alert("delete_comment");
+    //alert(game_record_id);
+    //alert("delete_comment");
     $('#text' + temp_hand).val("");
     //alert(str);
     $.ajax({
@@ -3591,10 +3591,10 @@
         temp_hand: temp_hand,
       },
       success: function(data) {
-        alert("success");
+        //alert("success");
       },
       error: function(data) {
-        alert("errror");
+        //alert("errror");
       }
     });
 
@@ -3835,7 +3835,7 @@
 
   var KifuNormalize = function() {
 
-    alert("kifu = " + kifu);
+    //alert("kifu = " + kifu);
     var n;
     var ii;
     var _x;
@@ -4123,7 +4123,7 @@
       kifu = kifu + (normalized_kifu_y[j3] + 1).toString();
     }
  
-    alert("transformed kifu = " + kifu);
+    //alert("transformed kifu = " + kifu);
    
     normalized_kifu_x = [];
     normalized_kifu_y = [];
@@ -4351,7 +4351,7 @@
      //player_color_array[0] = 1;
      var kifu_d = "";
 
-     alert("kifu = " + kifu);
+     //alert("kifu = " + kifu);
         var n;
         var _x;
         var _y;
@@ -4691,7 +4691,7 @@
 
   var ReadAndPlay1 = function() {
 
-    alert("kifu = " + kifu);
+    //alert("kifu = " + kifu);
         var n;
         var _x;
         var _y;
@@ -5158,7 +5158,7 @@
     }
 */
     search_saved_player_color = player_color;
-    alert("search_saved_player_color = " + search_saved_player_color);
+    //alert("search_saved_player_color = " + search_saved_player_color);
     from_saved = false;
 
     search_saved_vsAI = vsAI;
@@ -5959,9 +5959,9 @@
       your_move = "first";
     }
 
-    alert("your_move = " + your_move);
-    alert("vsAI = " + vsAI);
-    alert("edit_board = " + edit_board);
+    //alert("your_move = " + your_move);
+    //alert("vsAI = " + vsAI);
+    //alert("edit_board = " + edit_board);
 
     if (vsAI == true) {
       $("#Computer_checkbox").prop("checked",true);
@@ -6120,7 +6120,7 @@
         from_saved = false;
         last_hand = search_saved_last_hand;
         temp_hand = search_saved_temp_hand;
-        alert("temp_hand = " + temp_hand);
+        //alert("temp_hand = " + temp_hand);
         previous_temp_hand = search_saved_previous_temp_hand;
         wrap_flag = false;
         beginning_flag = search_saved_beginning_flag;
@@ -6269,8 +6269,8 @@
       your_move = "first";
     }
 
-    alert("your_move = " + your_move);
-    alert("vsAI = " + vsAI);
+    //alert("your_move = " + your_move);
+    //alert("vsAI = " + vsAI);
  
 
     //vsAI = false;
@@ -6404,7 +6404,7 @@
       //e.appendChild(stone_white_yellow_frame_right_vertical_frame);
 
       if (your_move == "first") {
-        alert("your_move = " + your_move);
+        //alert("your_move = " + your_move);
         e.appendChild(stone_black_yellow_frame_top_left_corner);
         e.appendChild(stone_black_yellow_frame_top_right_corner);
         e.appendChild(stone_black_yellow_frame_bottom_left_corner);
@@ -6416,7 +6416,7 @@
         stone_black_yellow_frame_length = 1;
         stone_white_yellow_frame_length = 0;
       } else if (your_move == "second") {
-        alert("your_move = " + your_move);
+        //alert("your_move = " + your_move);
         e.appendChild(stone_white_yellow_frame_top_left_corner);
         e.appendChild(stone_white_yellow_frame_top_right_corner);
         e.appendChild(stone_white_yellow_frame_bottom_left_corner);
@@ -6495,7 +6495,7 @@
 
   $("#search_board_ok2").click(function() {
     game_record_id = gon.game_record_id;
-    alert(game_record_id);
+    //alert(game_record_id);
     if (last_hand == 0) {
       kifu = "";
     }
@@ -6513,10 +6513,10 @@
 	search_board: false,
       },
       success: function(data) {
-        alert("success");
+        //alert("success");
       },
       error: function(data) {
-        alert("errror");
+        //alert("errror");
       }
     });
 
@@ -6725,7 +6725,7 @@
 	    
       from_saved = false;
       temp_hand = last_hand;
-      alert("temp_hand = " + temp_hand);
+      //alert("temp_hand = " + temp_hand);
       $("#a" + temp_hand).unwrap();
       previous_temp_hand = 0;
       wrap_flag = true;
@@ -6845,7 +6845,7 @@
       player_color = search_board_ok1_saved_player_color;
       player_color_array[0] = player_color;
  
-      alert("player_color = " + player_color);
+      //alert("player_color = " + player_color);
 
     if (search_board == false) {	  
       vsAI = search_saved_vsAI;
